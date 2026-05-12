@@ -1,0 +1,262 @@
+{
+  "meta": {
+    "title": "Prototype Creature Test"
+  },
+  "ui": {
+    "common": {
+      "quitButton": "Quit"
+    },
+    "languages": {
+      "fr": "Français",
+      "en": "English"
+    },
+    "menu": {
+      "kicker": "Experimental narrative prototype",
+      "subtitle": "An alien egg was discovered during a military operation. Since you touched it, it reacts to your mood. Professor Chen begins a full test protocol.",
+      "languageTitle": "Languages",
+      "selectedLanguage": "Selected language",
+      "playButton": "Play"
+    },
+    "lore": {
+      "progressLabel": "Lore",
+      "continueButton": "Continue"
+    },
+    "dialogue": {
+      "testLabel": "Behavioral test",
+      "continueButton": "Continue",
+      "clickHint": "Read the next message to continue the protocol.",
+      "choiceHint": "Choose an answer to influence the result.",
+      "avatarEmotion": "Emotion",
+      "defaultFinalChoice": "Finish the test"
+    },
+    "final": {
+      "kicker": "Protocol result",
+      "statsTitle": "Statistics",
+      "creatureLabel": "LEVEL 1",
+      "nextTestButton": "Continue test",
+      "menuButton": "Stop"
+    },
+    "confirmQuit": {
+      "title": "Quit the protocol?",
+      "text": "Your current progress will be reset and you will return to the main menu.",
+      "cancelButton": "Cancel",
+      "confirmButton": "Quit"
+    },
+    "confirmStop": {
+      "title": "Stop testing this creature?",
+      "text": "This action will stop the current tests on the creature and return you to the main menu.",
+      "cancelButton": "Continue testing",
+      "confirmButton": "Stop the test"
+    },
+    "fallbacks": {
+      "illustration": "Illustration",
+      "avatar": "Scientist avatar",
+      "creature": "Creature"
+    },
+    "stats": {
+      "force": "Force",
+      "exploration": "Exploration",
+      "conciliation": "Conciliation",
+      "intelligence": "Intelligence"
+    }
+  },
+  "lore": [
+    {
+      "id": "lore_01",
+      "image": "assets/lore/lore-01.png",
+      "title": "Discovery of the Egg",
+      "text": "During a security operation in a restricted zone, your unit discovered an egg of unknown origin. Its surface looked mineral, but a slow pulse vibrated beneath the shell."
+    },
+    {
+      "id": "lore_02",
+      "image": "assets/lore/lore-02.png",
+      "title": "Accidental Contact",
+      "text": "You were assigned to protect the perimeter. When the egg began to crack, you touched it by reflex. At that moment, your heartbeat and its internal energy synchronized."
+    },
+    {
+      "id": "lore_03",
+      "image": "assets/lore/lore-03.png",
+      "title": "Emotional Reaction",
+      "text": "Since the contact, the egg reacts to your mood shifts. Anger, fear, curiosity, calm: each emotion changes its temperature, color, and biological rhythm."
+    },
+    {
+      "id": "lore_04",
+      "image": "assets/lore/lore-04.png",
+      "title": "Chen Protocol",
+      "text": "Before the full hatching, Professor Chen wants to understand the bond between you and the creature. You will go through behavioral tests to measure this synchronization."
+    }
+  ],
+  "dialogue": {
+    "startNode": "node_01",
+    "avatar": {
+      "neutral": "assets/avatar/scientist-neutral.png",
+      "happy": "assets/avatar/scientist-happy.png",
+      "serious": "assets/avatar/scientist-serious.png",
+      "worried": "assets/avatar/scientist-worried.png"
+    },
+    "nodes": {
+      "node_01": {
+        "messages": [
+          {
+            "speaker": "Professor Chen",
+            "emotion": "neutral",
+            "text": "Soldier, stay calm. Since your contact with the alien egg, your emotional reactions have directly influenced its development."
+          },
+          {
+            "speaker": "Professor Chen",
+            "emotion": "serious",
+            "text": "We are starting a full test protocol. Each answer will help us understand what kind of bond formed between you and the creature."
+          }
+        ],
+        "choices": [
+          {
+            "label": "Understood, Professor. I am ready to begin.",
+            "effects": {
+              "intelligence": 1
+            },
+            "next": "node_02"
+          },
+          {
+            "label": "Before we start, I want to know if this thing is dangerous.",
+            "effects": {
+              "intelligence": 2,
+              "exploration": 1
+            },
+            "next": "node_02"
+          }
+        ]
+      },
+      "node_02": {
+        "messages": [
+          {
+            "speaker": "Professor Chen",
+            "emotion": "worried",
+            "text": "First test. The egg reacts strongly when you are under pressure. Imagine an alarm triggers and the incubation room locks down."
+          }
+        ],
+        "choices": [
+          {
+            "label": "I force access and regain control of the zone.",
+            "effects": {
+              "force": 2,
+              "conciliation": -1
+            },
+            "next": "node_03"
+          },
+          {
+            "label": "I analyze the egg’s signals before acting.",
+            "effects": {
+              "intelligence": 1,
+              "exploration": 1
+            },
+            "next": "node_03"
+          },
+          {
+            "label": "I slow my breathing and try to calm it.",
+            "effects": {
+              "conciliation": 2,
+              "intelligence": 1
+            },
+            "next": "node_03"
+          }
+        ]
+      },
+      "node_03": {
+        "messages": [
+          {
+            "speaker": "Professor Chen",
+            "emotion": "serious",
+            "text": "Second test. The egg projects images into your mind: an unknown corridor, a sealed door, and a presence waiting behind it."
+          },
+          {
+            "speaker": "Professor Chen",
+            "emotion": "neutral",
+            "text": "Your choice seems to alter its internal activity. It is not just responding: it is learning from you."
+          }
+        ],
+        "choices": [
+          {
+            "label": "I push forward. A soldier does not retreat from a door.",
+            "effects": {
+              "force": 2
+            },
+            "next": "node_04"
+          },
+          {
+            "label": "I explore the unknown corridor to understand what it wants to show me.",
+            "effects": {
+              "exploration": 2,
+              "intelligence": 1
+            },
+            "next": "node_04"
+          },
+          {
+            "label": "I look for logic in the vision to anticipate the danger.",
+            "effects": {
+              "intelligence": 2
+            },
+            "next": "node_04"
+          }
+        ]
+      },
+      "node_04": {
+        "messages": [
+          {
+            "speaker": "Professor Chen",
+            "emotion": "happy",
+            "text": "Final test before hatching. The creature can feel your decisions before it fully exists. If it were born now, what impulse would you transmit to it?"
+          }
+        ],
+        "choices": [
+          {
+            "label": "Protect others, even if it puts me in danger.",
+            "effects": {
+              "conciliation": 3
+            },
+            "next": "final"
+          },
+          {
+            "label": "Understand its origin and exploit the data.",
+            "effects": {
+              "intelligence": 2,
+              "exploration": 1
+            },
+            "next": "final"
+          },
+          {
+            "label": "Survive, secure the zone, and neutralize any threat.",
+            "effects": {
+              "force": 1,
+              "exploration": 2
+            },
+            "next": "final"
+          }
+        ]
+      }
+    }
+  },
+  "final": {
+    "creatures": {
+      "force": {
+        "name": "Gatebreaker",
+        "image": "assets/creatures/creature-level-1.png",
+        "description": "The creature’s appearance evolved according to your emotional synchronization with the alien egg."
+      },
+      "exploration": {
+        "name": "Mistwalker",
+        "image": "assets/creatures/creature-level-1.png",
+        "description": "The creature’s appearance evolved according to your emotional synchronization with the alien egg."
+      },
+      "conciliation": {
+        "name": "Bond Echo",
+        "image": "assets/creatures/creature-level-1.png",
+        "description": "The creature’s appearance evolved according to your emotional synchronization with the alien egg."
+      },
+      "intelligence": {
+        "name": "Clearcore",
+        "image": "assets/creatures/creature-level-1.png",
+        "description": "The creature’s appearance evolved according to your emotional synchronization with the alien egg."
+      }
+    }
+  }
+}

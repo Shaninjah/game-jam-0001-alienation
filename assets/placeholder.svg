@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Prototype placeholder</title>
+  <desc id="desc">A simple sci-fi placeholder illustration.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#071017"/>
+      <stop offset="55%" stop-color="#0c2538"/>
+      <stop offset="100%" stop-color="#102016"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#7fe8ff" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#7fe8ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg)"/>
+  <rect width="1200" height="720" fill="url(#glow)"/>
+  <g fill="none" stroke="#7fe8ff" stroke-opacity="0.28">
+    <path d="M160 140h880v440H160z"/>
+    <path d="M220 200h760v320H220z"/>
+    <path d="M600 140v440"/>
+    <path d="M160 360h880"/>
+  </g>
+  <circle cx="600" cy="360" r="92" fill="#7fe8ff" fill-opacity="0.1" stroke="#7fe8ff" stroke-opacity="0.55"/>
+  <text x="600" y="382" fill="#eef8ff" font-family="Arial, sans-serif" font-size="42" font-weight="700" text-anchor="middle">PLACEHOLDER</text>
+</svg>

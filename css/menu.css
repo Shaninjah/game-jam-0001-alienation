@@ -1,0 +1,137 @@
+/* ========================================================================== 
+   MENU.CSS
+   --------------------------------------------------------------------------
+   Menu principal dans le même style fixe que la page créature.
+   ========================================================================== */
+
+.menu-card {
+  position: relative;
+  width: var(--game-frame-width);
+  height: var(--game-frame-height);
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: #a6a6a6;
+  box-shadow: none;
+}
+
+.menu-card .kicker {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  width: 420px;
+  height: 70px;
+  margin: 0;
+  border: 4px solid var(--line-color);
+  background: var(--panel-bg);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 62px;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.menu-card .title {
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  width: 760px;
+  height: 118px;
+  margin: 0;
+  border: 4px solid var(--line-color);
+  background: var(--panel-bg);
+  font-size: 70px;
+  font-weight: 500;
+  line-height: 106px;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.menu-card .subtitle {
+  position: absolute;
+  top: 294px;
+  left: 50%;
+  width: 900px;
+  margin: 0;
+  border: 4px solid var(--line-color);
+  background: rgba(229, 230, 247, 0.92);
+  padding: 18px 24px;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.language-panel {
+  position: absolute;
+  top: 426px;
+  left: 50%;
+  width: 540px;
+  height: 162px;
+  margin: 0;
+  padding: 18px;
+  border: 4px solid var(--line-color);
+  background: var(--panel-bg);
+  transform: translateX(-50%);
+}
+
+.language-header {
+  display: flex;
+  width: 500px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.language-header h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 34px;
+}
+
+.selected-language {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.language-panel .button-row {
+  justify-content: center;
+}
+
+.language-panel .btn {
+  min-width: 180px;
+  height: 52px;
+}
+
+.menu-actions {
+  position: absolute;
+  bottom: 42px;
+  left: 50%;
+  width: 300px;
+  justify-content: center;
+  transform: translateX(-50%);
+}
+
+.menu-actions .btn {
+  min-width: 280px;
+  height: 54px;
+}
+
+
+/*
+  Fond opaque de sécurité.
+  Il cache totalement le décor de la page créature quand on est sur le menu.
+*/
+.menu-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  background: #a6a6a6;
+}
+
+.menu-card > * {
+  position: absolute;
+  z-index: 1;
+}

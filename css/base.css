@@ -1,0 +1,309 @@
+/* ========================================================================== 
+   BASE.CSS
+   --------------------------------------------------------------------------
+   Socle commun du prototype.
+
+   IMPORTANT :
+   - Tout est fixe en 1344x756.
+   - Aucun élément ne s'adapte à la taille de l'écran.
+   - Toute la direction artistique est alignée sur le style de la page créature.
+   ========================================================================== */
+
+:root {
+  --game-frame-width: 1344px;
+  --game-frame-height: 756px;
+
+  --page-bg: #a6a6a6;
+  --panel-bg: #e5e6f7;
+  --panel-bg-soft: #f0f0f0;
+  --text-primary: #000000;
+  --text-secondary: #232323;
+  --line-color: #08080a;
+  --danger-bg: #ffd9df;
+  --primary-bg: #e7e9ff;
+
+  --stat-force: #ff3f4f;
+  --stat-exploration: #47f58d;
+  --stat-conciliation: #ff7ad9;
+  --stat-intelligence: #55a7ff;
+
+  --font-main: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--page-bg);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+}
+
+button {
+  font: inherit;
+}
+
+.app,
+.screen,
+.noscript-screen {
+  width: 100%;
+  height: 100%;
+}
+
+.screen,
+.noscript-screen {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.screen-inner {
+  position: relative;
+  z-index: 1;
+  width: var(--game-frame-width);
+  height: var(--game-frame-height);
+  overflow: hidden;
+}
+
+.noscript-screen {
+  padding: 24px;
+  text-align: center;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 72px;
+  letter-spacing: 0;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.panel {
+  border: 4px solid var(--line-color);
+  border-radius: 0;
+  background: var(--panel-bg);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.button-row,
+.choice-list {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--line-color);
+  border-radius: 0;
+  padding: 0 20px;
+  background: var(--primary-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.18);
+  transition: background-color 120ms ease, box-shadow 120ms ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: #f2f3ff;
+  box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.24);
+  outline: none;
+}
+
+.btn:active {
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.24);
+}
+
+.btn-primary {
+  background: var(--primary-bg);
+}
+
+.btn-danger {
+  background: var(--danger-bg);
+}
+
+.btn-small {
+  height: 46px;
+  padding: 0 18px;
+  font-size: 20px;
+}
+
+.btn-selected {
+  background: #fff2b8;
+}
+
+.top-actions {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.progress-pill {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 10;
+  min-width: 160px;
+  height: 46px;
+  border: 4px solid var(--line-color);
+  padding: 0 16px;
+  background: var(--primary-bg);
+  color: var(--text-primary);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 38px;
+  text-align: center;
+}
+
+.media-frame,
+.avatar-frame,
+.creature-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 4px solid var(--line-color);
+  background: #ffffff;
+}
+
+.media-img,
+.avatar-img,
+.creature-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.media-img.is-broken,
+.avatar-img.is-broken,
+.creature-img.is-broken {
+  display: none;
+}
+
+.media-placeholder,
+.avatar-placeholder,
+.creature-placeholder {
+  display: none;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  color: #000000;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.media-img.is-broken + .media-placeholder,
+.avatar-img.is-broken + .avatar-placeholder,
+.creature-img.is-broken + .creature-placeholder {
+  display: flex;
+}
+
+.stat-force {
+  --stat-color: var(--stat-force);
+}
+
+.stat-exploration {
+  --stat-color: var(--stat-exploration);
+}
+
+.stat-conciliation {
+  --stat-color: var(--stat-conciliation);
+}
+
+.stat-intelligence {
+  --stat-color: var(--stat-intelligence);
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.modal-card {
+  width: 540px;
+  padding: 24px;
+}
+
+.modal-card h2 {
+  margin: 0 0 12px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 38px;
+}
+
+.modal-card p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.modal-actions {
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.error-card {
+  width: 720px;
+  margin: 0 auto;
+  padding: 32px;
+  text-align: center;
+}
+
+.error-card h1 {
+  font-size: 42px;
+  line-height: 50px;
+}
+
+.error-card p {
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 28px;
+}

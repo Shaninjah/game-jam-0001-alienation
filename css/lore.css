@@ -1,0 +1,85 @@
+/* ========================================================================== 
+   LORE.CSS
+   --------------------------------------------------------------------------
+   Écrans de lore dans le même style fixe que la page créature.
+   ========================================================================== */
+
+.lore-card {
+  position: relative;
+  display: block;
+  width: var(--game-frame-width);
+  height: var(--game-frame-height);
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: #a6a6a6;
+  box-shadow: none;
+}
+
+.lore-illustration {
+  position: absolute;
+  top: 112px;
+  left: 50%;
+  width: 1040px;
+  height: 356px;
+  transform: translateX(-50%);
+}
+
+.lore-text-panel {
+  position: absolute;
+  left: 50%;
+  bottom: 108px;
+  width: 1040px;
+  height: 190px;
+  padding: 22px 28px;
+  border: 4px solid var(--line-color);
+  background: rgba(229, 230, 247, 0.96);
+  transform: translateX(-50%);
+}
+
+.lore-text-panel h2 {
+  margin: 0 0 10px;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 44px;
+  text-align: center;
+}
+
+.lore-text-panel p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 21px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.lore-actions {
+  position: absolute;
+  bottom: -78px;
+  left: 50%;
+  width: 320px;
+  justify-content: center;
+  transform: translateX(-50%);
+}
+
+.lore-actions .btn {
+  min-width: 280px;
+  height: 54px;
+}
+
+
+/*
+  Fond opaque de sécurité.
+  Il cache totalement le décor de la page créature pendant les écrans de lore.
+*/
+.lore-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  background: #a6a6a6;
+}
+
+.lore-card > * {
+  z-index: 1;
+}

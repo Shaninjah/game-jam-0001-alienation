@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prototype Creature Test</title>
+
+  <!--
+    Je sépare volontairement le CSS en plusieurs fichiers.
+    Comme ça, quand je veux modifier un écran précis, je sais directement où aller.
+  -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/lore.css">
+  <link rel="stylesheet" href="css/dialogue.css">
+  <link rel="stylesheet" href="css/creature.css">
+</head>
+<body>
+  <noscript>
+    <main class="noscript-screen">
+      <h1>Prototype Creature Test</h1>
+      <p>Ce prototype nécessite JavaScript pour fonctionner.</p>
+    </main>
+  </noscript>
+
+  <div id="app" class="app" aria-live="polite"></div>
+
+  <!--
+    Aucun module, aucun framework, aucun build.
+    L'ordre des fichiers est important : config/state/helpers d'abord, écrans ensuite, app à la fin.
+  -->
+  <script src="js/config.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/dom.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/screens/menu.js"></script>
+  <script src="js/screens/lore.js"></script>
+  <script src="js/screens/dialogue.js"></script>
+  <script src="js/screens/creature.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

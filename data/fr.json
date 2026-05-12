@@ -1,0 +1,262 @@
+{
+  "meta": {
+    "title": "Prototype Creature Test"
+  },
+  "ui": {
+    "common": {
+      "quitButton": "Quitter"
+    },
+    "languages": {
+      "fr": "Français",
+      "en": "English"
+    },
+    "menu": {
+      "kicker": "Prototype narratif expérimental",
+      "subtitle": "Un œuf alien a été découvert pendant une opération militaire. Depuis que tu l’as touché, il réagit à ton humeur. Le Professeur Chen lance une batterie de tests.",
+      "languageTitle": "Langues",
+      "selectedLanguage": "Langue sélectionnée",
+      "playButton": "Jouer"
+    },
+    "lore": {
+      "progressLabel": "Lore",
+      "continueButton": "Continuer"
+    },
+    "dialogue": {
+      "testLabel": "Test comportemental",
+      "continueButton": "Continuer",
+      "clickHint": "Lis le message suivant pour poursuivre le protocole.",
+      "choiceHint": "Choisis une réponse pour influencer le résultat.",
+      "avatarEmotion": "Émotion",
+      "defaultFinalChoice": "Terminer le test"
+    },
+    "final": {
+      "kicker": "Résultat du protocole",
+      "statsTitle": "Statistiques",
+      "creatureLabel": "NIVEAU 1",
+      "nextTestButton": "Continuer le test",
+      "menuButton": "Arrêter"
+    },
+    "confirmQuit": {
+      "title": "Quitter le protocole ?",
+      "text": "Ta progression actuelle sera réinitialisée et tu reviendras au menu principal.",
+      "cancelButton": "Annuler",
+      "confirmButton": "Quitter"
+    },
+    "confirmStop": {
+      "title": "Arrêter les tests sur cette créature ?",
+      "text": "Cette action stoppera les tests en cours sur la créature et te ramènera au menu principal.",
+      "cancelButton": "Continuer les tests",
+      "confirmButton": "Arrêter le test"
+    },
+    "fallbacks": {
+      "illustration": "Illustration",
+      "avatar": "Avatar scientifique",
+      "creature": "Créature"
+    },
+    "stats": {
+      "force": "Force",
+      "exploration": "Exploration",
+      "conciliation": "Conciliation",
+      "intelligence": "Intelligence"
+    }
+  },
+  "lore": [
+    {
+      "id": "lore_01",
+      "image": "assets/lore/lore-01.png",
+      "title": "Découverte de l’œuf",
+      "text": "Lors d’une mission de sécurisation en zone interdite, ton unité a découvert un œuf d’origine inconnue. Sa surface semblait minérale, mais une pulsation lente vibrait sous sa coquille."
+    },
+    {
+      "id": "lore_02",
+      "image": "assets/lore/lore-02.png",
+      "title": "Contact accidentel",
+      "text": "Tu étais chargé de protéger le périmètre. Quand l’œuf a commencé à se fissurer, tu l’as touché par réflexe. À cet instant, ton rythme cardiaque et son énergie interne se sont synchronisés."
+    },
+    {
+      "id": "lore_03",
+      "image": "assets/lore/lore-03.png",
+      "title": "Réaction émotionnelle",
+      "text": "Depuis le contact, l’œuf réagit à tes variations d’humeur. Colère, peur, curiosité, calme : chaque émotion modifie sa température, sa couleur et son rythme biologique."
+    },
+    {
+      "id": "lore_04",
+      "image": "assets/lore/lore-04.png",
+      "title": "Protocole Chen",
+      "text": "Avant l’éclosion complète, le Professeur Chen veut comprendre le lien entre toi et la créature. Tu vas passer une batterie de tests comportementaux pour mesurer cette synchronisation."
+    }
+  ],
+  "dialogue": {
+    "startNode": "node_01",
+    "avatar": {
+      "neutral": "assets/avatar/scientist-neutral.png",
+      "happy": "assets/avatar/scientist-happy.png",
+      "serious": "assets/avatar/scientist-serious.png",
+      "worried": "assets/avatar/scientist-worried.png"
+    },
+    "nodes": {
+      "node_01": {
+        "messages": [
+          {
+            "speaker": "Professeur Chen",
+            "emotion": "neutral",
+            "text": "Soldat, reste calme. Depuis le contact avec l’œuf alien, vos réactions émotionnelles influencent directement son développement."
+          },
+          {
+            "speaker": "Professeur Chen",
+            "emotion": "serious",
+            "text": "Nous allons lancer une batterie de tests. Chaque réponse nous aidera à comprendre quelle forme de lien s’est créée entre vous et la créature."
+          }
+        ],
+        "choices": [
+          {
+            "label": "Compris, professeur. Je suis prêt à commencer.",
+            "effects": {
+              "intelligence": 1
+            },
+            "next": "node_02"
+          },
+          {
+            "label": "Avant de commencer, je veux savoir si cette chose est dangereuse.",
+            "effects": {
+              "intelligence": 2,
+              "exploration": 1
+            },
+            "next": "node_02"
+          }
+        ]
+      },
+      "node_02": {
+        "messages": [
+          {
+            "speaker": "Professeur Chen",
+            "emotion": "worried",
+            "text": "Premier test. L’œuf réagit fortement quand vous êtes sous pression. Imaginez qu’une alarme se déclenche et que la salle d’incubation se verrouille."
+          }
+        ],
+        "choices": [
+          {
+            "label": "Je force l’accès pour reprendre le contrôle de la zone.",
+            "effects": {
+              "force": 2,
+              "conciliation": -1
+            },
+            "next": "node_03"
+          },
+          {
+            "label": "J’analyse les signaux de l’œuf avant d’agir.",
+            "effects": {
+              "intelligence": 1,
+              "exploration": 1
+            },
+            "next": "node_03"
+          },
+          {
+            "label": "Je ralentis ma respiration pour tenter de l’apaiser.",
+            "effects": {
+              "conciliation": 2,
+              "intelligence": 1
+            },
+            "next": "node_03"
+          }
+        ]
+      },
+      "node_03": {
+        "messages": [
+          {
+            "speaker": "Professeur Chen",
+            "emotion": "serious",
+            "text": "Deuxième test. L’œuf projette des images dans votre esprit : un couloir inconnu, une porte blindée et une présence qui attend derrière."
+          },
+          {
+            "speaker": "Professeur Chen",
+            "emotion": "neutral",
+            "text": "Votre choix semble modifier son activité interne. Il ne se contente pas de répondre : il apprend de vous."
+          }
+        ],
+        "choices": [
+          {
+            "label": "J’avance en force. Un soldat ne recule pas devant une porte.",
+            "effects": {
+              "force": 2
+            },
+            "next": "node_04"
+          },
+          {
+            "label": "J’explore le couloir inconnu pour comprendre ce qu’il veut me montrer.",
+            "effects": {
+              "exploration": 2,
+              "intelligence": 1
+            },
+            "next": "node_04"
+          },
+          {
+            "label": "Je cherche une logique dans la vision pour anticiper le danger.",
+            "effects": {
+              "intelligence": 2
+            },
+            "next": "node_04"
+          }
+        ]
+      },
+      "node_04": {
+        "messages": [
+          {
+            "speaker": "Professeur Chen",
+            "emotion": "happy",
+            "text": "Dernier test avant éclosion. La créature ressent vos décisions avant même d’exister pleinement. Si elle devait naître maintenant, quelle impulsion voulez-vous lui transmettre ?"
+          }
+        ],
+        "choices": [
+          {
+            "label": "Protéger les autres, même si cela me met en danger.",
+            "effects": {
+              "conciliation": 3
+            },
+            "next": "final"
+          },
+          {
+            "label": "Comprendre son origine et exploiter les données.",
+            "effects": {
+              "intelligence": 2,
+              "exploration": 1
+            },
+            "next": "final"
+          },
+          {
+            "label": "Survivre, sécuriser la zone et neutraliser toute menace.",
+            "effects": {
+              "force": 1,
+              "exploration": 2
+            },
+            "next": "final"
+          }
+        ]
+      }
+    }
+  },
+  "final": {
+    "creatures": {
+      "force": {
+        "name": "Brise-Sas",
+        "image": "assets/creatures/creature-level-1.png",
+        "description": "L’apparence de la créature a évolué selon votre synchronisation émotionnelle avec l’œuf alien."
+      },
+      "exploration": {
+        "name": "Marche-Brume",
+        "image": "assets/creatures/creature-level-1.png",
+        "description": "L’apparence de la créature a évolué selon votre synchronisation émotionnelle avec l’œuf alien."
+      },
+      "conciliation": {
+        "name": "Écho-Lien",
+        "image": "assets/creatures/creature-level-1.png",
+        "description": "L’apparence de la créature a évolué selon votre synchronisation émotionnelle avec l’œuf alien."
+      },
+      "intelligence": {
+        "name": "Noyau-Clair",
+        "image": "assets/creatures/creature-level-1.png",
+        "description": "L’apparence de la créature a évolué selon votre synchronisation émotionnelle avec l’œuf alien."
+      }
+    }
+  }
+}
