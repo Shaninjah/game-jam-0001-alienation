@@ -8,6 +8,7 @@
 (function () {
   "use strict";
 
+  // Je range tout le prototype dans un seul objet global pour éviter d'éparpiller des variables partout.
   window.PCT = window.PCT || {};
 
   // Clé utilisée dans localStorage pour retenir la langue choisie.

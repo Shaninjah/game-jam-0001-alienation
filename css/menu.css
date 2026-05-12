@@ -4,6 +4,9 @@
    Menu principal dans le même style fixe que la page créature.
    ========================================================================== */
 
+/*
+  Écran menu complet : une scène fixe grise, sans bordure autour du cadre principal.
+*/
 .menu-card {
   position: relative;
   width: var(--game-frame-width);
@@ -15,6 +18,9 @@
   box-shadow: none;
 }
 
+/*
+  Étiquette du menu, centrée en haut pour annoncer le type de prototype.
+*/
 .menu-card .kicker {
   position: absolute;
   top: 26px;
@@ -31,6 +37,9 @@
   transform: translateX(-50%);
 }
 
+/*
+  Titre principal du jeu, posé comme un panneau fixe.
+*/
 .menu-card .title {
   position: absolute;
   top: 150px;
@@ -47,6 +56,9 @@
   transform: translateX(-50%);
 }
 
+/*
+  Texte d'introduction du menu, dans un grand panneau horizontal.
+*/
 .menu-card .subtitle {
   position: absolute;
   top: 294px;
@@ -62,6 +74,9 @@
   transform: translateX(-50%);
 }
 
+/*
+  Bloc de sélection de langue, placé au centre sous l'intro.
+*/
 .language-panel {
   position: absolute;
   top: 426px;
@@ -75,6 +90,9 @@
   transform: translateX(-50%);
 }
 
+/*
+  En-tête du bloc langue : titre à gauche, langue actuelle à droite.
+*/
 .language-header {
   display: flex;
   width: 500px;
@@ -83,6 +101,9 @@
   margin-bottom: 18px;
 }
 
+/*
+  Titre interne du panneau de langue.
+*/
 .language-header h2 {
   margin: 0;
   font-size: 28px;
@@ -90,20 +111,32 @@
   line-height: 34px;
 }
 
+/*
+  Rappel discret de la langue actuellement sélectionnée.
+*/
 .selected-language {
   font-size: 18px;
   line-height: 24px;
 }
 
+/*
+  Les boutons de langue restent centrés dans leur panneau.
+*/
 .language-panel .button-row {
   justify-content: center;
 }
 
+/*
+  Chaque bouton de langue garde la même taille pour éviter les décalages FR/EN.
+*/
 .language-panel .btn {
   min-width: 180px;
   height: 52px;
 }
 
+/*
+  Zone du bouton jouer, centrée près du bas de l'écran.
+*/
 .menu-actions {
   position: absolute;
   bottom: 42px;
@@ -113,6 +146,9 @@
   transform: translateX(-50%);
 }
 
+/*
+  Bouton jouer, plus large que les boutons de langue.
+*/
 .menu-actions .btn {
   min-width: 280px;
   height: 54px;
@@ -131,6 +167,9 @@
   background: #a6a6a6;
 }
 
+/*
+  Tout le contenu du menu repasse au-dessus du fond de sécurité.
+*/
 .menu-card > * {
   position: absolute;
   z-index: 1;

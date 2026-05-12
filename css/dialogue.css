@@ -4,6 +4,9 @@
    Interface question / réponse dans le même style fixe que la page créature.
    ========================================================================== */
 
+/*
+  Écran de dialogue complet : scène fixe grise, découpée en avatar à gauche et dialogue à droite.
+*/
 .dialogue-layout {
   position: relative;
   display: block;
@@ -16,6 +19,9 @@
   box-shadow: none;
 }
 
+/*
+  Panneau du Professeur Chen, placé à gauche avec son portrait et son état émotionnel.
+*/
 .avatar-panel {
   position: absolute;
   top: 122px;
@@ -28,11 +34,17 @@
   background: rgba(229, 230, 247, 0.96);
 }
 
+/*
+  Cadre fixe du portrait, pour que les avatars gardent tous la même place.
+*/
 .avatar-frame {
   width: 254px;
   height: 362px;
 }
 
+/*
+  Ligne sous l'avatar qui affiche l'émotion courante.
+*/
 .avatar-meta {
   width: 254px;
   margin-top: 14px;
@@ -42,6 +54,9 @@
   text-align: center;
 }
 
+/*
+  Grande zone de test à droite : bulle, choix et stats.
+*/
 .dialogue-panel {
   position: absolute;
   top: 122px;
@@ -55,6 +70,9 @@
   box-shadow: none;
 }
 
+/*
+  Bulle principale où le Professeur Chen parle.
+*/
 .dialogue-bubble {
   width: 798px;
   height: 176px;
@@ -63,6 +81,9 @@
   padding: 18px 24px;
 }
 
+/*
+  Nom du personnage qui parle, traité comme une étiquette de protocole.
+*/
 .dialogue-speaker {
   margin: 0 0 10px;
   color: var(--text-primary);
@@ -72,6 +93,9 @@
   text-transform: uppercase;
 }
 
+/*
+  Texte principal du dialogue.
+*/
 .dialogue-text {
   margin: 0;
   font-size: 28px;
@@ -80,6 +104,9 @@
   letter-spacing: 0;
 }
 
+/*
+  Petite phrase d'aide qui dit s'il faut continuer ou choisir une réponse.
+*/
 .dialogue-hint {
   margin: 10px 0 0;
   color: var(--text-secondary);
@@ -87,6 +114,9 @@
   line-height: 24px;
 }
 
+/*
+  Zone du bouton continuer, affichée tant qu'il reste des messages dans le noeud.
+*/
 .dialogue-continue-zone {
   position: absolute;
   top: 194px;
@@ -96,11 +126,17 @@
   justify-content: center;
 }
 
+/*
+  Taille fixe du bouton continuer dans le dialogue.
+*/
 .dialogue-continue-zone .btn {
   min-width: 300px;
   height: 54px;
 }
 
+/*
+  Liste verticale des réponses du joueur, avec scroll si un jour il y en a trop.
+*/
 .choice-list {
   position: absolute;
   top: 200px;
@@ -113,6 +149,9 @@
   overflow-y: auto;
 }
 
+/*
+  Bouton de réponse : pleine largeur et texte aligné à gauche.
+*/
 .choice-btn {
   width: 798px;
   min-height: 62px;
@@ -122,11 +161,17 @@
   line-height: 24px;
 }
 
+/*
+  Petit texte interne éventuel dans un choix, laissé prêt si je veux détailler une réponse plus tard.
+*/
 .choice-btn span {
   opacity: 1;
   font-size: 14px;
 }
 
+/*
+  Bandeau des stats pendant le test, calé en bas du panneau de dialogue.
+*/
 .stats-strip {
   position: absolute;
   left: 0;
@@ -137,6 +182,9 @@
   gap: 14px;
 }
 
+/*
+  Capsule individuelle de stat, volontairement simple et lisible.
+*/
 .stat-chip {
   border: 4px solid var(--line-color);
   background: rgba(255, 255, 255, 0.82);
@@ -147,6 +195,9 @@
   text-align: center;
 }
 
+/*
+  Le score de la stat reste en noir pour ne pas se perdre dans les couleurs.
+*/
 .stat-chip strong {
   color: var(--text-primary);
 }
@@ -164,6 +215,9 @@
   background: #a6a6a6;
 }
 
+/*
+  Tout le contenu du dialogue repasse au-dessus du fond de sécurité.
+*/
 .dialogue-layout > * {
   z-index: 1;
 }

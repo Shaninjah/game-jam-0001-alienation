@@ -4,6 +4,9 @@
    Écrans de lore dans le même style fixe que la page créature.
    ========================================================================== */
 
+/*
+  Écran de lore complet : scène fixe grise, sans bordure autour du cadre principal.
+*/
 .lore-card {
   position: relative;
   display: block;
@@ -16,6 +19,9 @@
   box-shadow: none;
 }
 
+/*
+  Grande zone d'illustration du lore, centrée dans la partie haute.
+*/
 .lore-illustration {
   position: absolute;
   top: 112px;
@@ -25,6 +31,9 @@
   transform: translateX(-50%);
 }
 
+/*
+  Panneau de texte posé sous l'image, avec une hauteur fixe pour garder la mise en page stable.
+*/
 .lore-text-panel {
   position: absolute;
   left: 50%;
@@ -37,6 +46,9 @@
   transform: translateX(-50%);
 }
 
+/*
+  Titre de l'écran de lore.
+*/
 .lore-text-panel h2 {
   margin: 0 0 10px;
   font-size: 38px;
@@ -45,6 +57,9 @@
   text-align: center;
 }
 
+/*
+  Paragraphe de lore, centré pour lire comme une narration courte.
+*/
 .lore-text-panel p {
   margin: 0;
   color: var(--text-secondary);
@@ -53,6 +68,9 @@
   text-align: center;
 }
 
+/*
+  Bouton continuer accroché sous le panneau de texte.
+*/
 .lore-actions {
   position: absolute;
   bottom: -78px;
@@ -62,6 +80,9 @@
   transform: translateX(-50%);
 }
 
+/*
+  Taille fixe du bouton continuer.
+*/
 .lore-actions .btn {
   min-width: 280px;
   height: 54px;
@@ -80,6 +101,9 @@
   background: #a6a6a6;
 }
 
+/*
+  Tout le contenu du lore repasse au-dessus du fond de sécurité.
+*/
 .lore-card > * {
   z-index: 1;
 }

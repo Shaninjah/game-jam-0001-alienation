@@ -8,12 +8,15 @@
 (function () {
   "use strict";
 
+  // Je réutilise le même espace global que les autres fichiers du prototype.
   window.PCT = window.PCT || {};
 
   PCT.renderLore = function renderLore() {
+    // Je prends les textes d'interface et l'écran de lore correspondant à l'index actuel.
     const ui = PCT.state.data.ui;
     const loreScreen = PCT.state.data.lore[PCT.state.loreIndex];
 
+    // Je rends une page de lore fixe : progression, image, texte et bouton continuer.
     PCT.app.innerHTML = `
       <main class="screen lore-screen">
         <section class="screen-inner lore-card panel">
@@ -46,17 +49,21 @@
       </main>
     `;
 
+    // Après le rendu, je branche les placeholders sur les images absentes.
     PCT.bindImageFallbacks();
   };
 
   PCT.continueLore = function continueLore() {
+    // Je prépare l'index suivant sans l'appliquer tout de suite.
     const nextIndex = PCT.state.loreIndex + 1;
 
+    // Si le lore est terminé, je passe au premier noeud de dialogue du JSON.
     if (nextIndex >= PCT.state.data.lore.length) {
       PCT.renderDialogue(PCT.state.data.dialogue.startNode);
       return;
     }
 
+    // Sinon j'avance d'un écran de lore et je le rends.
     PCT.state.loreIndex = nextIndex;
     PCT.renderLore();
   };

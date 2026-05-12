@@ -9,6 +9,10 @@
    - Toute la direction artistique est alignée sur le style de la page créature.
    ========================================================================== */
 
+/*
+  Variables communes du prototype.
+  Je garde ici les dimensions, couleurs et stats pour pouvoir changer l'ambiance au même endroit.
+*/
 :root {
   --game-frame-width: 1344px;
   --game-frame-height: 756px;
@@ -30,10 +34,17 @@
   --font-main: Arial, Helvetica, sans-serif;
 }
 
+/*
+  Je force un calcul de taille plus simple : les bordures et paddings restent dans la largeur prévue.
+*/
 * {
   box-sizing: border-box;
 }
 
+/*
+  La page du navigateur sert juste de fenêtre sur le jeu fixe.
+  Si l'écran est trop petit, je coupe le contenu au lieu de le redimensionner.
+*/
 html,
 body {
   width: 100%;
@@ -45,10 +56,16 @@ body {
   font-family: var(--font-main);
 }
 
+/*
+  Les boutons reprennent la police globale pour rester cohérents avec le reste de l'interface.
+*/
 button {
   font: inherit;
 }
 
+/*
+  Ces conteneurs prennent toute la fenêtre disponible autour de la scène fixe.
+*/
 .app,
 .screen,
 .noscript-screen {
@@ -56,6 +73,9 @@ button {
   height: 100%;
 }
 
+/*
+  Chaque écran centre la scène 1344x756 sans la scaler.
+*/
 .screen,
 .noscript-screen {
   position: relative;
@@ -65,6 +85,9 @@ button {
   overflow: hidden;
 }
 
+/*
+  La vraie surface de jeu est ici : largeur et hauteur fixes, rien ne dépasse.
+*/
 .screen-inner {
   position: relative;
   z-index: 1;
@@ -73,11 +96,17 @@ button {
   overflow: hidden;
 }
 
+/*
+  Écran minimal si JavaScript est coupé.
+*/
 .noscript-screen {
   padding: 24px;
   text-align: center;
 }
 
+/*
+  Petit texte d'étiquette utilisé sur plusieurs écrans.
+*/
 .kicker {
   margin: 0;
   color: var(--text-primary);
@@ -87,6 +116,9 @@ button {
   text-transform: uppercase;
 }
 
+/*
+  Style de grand titre commun, surtout pour le menu.
+*/
 .title {
   margin: 0;
   color: var(--text-primary);
@@ -96,6 +128,9 @@ button {
   letter-spacing: 0;
 }
 
+/*
+  Style de texte secondaire pour les phrases d'introduction.
+*/
 .subtitle {
   margin: 0;
   color: var(--text-secondary);
@@ -103,6 +138,9 @@ button {
   line-height: 32px;
 }
 
+/*
+  Panneau plat de base : bord noir, pas d'effet moderne, style prototype labo.
+*/
 .panel {
   border: 4px solid var(--line-color);
   border-radius: 0;
@@ -111,12 +149,18 @@ button {
   backdrop-filter: none;
 }
 
+/*
+  Rangées de boutons ou de choix : même logique d'espacement partout.
+*/
 .button-row,
 .choice-list {
   display: flex;
   gap: 12px;
 }
 
+/*
+  Bouton standard du prototype : gros rectangle lisible, bord noir, couleur simple.
+*/
 .btn {
   display: inline-flex;
   align-items: center;
@@ -135,6 +179,9 @@ button {
   transition: background-color 120ms ease, box-shadow 120ms ease;
 }
 
+/*
+  Retour visuel simple quand le bouton est survolé ou focus au clavier.
+*/
 .btn:hover,
 .btn:focus-visible {
   background: #f2f3ff;
@@ -142,28 +189,46 @@ button {
   outline: none;
 }
 
+/*
+  Quand on clique, je réduis juste l'ombre pour donner une sensation de pression.
+*/
 .btn:active {
   box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.24);
 }
 
+/*
+  Variante principale : même couleur que la base, mais je garde la classe pour lire l'intention.
+*/
 .btn-primary {
   background: var(--primary-bg);
 }
 
+/*
+  Variante danger : utilisée pour quitter ou arrêter le protocole.
+*/
 .btn-danger {
   background: var(--danger-bg);
 }
 
+/*
+  Petit bouton compact, utilisé dans les actions en haut de l'écran.
+*/
 .btn-small {
   height: 46px;
   padding: 0 18px;
   font-size: 20px;
 }
 
+/*
+  État sélectionné, surtout pour indiquer la langue active.
+*/
 .btn-selected {
   background: #fff2b8;
 }
 
+/*
+  Zone d'actions globale placée en haut à droite des écrans qui en ont besoin.
+*/
 .top-actions {
   position: absolute;
   top: 18px;
@@ -173,6 +238,9 @@ button {
   gap: 10px;
 }
 
+/*
+  Capsule de progression ou de contexte, toujours posée en haut à gauche.
+*/
 .progress-pill {
   position: absolute;
   top: 18px;
@@ -190,6 +258,9 @@ button {
   text-align: center;
 }
 
+/*
+  Cadres d'image génériques : lore, avatar et créature utilisent la même mécanique.
+*/
 .media-frame,
 .avatar-frame,
 .creature-frame {
@@ -202,6 +273,9 @@ button {
   background: #ffffff;
 }
 
+/*
+  Les images remplissent leur cadre sans être déformées.
+*/
 .media-img,
 .avatar-img,
 .creature-img {
@@ -211,12 +285,18 @@ button {
   object-fit: contain;
 }
 
+/*
+  Si une image est cassée, je la cache pour laisser le placeholder prendre sa place.
+*/
 .media-img.is-broken,
 .avatar-img.is-broken,
 .creature-img.is-broken {
   display: none;
 }
 
+/*
+  Placeholder commun : il reste invisible tant que l'image fonctionne.
+*/
 .media-placeholder,
 .avatar-placeholder,
 .creature-placeholder {
@@ -234,28 +314,46 @@ button {
   text-transform: uppercase;
 }
 
+/*
+  Quand l'image est marquée cassée, le placeholder juste après devient visible.
+*/
 .media-img.is-broken + .media-placeholder,
 .avatar-img.is-broken + .avatar-placeholder,
 .creature-img.is-broken + .creature-placeholder {
   display: flex;
 }
 
+/*
+  Couleur de la stat force, utilisée par les barres et capsules.
+*/
 .stat-force {
   --stat-color: var(--stat-force);
 }
 
+/*
+  Couleur de la stat exploration.
+*/
 .stat-exploration {
   --stat-color: var(--stat-exploration);
 }
 
+/*
+  Couleur de la stat conciliation.
+*/
 .stat-conciliation {
   --stat-color: var(--stat-conciliation);
 }
 
+/*
+  Couleur de la stat intelligence.
+*/
 .stat-intelligence {
   --stat-color: var(--stat-intelligence);
 }
 
+/*
+  Fond sombre derrière une confirmation pour isoler la décision du joueur.
+*/
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -266,11 +364,17 @@ button {
   background: rgba(0, 0, 0, 0.45);
 }
 
+/*
+  Carte de confirmation : taille fixe, simple, au-dessus de l'écran courant.
+*/
 .modal-card {
   width: 540px;
   padding: 24px;
 }
 
+/*
+  Titre de modale, assez gros pour être lu comme une décision importante.
+*/
 .modal-card h2 {
   margin: 0 0 12px;
   font-size: 32px;
@@ -278,6 +382,9 @@ button {
   line-height: 38px;
 }
 
+/*
+  Texte explicatif de la modale.
+*/
 .modal-card p {
   margin: 0;
   color: var(--text-secondary);
@@ -285,11 +392,17 @@ button {
   line-height: 28px;
 }
 
+/*
+  Les boutons de modale restent alignés à droite, comme une validation classique.
+*/
 .modal-actions {
   justify-content: flex-end;
   margin-top: 24px;
 }
 
+/*
+  Carte d'erreur affichée si le prototype ne charge pas ses données.
+*/
 .error-card {
   width: 720px;
   margin: 0 auto;
@@ -297,11 +410,17 @@ button {
   text-align: center;
 }
 
+/*
+  Titre de l'écran d'erreur.
+*/
 .error-card h1 {
   font-size: 42px;
   line-height: 50px;
 }
 
+/*
+  Texte de l'écran d'erreur, lisible sans prendre trop de place.
+*/
 .error-card p {
   color: var(--text-secondary);
   font-size: 18px;

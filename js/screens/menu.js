@@ -7,15 +7,22 @@
 (function () {
   "use strict";
 
+  // Je réutilise le même espace global que les autres fichiers du prototype.
   window.PCT = window.PCT || {};
 
   PCT.renderMenu = function renderMenu() {
+    // Les textes du menu viennent toujours du JSON de la langue active.
     const ui = PCT.state.data.ui;
 
+    // Je génère un bouton par langue supportée, sans écrire les langues en dur dans le HTML.
     const languageButtons = PCT.SUPPORTED_LANGUAGES.map((language) => {
+      // Je marque visuellement la langue en cours.
       const isSelected = language === PCT.state.language;
+
+      // Le libellé vient du JSON, mais la clé vient de la langue parcourue.
       const label = language === "fr" ? ui.languages.fr : ui.languages.en;
 
+      // Chaque bouton renvoie juste une action et une langue au routeur global.
       return `
         <button
           class="btn ${isSelected ? "btn-selected" : ""}"
@@ -29,6 +36,7 @@
       `;
     }).join("");
 
+    // Je remplace tout l'écran par le menu principal fixe.
     PCT.app.innerHTML = `
       <main class="screen menu-screen">
         <section class="screen-inner menu-card panel">

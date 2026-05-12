@@ -11,6 +11,9 @@
    Les boutons sont centrés en bas.
    ========================================================================== */
 
+/*
+  Scène finale complète : le décor fixe est l'image de fond, pile à la taille du jeu.
+*/
 .final-layout {
   position: relative;
   display: block;
@@ -51,26 +54,41 @@
   backdrop-filter: none;
 }
 
+/*
+  Le décor contient déjà le titre du panneau, donc je cache le kicker HTML ici.
+*/
 .final-stats .kicker {
   display: none;
 }
 
+/*
+  Même logique : le titre stats existe dans le HTML mais le décor gère l'habillage visuel.
+*/
 .final-stats h2 {
   display: none;
 }
 
+/*
+  Liste verticale des stats posée à l'intérieur du panneau dessiné dans l'image.
+*/
 .stat-list {
   display: grid;
   width: 212px;
   gap: 16px;
 }
 
+/*
+  Une ligne de stat contient son libellé, son score et sa barre.
+*/
 .stat-line {
   display: grid;
   width: 212px;
   gap: 6px;
 }
 
+/*
+  En-tête d'une stat : nom à gauche, valeur à droite.
+*/
 .stat-line-header {
   display: flex;
   width: 212px;
@@ -83,10 +101,16 @@
   text-transform: uppercase;
 }
 
+/*
+  La valeur numérique reste dans la même couleur que le texte.
+*/
 .stat-line-header strong {
   color: #08080a;
 }
 
+/*
+  Contour de la barre de stat.
+*/
 .stat-bar {
   width: 212px;
   height: 12px;
@@ -96,6 +120,9 @@
   background: rgba(255, 255, 255, 0.74);
 }
 
+/*
+  Remplissage coloré de la barre, piloté par la variable --value injectée en JS.
+*/
 .stat-bar-fill {
   width: var(--value, 50%);
   height: 12px;
@@ -146,6 +173,9 @@
   text-transform: uppercase;
 }
 
+/*
+  Le nom de la créature reste dans le HTML pour les données, mais il n'est pas affiché dans cette scène.
+*/
 .final-creature h2 {
   display: none;
 }
@@ -166,12 +196,18 @@
   background: transparent;
 }
 
+/*
+  Image de la créature, gardée dans une boîte fixe pour ne jamais bouger.
+*/
 .creature-img {
   width: 220px;
   height: 300px;
   object-fit: contain;
 }
 
+/*
+  Placeholder de la créature si l'image manque, avec la même taille que l'image prévue.
+*/
 .creature-placeholder {
   width: 220px;
   height: 300px;
@@ -181,6 +217,9 @@
   font-size: 14px;
 }
 
+/*
+  La description existe dans les données mais n'est pas visible sur cette page très graphique.
+*/
 .creature-description {
   display: none;
 }
@@ -216,6 +255,9 @@
   box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.18);
 }
 
+/*
+  Au survol, les boutons du bas gardent leur position exacte.
+*/
 .final-actions .btn:hover,
 .final-actions .btn:focus-visible {
   border-color: #08080a;
@@ -224,11 +266,17 @@
   transform: none;
 }
 
+/*
+  Bouton arrêter, repris en rose danger.
+*/
 .final-actions .btn-danger {
   background: #ffd9df;
   color: #000000;
 }
 
+/*
+  Bouton continuer le test, repris en bleu très clair.
+*/
 .final-actions .btn-primary {
   background: #e7e9ff;
   color: #000000;

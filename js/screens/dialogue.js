@@ -8,24 +8,33 @@
 (function () {
   "use strict";
 
+  // Je réutilise le même espace global que les autres fichiers du prototype.
   window.PCT = window.PCT || {};
 
   PCT.renderDialogue = function renderDialogue(nodeId) {
+    // Je récupère le noeud demandé dans le JSON.
     const node = PCT.state.data.dialogue.nodes[nodeId];
 
+    // Si le JSON pointe vers un noeud inexistant, j'affiche une erreur plutôt que de casser l'écran.
     if (!node) {
       PCT.renderError(new Error(`Noeud de dialogue introuvable : ${nodeId}`));
       return;
     }
 
+    // Je mémorise où on est et je sécurise l'index du message courant.
     PCT.state.currentNodeId = nodeId;
     PCT.state.messageIndex = Math.min(PCT.state.messageIndex, node.messages.length - 1);
 
+    // Je prépare tout ce qui dépend du message actuel avant de fabriquer le HTML.
     const message = node.messages[PCT.state.messageIndex];
     const hasMoreMessages = PCT.state.messageIndex < node.messages.length - 1;
     const shouldShowChoices = !hasMoreMessages;
     const avatarImage = PCT.getAvatarImage(message.emotion);
+
+    // Les choix n'apparaissent qu'après le dernier message du noeud.
     const choicesHtml = shouldShowChoices ? PCT.renderChoices(node.choices || []) : "";
+
+    // Tant qu'il reste du dialogue, je montre seulement le bouton continuer.
     const continueButtonHtml = hasMoreMessages ? `
       <div class="dialogue-continue-zone">
         <button class="btn btn-primary" type="button" data-action="continue-dialogue">
@@ -34,6 +43,7 @@
       </div>
     ` : "";
 
+    // Je rends l'interface de test : avatar, bulle de dialogue, choix éventuels et stats.
     PCT.app.innerHTML = `
       <main class="screen dialogue-screen">
         <section class="screen-inner dialogue-layout">
@@ -68,17 +78,21 @@
       </main>
     `;
 
+    // Après le rendu, je branche les placeholders sur les images absentes.
     PCT.bindImageFallbacks();
   };
 
   PCT.continueDialogue = function continueDialogue() {
+    // Je reprends le noeud courant pour avancer dans ses messages.
     const node = PCT.state.data.dialogue.nodes[PCT.state.currentNodeId];
 
+    // Si l'état courant ne correspond plus à un noeud réel, j'affiche une erreur.
     if (!node) {
       PCT.renderError(new Error(`Noeud de dialogue introuvable : ${PCT.state.currentNodeId}`));
       return;
     }
 
+    // S'il reste un message dans ce noeud, j'avance l'index puis je rerends le même noeud.
     if (PCT.state.messageIndex < node.messages.length - 1) {
       PCT.state.messageIndex += 1;
       PCT.renderDialogue(PCT.state.currentNodeId);
@@ -86,22 +100,30 @@
   };
 
   PCT.selectChoice = function selectChoice(choiceIndexValue) {
+    // Les boutons donnent un index sous forme de texte, donc je le transforme en nombre.
     const choiceIndex = Number(choiceIndexValue);
+
+    // Je récupère le noeud courant pour trouver la réponse choisie.
     const node = PCT.state.data.dialogue.nodes[PCT.state.currentNodeId];
 
+    // Si le choix n'existe pas, je ne fais rien : ça protège l'état du jeu.
     if (!node || !node.choices || !node.choices[choiceIndex]) {
       return;
     }
 
+    // À partir d'ici, la réponse est valide et peut modifier la créature.
     const choice = node.choices[choiceIndex];
 
+    // Les effets de la réponse modifient les stats autorisées.
     PCT.applyEffects(choice.effects || {});
 
+    // Certains choix terminent le protocole et envoient directement à l'écran créature.
     if (choice.next === "final") {
       PCT.renderFinal();
       return;
     }
 
+    // Sinon je repars au premier message du noeud suivant.
     PCT.state.messageIndex = 0;
     PCT.renderDialogue(choice.next);
   };
@@ -112,6 +134,7 @@
       Si le JSON contient une vieille stat supprimée, elle sera ignorée proprement.
     */
     PCT.STAT_KEYS.forEach((key) => {
+      // Une stat ne change que si le choix lui donne explicitement une valeur numérique.
       if (typeof effects[key] === "number") {
         PCT.state.stats[key] += effects[key];
       }
@@ -119,6 +142,7 @@
   };
 
   PCT.renderChoices = function renderChoices(choices) {
+    // Si un noeud n'a pas de choix, je fournis un bouton de fin par défaut.
     if (!choices.length) {
       return `
         <div class="choice-list">
@@ -129,6 +153,7 @@
       `;
     }
 
+    // Chaque choix devient un bouton qui renvoie son index au routeur global.
     const choiceButtons = choices.map((choice, index) => `
       <button class="btn choice-btn" type="button" data-action="select-choice" data-choice-index="${index}">
         ${PCT.escapeHtml(choice.label)}
@@ -143,6 +168,7 @@
   };
 
   PCT.renderStatsStrip = function renderStatsStrip() {
+    // Je transforme les stats actuelles en petites capsules visibles pendant le test.
     const chips = PCT.STAT_KEYS.map((key) => `
       <div class="stat-chip stat-${PCT.escapeHtml(key)}">
         ${PCT.escapeHtml(PCT.getStatLabel(key))}
@@ -158,11 +184,13 @@
   };
 
   PCT.getAvatarImage = function getAvatarImage(emotion) {
+    // Je cherche l'avatar correspondant à l'émotion, puis je retombe sur neutral si besoin.
     const avatarMap = PCT.state.data.dialogue.avatar || {};
     return avatarMap[emotion] || avatarMap.neutral || "assets/avatar/scientist-neutral.png";
   };
 
   PCT.renderAvatarFrame = function renderAvatarFrame(image, speaker) {
+    // L'avatar utilise le même principe image + placeholder que le reste du prototype.
     return `
       <div class="avatar-frame">
         <img
