@@ -59,7 +59,7 @@
 
     // Si le lore est terminé, je passe au premier noeud de dialogue du JSON.
     if (nextIndex >= PCT.state.data.lore.length) {
-      PCT.renderDialogue(PCT.state.data.dialogue.startNode);
+      PCT.startDialogueTest(0);
       return;
     }
 

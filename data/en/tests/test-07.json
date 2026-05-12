@@ -1,0 +1,108 @@
+{
+  "id": "test_07",
+  "label": "Behavioral test 07",
+  "creatureLabel": "LEVEL 7",
+  "startNode": "intro",
+  "nodes": {
+    "intro": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "serious",
+          "text": "Seventh protocol. An outside signal answers its vocalizations. For the first time, it may not be alone."
+        }
+      ],
+      "choices": [
+        {
+          "label": "I jam the signal before it influences its behavior.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "I try to decode the response.",
+          "effects": {
+            "intelligence": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "I let it listen to measure its need for contact.",
+          "effects": {
+            "conciliation": 1,
+            "exploration": 2
+          },
+          "next": "dilemme_01"
+        }
+      ]
+    },
+    "dilemme_01": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "worried",
+          "text": "The signal uses your heartbeat as a reference. It is not speaking to the creature alone, it is speaking to the bond between you."
+        }
+      ],
+      "choices": [
+        {
+          "label": "I reject the contact and close the channel.",
+          "effects": {
+            "force": 2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I translate the patterns before answering.",
+          "effects": {
+            "intelligence": 2,
+            "conciliation": 1
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I ask what the signal wants from us.",
+          "effects": {
+            "exploration": 2
+          },
+          "next": "decision_finale"
+        }
+      ]
+    },
+    "decision_finale": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "happy",
+          "text": "We do not know whether this is an invitation or a trap. The creature waits for your decision as if its future depends on it."
+        }
+      ],
+      "choices": [
+        {
+          "label": "I prepare a defensive response before any answer.",
+          "effects": {
+            "force": 3
+          },
+          "next": "final"
+        },
+        {
+          "label": "I establish a controlled contact protocol.",
+          "effects": {
+            "intelligence": 2,
+            "conciliation": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "I follow the signal source with it.",
+          "effects": {
+            "exploration": 3
+          },
+          "next": "final"
+        }
+      ]
+    }
+  }
+}

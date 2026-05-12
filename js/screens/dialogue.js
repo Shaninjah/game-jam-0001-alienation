@@ -11,9 +11,40 @@
   // Je réutilise le même espace global que les autres fichiers du prototype.
   window.PCT = window.PCT || {};
 
+  PCT.startDialogueTest = function startDialogueTest(testIndex) {
+    // Je prépare une batterie de tests précise, puis je démarre son premier noeud.
+    const tests = PCT.getDialogueTests();
+    const nextTest = tests[testIndex];
+
+    // Si la batterie demandée n'existe pas, j'affiche une erreur claire.
+    if (!nextTest) {
+      PCT.renderError(new Error(`Batterie de test introuvable : ${testIndex}`));
+      return;
+    }
+
+    // Chaque nouvelle batterie repart au premier message, mais garde les stats déjà gagnées.
+    PCT.state.testIndex = testIndex;
+    PCT.state.currentNodeId = null;
+    PCT.state.messageIndex = 0;
+    PCT.state.finalCreatureKey = null;
+    PCT.renderDialogue(nextTest.startNode);
+  };
+
+  PCT.continueToNextTest = function continueToNextTest() {
+    // S'il existe une batterie après celle-ci, je l'enchaîne directement.
+    if (PCT.hasNextDialogueTest()) {
+      PCT.startDialogueTest(PCT.state.testIndex + 1);
+      return;
+    }
+
+    // Quand il n'y a plus de batterie écrite, je boucle sur le protocole pour garder le prototype jouable.
+    PCT.resetRun();
+    PCT.startDialogueTest(0);
+  };
+
   PCT.renderDialogue = function renderDialogue(nodeId) {
     // Je récupère le noeud demandé dans le JSON.
-    const node = PCT.state.data.dialogue.nodes[nodeId];
+    const node = PCT.getDialogueNode(nodeId);
 
     // Si le JSON pointe vers un noeud inexistant, j'affiche une erreur plutôt que de casser l'écran.
     if (!node) {
@@ -26,6 +57,8 @@
     PCT.state.messageIndex = Math.min(PCT.state.messageIndex, node.messages.length - 1);
 
     // Je prépare tout ce qui dépend du message actuel avant de fabriquer le HTML.
+    const currentTest = PCT.getCurrentDialogueTest() || {};
+    const testLabel = currentTest.label || PCT.state.data.ui.dialogue.testLabel;
     const message = node.messages[PCT.state.messageIndex];
     const hasMoreMessages = PCT.state.messageIndex < node.messages.length - 1;
     const shouldShowChoices = !hasMoreMessages;
@@ -49,7 +82,7 @@
         <section class="screen-inner dialogue-layout">
           ${PCT.renderTopActions()}
           <div class="progress-pill">
-            ${PCT.escapeHtml(PCT.state.data.ui.dialogue.testLabel)}
+            ${PCT.escapeHtml(testLabel)}
           </div>
 
           <aside class="avatar-panel panel">
@@ -84,7 +117,7 @@
 
   PCT.continueDialogue = function continueDialogue() {
     // Je reprends le noeud courant pour avancer dans ses messages.
-    const node = PCT.state.data.dialogue.nodes[PCT.state.currentNodeId];
+    const node = PCT.getDialogueNode(PCT.state.currentNodeId);
 
     // Si l'état courant ne correspond plus à un noeud réel, j'affiche une erreur.
     if (!node) {
@@ -104,7 +137,7 @@
     const choiceIndex = Number(choiceIndexValue);
 
     // Je récupère le noeud courant pour trouver la réponse choisie.
-    const node = PCT.state.data.dialogue.nodes[PCT.state.currentNodeId];
+    const node = PCT.getDialogueNode(PCT.state.currentNodeId);
 
     // Si le choix n'existe pas, je ne fais rien : ça protège l'état du jeu.
     if (!node || !node.choices || !node.choices[choiceIndex]) {

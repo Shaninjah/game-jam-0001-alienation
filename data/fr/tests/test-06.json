@@ -1,0 +1,109 @@
+{
+  "id": "test_06",
+  "label": "Test comportemental 06",
+  "creatureLabel": "NIVEAU 6",
+  "startNode": "intro",
+  "nodes": {
+    "intro": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "Sixième protocole. Une panne simulée coupe une partie du laboratoire. La créature détecte la faille avant nos instruments."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je protège immédiatement la salle d'incubation.",
+          "effects": {
+            "force": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "J'analyse la panne avant de bouger.",
+          "effects": {
+            "intelligence": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je suis la créature vers la source de la faille.",
+          "effects": {
+            "exploration": 2,
+            "conciliation": 1
+          },
+          "next": "dilemme_01"
+        }
+      ]
+    },
+    "dilemme_01": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Elle comprend les verrous plus vite que prévu. Si elle le voulait, elle pourrait ouvrir la moitié du laboratoire."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je lui interdis d'approcher les systèmes de sécurité.",
+          "effects": {
+            "force": 2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je lui demande de choisir un seul verrou à ouvrir.",
+          "effects": {
+            "conciliation": 2,
+            "intelligence": 1
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je cartographie les chemins qu'elle semble percevoir.",
+          "effects": {
+            "exploration": 2,
+            "intelligence": 1
+          },
+          "next": "decision_finale"
+        }
+      ]
+    },
+    "decision_finale": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Le commandement demande un confinement total. Je dois savoir si vous considérez encore cette créature comme un sujet de test."
+        }
+      ],
+      "choices": [
+        {
+          "label": "J'obéis au confinement : le risque passe avant le lien.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "Je négocie un protocole plus souple pour éviter la panique.",
+          "effects": {
+            "conciliation": 2,
+            "intelligence": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "Je la laisse montrer la sortie qu'elle perçoit.",
+          "effects": {
+            "exploration": 3
+          },
+          "next": "final"
+        }
+      ]
+    }
+  }
+}

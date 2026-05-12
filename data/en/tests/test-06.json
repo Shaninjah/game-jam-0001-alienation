@@ -1,0 +1,109 @@
+{
+  "id": "test_06",
+  "label": "Behavioral test 06",
+  "creatureLabel": "LEVEL 6",
+  "startNode": "intro",
+  "nodes": {
+    "intro": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "worried",
+          "text": "Sixth protocol. A simulated outage cuts part of the laboratory. The creature detects the fault before our instruments."
+        }
+      ],
+      "choices": [
+        {
+          "label": "I immediately protect the incubation room.",
+          "effects": {
+            "force": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "I analyze the outage before moving.",
+          "effects": {
+            "intelligence": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "I follow the creature toward the source of the fault.",
+          "effects": {
+            "exploration": 2,
+            "conciliation": 1
+          },
+          "next": "dilemme_01"
+        }
+      ]
+    },
+    "dilemme_01": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "serious",
+          "text": "It understands locks faster than expected. If it wanted to, it could open half the laboratory."
+        }
+      ],
+      "choices": [
+        {
+          "label": "I forbid it from approaching the security systems.",
+          "effects": {
+            "force": 2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I ask it to choose only one lock to open.",
+          "effects": {
+            "conciliation": 2,
+            "intelligence": 1
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I map the paths it seems to perceive.",
+          "effects": {
+            "exploration": 2,
+            "intelligence": 1
+          },
+          "next": "decision_finale"
+        }
+      ]
+    },
+    "decision_finale": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "neutral",
+          "text": "Command is requesting full containment. I need to know whether you still consider this creature a test subject."
+        }
+      ],
+      "choices": [
+        {
+          "label": "I obey containment: risk comes before the bond.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "I negotiate a looser protocol to avoid panic.",
+          "effects": {
+            "conciliation": 2,
+            "intelligence": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "I let it show the exit it perceives.",
+          "effects": {
+            "exploration": 3
+          },
+          "next": "final"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "id": "test_08",
+  "label": "Behavioral test 08",
+  "creatureLabel": "LEVEL 8",
+  "startNode": "intro",
+  "nodes": {
+    "intro": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "neutral",
+          "text": "Eighth protocol. Its genome reconfigures in waves. Every choice stabilizes one area and makes another more unstable."
+        }
+      ],
+      "choices": [
+        {
+          "label": "I lock its current form before a dangerous mutation.",
+          "effects": {
+            "force": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "I simulate possible mutations before intervening.",
+          "effects": {
+            "intelligence": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "I let it adapt to the test environment.",
+          "effects": {
+            "exploration": 2,
+            "conciliation": 1
+          },
+          "next": "dilemme_01"
+        }
+      ]
+    },
+    "dilemme_01": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "serious",
+          "text": "Every correction also removes a possibility. The more we seek a perfect form, the more it loses something unpredictable."
+        }
+      ],
+      "choices": [
+        {
+          "label": "I prioritize a robust defensive anatomy.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I balance the parameters instead of maximizing one quality.",
+          "effects": {
+            "intelligence": 2,
+            "conciliation": 1
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I preserve the anomalies that give it new options.",
+          "effects": {
+            "exploration": 2
+          },
+          "next": "decision_finale"
+        }
+      ]
+    },
+    "decision_finale": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "worried",
+          "text": "The perfect creature may be the wrong phrase. Tell me which flaw you accept leaving in it."
+        }
+      ],
+      "choices": [
+        {
+          "label": "It will be too protective, but able to endure.",
+          "effects": {
+            "force": 3
+          },
+          "next": "final"
+        },
+        {
+          "label": "It will be too curious, but able to learn.",
+          "effects": {
+            "exploration": 2,
+            "intelligence": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "It will be too bonded to me, but able to feel.",
+          "effects": {
+            "conciliation": 3
+          },
+          "next": "final"
+        }
+      ]
+    }
+  }
+}

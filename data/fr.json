@@ -87,153 +87,54 @@
     }
   ],
   "dialogue": {
-    "startNode": "node_01",
     "avatar": {
       "neutral": "assets/avatar/scientist-neutral.png",
       "happy": "assets/avatar/scientist-happy.png",
       "serious": "assets/avatar/scientist-serious.png",
       "worried": "assets/avatar/scientist-worried.png"
     },
-    "nodes": {
-      "node_01": {
-        "messages": [
-          {
-            "speaker": "Professeur Chen",
-            "emotion": "neutral",
-            "text": "Soldat, reste calme. Depuis le contact avec l’œuf alien, vos réactions émotionnelles influencent directement son développement."
-          },
-          {
-            "speaker": "Professeur Chen",
-            "emotion": "serious",
-            "text": "Nous allons lancer une batterie de tests. Chaque réponse nous aidera à comprendre quelle forme de lien s’est créée entre vous et la créature."
-          }
-        ],
-        "choices": [
-          {
-            "label": "Compris, professeur. Je suis prêt à commencer.",
-            "effects": {
-              "intelligence": 1
-            },
-            "next": "node_02"
-          },
-          {
-            "label": "Avant de commencer, je veux savoir si cette chose est dangereuse.",
-            "effects": {
-              "intelligence": 2,
-              "exploration": 1
-            },
-            "next": "node_02"
-          }
-        ]
+    "tests": [
+      {
+        "id": "test_01",
+        "file": "fr/tests/test-01.json"
       },
-      "node_02": {
-        "messages": [
-          {
-            "speaker": "Professeur Chen",
-            "emotion": "worried",
-            "text": "Premier test. L’œuf réagit fortement quand vous êtes sous pression. Imaginez qu’une alarme se déclenche et que la salle d’incubation se verrouille."
-          }
-        ],
-        "choices": [
-          {
-            "label": "Je force l’accès pour reprendre le contrôle de la zone.",
-            "effects": {
-              "force": 2,
-              "conciliation": -1
-            },
-            "next": "node_03"
-          },
-          {
-            "label": "J’analyse les signaux de l’œuf avant d’agir.",
-            "effects": {
-              "intelligence": 1,
-              "exploration": 1
-            },
-            "next": "node_03"
-          },
-          {
-            "label": "Je ralentis ma respiration pour tenter de l’apaiser.",
-            "effects": {
-              "conciliation": 2,
-              "intelligence": 1
-            },
-            "next": "node_03"
-          }
-        ]
+      {
+        "id": "test_02",
+        "file": "fr/tests/test-02.json"
       },
-      "node_03": {
-        "messages": [
-          {
-            "speaker": "Professeur Chen",
-            "emotion": "serious",
-            "text": "Deuxième test. L’œuf projette des images dans votre esprit : un couloir inconnu, une porte blindée et une présence qui attend derrière."
-          },
-          {
-            "speaker": "Professeur Chen",
-            "emotion": "neutral",
-            "text": "Votre choix semble modifier son activité interne. Il ne se contente pas de répondre : il apprend de vous."
-          }
-        ],
-        "choices": [
-          {
-            "label": "J’avance en force. Un soldat ne recule pas devant une porte.",
-            "effects": {
-              "force": 2
-            },
-            "next": "node_04"
-          },
-          {
-            "label": "J’explore le couloir inconnu pour comprendre ce qu’il veut me montrer.",
-            "effects": {
-              "exploration": 2,
-              "intelligence": 1
-            },
-            "next": "node_04"
-          },
-          {
-            "label": "Je cherche une logique dans la vision pour anticiper le danger.",
-            "effects": {
-              "intelligence": 2
-            },
-            "next": "node_04"
-          }
-        ]
+      {
+        "id": "test_03",
+        "file": "fr/tests/test-03.json"
       },
-      "node_04": {
-        "messages": [
-          {
-            "speaker": "Professeur Chen",
-            "emotion": "happy",
-            "text": "Dernier test avant éclosion. La créature ressent vos décisions avant même d’exister pleinement. Si elle devait naître maintenant, quelle impulsion voulez-vous lui transmettre ?"
-          }
-        ],
-        "choices": [
-          {
-            "label": "Protéger les autres, même si cela me met en danger.",
-            "effects": {
-              "conciliation": 3
-            },
-            "next": "final"
-          },
-          {
-            "label": "Comprendre son origine et exploiter les données.",
-            "effects": {
-              "intelligence": 2,
-              "exploration": 1
-            },
-            "next": "final"
-          },
-          {
-            "label": "Survivre, sécuriser la zone et neutraliser toute menace.",
-            "effects": {
-              "force": 1,
-              "exploration": 2
-            },
-            "next": "final"
-          }
-        ]
+      {
+        "id": "test_04",
+        "file": "fr/tests/test-04.json"
+      },
+      {
+        "id": "test_05",
+        "file": "fr/tests/test-05.json"
+      },
+      {
+        "id": "test_06",
+        "file": "fr/tests/test-06.json"
+      },
+      {
+        "id": "test_07",
+        "file": "fr/tests/test-07.json"
+      },
+      {
+        "id": "test_08",
+        "file": "fr/tests/test-08.json"
+      },
+      {
+        "id": "test_09",
+        "file": "fr/tests/test-09.json"
+      },
+      {
+        "id": "test_10",
+        "file": "fr/tests/test-10.json"
       }
-    }
+    ]
   },
   "final": {
     "creatures": {

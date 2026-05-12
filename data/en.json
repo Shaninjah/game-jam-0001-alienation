@@ -87,153 +87,54 @@
     }
   ],
   "dialogue": {
-    "startNode": "node_01",
     "avatar": {
       "neutral": "assets/avatar/scientist-neutral.png",
       "happy": "assets/avatar/scientist-happy.png",
       "serious": "assets/avatar/scientist-serious.png",
       "worried": "assets/avatar/scientist-worried.png"
     },
-    "nodes": {
-      "node_01": {
-        "messages": [
-          {
-            "speaker": "Professor Chen",
-            "emotion": "neutral",
-            "text": "Soldier, stay calm. Since your contact with the alien egg, your emotional reactions have directly influenced its development."
-          },
-          {
-            "speaker": "Professor Chen",
-            "emotion": "serious",
-            "text": "We are starting a full test protocol. Each answer will help us understand what kind of bond formed between you and the creature."
-          }
-        ],
-        "choices": [
-          {
-            "label": "Understood, Professor. I am ready to begin.",
-            "effects": {
-              "intelligence": 1
-            },
-            "next": "node_02"
-          },
-          {
-            "label": "Before we start, I want to know if this thing is dangerous.",
-            "effects": {
-              "intelligence": 2,
-              "exploration": 1
-            },
-            "next": "node_02"
-          }
-        ]
+    "tests": [
+      {
+        "id": "test_01",
+        "file": "en/tests/test-01.json"
       },
-      "node_02": {
-        "messages": [
-          {
-            "speaker": "Professor Chen",
-            "emotion": "worried",
-            "text": "First test. The egg reacts strongly when you are under pressure. Imagine an alarm triggers and the incubation room locks down."
-          }
-        ],
-        "choices": [
-          {
-            "label": "I force access and regain control of the zone.",
-            "effects": {
-              "force": 2,
-              "conciliation": -1
-            },
-            "next": "node_03"
-          },
-          {
-            "label": "I analyze the egg’s signals before acting.",
-            "effects": {
-              "intelligence": 1,
-              "exploration": 1
-            },
-            "next": "node_03"
-          },
-          {
-            "label": "I slow my breathing and try to calm it.",
-            "effects": {
-              "conciliation": 2,
-              "intelligence": 1
-            },
-            "next": "node_03"
-          }
-        ]
+      {
+        "id": "test_02",
+        "file": "en/tests/test-02.json"
       },
-      "node_03": {
-        "messages": [
-          {
-            "speaker": "Professor Chen",
-            "emotion": "serious",
-            "text": "Second test. The egg projects images into your mind: an unknown corridor, a sealed door, and a presence waiting behind it."
-          },
-          {
-            "speaker": "Professor Chen",
-            "emotion": "neutral",
-            "text": "Your choice seems to alter its internal activity. It is not just responding: it is learning from you."
-          }
-        ],
-        "choices": [
-          {
-            "label": "I push forward. A soldier does not retreat from a door.",
-            "effects": {
-              "force": 2
-            },
-            "next": "node_04"
-          },
-          {
-            "label": "I explore the unknown corridor to understand what it wants to show me.",
-            "effects": {
-              "exploration": 2,
-              "intelligence": 1
-            },
-            "next": "node_04"
-          },
-          {
-            "label": "I look for logic in the vision to anticipate the danger.",
-            "effects": {
-              "intelligence": 2
-            },
-            "next": "node_04"
-          }
-        ]
+      {
+        "id": "test_03",
+        "file": "en/tests/test-03.json"
       },
-      "node_04": {
-        "messages": [
-          {
-            "speaker": "Professor Chen",
-            "emotion": "happy",
-            "text": "Final test before hatching. The creature can feel your decisions before it fully exists. If it were born now, what impulse would you transmit to it?"
-          }
-        ],
-        "choices": [
-          {
-            "label": "Protect others, even if it puts me in danger.",
-            "effects": {
-              "conciliation": 3
-            },
-            "next": "final"
-          },
-          {
-            "label": "Understand its origin and exploit the data.",
-            "effects": {
-              "intelligence": 2,
-              "exploration": 1
-            },
-            "next": "final"
-          },
-          {
-            "label": "Survive, secure the zone, and neutralize any threat.",
-            "effects": {
-              "force": 1,
-              "exploration": 2
-            },
-            "next": "final"
-          }
-        ]
+      {
+        "id": "test_04",
+        "file": "en/tests/test-04.json"
+      },
+      {
+        "id": "test_05",
+        "file": "en/tests/test-05.json"
+      },
+      {
+        "id": "test_06",
+        "file": "en/tests/test-06.json"
+      },
+      {
+        "id": "test_07",
+        "file": "en/tests/test-07.json"
+      },
+      {
+        "id": "test_08",
+        "file": "en/tests/test-08.json"
+      },
+      {
+        "id": "test_09",
+        "file": "en/tests/test-09.json"
+      },
+      {
+        "id": "test_10",
+        "file": "en/tests/test-10.json"
       }
-    }
+    ]
   },
   "final": {
     "creatures": {

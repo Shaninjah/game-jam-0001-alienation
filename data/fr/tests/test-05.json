@@ -1,0 +1,109 @@
+{
+  "id": "test_05",
+  "label": "Test comportemental 05",
+  "creatureLabel": "NIVEAU 5",
+  "startNode": "intro",
+  "nodes": {
+    "intro": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "happy",
+          "text": "Cinquième protocole. La créature imite votre posture, votre rythme et certains réflexes militaires. Elle apprend vite, peut-être trop vite."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je lui donne un ordre simple pour tester son obéissance.",
+          "effects": {
+            "force": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je lui propose une énigme pour mesurer sa compréhension.",
+          "effects": {
+            "intelligence": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je transforme l'imitation en jeu pour voir ce qu'elle invente.",
+          "effects": {
+            "conciliation": 1,
+            "exploration": 2
+          },
+          "next": "dilemme_01"
+        }
+      ]
+    },
+    "dilemme_01": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "L'imitation dévie. Elle reproduit vos gestes, mais elle ajoute des micro-mouvements qui ne viennent pas de vous."
+        }
+      ],
+      "choices": [
+        {
+          "label": "J'interromps la séquence avant qu'elle prenne de mauvaises habitudes.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je compare chaque déviation pour comprendre sa pensée.",
+          "effects": {
+            "intelligence": 2,
+            "exploration": 1
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "J'accepte cette version imparfaite de mon geste.",
+          "effects": {
+            "conciliation": 2
+          },
+          "next": "decision_finale"
+        }
+      ]
+    },
+    "decision_finale": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Si elle copie votre violence, elle peut devenir une arme. Si elle copie votre doute, elle peut devenir autre chose."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je privilégie la discipline : elle doit répondre vite.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "Je privilégie la curiosité : elle doit chercher avant d'agir.",
+          "effects": {
+            "exploration": 2,
+            "intelligence": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "Je privilégie l'empathie : elle doit sentir avant de copier.",
+          "effects": {
+            "conciliation": 3
+          },
+          "next": "final"
+        }
+      ]
+    }
+  }
+}

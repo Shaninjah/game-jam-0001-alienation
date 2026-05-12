@@ -1,0 +1,114 @@
+{
+  "id": "test_10",
+  "label": "Test comportemental 10",
+  "creatureLabel": "NIVEAU 10",
+  "startNode": "intro",
+  "nodes": {
+    "intro": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Dixième protocole. Toutes les données se contredisent. Plus nous optimisons la créature, plus elle perd la capacité de nous surprendre."
+        },
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Je vous demande de choisir sans chercher la réponse parfaite."
+        }
+      ],
+      "choices": [
+        {
+          "label": "J'accepte qu'elle reste imparfaite et vivante.",
+          "effects": {
+            "conciliation": 2,
+            "intelligence": 1
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je cherche encore une formule stable, même incomplète.",
+          "effects": {
+            "intelligence": 2,
+            "force": 1
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je lui laisse choisir sa prochaine mutation.",
+          "effects": {
+            "exploration": 2
+          },
+          "next": "dilemme_01"
+        }
+      ]
+    },
+    "dilemme_01": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "Elle cesse de répondre aux jauges. Force, exploration, conciliation, intelligence : elle les comprend, puis les ignore."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je détruis la grille de test avant qu'elle l'enferme.",
+          "effects": {
+            "force": 1,
+            "exploration": 2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je transforme le test en dialogue ouvert.",
+          "effects": {
+            "conciliation": 2,
+            "intelligence": 1
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je mesure précisément ce refus pour en garder une trace.",
+          "effects": {
+            "intelligence": 3
+          },
+          "next": "decision_finale"
+        }
+      ]
+    },
+    "decision_finale": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "happy",
+          "text": "Fin de la boucle actuelle. La créature n'est pas parfaite. Elle est liée, changeante, et peut-être déjà en train de choisir ce qu'elle veut devenir."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je la protège, même contre nos propres conclusions.",
+          "effects": {
+            "conciliation": 3
+          },
+          "next": "final"
+        },
+        {
+          "label": "Je la laisse partir vers ce qui l'appelle.",
+          "effects": {
+            "exploration": 3
+          },
+          "next": "final"
+        },
+        {
+          "label": "Je reste avec elle pour apprendre sans prétendre la finir.",
+          "effects": {
+            "intelligence": 2,
+            "conciliation": 1
+          },
+          "next": "final"
+        }
+      ]
+    }
+  }
+}

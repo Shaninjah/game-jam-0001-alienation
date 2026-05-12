@@ -1,0 +1,108 @@
+{
+  "id": "test_08",
+  "label": "Test comportemental 08",
+  "creatureLabel": "NIVEAU 8",
+  "startNode": "intro",
+  "nodes": {
+    "intro": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Huitième protocole. Son génome se reconfigure par vagues. Chaque choix stabilise une zone et en rend une autre plus instable."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je bloque sa forme actuelle avant une mutation dangereuse.",
+          "effects": {
+            "force": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je simule les mutations possibles avant d'intervenir.",
+          "effects": {
+            "intelligence": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je la laisse s'adapter à l'environnement de test.",
+          "effects": {
+            "exploration": 2,
+            "conciliation": 1
+          },
+          "next": "dilemme_01"
+        }
+      ]
+    },
+    "dilemme_01": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Chaque correction retire aussi une possibilité. Plus on cherche une forme parfaite, plus elle perd quelque chose d'imprévisible."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je priorise une anatomie robuste et défensive.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "J'équilibre les paramètres au lieu de maximiser une qualité.",
+          "effects": {
+            "intelligence": 2,
+            "conciliation": 1
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je préserve les anomalies qui lui donnent de nouvelles options.",
+          "effects": {
+            "exploration": 2
+          },
+          "next": "decision_finale"
+        }
+      ]
+    },
+    "decision_finale": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "La créature parfaite est peut-être une erreur de vocabulaire. Dites-moi quel défaut vous acceptez de lui laisser."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Elle sera trop protectrice, mais capable de tenir.",
+          "effects": {
+            "force": 3
+          },
+          "next": "final"
+        },
+        {
+          "label": "Elle sera trop curieuse, mais capable d'apprendre.",
+          "effects": {
+            "exploration": 2,
+            "intelligence": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "Elle sera trop liée à moi, mais capable de ressentir.",
+          "effects": {
+            "conciliation": 3
+          },
+          "next": "final"
+        }
+      ]
+    }
+  }
+}

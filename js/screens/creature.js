@@ -14,8 +14,15 @@
   PCT.renderFinal = function renderFinal() {
     // Je récupère les textes d'interface et la créature liée à la stat dominante.
     const ui = PCT.state.data.ui;
+    const currentTest = PCT.getCurrentDialogueTest() || {};
+    const creatureLabel = currentTest.creatureLabel || ui.final.creatureLabel;
     const creatureKey = PCT.getDominantStatKey();
     const creature = PCT.state.data.final.creatures[creatureKey] || PCT.state.data.final.creatures.force;
+    const stopButtonHtml = PCT.canStopCurrentTest() ? `
+              <button class="btn btn-danger" type="button" data-action="show-stop-confirm">
+                ${PCT.escapeHtml(ui.final.menuButton)}
+              </button>
+    ` : "";
 
     // Je garde la clé du résultat, utile si on veut enchaîner plusieurs niveaux plus tard.
     PCT.state.finalCreatureKey = creatureKey;
@@ -33,7 +40,7 @@
           </aside>
 
           <section class="final-creature panel">
-            <p class="kicker">${PCT.escapeHtml(ui.final.creatureLabel)}</p>
+            <p class="kicker">${PCT.escapeHtml(creatureLabel)}</p>
             <h2>${PCT.escapeHtml(creature.name)}</h2>
 
             ${PCT.renderImageFrame({
@@ -48,11 +55,8 @@
             <p class="creature-description">${PCT.escapeHtml(creature.description)}</p>
 
             <div class="button-row final-actions">
-              <button class="btn btn-danger" type="button" data-action="show-stop-confirm">
-                ${PCT.escapeHtml(ui.final.menuButton)}
-              </button>
-
-              <button class="btn btn-primary" type="button" data-action="restart-test">
+              ${stopButtonHtml}
+              <button class="btn btn-primary" type="button" data-action="continue-test">
                 ${PCT.escapeHtml(ui.final.nextTestButton)}
               </button>
             </div>

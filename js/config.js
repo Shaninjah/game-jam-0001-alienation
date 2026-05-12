@@ -22,6 +22,10 @@
   PCT.GAME_FRAME_WIDTH = 1344;
   PCT.GAME_FRAME_HEIGHT = 756;
 
+  // Le joueur ne peut arrêter le protocole qu'à partir du test 4.
+  // Comme le code compte à partir de zéro, le test 4 correspond à l'index 3.
+  PCT.MIN_STOP_TEST_INDEX = 3;
+
   // Les statistiques finales du prototype.
   // Il n'y a plus de mystère : uniquement les 4 stats demandées.
   PCT.STAT_KEYS = [

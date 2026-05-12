@@ -35,6 +35,11 @@
   };
 
   PCT.renderTopActions = function renderTopActions() {
+    // Avant le test 4, je ne propose pas encore de quitter le protocole.
+    if (!PCT.canStopCurrentTest()) {
+      return "";
+    }
+
     // Petit bouton global pour demander à quitter le protocole.
     return `
       <div class="top-actions">
@@ -84,6 +89,11 @@
   };
 
   PCT.renderQuitConfirm = function renderQuitConfirm() {
+    // Si on n'a pas encore atteint le test 4, l'arrêt du protocole reste verrouillé.
+    if (!PCT.canStopCurrentTest()) {
+      return;
+    }
+
     // Je supprime d'abord une ancienne modale pour ne jamais en empiler plusieurs.
     PCT.removeModal();
 
@@ -113,6 +123,11 @@
   };
 
   PCT.renderStopConfirm = function renderStopConfirm() {
+    // Même règle sur l'écran créature : pas d'arrêt avant le test 4.
+    if (!PCT.canStopCurrentTest()) {
+      return;
+    }
+
     // Je supprime d'abord une ancienne modale pour repartir sur une seule confirmation.
     PCT.removeModal();
 

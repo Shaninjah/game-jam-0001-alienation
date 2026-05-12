@@ -1,0 +1,107 @@
+{
+  "id": "test_04",
+  "label": "Test comportemental 04",
+  "creatureLabel": "NIVEAU 4",
+  "startNode": "intro",
+  "nodes": {
+    "intro": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "Quatrième protocole. Son métabolisme accélère. La créature ne réclame pas seulement de la nourriture : elle absorbe aussi les états émotionnels proches."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je rationne strictement l'apport pour garder le contrôle.",
+          "effects": {
+            "intelligence": 2,
+            "force": 1
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je lui donne davantage d'énergie pour calmer son stress.",
+          "effects": {
+            "conciliation": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je teste une source secondaire avant qu'elle dépende trop de moi.",
+          "effects": {
+            "exploration": 2
+          },
+          "next": "dilemme_01"
+        }
+      ]
+    },
+    "dilemme_01": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Elle refuse le gel nutritif standard. Quand vous approchez, sa peau se stabilise. Le lien devient une ressource, pas seulement un symptôme."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je maintiens la procédure malgré son refus.",
+          "effects": {
+            "force": 2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je modifie la recette en fonction de ses réactions.",
+          "effects": {
+            "intelligence": 2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je partage un contact calme pour réduire la dépendance brutale.",
+          "effects": {
+            "conciliation": 2,
+            "exploration": 1
+          },
+          "next": "decision_finale"
+        }
+      ]
+    },
+    "decision_finale": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Son corps répond. La question n'est plus seulement de la nourrir, mais de décider quel manque elle apprendra à supporter."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Stabiliser d'abord son organisme, même si elle résiste.",
+          "effects": {
+            "intelligence": 2,
+            "force": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "Laisser son instinct trouver une ressource inconnue.",
+          "effects": {
+            "exploration": 3
+          },
+          "next": "final"
+        },
+        {
+          "label": "Lui apprendre à attendre sans se sentir abandonnée.",
+          "effects": {
+            "conciliation": 3
+          },
+          "next": "final"
+        }
+      ]
+    }
+  }
+}

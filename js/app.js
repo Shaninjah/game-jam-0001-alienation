@@ -71,15 +71,19 @@
       return;
     }
 
-    // Continuer le test relance pour l'instant le protocole de dialogue depuis le début.
-    if (action === "restart-test") {
-      PCT.resetRun();
-      PCT.renderDialogue(PCT.state.data.dialogue.startNode);
+    // Continuer le test lance la batterie suivante pour montrer la boucle de gameplay.
+    if (action === "continue-test") {
+      PCT.continueToNextTest();
       return;
     }
 
     // Retour menu : je nettoie la partie en cours et je ferme une éventuelle confirmation.
     if (action === "back-to-menu") {
+      if (!PCT.canStopCurrentTest()) {
+        PCT.removeModal();
+        return;
+      }
+
       PCT.resetRun();
       PCT.removeModal();
       PCT.renderMenu();

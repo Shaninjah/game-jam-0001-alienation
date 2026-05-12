@@ -1,0 +1,109 @@
+{
+  "id": "test_09",
+  "label": "Test comportemental 09",
+  "creatureLabel": "NIVEAU 9",
+  "startNode": "intro",
+  "nodes": {
+    "intro": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Neuvième protocole. Le commandement veut tester une séparation complète. La créature sera déplacée hors de votre champ sensoriel."
+        }
+      ],
+      "choices": [
+        {
+          "label": "J'accepte la séparation pour prouver qu'elle peut obéir sans moi.",
+          "effects": {
+            "force": 1,
+            "intelligence": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je refuse : le lien est encore trop instable.",
+          "effects": {
+            "conciliation": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je demande un délai pour observer ce qu'elle anticipe.",
+          "effects": {
+            "exploration": 2,
+            "intelligence": 1
+          },
+          "next": "dilemme_01"
+        }
+      ]
+    },
+    "dilemme_01": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "À dix mètres de vous, elle panique. À quinze mètres, elle cesse de bouger. À vingt mètres, vos propres mains tremblent."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je tiens la ligne et je laisse le protocole aller au bout.",
+          "effects": {
+            "force": 2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je transforme l'exercice en apprentissage d'indépendance.",
+          "effects": {
+            "intelligence": 1,
+            "conciliation": 2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je suis l'image mentale qu'elle envoie pendant la séparation.",
+          "effects": {
+            "exploration": 2
+          },
+          "next": "decision_finale"
+        }
+      ]
+    },
+    "decision_finale": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Nous arrivons au point sensible : qui décide de son avenir, le laboratoire, vous, ou elle ?"
+        }
+      ],
+      "choices": [
+        {
+          "label": "Le protocole militaire décide tant que le risque existe.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "Le lien décide : nous devons apprendre ensemble.",
+          "effects": {
+            "conciliation": 3
+          },
+          "next": "final"
+        },
+        {
+          "label": "Elle décide, même si sa réponse nous échappe.",
+          "effects": {
+            "exploration": 2,
+            "conciliation": 1
+          },
+          "next": "final"
+        }
+      ]
+    }
+  }
+}

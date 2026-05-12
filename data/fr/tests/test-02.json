@@ -1,0 +1,115 @@
+{
+  "id": "test_02",
+  "label": "Test comportemental 02",
+  "creatureLabel": "NIVEAU 2",
+  "startNode": "intro",
+  "nodes": {
+    "intro": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "Deuxième protocole. La créature a éclos, mais elle refuse de s'éloigner de votre rythme cardiaque. Nous allons tester ce qu'elle fait quand votre lien est contrarié."
+        },
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Une simulation ouvre la porte de la salle. Un signal inconnu appelle la créature depuis le couloir, pendant que nos verrous de sécurité se ferment."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je bloque la créature contre moi et je reprends le contrôle de la salle.",
+          "effects": {
+            "force": 2,
+            "conciliation": -1
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je lui parle doucement pour qu'elle sente que je reste avec elle.",
+          "effects": {
+            "conciliation": 2,
+            "intelligence": 1
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je la laisse regarder le couloir pour comprendre ce qui l'attire.",
+          "effects": {
+            "exploration": 2
+          },
+          "next": "dilemme_01"
+        }
+      ]
+    },
+    "dilemme_01": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "La créature module sa peau selon votre décision. Elle n'obéit pas seulement : elle interprète votre intention avant même que vous bougiez."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je sécurise d'abord le périmètre. Rien ne sort du laboratoire.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je compare le signal à ses réactions pour trouver une logique.",
+          "effects": {
+            "intelligence": 2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je m'avance avec elle pour voir si le signal vient d'un autre organisme.",
+          "effects": {
+            "exploration": 2,
+            "conciliation": 1
+          },
+          "next": "decision_finale"
+        }
+      ]
+    },
+    "decision_finale": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "happy",
+          "text": "Dernière séquence. La créature reproduit votre respiration, mais elle commence aussi à résister au protocole. Elle cherche une direction qui n'est pas seulement la vôtre."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Je lui impose une limite claire : elle doit survivre sans menacer l'équipe.",
+          "effects": {
+            "force": 1,
+            "intelligence": 2
+          },
+          "next": "final"
+        },
+        {
+          "label": "Je protège son autonomie, même si le protocole devient moins contrôlable.",
+          "effects": {
+            "conciliation": 2,
+            "exploration": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "Je suis le signal avec elle pour découvrir ce que le laboratoire ne voit pas.",
+          "effects": {
+            "exploration": 3
+          },
+          "next": "final"
+        }
+      ]
+    }
+  }
+}

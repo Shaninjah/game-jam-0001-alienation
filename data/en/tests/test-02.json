@@ -1,0 +1,115 @@
+{
+  "id": "test_02",
+  "label": "Behavioral test 02",
+  "creatureLabel": "LEVEL 2",
+  "startNode": "intro",
+  "nodes": {
+    "intro": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "worried",
+          "text": "Second protocol. The creature has hatched, but it refuses to drift away from your heartbeat. We are testing what it does when your bond is challenged."
+        },
+        {
+          "speaker": "Professor Chen",
+          "emotion": "serious",
+          "text": "A simulation opens the room door. An unknown signal calls the creature from the corridor while our security locks begin to close."
+        }
+      ],
+      "choices": [
+        {
+          "label": "I pin the creature close to me and regain control of the room.",
+          "effects": {
+            "force": 2,
+            "conciliation": -1
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "I speak softly so it can feel that I am staying with it.",
+          "effects": {
+            "conciliation": 2,
+            "intelligence": 1
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "I let it watch the corridor so I can understand what attracts it.",
+          "effects": {
+            "exploration": 2
+          },
+          "next": "dilemme_01"
+        }
+      ]
+    },
+    "dilemme_01": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "neutral",
+          "text": "The creature modulates its skin according to your decision. It is not only obeying: it interprets your intention before you even move."
+        }
+      ],
+      "choices": [
+        {
+          "label": "I secure the perimeter first. Nothing leaves the laboratory.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I compare the signal to its reactions and look for a pattern.",
+          "effects": {
+            "intelligence": 2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I move forward with it to see if the signal comes from another organism.",
+          "effects": {
+            "exploration": 2,
+            "conciliation": 1
+          },
+          "next": "decision_finale"
+        }
+      ]
+    },
+    "decision_finale": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "happy",
+          "text": "Final sequence. The creature mirrors your breathing, but it also begins to resist the protocol. It is looking for a direction that is not only yours."
+        }
+      ],
+      "choices": [
+        {
+          "label": "I set a clear limit: it must survive without threatening the team.",
+          "effects": {
+            "force": 1,
+            "intelligence": 2
+          },
+          "next": "final"
+        },
+        {
+          "label": "I protect its autonomy, even if the protocol becomes harder to control.",
+          "effects": {
+            "conciliation": 2,
+            "exploration": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "I follow the signal with it to discover what the lab cannot see.",
+          "effects": {
+            "exploration": 3
+          },
+          "next": "final"
+        }
+      ]
+    }
+  }
+}

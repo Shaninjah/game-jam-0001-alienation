@@ -1,0 +1,107 @@
+{
+  "id": "test_04",
+  "label": "Behavioral test 04",
+  "creatureLabel": "LEVEL 4",
+  "startNode": "intro",
+  "nodes": {
+    "intro": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "worried",
+          "text": "Fourth protocol. Its metabolism is accelerating. The creature does not only ask for food: it also absorbs nearby emotional states."
+        }
+      ],
+      "choices": [
+        {
+          "label": "I ration the supply strictly to keep control.",
+          "effects": {
+            "intelligence": 2,
+            "force": 1
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "I give it more energy to calm its stress.",
+          "effects": {
+            "conciliation": 2
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "I test a secondary source before it depends too much on me.",
+          "effects": {
+            "exploration": 2
+          },
+          "next": "dilemme_01"
+        }
+      ]
+    },
+    "dilemme_01": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "serious",
+          "text": "It refuses the standard nutrient gel. When you approach, its skin stabilizes. The bond is becoming a resource, not just a symptom."
+        }
+      ],
+      "choices": [
+        {
+          "label": "I maintain the procedure despite its refusal.",
+          "effects": {
+            "force": 2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I modify the formula according to its reactions.",
+          "effects": {
+            "intelligence": 2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I share a calm contact to reduce the brutal dependency.",
+          "effects": {
+            "conciliation": 2,
+            "exploration": 1
+          },
+          "next": "decision_finale"
+        }
+      ]
+    },
+    "decision_finale": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "neutral",
+          "text": "Its body responds. The question is no longer only how to feed it, but what kind of lack it will learn to endure."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Stabilize its organism first, even if it resists.",
+          "effects": {
+            "intelligence": 2,
+            "force": 1
+          },
+          "next": "final"
+        },
+        {
+          "label": "Let its instinct find an unknown resource.",
+          "effects": {
+            "exploration": 3
+          },
+          "next": "final"
+        },
+        {
+          "label": "Teach it to wait without feeling abandoned.",
+          "effects": {
+            "conciliation": 3
+          },
+          "next": "final"
+        }
+      ]
+    }
+  }
+}
