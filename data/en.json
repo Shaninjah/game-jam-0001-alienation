@@ -140,22 +140,18 @@
     "creatures": {
       "force": {
         "name": "Gatebreaker",
-        "image": "assets/creatures/creature-level-1.png",
         "description": "The creature’s appearance evolved according to your emotional synchronization with the alien egg."
       },
       "exploration": {
         "name": "Mistwalker",
-        "image": "assets/creatures/creature-level-1.png",
         "description": "The creature’s appearance evolved according to your emotional synchronization with the alien egg."
       },
       "conciliation": {
         "name": "Bond Echo",
-        "image": "assets/creatures/creature-level-1.png",
         "description": "The creature’s appearance evolved according to your emotional synchronization with the alien egg."
       },
       "intelligence": {
         "name": "Clearcore",
-        "image": "assets/creatures/creature-level-1.png",
         "description": "The creature’s appearance evolved according to your emotional synchronization with the alien egg."
       }
     }

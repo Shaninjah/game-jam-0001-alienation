@@ -18,6 +18,7 @@
     const creatureLabel = currentTest.creatureLabel || ui.final.creatureLabel;
     const creatureKey = PCT.getDominantStatKey();
     const creature = PCT.state.data.final.creatures[creatureKey] || PCT.state.data.final.creatures.force;
+    const appearance = PCT.getCreatureAppearance();
     const stopButtonHtml = PCT.canStopCurrentTest() ? `
               <button class="btn btn-danger" type="button" data-action="show-stop-confirm">
                 ${PCT.escapeHtml(ui.final.menuButton)}
@@ -43,14 +44,7 @@
             <p class="kicker">${PCT.escapeHtml(creatureLabel)}</p>
             <h2>${PCT.escapeHtml(creature.name)}</h2>
 
-            ${PCT.renderImageFrame({
-              className: "creature-frame",
-              imageClassName: "creature-img",
-              placeholderClassName: "creature-placeholder",
-              image: creature.image,
-              alt: creature.name,
-              fallbackLabel: ui.fallbacks.creature
-            })}
+            ${PCT.renderCreatureFrame(creature, appearance, ui.fallbacks.creature)}
 
             <p class="creature-description">${PCT.escapeHtml(creature.description)}</p>
 
@@ -67,6 +61,35 @@
 
     // Après le rendu, je branche le placeholder si l'image de créature manque.
     PCT.bindImageFallbacks();
+  };
+
+  PCT.renderCreatureFrame = function renderCreatureFrame(creature, appearance, fallbackLabel) {
+    // Je superpose la base de la créature et ses parties, qui ont toutes le même canvas.
+    const parts = Array.isArray(appearance.parts) ? appearance.parts : [];
+    const partImages = parts.map((part) => `
+        <img
+          class="creature-img creature-part-img"
+          src="${PCT.escapeAttribute(part)}"
+          alt=""
+          aria-hidden="true"
+          data-optional-image="true"
+        >
+    `).join("");
+
+    return `
+      <div class="creature-frame">
+        <img
+          class="creature-img creature-base-img"
+          src="${PCT.escapeAttribute(appearance.base || "")}"
+          alt="${PCT.escapeAttribute(creature.name)}"
+          data-fallback-label="${PCT.escapeAttribute(fallbackLabel)}"
+        >
+        <div class="creature-placeholder">
+          ${PCT.escapeHtml(fallbackLabel)}
+        </div>
+        ${partImages}
+      </div>
+    `;
   };
 
   PCT.renderFinalStats = function renderFinalStats() {

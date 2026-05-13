@@ -149,6 +149,7 @@
 
     // Les effets de la réponse modifient les stats autorisées.
     PCT.applyEffects(choice.effects || {});
+    PCT.updateCreatureAppearance();
 
     // Certains choix terminent le protocole et envoient directement à l'écran créature.
     if (choice.next === "final") {

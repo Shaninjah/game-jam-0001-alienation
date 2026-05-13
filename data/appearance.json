@@ -1,0 +1,177 @@
+/* ============================================================
+   APPARENCE CREATURE
+   ------------------------------------------------------------
+   Config commune a toutes les langues.
+   Ici je choisis les calques visibles selon les stats du joueur.
+   ============================================================ */
+
+{
+  /* ------------------------------------------------------------
+     IMAGE DE BASE
+     ------------------------------------------------------------
+     C'est la creature nue, avant les parties debloquees.
+     Les autres images viennent se poser exactement par-dessus.
+     ------------------------------------------------------------ */
+  "base": "assets/creatures/perso.png",
+
+  /* ------------------------------------------------------------
+     ORDRE DES CALQUES
+     ------------------------------------------------------------
+     L'ordre compte pour le rendu : le premier est pose en dessous,
+     le dernier est pose au-dessus.
+     ------------------------------------------------------------ */
+  "slots": [
+    "tails",
+    "ears",
+    "eyes",
+    "mouths"
+  ],
+
+  /* ============================================================
+     REGLES DE DEBLOCAGE
+     ------------------------------------------------------------
+     Je range par partie du corps pour pouvoir lire vite.
+
+     Regle de lock :
+     - meme slot + meme tier = je garde la premiere partie debloquee
+     - tier plus haut = remplace le lock actuel
+     ============================================================ */
+  "rules": {
+    /* ------------------------------------------------------------
+       QUEUE
+       ------------------------------------------------------------
+       La queue normale est visible tout de suite.
+       ------------------------------------------------------------ */
+    "tails": [
+      {
+        "id": "tail_normal_t1",
+        "tier": 1,
+        "stat": "exploration",
+        "min": 0,
+        "asset": "assets/creatures/parts/tails/normal.png"
+      }
+    ],
+
+    /* ------------------------------------------------------------
+       OREILLES
+       ------------------------------------------------------------
+       Chaque couleur correspond a une stat :
+       rouge = force, rose = conciliation, bleu = intelligence.
+
+       Pour exploration, je garde l'ancien asset en attendant
+       un fichier green.png dans ce dossier.
+       ------------------------------------------------------------ */
+    "ears": [
+      {
+        "id": "ears_force_t1",
+        "tier": 1,
+        "stat": "force",
+        "min": 3,
+        "asset": "assets/creatures/parts/ears/red.png"
+      },
+      {
+        "id": "ears_conciliation_t1",
+        "tier": 1,
+        "stat": "conciliation",
+        "min": 3,
+        "asset": "assets/creatures/parts/ears/pink.png"
+      },
+      {
+        "id": "ears_exploration_t1",
+        "tier": 1,
+        "stat": "exploration",
+        "min": 3,
+        "asset": "assets/creatures/parts/ears/grandes.png"
+      },
+      {
+        "id": "ears_intelligence_t1",
+        "tier": 1,
+        "stat": "intelligence",
+        "min": 3,
+        "asset": "assets/creatures/parts/ears/blue.png"
+      }
+    ],
+
+    /* ------------------------------------------------------------
+       YEUX
+       ------------------------------------------------------------
+       Les yeux donnent la lecture principale de l'etat mental.
+       Une version tier 2 peut remplacer une expression tier 1.
+       ------------------------------------------------------------ */
+    "eyes": [
+      {
+        "id": "eyes_conciliation_t1",
+        "tier": 1,
+        "stat": "conciliation",
+        "min": 2,
+        "asset": "assets/creatures/parts/eyes/base.png"
+      },
+      {
+        "id": "eyes_force_t1",
+        "tier": 1,
+        "stat": "force",
+        "min": 3,
+        "asset": "assets/creatures/parts/eyes/fronce.png"
+      },
+      {
+        "id": "eyes_exploration_t1",
+        "tier": 1,
+        "stat": "exploration",
+        "min": 3,
+        "asset": "assets/creatures/parts/eyes/hauts.png"
+      },
+      {
+        "id": "eyes_intelligence_t2",
+        "tier": 2,
+        "stat": "intelligence",
+        "min": 6,
+        "asset": "assets/creatures/parts/eyes/intenses.png"
+      }
+    ],
+
+    /* ------------------------------------------------------------
+       BOUCHES
+       ------------------------------------------------------------
+       Ici je teste bien le principe du lock :
+       plusieurs bouches tier 1 peuvent se debloquer,
+       mais seule la premiere reste jusqu'a un tier superieur.
+       ------------------------------------------------------------ */
+    "mouths": [
+      {
+        "id": "mouth_force_t1",
+        "tier": 1,
+        "stat": "force",
+        "min": 3,
+        "asset": "assets/creatures/parts/mouths/trait-bas.png"
+      },
+      {
+        "id": "mouth_conciliation_t1",
+        "tier": 1,
+        "stat": "conciliation",
+        "min": 3,
+        "asset": "assets/creatures/parts/mouths/sourire.png"
+      },
+      {
+        "id": "mouth_exploration_t1",
+        "tier": 1,
+        "stat": "exploration",
+        "min": 3,
+        "asset": "assets/creatures/parts/mouths/etonne.png"
+      },
+      {
+        "id": "mouth_intelligence_t2",
+        "tier": 2,
+        "stat": "intelligence",
+        "min": 6,
+        "asset": "assets/creatures/parts/mouths/etonne.png"
+      },
+      {
+        "id": "mouth_conciliation_t3",
+        "tier": 3,
+        "stat": "conciliation",
+        "min": 9,
+        "asset": "assets/creatures/parts/mouths/sourire.png"
+      }
+    ]
+  }
+}

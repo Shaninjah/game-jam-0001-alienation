@@ -140,22 +140,18 @@
     "creatures": {
       "force": {
         "name": "Brise-Sas",
-        "image": "assets/creatures/creature-level-1.png",
         "description": "L’apparence de la créature a évolué selon votre synchronisation émotionnelle avec l’œuf alien."
       },
       "exploration": {
         "name": "Marche-Brume",
-        "image": "assets/creatures/creature-level-1.png",
         "description": "L’apparence de la créature a évolué selon votre synchronisation émotionnelle avec l’œuf alien."
       },
       "conciliation": {
         "name": "Écho-Lien",
-        "image": "assets/creatures/creature-level-1.png",
         "description": "L’apparence de la créature a évolué selon votre synchronisation émotionnelle avec l’œuf alien."
       },
       "intelligence": {
         "name": "Noyau-Clair",
-        "image": "assets/creatures/creature-level-1.png",
         "description": "L’apparence de la créature a évolué selon votre synchronisation émotionnelle avec l’œuf alien."
       }
     }

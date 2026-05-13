@@ -188,6 +188,7 @@
   top: 260px;
   left: 562px;
   z-index: 4;
+  display: block;
   width: 220px;
   height: 300px;
   overflow: visible;
@@ -200,15 +201,42 @@
   Image de la créature, gardée dans une boîte fixe pour ne jamais bouger.
 */
 .creature-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 220px;
   height: 300px;
   object-fit: contain;
 }
 
 /*
+  La base est le corps principal de la créature.
+*/
+.creature-base-img {
+  z-index: 1;
+}
+
+/*
+  Les parties de corps sont des calques transparents posés exactement sur le même canvas.
+*/
+.creature-part-img {
+  z-index: 2;
+  pointer-events: none;
+}
+
+.creature-part-img.is-broken,
+.creature-base-img.is-broken ~ .creature-part-img {
+  display: none;
+}
+
+/*
   Placeholder de la créature si l'image manque, avec la même taille que l'image prévue.
 */
 .creature-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
   width: 220px;
   height: 300px;
   min-height: 0;

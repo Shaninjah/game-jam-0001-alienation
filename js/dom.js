@@ -74,6 +74,7 @@
   PCT.bindImageFallbacks = function bindImageFallbacks() {
     // Je récupère toutes les images qui ont un placeholder prévu.
     const images = PCT.app.querySelectorAll("img[data-fallback-label]");
+    const optionalImages = PCT.app.querySelectorAll("img[data-optional-image]");
 
     images.forEach((image) => {
       // Si l'image échoue au chargement, je la masque et je laisse apparaître le placeholder.
@@ -82,6 +83,17 @@
       }, { once: true });
 
       // Si l'image est déjà cassée au moment où je passe ici, je force le placeholder.
+      if (image.complete && image.naturalWidth === 0) {
+        image.classList.add("is-broken");
+      }
+    });
+
+    optionalImages.forEach((image) => {
+      // Les calques de créature sont optionnels : s'ils manquent, je les cache sans bloquer la base.
+      image.addEventListener("error", () => {
+        image.classList.add("is-broken");
+      }, { once: true });
+
       if (image.complete && image.naturalWidth === 0) {
         image.classList.add("is-broken");
       }
