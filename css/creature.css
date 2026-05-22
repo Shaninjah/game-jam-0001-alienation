@@ -23,7 +23,7 @@
   border: 0;
   border-radius: 0;
   background:
-    url("../assets/creatures/creature-room-level-1.png") center center / 1344px 756px no-repeat;
+    url("../assets/background/background-sans-vitre.png") center center / 1344px 756px no-repeat;
   box-shadow: none;
 }
 
@@ -195,6 +195,18 @@
   border: 0;
   border-radius: 0;
   background: transparent;
+}
+
+.creature-frame::after {
+  position: absolute;
+  top: -88px;
+  left: -112px;
+  z-index: 5;
+  width: 446px;
+  height: 440px;
+  pointer-events: none;
+  content: "";
+  background: url("../assets/background/vitre.png") center center / contain no-repeat;
 }
 
 /*
