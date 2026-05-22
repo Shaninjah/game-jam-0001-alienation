@@ -38,8 +38,20 @@
   Cadre fixe du portrait, pour que les avatars gardent tous la même place.
 */
 .avatar-frame {
+  position: relative;
   width: 254px;
   height: 362px;
+  overflow: hidden;
+  background: url("../assets/avatar/prof background.png") center bottom / contain no-repeat;
+}
+
+.avatar-img {
+  position: relative;
+  z-index: 2;
+  top: 20px;
+  left: 10px;
+  width: 112%;
+  height: 112%;
 }
 
 /*
