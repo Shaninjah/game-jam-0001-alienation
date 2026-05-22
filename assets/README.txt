@@ -5,10 +5,10 @@ Chemins attendus :
 - assets/lore/lore-02.png
 - assets/lore/lore-03.png
 - assets/lore/lore-04.png
-- assets/avatar/chen_smile.png
-- assets/avatar/chen_sad.png
-- assets/avatar/chen_chock.png
-- assets/avatar/chen_angry.png
+- assets/avatar/prof-neutral.png
+- assets/avatar/prof-smile.png
+- assets/avatar/prof-worried.png
+- assets/avatar/prof-shocked.png
 - assets/creatures/perso.png
 - assets/creatures/parts/ears/
 - assets/creatures/parts/eyes/

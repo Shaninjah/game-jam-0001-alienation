@@ -126,10 +126,11 @@
   ],
   "dialogue": {
     "avatar": {
-      "neutral": "assets/avatar/chen_smile.png",
-      "happy": "assets/avatar/chen_smile.png",
-      "serious": "assets/avatar/chen_angry.png",
-      "worried": "assets/avatar/chen_chock.png"
+      "neutral": "assets/avatar/prof-neutral.png",
+      "happy": "assets/avatar/prof-smile.png",
+      "serious": "assets/avatar/prof-neutral.png",
+      "worried": "assets/avatar/prof-worried.png",
+      "shocked": "assets/avatar/prof-shocked.png"
     },
     "tests": [
       {

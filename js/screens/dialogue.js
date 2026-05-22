@@ -278,7 +278,7 @@
   PCT.getAvatarImage = function getAvatarImage(emotion) {
     // Je cherche l'avatar correspondant à l'émotion, puis je retombe sur neutral si besoin.
     const avatarMap = PCT.state.data.dialogue.avatar || {};
-    return avatarMap[emotion] || avatarMap.neutral || "assets/avatar/chen_smile.png";
+    return avatarMap[emotion] || avatarMap.neutral || "assets/avatar/prof-neutral.png";
   };
 
   PCT.renderAvatarFrame = function renderAvatarFrame(image, speaker) {
