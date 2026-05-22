@@ -16,14 +16,16 @@
         {
           "label": "I give it a simple order to test obedience.",
           "effects": {
-            "force": 2
+            "force": 2,
+            "pressure": 0.25
           },
           "next": "dilemme_01"
         },
         {
           "label": "I give it a puzzle to measure its understanding.",
           "effects": {
-            "intelligence": 2
+            "intelligence": 2,
+            "pressure": 0.25
           },
           "next": "dilemme_01"
         },
@@ -31,7 +33,8 @@
           "label": "I turn the imitation into play to see what it invents.",
           "effects": {
             "conciliation": 1,
-            "exploration": 2
+            "exploration": 2,
+            "stability": 0.25
           },
           "next": "dilemme_01"
         }
@@ -50,7 +53,8 @@
           "label": "I interrupt the sequence before it learns bad habits.",
           "effects": {
             "force": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "stability": 0.25
           },
           "next": "decision_finale"
         },
@@ -58,14 +62,18 @@
           "label": "I compare every deviation to understand its thinking.",
           "effects": {
             "intelligence": 2,
-            "exploration": 1
+            "exploration": 1,
+            "stability": 0.25
           },
           "next": "decision_finale"
         },
         {
           "label": "I accept this imperfect version of my gesture.",
           "effects": {
-            "conciliation": 2
+            "conciliation": 2,
+            "pressure": 0.25,
+            "stability": 1.05,
+            "mercy": true
           },
           "next": "decision_finale"
         }
@@ -84,7 +92,8 @@
           "label": "I prioritize discipline: it must respond quickly.",
           "effects": {
             "force": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "stability": 0.25
           },
           "next": "final"
         },
@@ -92,14 +101,19 @@
           "label": "I prioritize curiosity: it must search before acting.",
           "effects": {
             "exploration": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.2,
+            "stability": 0.25
           },
           "next": "final"
         },
         {
           "label": "I prioritize empathy: it must feel before copying.",
           "effects": {
-            "conciliation": 3
+            "conciliation": 3,
+            "pressure": 0.7,
+            "stability": 0.35,
+            "overdrive": true
           },
           "next": "final"
         }

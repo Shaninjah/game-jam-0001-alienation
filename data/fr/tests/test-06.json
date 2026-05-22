@@ -16,14 +16,18 @@
         {
           "label": "Je protège immédiatement la salle d'incubation.",
           "effects": {
-            "force": 2
+            "force": 2,
+            "pressure": 0.25,
+            "stability": 0.7,
+            "mercy": true
           },
           "next": "dilemme_01"
         },
         {
           "label": "J'analyse la panne avant de bouger.",
           "effects": {
-            "intelligence": 2
+            "intelligence": 2,
+            "pressure": 0.25
           },
           "next": "dilemme_01"
         },
@@ -31,7 +35,8 @@
           "label": "Je suis la créature vers la source de la faille.",
           "effects": {
             "exploration": 2,
-            "conciliation": 1
+            "conciliation": 1,
+            "stability": 0.25
           },
           "next": "dilemme_01"
         }
@@ -49,7 +54,8 @@
         {
           "label": "Je lui interdis d'approcher les systèmes de sécurité.",
           "effects": {
-            "force": 2
+            "force": 2,
+            "pressure": 0.25
           },
           "next": "decision_finale"
         },
@@ -57,7 +63,8 @@
           "label": "Je lui demande de choisir un seul verrou à ouvrir.",
           "effects": {
             "conciliation": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "stability": 0.6
           },
           "next": "decision_finale"
         },
@@ -65,7 +72,9 @@
           "label": "Je cartographie les chemins qu'elle semble percevoir.",
           "effects": {
             "exploration": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.2,
+            "stability": 0.25
           },
           "next": "decision_finale"
         }
@@ -84,7 +93,8 @@
           "label": "J'obéis au confinement : le risque passe avant le lien.",
           "effects": {
             "force": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "stability": 0.25
           },
           "next": "final"
         },
@@ -92,14 +102,18 @@
           "label": "Je négocie un protocole plus souple pour éviter la panique.",
           "effects": {
             "conciliation": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "stability": 1.3,
+            "mercy": true
           },
           "next": "final"
         },
         {
           "label": "Je la laisse montrer la sortie qu'elle perçoit.",
           "effects": {
-            "exploration": 3
+            "exploration": 3,
+            "pressure": 0.9,
+            "overdrive": true
           },
           "next": "final"
         }

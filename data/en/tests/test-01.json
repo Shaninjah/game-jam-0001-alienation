@@ -29,7 +29,8 @@
           "label": "Before we start, I want to know if this thing is dangerous.",
           "effects": {
             "intelligence": 2,
-            "exploration": 1
+            "exploration": 1,
+            "stability": 0.25
           },
           "next": "dilemme_01"
         }
@@ -48,7 +49,9 @@
           "label": "I force access and regain control of the zone.",
           "effects": {
             "force": 2,
-            "conciliation": -1
+            "conciliation": -1,
+            "pressure": 0.8,
+            "overdrive": true
           },
           "next": "dilemme_02"
         },
@@ -56,7 +59,8 @@
           "label": "I analyze the egg’s signals before acting.",
           "effects": {
             "intelligence": 1,
-            "exploration": 1
+            "exploration": 1,
+            "stability": 0.25
           },
           "next": "dilemme_02"
         },
@@ -64,7 +68,9 @@
           "label": "I slow my breathing and try to calm it.",
           "effects": {
             "conciliation": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "stability": 1.3,
+            "mercy": true
           },
           "next": "dilemme_02"
         }
@@ -87,7 +93,8 @@
         {
           "label": "I push forward. A soldier does not retreat from a door.",
           "effects": {
-            "force": 2
+            "force": 2,
+            "pressure": 0.25
           },
           "next": "decision_finale"
         },
@@ -95,14 +102,17 @@
           "label": "I explore the unknown corridor to understand what it wants to show me.",
           "effects": {
             "exploration": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.2,
+            "stability": 0.25
           },
           "next": "decision_finale"
         },
         {
           "label": "I look for logic in the vision to anticipate the danger.",
           "effects": {
-            "intelligence": 2
+            "intelligence": 2,
+            "pressure": 0.25
           },
           "next": "decision_finale"
         }
@@ -120,7 +130,10 @@
         {
           "label": "Protect others, even if it puts me in danger.",
           "effects": {
-            "conciliation": 3
+            "conciliation": 3,
+            "pressure": 0.35,
+            "stability": 1.05,
+            "mercy": true
           },
           "next": "final"
         },
@@ -128,7 +141,10 @@
           "label": "Understand its origin and exploit the data.",
           "effects": {
             "intelligence": 2,
-            "exploration": 1
+            "exploration": 1,
+            "pressure": 0.55,
+            "stability": 0.25,
+            "overdrive": true
           },
           "next": "final"
         },
@@ -136,7 +152,10 @@
           "label": "Survive, secure the zone, and neutralize any threat.",
           "effects": {
             "force": 1,
-            "exploration": 2
+            "exploration": 2,
+            "pressure": 0.75,
+            "stability": 0.25,
+            "overdrive": true
           },
           "next": "final"
         }

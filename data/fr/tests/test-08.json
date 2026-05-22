@@ -16,14 +16,16 @@
         {
           "label": "Je bloque sa forme actuelle avant une mutation dangereuse.",
           "effects": {
-            "force": 2
+            "force": 2,
+            "pressure": 0.4
           },
           "next": "dilemme_01"
         },
         {
           "label": "Je simule les mutations possibles avant d'intervenir.",
           "effects": {
-            "intelligence": 2
+            "intelligence": 2,
+            "pressure": 0.4
           },
           "next": "dilemme_01"
         },
@@ -31,7 +33,9 @@
           "label": "Je la laisse s'adapter à l'environnement de test.",
           "effects": {
             "exploration": 2,
-            "conciliation": 1
+            "conciliation": 1,
+            "pressure": 0.15,
+            "stability": 0.25
           },
           "next": "dilemme_01"
         }
@@ -50,7 +54,9 @@
           "label": "Je priorise une anatomie robuste et défensive.",
           "effects": {
             "force": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.15,
+            "stability": 0.25
           },
           "next": "decision_finale"
         },
@@ -58,14 +64,17 @@
           "label": "J'équilibre les paramètres au lieu de maximiser une qualité.",
           "effects": {
             "intelligence": 2,
-            "conciliation": 1
+            "conciliation": 1,
+            "pressure": 0.15,
+            "stability": 0.25
           },
           "next": "decision_finale"
         },
         {
           "label": "Je préserve les anomalies qui lui donnent de nouvelles options.",
           "effects": {
-            "exploration": 2
+            "exploration": 2,
+            "pressure": 0.6
           },
           "next": "decision_finale"
         }
@@ -83,7 +92,10 @@
         {
           "label": "Elle sera trop protectrice, mais capable de tenir.",
           "effects": {
-            "force": 3
+            "force": 3,
+            "pressure": 0.35,
+            "stability": 0.7,
+            "mercy": true
           },
           "next": "final"
         },
@@ -91,14 +103,19 @@
           "label": "Elle sera trop curieuse, mais capable d'apprendre.",
           "effects": {
             "exploration": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.35,
+            "stability": 0.25
           },
           "next": "final"
         },
         {
           "label": "Elle sera trop liée à moi, mais capable de ressentir.",
           "effects": {
-            "conciliation": 3
+            "conciliation": 3,
+            "pressure": 0.85,
+            "stability": 0.35,
+            "overdrive": true
           },
           "next": "final"
         }

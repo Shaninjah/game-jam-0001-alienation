@@ -32,6 +32,17 @@
     }, {});
   };
 
+  PCT.createEmptyEvolutionState = function createEmptyEvolutionState() {
+    // Ces valeurs suivent la partie cachee du protocole : pression, instabilite et anomalies.
+    return {
+      instability: 0,
+      evolutionPressure: 0,
+      anomalyStage: 0,
+      dominantHistory: [],
+      warnings: []
+    };
+  };
+
   // État courant du jeu : langue, données chargées, progression, stats et résultat final.
   PCT.state = {
     language: PCT.getInitialLanguage(),
@@ -42,6 +53,11 @@
     currentNodeId: null,
     messageIndex: 0,
     stats: PCT.createEmptyStats(),
+    instability: 0,
+    evolutionPressure: 0,
+    anomalyStage: 0,
+    dominantHistory: [],
+    warnings: [],
     unlockedParts: {},
     lastEffects: [],
     lastMutationEvents: [],
@@ -105,6 +121,160 @@
     return PCT.state.testIndex >= PCT.MIN_STOP_TEST_INDEX;
   };
 
+  PCT.updateCreatureInstability = function updateCreatureInstability(effects = {}) {
+    // La surcharge reste lisible par le code : elle monte avec les choix trop specialises.
+    const config = PCT.getInstabilityConfig();
+
+    if (!config.enabled) {
+      return {
+        pressureDelta: 0,
+        stageChanged: false
+      };
+    }
+
+    const previousStage = PCT.state.anomalyStage;
+    const previousDominantKey = PCT.state.dominantHistory[PCT.state.dominantHistory.length - 1];
+    const dominantKey = PCT.getDominantStatKey ? PCT.getDominantStatKey() : PCT.STAT_KEYS[0];
+    const statRanking = PCT.getStatRanking();
+    const topScore = statRanking[0] ? statRanking[0].value : 0;
+    const secondScore = statRanking[1] ? statRanking[1].value : 0;
+    const dominanceGap = topScore - secondScore;
+    const positiveEffectTotal = PCT.getPositiveEffectTotal(effects);
+    let pressureDelta = config.choicePressure + (positiveEffectTotal * config.positiveEffectPressure);
+
+    if (dominanceGap >= config.dominanceGap) {
+      pressureDelta += config.dominancePressure;
+    }
+
+    if (topScore >= config.highStatThreshold) {
+      pressureDelta += config.highStatPressure;
+    }
+
+    if (PCT.state.testIndex >= config.lateTestIndex) {
+      pressureDelta += config.lateTestPressure;
+    }
+
+    if (previousDominantKey && previousDominantKey !== dominantKey) {
+      pressureDelta += config.dominantShiftPressure;
+    }
+
+    if (dominanceGap <= config.balancedGap) {
+      pressureDelta -= config.balancedRelief;
+    }
+
+    if (typeof effects.instability === "number") {
+      pressureDelta += effects.instability;
+    }
+
+    if (typeof effects.pressure === "number") {
+      pressureDelta += effects.pressure * config.effectPressureScale;
+    }
+
+    if (typeof effects.stability === "number") {
+      pressureDelta -= effects.stability * config.effectStabilityScale;
+    }
+
+    if (effects.mercy === true) {
+      pressureDelta -= config.balancedRelief;
+    }
+
+    if (effects.overdrive === true) {
+      pressureDelta += config.overdrivePressure;
+    }
+
+    const nextPressure = PCT.clamp
+      ? PCT.clamp(PCT.state.evolutionPressure + pressureDelta, 0, config.max)
+      : Math.min(Math.max(PCT.state.evolutionPressure + pressureDelta, 0), config.max);
+
+    PCT.state.evolutionPressure = Number(nextPressure.toFixed(2));
+    PCT.state.instability = PCT.state.evolutionPressure;
+    PCT.state.anomalyStage = PCT.getAnomalyStage(PCT.state.instability);
+    PCT.state.dominantHistory.push(dominantKey);
+
+    if (PCT.state.dominantHistory.length > 24) {
+      PCT.state.dominantHistory.shift();
+    }
+
+    if (PCT.state.anomalyStage > previousStage) {
+      PCT.state.warnings.push({
+        type: "anomaly-stage",
+        stage: PCT.state.anomalyStage,
+        instability: PCT.state.instability,
+        dominantStat: dominantKey
+      });
+    }
+
+    return {
+      pressureDelta,
+      stageChanged: PCT.state.anomalyStage !== previousStage
+    };
+  };
+
+  PCT.getInstabilityConfig = function getInstabilityConfig() {
+    // Valeurs par defaut pour garder le jeu fonctionnel si la config est incomplete.
+    const appearance = PCT.state.appearance || {};
+    const config = appearance.instability || {};
+    const stageThresholds = config.stageThresholds || {};
+
+    return {
+      enabled: config.enabled !== false,
+      max: typeof config.max === "number" ? config.max : 12,
+      choicePressure: typeof config.choicePressure === "number" ? config.choicePressure : 0.15,
+      positiveEffectPressure: typeof config.positiveEffectPressure === "number" ? config.positiveEffectPressure : 0.12,
+      effectPressureScale: typeof config.effectPressureScale === "number" ? config.effectPressureScale : 1,
+      effectStabilityScale: typeof config.effectStabilityScale === "number" ? config.effectStabilityScale : 1,
+      overdrivePressure: typeof config.overdrivePressure === "number" ? config.overdrivePressure : 0.7,
+      dominanceGap: typeof config.dominanceGap === "number" ? config.dominanceGap : 5,
+      dominancePressure: typeof config.dominancePressure === "number" ? config.dominancePressure : 0.7,
+      highStatThreshold: typeof config.highStatThreshold === "number" ? config.highStatThreshold : 9,
+      highStatPressure: typeof config.highStatPressure === "number" ? config.highStatPressure : 0.7,
+      lateTestIndex: typeof config.lateTestIndex === "number" ? config.lateTestIndex : 3,
+      lateTestPressure: typeof config.lateTestPressure === "number" ? config.lateTestPressure : 0.35,
+      dominantShiftPressure: typeof config.dominantShiftPressure === "number" ? config.dominantShiftPressure : 0.45,
+      balancedGap: typeof config.balancedGap === "number" ? config.balancedGap : 2,
+      balancedRelief: typeof config.balancedRelief === "number" ? config.balancedRelief : 0.25,
+      stageThresholds: {
+        1: typeof stageThresholds["1"] === "number" ? stageThresholds["1"] : 4,
+        2: typeof stageThresholds["2"] === "number" ? stageThresholds["2"] : 7,
+        3: typeof stageThresholds["3"] === "number" ? stageThresholds["3"] : 10
+      }
+    };
+  };
+
+  PCT.getAnomalyStage = function getAnomalyStage(instability) {
+    // Les paliers sont cumulables : stage 3 implique que les stages 1 et 2 sont aussi depasses.
+    const thresholds = PCT.getInstabilityConfig().stageThresholds;
+    let stage = 0;
+
+    Object.keys(thresholds).forEach((stageKey) => {
+      const stageNumber = Number(stageKey);
+
+      if (instability >= thresholds[stageKey] && stageNumber > stage) {
+        stage = stageNumber;
+      }
+    });
+
+    return stage;
+  };
+
+  PCT.getStatRanking = function getStatRanking() {
+    // Classe les stats pour mesurer la specialisation sans exposer de nouvelle stat au joueur.
+    return PCT.STAT_KEYS
+      .map((key) => ({
+        key,
+        value: PCT.state.stats[key]
+      }))
+      .sort((left, right) => right.value - left.value);
+  };
+
+  PCT.getPositiveEffectTotal = function getPositiveEffectTotal(effects) {
+    // Seules les poussees positives participent a la pression brute.
+    return PCT.STAT_KEYS.reduce((total, key) => {
+      const value = effects && typeof effects[key] === "number" ? effects[key] : 0;
+      return value > 0 ? total + value : total;
+    }, 0);
+  };
+
   PCT.updateCreatureAppearance = function updateCreatureAppearance() {
     // Je parcours les règles d'apparence dans leur ordre : cet ordre sert de départage.
     const appearance = PCT.state.appearance;
@@ -131,7 +301,7 @@
       }
 
       // Un tier plus haut remplace le lock actuel, même s'il arrive plus tard.
-      if (rule.tier > currentPart.tier) {
+      if (!currentPart.isAnomaly && rule.tier > currentPart.tier) {
         const unlockedPart = PCT.createUnlockedPart(rule);
 
         PCT.state.unlockedParts[rule.slot] = unlockedPart;
@@ -139,7 +309,38 @@
       }
     });
 
+    PCT.getAnomalyRules().forEach((rule) => {
+      if (!PCT.isAppearanceRuleUnlocked(rule)) {
+        return;
+      }
+
+      const currentPart = PCT.state.unlockedParts[rule.slot];
+
+      if (!currentPart || PCT.shouldApplyAnomalyRule(rule, currentPart)) {
+        const unlockedPart = PCT.createUnlockedPart(rule);
+
+        PCT.state.unlockedParts[rule.slot] = unlockedPart;
+        mutationEvents.push(PCT.createMutationEvent(unlockedPart, currentPart || null));
+      }
+    });
+
     return mutationEvents;
+  };
+
+  PCT.shouldApplyAnomalyRule = function shouldApplyAnomalyRule(rule, currentPart) {
+    if (currentPart.id === rule.id) {
+      return false;
+    }
+
+    if (!currentPart.isAnomaly) {
+      return true;
+    }
+
+    if ((rule.stage || 0) > (currentPart.anomalyStage || 0)) {
+      return true;
+    }
+
+    return (rule.stage || 0) === (currentPart.anomalyStage || 0);
   };
 
   PCT.getAppearanceRules = function getAppearanceRules() {
@@ -162,7 +363,35 @@
     });
   };
 
+  PCT.getAnomalyRules = function getAnomalyRules() {
+    const appearance = PCT.state.appearance || {};
+    const anomalyRules = appearance.anomalyRules || {};
+
+    if (Array.isArray(anomalyRules)) {
+      return anomalyRules.map((rule) => ({
+        ...rule,
+        isAnomaly: true
+      }));
+    }
+
+    const slots = Array.isArray(appearance.slots) ? appearance.slots : [];
+
+    return slots.flatMap((slot) => {
+      const rules = Array.isArray(anomalyRules[slot]) ? anomalyRules[slot] : [];
+
+      return rules.map((rule) => ({
+        ...rule,
+        slot,
+        isAnomaly: true
+      }));
+    });
+  };
+
   PCT.isAppearanceRuleUnlocked = function isAppearanceRuleUnlocked(rule) {
+    if (rule && rule.isAnomaly) {
+      return PCT.isAnomalyRuleUnlocked(rule);
+    }
+
     // Une règle n'est valide que si la stat demandée atteint son seuil.
     return (
       rule &&
@@ -170,6 +399,34 @@
       typeof rule.min === "number" &&
       PCT.state.stats[rule.stat] >= PCT.getEffectiveAppearanceMin(rule)
     );
+  };
+
+  PCT.isAnomalyRuleUnlocked = function isAnomalyRuleUnlocked(rule) {
+    const config = PCT.getInstabilityConfig();
+
+    if (!config.enabled || !rule || typeof rule.minInstability !== "number") {
+      return false;
+    }
+
+    if (PCT.state.instability < rule.minInstability) {
+      return false;
+    }
+
+    if (typeof rule.stage === "number" && PCT.state.anomalyStage < rule.stage) {
+      return false;
+    }
+
+    const dominantStat = PCT.getDominantStatKey ? PCT.getDominantStatKey() : PCT.STAT_KEYS[0];
+
+    if (rule.stat && rule.stat !== "any" && rule.stat !== dominantStat) {
+      return false;
+    }
+
+    if (typeof rule.minDominantStat === "number" && PCT.state.stats[dominantStat] < rule.minDominantStat) {
+      return false;
+    }
+
+    return true;
   };
 
   PCT.getEffectiveAppearanceMin = function getEffectiveAppearanceMin(rule) {
@@ -218,6 +475,7 @@
     const activePartCount = Object.values(PCT.state.unlockedParts)
       .filter((part) => (
         part &&
+        !part.isAnomaly &&
         part.tier === rule.tier &&
         part.slot !== rule.slot &&
         !PCT.isAppearanceDifficultyIgnored(part.slot)
@@ -234,15 +492,22 @@
 
   PCT.createUnlockedPart = function createUnlockedPart(rule) {
     // Je garde les infos utiles pour comprendre quel calque a été verrouillé.
+    const isAnomaly = rule.isAnomaly === true;
+    const stat = rule.stat === "any" && PCT.getDominantStatKey
+      ? PCT.getDominantStatKey()
+      : rule.stat;
+
     return {
       id: rule.id,
       slot: rule.slot,
       tier: rule.tier,
-      stat: rule.stat,
-      min: rule.min,
-      effectiveMin: PCT.getEffectiveAppearanceMin(rule),
+      stat,
+      min: isAnomaly ? rule.minInstability : rule.min,
+      effectiveMin: isAnomaly ? rule.minInstability : PCT.getEffectiveAppearanceMin(rule),
       label: PCT.getLocalizedValue(rule.label, rule.id),
-      asset: rule.asset
+      asset: rule.asset,
+      isAnomaly,
+      anomalyStage: isAnomaly ? rule.stage || 1 : 0
     };
   };
 
@@ -256,7 +521,9 @@
       min: part.min,
       effectiveMin: part.effectiveMin,
       label: part.label,
-      previousLabel: previousPart ? previousPart.label : ""
+      previousLabel: previousPart ? previousPart.label : "",
+      isAnomaly: part.isAnomaly === true,
+      anomalyStage: part.anomalyStage || 0
     };
   };
 
@@ -296,6 +563,11 @@
     PCT.state.currentNodeId = null;
     PCT.state.messageIndex = 0;
     PCT.state.stats = PCT.createEmptyStats();
+    PCT.state.instability = 0;
+    PCT.state.evolutionPressure = 0;
+    PCT.state.anomalyStage = 0;
+    PCT.state.dominantHistory = [];
+    PCT.state.warnings = [];
     PCT.state.unlockedParts = {};
     PCT.state.lastEffects = [];
     PCT.state.lastMutationEvents = [];

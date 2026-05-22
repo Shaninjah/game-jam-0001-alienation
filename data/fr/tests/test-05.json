@@ -16,14 +16,16 @@
         {
           "label": "Je lui donne un ordre simple pour tester son obéissance.",
           "effects": {
-            "force": 2
+            "force": 2,
+            "pressure": 0.25
           },
           "next": "dilemme_01"
         },
         {
           "label": "Je lui propose une énigme pour mesurer sa compréhension.",
           "effects": {
-            "intelligence": 2
+            "intelligence": 2,
+            "pressure": 0.25
           },
           "next": "dilemme_01"
         },
@@ -31,7 +33,8 @@
           "label": "Je transforme l'imitation en jeu pour voir ce qu'elle invente.",
           "effects": {
             "conciliation": 1,
-            "exploration": 2
+            "exploration": 2,
+            "stability": 0.25
           },
           "next": "dilemme_01"
         }
@@ -50,7 +53,8 @@
           "label": "J'interromps la séquence avant qu'elle prenne de mauvaises habitudes.",
           "effects": {
             "force": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "stability": 0.25
           },
           "next": "decision_finale"
         },
@@ -58,14 +62,18 @@
           "label": "Je compare chaque déviation pour comprendre sa pensée.",
           "effects": {
             "intelligence": 2,
-            "exploration": 1
+            "exploration": 1,
+            "stability": 0.25
           },
           "next": "decision_finale"
         },
         {
           "label": "J'accepte cette version imparfaite de mon geste.",
           "effects": {
-            "conciliation": 2
+            "conciliation": 2,
+            "pressure": 0.25,
+            "stability": 1.05,
+            "mercy": true
           },
           "next": "decision_finale"
         }
@@ -84,7 +92,8 @@
           "label": "Je privilégie la discipline : elle doit répondre vite.",
           "effects": {
             "force": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "stability": 0.25
           },
           "next": "final"
         },
@@ -92,14 +101,19 @@
           "label": "Je privilégie la curiosité : elle doit chercher avant d'agir.",
           "effects": {
             "exploration": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.2,
+            "stability": 0.25
           },
           "next": "final"
         },
         {
           "label": "Je privilégie l'empathie : elle doit sentir avant de copier.",
           "effects": {
-            "conciliation": 3
+            "conciliation": 3,
+            "pressure": 0.7,
+            "stability": 0.35,
+            "overdrive": true
           },
           "next": "final"
         }

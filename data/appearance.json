@@ -2,23 +2,21 @@
    APPARENCE CREATURE
    ------------------------------------------------------------
    Config commune a toutes les langues.
-   Ici je choisis les calques visibles selon les stats du joueur.
+   Les mutations normales donnent une direction a la creature.
+   Les anomalies prennent le dessus quand l'evolution est poussee
+   trop loin.
    ============================================================ */
 
 {
   /* ------------------------------------------------------------
      IMAGE DE BASE
-     ------------------------------------------------------------
-     C'est la creature nue, avant les parties debloquees.
-     Les autres images viennent se poser exactement par-dessus.
      ------------------------------------------------------------ */
   "base": "assets/creatures/perso.png",
 
   /* ------------------------------------------------------------
      ORDRE DES CALQUES
      ------------------------------------------------------------
-     L'ordre compte pour le rendu : le premier est pose en dessous,
-     le dernier est pose au-dessus.
+     Le premier calque est pose en dessous, le dernier au-dessus.
      ------------------------------------------------------------ */
   "slots": [
     "tails",
@@ -29,18 +27,6 @@
 
   /* ------------------------------------------------------------
      DIFFICULTE INTERNE DES DEBLOCAGES
-     ------------------------------------------------------------
-     Ce bloc n'est jamais affiche au joueur.
-
-     Principe :
-     - un seuil de tier garde d'abord sa base : tier 1 = 3, tier 2 = 6, tier 3 = 9
-     - chaque partie deja active sur le meme tier ajoute +1 au seuil suivant
-     - la queue est ignoree car elle sert de base visible
-
-     Exemple tier 1 :
-     - premiere vraie partie : 3+
-     - deuxieme vraie partie : 4+
-     - troisieme vraie partie : 5+
      ------------------------------------------------------------ */
   "unlockDifficulty": {
     "enabled": true,
@@ -55,21 +41,46 @@
     }
   },
 
-  /* ============================================================
-     REGLES DE DEBLOCAGE
+  /* ------------------------------------------------------------
+     INSTABILITE
      ------------------------------------------------------------
-     Je range par partie du corps pour pouvoir lire vite.
+     La pression monte quand le joueur specialise trop la creature,
+     pousse les stats hautes ou continue tard dans le protocole.
+     Les valeurs restent cote code/design, jamais affichees telles
+     quelles au joueur.
+     ------------------------------------------------------------ */
+  "instability": {
+    "enabled": true,
+    "max": 18,
+    "choicePressure": 0.05,
+    "positiveEffectPressure": 0.045,
+    "effectPressureScale": 0.6,
+    "effectStabilityScale": 1,
+    "overdrivePressure": 0.25,
+    "dominanceGap": 8,
+    "dominancePressure": 0.25,
+    "highStatThreshold": 14,
+    "highStatPressure": 0.3,
+    "lateTestIndex": 5,
+    "lateTestPressure": 0.15,
+    "dominantShiftPressure": 0.12,
+    "balancedGap": 3,
+    "balancedRelief": 0.45,
+    "stageThresholds": {
+      "1": 6.5,
+      "2": 11,
+      "3": 15
+    }
+  },
 
+  /* ============================================================
+     MUTATIONS NORMALES
+     ------------------------------------------------------------
      Regle de lock :
-     - meme slot + meme tier = je garde la premiere partie debloquee
+     - meme slot + meme tier = la premiere partie debloquee reste
      - tier plus haut = remplace le lock actuel
      ============================================================ */
   "rules": {
-    /* ------------------------------------------------------------
-       QUEUE
-       ------------------------------------------------------------
-       La queue normale est visible tout de suite.
-       ------------------------------------------------------------ */
     "tails": [
       {
         "id": "tail_normal_t1",
@@ -81,29 +92,42 @@
         "stat": "exploration",
         "min": 0,
         "asset": "assets/creatures/parts/tails/normal.png"
+      },
+      {
+        "id": "tail_force_t2",
+        "label": {
+          "fr": "Queue de defense",
+          "en": "Defensive tail"
+        },
+        "tier": 2,
+        "stat": "force",
+        "min": 7,
+        "asset": "assets/creatures/parts/tails/agressif1.png"
+      },
+      {
+        "id": "tail_force_t3",
+        "label": {
+          "fr": "Queue de rupture",
+          "en": "Rupture tail"
+        },
+        "tier": 3,
+        "stat": "force",
+        "min": 11,
+        "asset": "assets/creatures/parts/tails/agressif2.png"
       }
     ],
 
-    /* ------------------------------------------------------------
-       OREILLES
-       ------------------------------------------------------------
-       Chaque couleur correspond a une stat :
-       rouge = force, rose = conciliation, bleu = intelligence.
-
-       Pour exploration, je garde l'ancien asset en attendant
-       un fichier green.png dans ce dossier.
-       ------------------------------------------------------------ */
     "ears": [
       {
         "id": "ears_force_t1",
         "label": {
-          "fr": "Oreilles de défense",
+          "fr": "Oreilles de defense",
           "en": "Defensive ears"
         },
         "tier": 1,
         "stat": "force",
         "min": 3,
-        "asset": "assets/creatures/parts/ears/red.png"
+        "asset": "assets/creatures/parts/ears/pointues.png"
       },
       {
         "id": "ears_conciliation_t1",
@@ -114,12 +138,12 @@
         "tier": 1,
         "stat": "conciliation",
         "min": 3,
-        "asset": "assets/creatures/parts/ears/pink.png"
+        "asset": "assets/creatures/parts/ears/moyennes.png"
       },
       {
         "id": "ears_exploration_t1",
         "label": {
-          "fr": "Oreilles éclaireuses",
+          "fr": "Oreilles eclaireuses",
           "en": "Scout ears"
         },
         "tier": 1,
@@ -136,16 +160,32 @@
         "tier": 1,
         "stat": "intelligence",
         "min": 3,
-        "asset": "assets/creatures/parts/ears/blue.png"
+        "asset": "assets/creatures/parts/ears/basses.png"
+      },
+      {
+        "id": "ears_force_t2",
+        "label": {
+          "fr": "Oreilles d'alerte",
+          "en": "Alert ears"
+        },
+        "tier": 2,
+        "stat": "force",
+        "min": 7,
+        "asset": "assets/creatures/parts/ears/pointues2.png"
+      },
+      {
+        "id": "ears_conciliation_t2",
+        "label": {
+          "fr": "Oreilles d'attachement",
+          "en": "Attached ears"
+        },
+        "tier": 2,
+        "stat": "conciliation",
+        "min": 7,
+        "asset": "assets/creatures/parts/ears/basses.png"
       }
     ],
 
-    /* ------------------------------------------------------------
-       YEUX
-       ------------------------------------------------------------
-       Les yeux donnent la lecture principale de l'etat mental.
-       Une version tier 2 peut remplacer une expression tier 1.
-       ------------------------------------------------------------ */
     "eyes": [
       {
         "id": "eyes_conciliation_t1",
@@ -172,13 +212,35 @@
       {
         "id": "eyes_exploration_t1",
         "label": {
-          "fr": "Regard d'éveil",
+          "fr": "Regard d'eveil",
           "en": "Awakened gaze"
         },
         "tier": 1,
         "stat": "exploration",
         "min": 3,
         "asset": "assets/creatures/parts/eyes/hauts.png"
+      },
+      {
+        "id": "eyes_force_t2",
+        "label": {
+          "fr": "Regard de verrouillage",
+          "en": "Locking gaze"
+        },
+        "tier": 2,
+        "stat": "force",
+        "min": 7,
+        "asset": "assets/creatures/parts/eyes/fronce2.png"
+      },
+      {
+        "id": "eyes_conciliation_t2",
+        "label": {
+          "fr": "Regard de lien",
+          "en": "Linked gaze"
+        },
+        "tier": 2,
+        "stat": "conciliation",
+        "min": 7,
+        "asset": "assets/creatures/parts/eyes/kawaii.png"
       },
       {
         "id": "eyes_intelligence_t2",
@@ -193,18 +255,11 @@
       }
     ],
 
-    /* ------------------------------------------------------------
-       BOUCHES
-       ------------------------------------------------------------
-       Ici je teste bien le principe du lock :
-       plusieurs bouches tier 1 peuvent se debloquer,
-       mais seule la premiere reste jusqu'a un tier superieur.
-       ------------------------------------------------------------ */
     "mouths": [
       {
         "id": "mouth_force_t1",
         "label": {
-          "fr": "Bouche de défi",
+          "fr": "Bouche de defi",
           "en": "Defiant mouth"
         },
         "tier": 1,
@@ -226,7 +281,7 @@
       {
         "id": "mouth_exploration_t1",
         "label": {
-          "fr": "Bouche d'étonnement",
+          "fr": "Bouche d'etonnement",
           "en": "Startled mouth"
         },
         "tier": 1,
@@ -235,15 +290,37 @@
         "asset": "assets/creatures/parts/mouths/etonne.png"
       },
       {
-        "id": "mouth_intelligence_t2",
+        "id": "mouth_intelligence_t1",
         "label": {
-          "fr": "Bouche d'hypothèse",
+          "fr": "Bouche d'hypothese",
           "en": "Hypothesis mouth"
         },
-        "tier": 2,
+        "tier": 1,
         "stat": "intelligence",
-        "min": 6,
-        "asset": "assets/creatures/parts/mouths/etonne.png"
+        "min": 3,
+        "asset": "assets/creatures/parts/mouths/trait-coin.png"
+      },
+      {
+        "id": "mouth_force_t2",
+        "label": {
+          "fr": "Bouche de morsure",
+          "en": "Biting mouth"
+        },
+        "tier": 2,
+        "stat": "force",
+        "min": 7,
+        "asset": "assets/creatures/parts/mouths/agressif.png"
+      },
+      {
+        "id": "mouth_force_t3",
+        "label": {
+          "fr": "Bouche de predation",
+          "en": "Predatory mouth"
+        },
+        "tier": 3,
+        "stat": "force",
+        "min": 10,
+        "asset": "assets/creatures/parts/mouths/agressif2.png"
       },
       {
         "id": "mouth_conciliation_t3",
@@ -255,6 +332,274 @@
         "stat": "conciliation",
         "min": 9,
         "asset": "assets/creatures/parts/mouths/sourire.png"
+      }
+    ]
+  },
+
+  /* ============================================================
+     ANOMALIES
+     ------------------------------------------------------------
+     Ces calques remplacent les mutations normales quand
+     l'instabilite atteint un seuil et que la stat dominante
+     correspond.
+     ============================================================ */
+  "anomalyRules": {
+    "ears": [
+      {
+        "id": "anomaly_ears_force_s1",
+        "label": {
+          "fr": "Oreilles asymetriques",
+          "en": "Asymmetric ears"
+        },
+        "tier": 4,
+        "stage": 1,
+        "stat": "force",
+        "minInstability": 4,
+        "minDominantStat": 8,
+        "asset": "assets/creatures/parts/ears/anomalie1.png"
+      },
+      {
+        "id": "anomaly_ears_force_s2",
+        "label": {
+          "fr": "Oreilles de rupture",
+          "en": "Ruptured ears"
+        },
+        "tier": 5,
+        "stage": 2,
+        "stat": "force",
+        "minInstability": 7,
+        "minDominantStat": 12,
+        "asset": "assets/creatures/parts/ears/anomalie1b.png"
+      },
+      {
+        "id": "anomaly_ears_exploration_s1",
+        "label": {
+          "fr": "Oreilles hypersensibles",
+          "en": "Hypersensitive ears"
+        },
+        "tier": 4,
+        "stage": 1,
+        "stat": "exploration",
+        "minInstability": 4,
+        "minDominantStat": 8,
+        "asset": "assets/creatures/parts/ears/anomalie2.png"
+      },
+      {
+        "id": "anomaly_ears_exploration_s2",
+        "label": {
+          "fr": "Oreilles parasites",
+          "en": "Parasitic ears"
+        },
+        "tier": 5,
+        "stage": 2,
+        "stat": "exploration",
+        "minInstability": 7,
+        "minDominantStat": 12,
+        "asset": "assets/creatures/parts/ears/anomalie2b.png"
+      },
+      {
+        "id": "anomaly_ears_any_s3",
+        "label": {
+          "fr": "Oreilles en conflit",
+          "en": "Conflicted ears"
+        },
+        "tier": 6,
+        "stage": 3,
+        "stat": "any",
+        "minInstability": 10,
+        "minDominantStat": 16,
+        "asset": "assets/creatures/parts/ears/anomalie1c.png"
+      }
+    ],
+
+    "eyes": [
+      {
+        "id": "anomaly_eyes_force_s1",
+        "label": {
+          "fr": "Regard de menace",
+          "en": "Threat gaze"
+        },
+        "tier": 4,
+        "stage": 1,
+        "stat": "force",
+        "minInstability": 4,
+        "minDominantStat": 8,
+        "asset": "assets/creatures/parts/eyes/anomalie1.png"
+      },
+      {
+        "id": "anomaly_eyes_exploration_s1",
+        "label": {
+          "fr": "Regard decale",
+          "en": "Offset gaze"
+        },
+        "tier": 4,
+        "stage": 1,
+        "stat": "exploration",
+        "minInstability": 4,
+        "minDominantStat": 8,
+        "asset": "assets/creatures/parts/eyes/anomalie2.png"
+      },
+      {
+        "id": "anomaly_eyes_conciliation_s1",
+        "label": {
+          "fr": "Regard d'attache excessive",
+          "en": "Overbonded gaze"
+        },
+        "tier": 4,
+        "stage": 1,
+        "stat": "conciliation",
+        "minInstability": 4,
+        "minDominantStat": 8,
+        "asset": "assets/creatures/parts/eyes/anomalie3.png"
+      },
+      {
+        "id": "anomaly_eyes_conciliation_s2",
+        "label": {
+          "fr": "Regard de dependance",
+          "en": "Dependent gaze"
+        },
+        "tier": 5,
+        "stage": 2,
+        "stat": "conciliation",
+        "minInstability": 7,
+        "minDominantStat": 12,
+        "asset": "assets/creatures/parts/eyes/anomalie3b.png"
+      },
+      {
+        "id": "anomaly_eyes_intelligence_s1",
+        "label": {
+          "fr": "Regard dissocie",
+          "en": "Dissociated gaze"
+        },
+        "tier": 4,
+        "stage": 1,
+        "stat": "intelligence",
+        "minInstability": 4,
+        "minDominantStat": 8,
+        "asset": "assets/creatures/parts/eyes/anomalie4.png"
+      },
+      {
+        "id": "anomaly_eyes_intelligence_s2",
+        "label": {
+          "fr": "Regard fracture",
+          "en": "Fractured gaze"
+        },
+        "tier": 5,
+        "stage": 2,
+        "stat": "intelligence",
+        "minInstability": 7,
+        "minDominantStat": 12,
+        "asset": "assets/creatures/parts/eyes/anomalie4b.png"
+      }
+    ],
+
+    "mouths": [
+      {
+        "id": "anomaly_mouth_force_s1",
+        "label": {
+          "fr": "Bouche hostile",
+          "en": "Hostile mouth"
+        },
+        "tier": 4,
+        "stage": 1,
+        "stat": "force",
+        "minInstability": 4,
+        "minDominantStat": 8,
+        "asset": "assets/creatures/parts/mouths/anomalie2.png"
+      },
+      {
+        "id": "anomaly_mouth_force_s2",
+        "label": {
+          "fr": "Bouche de surcharge",
+          "en": "Overloaded mouth"
+        },
+        "tier": 5,
+        "stage": 2,
+        "stat": "force",
+        "minInstability": 7,
+        "minDominantStat": 12,
+        "asset": "assets/creatures/parts/mouths/anomalie2b.png"
+      },
+      {
+        "id": "anomaly_mouth_exploration_s1",
+        "label": {
+          "fr": "Bouche erratique",
+          "en": "Erratic mouth"
+        },
+        "tier": 4,
+        "stage": 1,
+        "stat": "exploration",
+        "minInstability": 4,
+        "minDominantStat": 8,
+        "asset": "assets/creatures/parts/mouths/anomalie3.png"
+      },
+      {
+        "id": "anomaly_mouth_conciliation_s1",
+        "label": {
+          "fr": "Sourire fixe",
+          "en": "Fixed smile"
+        },
+        "tier": 4,
+        "stage": 1,
+        "stat": "conciliation",
+        "minInstability": 4,
+        "minDominantStat": 8,
+        "asset": "assets/creatures/parts/mouths/anomalie1.png"
+      },
+      {
+        "id": "anomaly_mouth_conciliation_s2",
+        "label": {
+          "fr": "Sourire contrarie",
+          "en": "Contradicted smile"
+        },
+        "tier": 5,
+        "stage": 2,
+        "stat": "conciliation",
+        "minInstability": 7,
+        "minDominantStat": 12,
+        "asset": "assets/creatures/parts/mouths/anomalie1b.png"
+      },
+      {
+        "id": "anomaly_mouth_intelligence_s1",
+        "label": {
+          "fr": "Bouche de calcul",
+          "en": "Calculating mouth"
+        },
+        "tier": 4,
+        "stage": 1,
+        "stat": "intelligence",
+        "minInstability": 4,
+        "minDominantStat": 8,
+        "asset": "assets/creatures/parts/mouths/anomalie3.png"
+      }
+    ],
+
+    "tails": [
+      {
+        "id": "anomaly_tail_force_s2",
+        "label": {
+          "fr": "Queue agressive",
+          "en": "Aggressive tail"
+        },
+        "tier": 5,
+        "stage": 2,
+        "stat": "force",
+        "minInstability": 7,
+        "minDominantStat": 12,
+        "asset": "assets/creatures/parts/tails/agressif1.png"
+      },
+      {
+        "id": "anomaly_tail_any_s3",
+        "label": {
+          "fr": "Queue de degenerescence",
+          "en": "Degenerative tail"
+        },
+        "tier": 6,
+        "stage": 3,
+        "stat": "any",
+        "minInstability": 10,
+        "minDominantStat": 16,
+        "asset": "assets/creatures/parts/tails/agressif2.png"
       }
     ]
   }

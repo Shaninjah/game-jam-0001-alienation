@@ -152,6 +152,7 @@
 
     // Les effets de la réponse modifient les stats autorisées.
     PCT.state.lastEffects = PCT.applyEffects(choice.effects || {});
+    PCT.updateCreatureInstability(choice.effects || {});
     PCT.state.lastMutationEvents = PCT.updateCreatureAppearance();
     PCT.state.testMutationEvents.push(...PCT.state.lastMutationEvents);
 

@@ -22,7 +22,9 @@
           "label": "I pin the creature close to me and regain control of the room.",
           "effects": {
             "force": 2,
-            "conciliation": -1
+            "conciliation": -1,
+            "pressure": 0.8,
+            "overdrive": true
           },
           "next": "dilemme_01"
         },
@@ -30,14 +32,16 @@
           "label": "I speak softly so it can feel that I am staying with it.",
           "effects": {
             "conciliation": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "stability": 0.6
           },
           "next": "dilemme_01"
         },
         {
           "label": "I let it watch the corridor so I can understand what attracts it.",
           "effects": {
-            "exploration": 2
+            "exploration": 2,
+            "pressure": 0.45
           },
           "next": "dilemme_01"
         }
@@ -56,14 +60,18 @@
           "label": "I secure the perimeter first. Nothing leaves the laboratory.",
           "effects": {
             "force": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.55,
+            "stability": 0.25,
+            "overdrive": true
           },
           "next": "decision_finale"
         },
         {
           "label": "I compare the signal to its reactions and look for a pattern.",
           "effects": {
-            "intelligence": 2
+            "intelligence": 2,
+            "pressure": 0.25
           },
           "next": "decision_finale"
         },
@@ -71,7 +79,8 @@
           "label": "I move forward with it to see if the signal comes from another organism.",
           "effects": {
             "exploration": 2,
-            "conciliation": 1
+            "conciliation": 1,
+            "stability": 0.25
           },
           "next": "decision_finale"
         }
@@ -90,7 +99,10 @@
           "label": "I set a clear limit: it must survive without threatening the team.",
           "effects": {
             "force": 1,
-            "intelligence": 2
+            "intelligence": 2,
+            "pressure": 0.55,
+            "stability": 0.25,
+            "overdrive": true
           },
           "next": "final"
         },
@@ -98,14 +110,19 @@
           "label": "I protect its autonomy, even if the protocol becomes harder to control.",
           "effects": {
             "conciliation": 2,
-            "exploration": 1
+            "exploration": 1,
+            "pressure": 0.35,
+            "stability": 1.3,
+            "mercy": true
           },
           "next": "final"
         },
         {
           "label": "I follow the signal with it to discover what the lab cannot see.",
           "effects": {
-            "exploration": 3
+            "exploration": 3,
+            "pressure": 0.9,
+            "overdrive": true
           },
           "next": "final"
         }

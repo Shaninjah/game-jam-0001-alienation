@@ -19,9 +19,12 @@
     const creatureKey = PCT.getDominantStatKey();
     const creature = PCT.state.data.final.creatures[creatureKey] || PCT.state.data.final.creatures.force;
     const appearance = PCT.getCreatureAppearance();
+    const stability = PCT.getCreatureStability();
+    const ending = PCT.getFinalEnding(stability);
     const hasNextTest = PCT.hasNextDialogueTest();
     const nextAction = hasNextTest ? "continue-test" : "finish-run";
-    const nextButtonLabel = hasNextTest ? ui.final.nextTestButton : ui.final.completeButton;
+    const nextButtonLabel = hasNextTest ? PCT.getContinueTestButtonLabel(stability) : ui.final.completeButton;
+    const nextButtonClass = hasNextTest ? ` btn-${PCT.escapeAttribute(stability.key)}` : "";
     const stopButtonHtml = PCT.canStopCurrentTest() ? `
               <button class="btn btn-danger" type="button" data-action="show-stop-confirm">
                 ${PCT.escapeHtml(ui.final.menuButton)}
@@ -49,12 +52,12 @@
 
             ${PCT.renderCreatureFrame(creature, appearance, ui.fallbacks.creature)}
 
-            <p class="creature-description">${PCT.escapeHtml(creature.description)}</p>
-            ${PCT.renderEvolutionPanel()}
+            <p class="creature-description">${PCT.escapeHtml(ending.text || creature.description)}</p>
+            ${PCT.renderEvolutionPanel(stability, ending)}
 
             <div class="button-row final-actions">
               ${stopButtonHtml}
-              <button class="btn btn-primary" type="button" data-action="${PCT.escapeAttribute(nextAction)}">
+              <button class="btn btn-primary${nextButtonClass}" type="button" data-action="${PCT.escapeAttribute(nextAction)}">
                 ${PCT.escapeHtml(nextButtonLabel)}
               </button>
             </div>
@@ -67,7 +70,7 @@
     PCT.bindImageFallbacks();
   };
 
-  PCT.renderEvolutionPanel = function renderEvolutionPanel() {
+  PCT.renderEvolutionPanel = function renderEvolutionPanel(stability, ending) {
     // Ce panneau affiche l'état actif de la créature, pas l'historique des paliers remplacés.
     const ui = PCT.state.data.ui.final;
     const activeParts = PCT.getVisibleMutationParts();
@@ -78,6 +81,7 @@
     return `
       <aside class="evolution-panel" aria-label="${PCT.escapeAttribute(ui.mutationTitle)}">
         <h3>${PCT.escapeHtml(ui.mutationTitle)}</h3>
+        ${PCT.renderStabilityStatus(stability, ending)}
         <div class="evolution-list">
           ${eventsHtml}
         </div>
@@ -85,9 +89,25 @@
     `;
   };
 
+  PCT.renderStabilityStatus = function renderStabilityStatus(stability, ending) {
+    const ui = PCT.state.data.ui.final;
+    const statusTitle = ui.stabilityTitle || "Stability";
+
+    return `
+      <section class="evolution-status status-${PCT.escapeHtml(stability.key)}">
+        <div class="evolution-status-header">
+          <span>${PCT.escapeHtml(statusTitle)}</span>
+          <strong>${PCT.escapeHtml(stability.label)}</strong>
+        </div>
+        <p>${PCT.escapeHtml(ending.title)}</p>
+        <small>${PCT.escapeHtml(stability.summary)}</small>
+      </section>
+    `;
+  };
+
   PCT.getVisibleMutationParts = function getVisibleMutationParts() {
-    // Le jeu expose seulement ces trois éléments dans la fenêtre Mutations.
-    const visibleSlots = ["ears", "tails", "eyes"];
+    // Le jeu expose les parties les plus lisibles dans la fenetre Mutations.
+    const visibleSlots = ["ears", "tails", "eyes", "mouths"];
 
     return visibleSlots
       .map((slot) => PCT.state.unlockedParts[slot])
@@ -98,12 +118,16 @@
     // Chaque ligne correspond à la partie actuellement active sur son slot.
     const ui = PCT.state.data.ui.final;
     const slotLabel = PCT.getAppearanceSlotLabel(part.slot);
+    const tierLabel = part.isAnomaly
+      ? ui.anomalyTierLabel || ui.tierLabel
+      : ui.tierLabel;
+    const tierValue = part.isAnomaly ? part.anomalyStage : part.tier;
 
     return `
-      <div class="evolution-item stat-${PCT.escapeHtml(part.stat)}">
+      <div class="evolution-item stat-${PCT.escapeHtml(part.stat)}${part.isAnomaly ? " is-anomaly" : ""}">
         <div class="evolution-item-header">
           <strong>${PCT.escapeHtml(slotLabel)}</strong>
-          <span>${PCT.escapeHtml(ui.tierLabel)} ${PCT.escapeHtml(part.tier)}</span>
+          <span>${PCT.escapeHtml(tierLabel)} ${PCT.escapeHtml(tierValue)}</span>
         </div>
         <p>${PCT.escapeHtml(part.label)}</p>
         <small>
@@ -183,6 +207,50 @@
 
       return dominantKey;
     }, PCT.STAT_KEYS[0]);
+  };
+
+  PCT.getCreatureStability = function getCreatureStability() {
+    const ui = PCT.state.data.ui.final;
+    const states = ui.stabilityStates || {};
+    let key = "stable";
+    let endingKey = "stable";
+
+    if (PCT.state.anomalyStage >= 3) {
+      key = "critical";
+      endingKey = "degenerate";
+    } else if (PCT.state.anomalyStage >= 1) {
+      key = "anomaly";
+      endingKey = "unstable";
+    } else if (PCT.state.instability >= 2.5) {
+      key = "strained";
+      endingKey = "specialized";
+    }
+
+    const stateText = states[key] || {};
+
+    return {
+      key,
+      endingKey,
+      label: stateText.label || key,
+      summary: stateText.summary || "",
+      instability: PCT.state.instability,
+      anomalyStage: PCT.state.anomalyStage
+    };
+  };
+
+  PCT.getContinueTestButtonLabel = function getContinueTestButtonLabel(stability) {
+    const buttons = PCT.state.data.ui.final.continueButtons || {};
+    return buttons[stability.key] || PCT.state.data.ui.final.nextTestButton;
+  };
+
+  PCT.getFinalEnding = function getFinalEnding(stability) {
+    const endings = PCT.state.data.final.endings || {};
+    const ending = endings[stability.endingKey] || endings.stable || {};
+
+    return {
+      title: ending.title || "",
+      text: ending.text || ""
+    };
   };
 
   PCT.getStatLabel = function getStatLabel(key) {

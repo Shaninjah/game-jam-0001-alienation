@@ -17,21 +17,28 @@
           "label": "I ration the supply strictly to keep control.",
           "effects": {
             "intelligence": 2,
-            "force": 1
+            "force": 1,
+            "pressure": 0.55,
+            "stability": 0.25,
+            "overdrive": true
           },
           "next": "dilemme_01"
         },
         {
           "label": "I give it more energy to calm its stress.",
           "effects": {
-            "conciliation": 2
+            "conciliation": 2,
+            "pressure": 0.25,
+            "stability": 1.05,
+            "mercy": true
           },
           "next": "dilemme_01"
         },
         {
           "label": "I test a secondary source before it depends too much on me.",
           "effects": {
-            "exploration": 2
+            "exploration": 2,
+            "pressure": 0.45
           },
           "next": "dilemme_01"
         }
@@ -49,14 +56,17 @@
         {
           "label": "I maintain the procedure despite its refusal.",
           "effects": {
-            "force": 2
+            "force": 2,
+            "pressure": 0.25
           },
           "next": "decision_finale"
         },
         {
           "label": "I modify the formula according to its reactions.",
           "effects": {
-            "intelligence": 2
+            "intelligence": 2,
+            "pressure": 0.8,
+            "overdrive": true
           },
           "next": "decision_finale"
         },
@@ -64,7 +74,9 @@
           "label": "I share a calm contact to reduce the brutal dependency.",
           "effects": {
             "conciliation": 2,
-            "exploration": 1
+            "exploration": 1,
+            "stability": 1.3,
+            "mercy": true
           },
           "next": "decision_finale"
         }
@@ -83,21 +95,27 @@
           "label": "Stabilize its organism first, even if it resists.",
           "effects": {
             "intelligence": 2,
-            "force": 1
+            "force": 1,
+            "stability": 0.25
           },
           "next": "final"
         },
         {
           "label": "Let its instinct find an unknown resource.",
           "effects": {
-            "exploration": 3
+            "exploration": 3,
+            "pressure": 0.9,
+            "overdrive": true
           },
           "next": "final"
         },
         {
           "label": "Teach it to wait without feeling abandoned.",
           "effects": {
-            "conciliation": 3
+            "conciliation": 3,
+            "pressure": 0.7,
+            "stability": 0.35,
+            "overdrive": true
           },
           "next": "final"
         }

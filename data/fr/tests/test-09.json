@@ -17,14 +17,19 @@
           "label": "J'accepte la séparation pour prouver qu'elle peut obéir sans moi.",
           "effects": {
             "force": 1,
-            "intelligence": 2
+            "intelligence": 2,
+            "pressure": 0.35,
+            "stability": 0.95,
+            "mercy": true
           },
           "next": "dilemme_01"
         },
         {
           "label": "Je refuse : le lien est encore trop instable.",
           "effects": {
-            "conciliation": 2
+            "conciliation": 2,
+            "pressure": 0.6,
+            "stability": 0.35
           },
           "next": "dilemme_01"
         },
@@ -32,7 +37,9 @@
           "label": "Je demande un délai pour observer ce qu'elle anticipe.",
           "effects": {
             "exploration": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.55,
+            "stability": 0.25
           },
           "next": "dilemme_01"
         }
@@ -50,7 +57,10 @@
         {
           "label": "Je tiens la ligne et je laisse le protocole aller au bout.",
           "effects": {
-            "force": 2
+            "force": 2,
+            "pressure": 0.35,
+            "stability": 0.7,
+            "mercy": true
           },
           "next": "decision_finale"
         },
@@ -58,14 +68,17 @@
           "label": "Je transforme l'exercice en apprentissage d'indépendance.",
           "effects": {
             "intelligence": 1,
-            "conciliation": 2
+            "conciliation": 2,
+            "pressure": 0.35,
+            "stability": 0.6
           },
           "next": "decision_finale"
         },
         {
           "label": "Je suis l'image mentale qu'elle envoie pendant la séparation.",
           "effects": {
-            "exploration": 2
+            "exploration": 2,
+            "pressure": 0.8
           },
           "next": "decision_finale"
         }
@@ -84,14 +97,20 @@
           "label": "Le protocole militaire décide tant que le risque existe.",
           "effects": {
             "force": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.35,
+            "stability": 0.95,
+            "mercy": true
           },
           "next": "final"
         },
         {
           "label": "Le lien décide : nous devons apprendre ensemble.",
           "effects": {
-            "conciliation": 3
+            "conciliation": 3,
+            "pressure": 1.05,
+            "stability": 0.35,
+            "overdrive": true
           },
           "next": "final"
         },
@@ -99,7 +118,9 @@
           "label": "Elle décide, même si sa réponse nous échappe.",
           "effects": {
             "exploration": 2,
-            "conciliation": 1
+            "conciliation": 1,
+            "pressure": 0.35,
+            "stability": 0.25
           },
           "next": "final"
         }

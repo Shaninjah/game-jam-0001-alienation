@@ -40,7 +40,33 @@
       "mutationUnlockLabel": "Nouveau",
       "mutationUpgradeLabel": "Évolution",
       "tierLabel": "Palier",
-      "noMutationText": "Aucun nouveau palier. La forme actuelle se stabilise."
+      "noMutationText": "Aucun nouveau palier. La forme actuelle se stabilise.",
+      "stabilityTitle": "Stabilite",
+      "anomalyTierLabel": "Anomalie",
+      "continueButtons": {
+        "stable": "Continuer le test",
+        "strained": "Continuer malgre les signes",
+        "anomaly": "Forcer le protocole",
+        "critical": "Forcer l'evolution"
+      },
+      "stabilityStates": {
+        "stable": {
+          "label": "Stable",
+          "summary": "La forme reste coherente. La creature repond encore au lien."
+        },
+        "strained": {
+          "label": "Sous tension",
+          "summary": "La specialisation monte. Continuer risque de fixer une forme trop dure."
+        },
+        "anomaly": {
+          "label": "Anomalies detectees",
+          "summary": "Les calques biologiques se contredisent. La creature evolue contre elle-meme."
+        },
+        "critical": {
+          "label": "Degenerescence critique",
+          "summary": "Le protocole depasse ses bornes. La forme ne se stabilise plus."
+        }
+      }
     },
     "confirmQuit": {
       "title": "Quitter le protocole ?",
@@ -165,6 +191,24 @@
       "intelligence": {
         "name": "Noyau-Clair",
         "description": "L’apparence de la créature a évolué selon votre synchronisation émotionnelle avec l’œuf alien."
+      }
+    },
+    "endings": {
+      "stable": {
+        "title": "Lien viable",
+        "text": "La creature garde une forme lisible et repond encore a ta presence. Elle n'est pas parfaite, mais elle peut vivre avec ce lien."
+      },
+      "specialized": {
+        "title": "Forme specialisee",
+        "text": "La creature prend une direction nette. Elle devient plus capable, mais chaque nouveau test reduit sa marge d'adaptation."
+      },
+      "unstable": {
+        "title": "Forme instable",
+        "text": "Les anomalies apparaissent dans sa morphologie. Elle gagne en intensite, mais perd une partie de sa coherence interne."
+      },
+      "degenerate": {
+        "title": "Degenerescence totale",
+        "text": "L'evolution a ete poussee trop loin. La creature n'est plus seulement transformee : elle se deforme sous la pression du protocole."
       }
     }
   }

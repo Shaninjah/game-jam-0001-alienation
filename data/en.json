@@ -40,7 +40,33 @@
       "mutationUnlockLabel": "New",
       "mutationUpgradeLabel": "Evolution",
       "tierLabel": "Tier",
-      "noMutationText": "No new threshold. The current form stabilizes."
+      "noMutationText": "No new threshold. The current form stabilizes.",
+      "stabilityTitle": "Stability",
+      "anomalyTierLabel": "Anomaly",
+      "continueButtons": {
+        "stable": "Continue test",
+        "strained": "Continue despite the signs",
+        "anomaly": "Force the protocol",
+        "critical": "Force evolution"
+      },
+      "stabilityStates": {
+        "stable": {
+          "label": "Stable",
+          "summary": "The form remains coherent. The creature still responds to the bond."
+        },
+        "strained": {
+          "label": "Strained",
+          "summary": "Specialization is rising. Continuing may lock the form too hard."
+        },
+        "anomaly": {
+          "label": "Anomalies detected",
+          "summary": "The biological layers contradict each other. The creature evolves against itself."
+        },
+        "critical": {
+          "label": "Critical degeneration",
+          "summary": "The protocol has crossed its bounds. The form no longer stabilizes."
+        }
+      }
     },
     "confirmQuit": {
       "title": "Quit the protocol?",
@@ -165,6 +191,24 @@
       "intelligence": {
         "name": "Clearcore",
         "description": "The creature’s appearance evolved according to your emotional synchronization with the alien egg."
+      }
+    },
+    "endings": {
+      "stable": {
+        "title": "Viable bond",
+        "text": "The creature keeps a readable form and still responds to your presence. It is not perfect, but it can live with this bond."
+      },
+      "specialized": {
+        "title": "Specialized form",
+        "text": "The creature takes a clear direction. It becomes more capable, but each new test narrows its room to adapt."
+      },
+      "unstable": {
+        "title": "Unstable form",
+        "text": "Anomalies appear in its morphology. It gains intensity, but loses part of its internal coherence."
+      },
+      "degenerate": {
+        "title": "Total degeneration",
+        "text": "Evolution has been pushed too far. The creature is no longer merely transformed: it is deforming under the protocol pressure."
       }
     }
   }

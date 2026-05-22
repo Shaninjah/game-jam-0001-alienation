@@ -22,14 +22,17 @@
           "label": "Je coupe la vision avant qu'elle exploite mes souvenirs.",
           "effects": {
             "force": 2,
-            "conciliation": -1
+            "conciliation": -1,
+            "pressure": 0.8,
+            "overdrive": true
           },
           "next": "dilemme_01"
         },
         {
           "label": "Je note chaque détail comme une preuve à analyser.",
           "effects": {
-            "intelligence": 2
+            "intelligence": 2,
+            "pressure": 0.25
           },
           "next": "dilemme_01"
         },
@@ -37,7 +40,8 @@
           "label": "Je la laisse sentir ma peur pour comprendre ce qu'elle cherche.",
           "effects": {
             "conciliation": 2,
-            "exploration": 1
+            "exploration": 1,
+            "stability": 0.6
           },
           "next": "dilemme_01"
         }
@@ -56,21 +60,27 @@
           "label": "Je transforme la vision en carte mentale exploitable.",
           "effects": {
             "intelligence": 1,
-            "exploration": 2
+            "exploration": 2,
+            "pressure": 0.75,
+            "stability": 0.25,
+            "overdrive": true
           },
           "next": "decision_finale"
         },
         {
           "label": "Je m'en sers comme alerte et je prépare une riposte.",
           "effects": {
-            "force": 2
+            "force": 2,
+            "pressure": 0.25
           },
           "next": "decision_finale"
         },
         {
           "label": "Je cherche l'émotion centrale au lieu du détail militaire.",
           "effects": {
-            "conciliation": 2
+            "conciliation": 2,
+            "pressure": 0.25,
+            "stability": 0.35
           },
           "next": "decision_finale"
         }
@@ -89,7 +99,10 @@
           "label": "Un ordre clair : survivre et protéger le périmètre.",
           "effects": {
             "force": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.35,
+            "stability": 0.95,
+            "mercy": true
           },
           "next": "final"
         },
@@ -97,14 +110,19 @@
           "label": "Une question ouverte : chercher l'origine du signal.",
           "effects": {
             "exploration": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.2,
+            "stability": 0.25
           },
           "next": "final"
         },
         {
           "label": "Une présence stable : ne pas paniquer quand le lien tremble.",
           "effects": {
-            "conciliation": 3
+            "conciliation": 3,
+            "pressure": 0.7,
+            "stability": 0.35,
+            "overdrive": true
           },
           "next": "final"
         }

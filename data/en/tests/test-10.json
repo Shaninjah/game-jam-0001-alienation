@@ -22,7 +22,10 @@
           "label": "I accept that it remains imperfect and alive.",
           "effects": {
             "conciliation": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.35,
+            "stability": 1.3,
+            "mercy": true
           },
           "next": "dilemme_01"
         },
@@ -30,14 +33,20 @@
           "label": "I keep looking for a stable formula, even incomplete.",
           "effects": {
             "intelligence": 2,
-            "force": 1
+            "force": 1,
+            "pressure": 0.9,
+            "stability": 0.25,
+            "overdrive": true
           },
           "next": "dilemme_01"
         },
         {
           "label": "I let it choose its next mutation.",
           "effects": {
-            "exploration": 2
+            "exploration": 2,
+            "pressure": 0.35,
+            "stability": 0.7,
+            "mercy": true
           },
           "next": "dilemme_01"
         }
@@ -56,7 +65,10 @@
           "label": "I destroy the test grid before it traps the creature.",
           "effects": {
             "force": 1,
-            "exploration": 2
+            "exploration": 2,
+            "pressure": 1.1,
+            "stability": 0.25,
+            "overdrive": true
           },
           "next": "decision_finale"
         },
@@ -64,14 +76,19 @@
           "label": "I turn the test into an open dialogue.",
           "effects": {
             "conciliation": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.35,
+            "stability": 1.3,
+            "mercy": true
           },
           "next": "decision_finale"
         },
         {
           "label": "I measure this refusal precisely so we keep a trace.",
           "effects": {
-            "intelligence": 3
+            "intelligence": 3,
+            "pressure": 1.05,
+            "overdrive": true
           },
           "next": "decision_finale"
         }
@@ -89,14 +106,19 @@
         {
           "label": "I protect it, even against our own conclusions.",
           "effects": {
-            "conciliation": 3
+            "conciliation": 3,
+            "pressure": 0.35,
+            "stability": 1.05,
+            "mercy": true
           },
           "next": "final"
         },
         {
           "label": "I let it leave toward whatever is calling it.",
           "effects": {
-            "exploration": 3
+            "exploration": 3,
+            "pressure": 1.25,
+            "overdrive": true
           },
           "next": "final"
         },
@@ -104,7 +126,10 @@
           "label": "I stay with it to learn without pretending to finish it.",
           "effects": {
             "intelligence": 2,
-            "conciliation": 1
+            "conciliation": 1,
+            "pressure": 0.35,
+            "stability": 0.95,
+            "mercy": true
           },
           "next": "final"
         }

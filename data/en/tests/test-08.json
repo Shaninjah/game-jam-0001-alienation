@@ -16,14 +16,16 @@
         {
           "label": "I lock its current form before a dangerous mutation.",
           "effects": {
-            "force": 2
+            "force": 2,
+            "pressure": 0.4
           },
           "next": "dilemme_01"
         },
         {
           "label": "I simulate possible mutations before intervening.",
           "effects": {
-            "intelligence": 2
+            "intelligence": 2,
+            "pressure": 0.4
           },
           "next": "dilemme_01"
         },
@@ -31,7 +33,9 @@
           "label": "I let it adapt to the test environment.",
           "effects": {
             "exploration": 2,
-            "conciliation": 1
+            "conciliation": 1,
+            "pressure": 0.15,
+            "stability": 0.25
           },
           "next": "dilemme_01"
         }
@@ -50,7 +54,9 @@
           "label": "I prioritize a robust defensive anatomy.",
           "effects": {
             "force": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.15,
+            "stability": 0.25
           },
           "next": "decision_finale"
         },
@@ -58,14 +64,17 @@
           "label": "I balance the parameters instead of maximizing one quality.",
           "effects": {
             "intelligence": 2,
-            "conciliation": 1
+            "conciliation": 1,
+            "pressure": 0.15,
+            "stability": 0.25
           },
           "next": "decision_finale"
         },
         {
           "label": "I preserve the anomalies that give it new options.",
           "effects": {
-            "exploration": 2
+            "exploration": 2,
+            "pressure": 0.6
           },
           "next": "decision_finale"
         }
@@ -83,7 +92,10 @@
         {
           "label": "It will be too protective, but able to endure.",
           "effects": {
-            "force": 3
+            "force": 3,
+            "pressure": 0.35,
+            "stability": 0.7,
+            "mercy": true
           },
           "next": "final"
         },
@@ -91,14 +103,19 @@
           "label": "It will be too curious, but able to learn.",
           "effects": {
             "exploration": 2,
-            "intelligence": 1
+            "intelligence": 1,
+            "pressure": 0.35,
+            "stability": 0.25
           },
           "next": "final"
         },
         {
           "label": "It will be too bonded to me, but able to feel.",
           "effects": {
-            "conciliation": 3
+            "conciliation": 3,
+            "pressure": 0.85,
+            "stability": 0.35,
+            "overdrive": true
           },
           "next": "final"
         }
