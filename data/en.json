@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Prototype Creature Test"
+    "title": "Alienation"
   },
   "ui": {
     "common": {
@@ -11,8 +11,8 @@
       "en": "English"
     },
     "menu": {
-      "kicker": "Experimental narrative prototype",
-      "subtitle": "An alien egg was discovered during a military operation. Since you touched it, it reacts to your mood. Professor Chen begins a full test protocol.",
+      "kicker": "Evolving narrative game",
+      "subtitle": "An alien egg was discovered during a military operation. Since you touched it, the creature reacts to your decisions. Professor Chen begins a short protocol before it chooses its form.",
       "languageTitle": "Languages",
       "selectedLanguage": "Selected language",
       "playButton": "Play"
@@ -34,7 +34,13 @@
       "statsTitle": "Statistics",
       "creatureLabel": "LEVEL 1",
       "nextTestButton": "Continue test",
-      "menuButton": "Stop"
+      "completeButton": "Finish",
+      "menuButton": "Stop",
+      "mutationTitle": "Mutations",
+      "mutationUnlockLabel": "New",
+      "mutationUpgradeLabel": "Evolution",
+      "tierLabel": "Tier",
+      "noMutationText": "No new threshold. The current form stabilizes."
     },
     "confirmQuit": {
       "title": "Quit the protocol?",
@@ -58,6 +64,12 @@
       "exploration": "Exploration",
       "conciliation": "Conciliation",
       "intelligence": "Intelligence"
+    },
+    "appearanceSlots": {
+      "tails": "Tail",
+      "ears": "Ears",
+      "eyes": "Eyes",
+      "mouths": "Mouth"
     }
   },
   "lore": [
@@ -88,10 +100,10 @@
   ],
   "dialogue": {
     "avatar": {
-      "neutral": "assets/avatar/scientist-neutral.png",
-      "happy": "assets/avatar/scientist-happy.png",
-      "serious": "assets/avatar/scientist-serious.png",
-      "worried": "assets/avatar/scientist-worried.png"
+      "neutral": "assets/avatar/chen_smile.png",
+      "happy": "assets/avatar/chen_smile.png",
+      "serious": "assets/avatar/chen_angry.png",
+      "worried": "assets/avatar/chen_chock.png"
     },
     "tests": [
       {

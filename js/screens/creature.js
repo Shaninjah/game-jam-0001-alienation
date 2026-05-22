@@ -19,6 +19,9 @@
     const creatureKey = PCT.getDominantStatKey();
     const creature = PCT.state.data.final.creatures[creatureKey] || PCT.state.data.final.creatures.force;
     const appearance = PCT.getCreatureAppearance();
+    const hasNextTest = PCT.hasNextDialogueTest();
+    const nextAction = hasNextTest ? "continue-test" : "finish-run";
+    const nextButtonLabel = hasNextTest ? ui.final.nextTestButton : ui.final.completeButton;
     const stopButtonHtml = PCT.canStopCurrentTest() ? `
               <button class="btn btn-danger" type="button" data-action="show-stop-confirm">
                 ${PCT.escapeHtml(ui.final.menuButton)}
@@ -47,11 +50,12 @@
             ${PCT.renderCreatureFrame(creature, appearance, ui.fallbacks.creature)}
 
             <p class="creature-description">${PCT.escapeHtml(creature.description)}</p>
+            ${PCT.renderEvolutionPanel()}
 
             <div class="button-row final-actions">
               ${stopButtonHtml}
-              <button class="btn btn-primary" type="button" data-action="continue-test">
-                ${PCT.escapeHtml(ui.final.nextTestButton)}
+              <button class="btn btn-primary" type="button" data-action="${PCT.escapeAttribute(nextAction)}">
+                ${PCT.escapeHtml(nextButtonLabel)}
               </button>
             </div>
           </section>
@@ -61,6 +65,52 @@
 
     // Après le rendu, je branche le placeholder si l'image de créature manque.
     PCT.bindImageFallbacks();
+  };
+
+  PCT.renderEvolutionPanel = function renderEvolutionPanel() {
+    // Ce panneau affiche l'état actif de la créature, pas l'historique des paliers remplacés.
+    const ui = PCT.state.data.ui.final;
+    const activeParts = PCT.getVisibleMutationParts();
+    const eventsHtml = activeParts.length
+      ? activeParts.map(PCT.renderMutationPart).join("")
+      : `<p class="evolution-empty">${PCT.escapeHtml(ui.noMutationText)}</p>`;
+
+    return `
+      <aside class="evolution-panel" aria-label="${PCT.escapeAttribute(ui.mutationTitle)}">
+        <h3>${PCT.escapeHtml(ui.mutationTitle)}</h3>
+        <div class="evolution-list">
+          ${eventsHtml}
+        </div>
+      </aside>
+    `;
+  };
+
+  PCT.getVisibleMutationParts = function getVisibleMutationParts() {
+    // Le jeu expose seulement ces trois éléments dans la fenêtre Mutations.
+    const visibleSlots = ["ears", "tails", "eyes"];
+
+    return visibleSlots
+      .map((slot) => PCT.state.unlockedParts[slot])
+      .filter(Boolean);
+  };
+
+  PCT.renderMutationPart = function renderMutationPart(part) {
+    // Chaque ligne correspond à la partie actuellement active sur son slot.
+    const ui = PCT.state.data.ui.final;
+    const slotLabel = PCT.getAppearanceSlotLabel(part.slot);
+
+    return `
+      <div class="evolution-item stat-${PCT.escapeHtml(part.stat)}">
+        <div class="evolution-item-header">
+          <strong>${PCT.escapeHtml(slotLabel)}</strong>
+          <span>${PCT.escapeHtml(ui.tierLabel)} ${PCT.escapeHtml(part.tier)}</span>
+        </div>
+        <p>${PCT.escapeHtml(part.label)}</p>
+        <small>
+          ${PCT.escapeHtml(PCT.getStatLabel(part.stat))}
+        </small>
+      </div>
+    `;
   };
 
   PCT.renderCreatureFrame = function renderCreatureFrame(creature, appearance, fallbackLabel) {
@@ -138,5 +188,11 @@
   PCT.getStatLabel = function getStatLabel(key) {
     // Les noms affichés des stats viennent du JSON, avec la clé brute en secours.
     return PCT.state.data.ui.stats[key] || key;
+  };
+
+  PCT.getAppearanceSlotLabel = function getAppearanceSlotLabel(slot) {
+    // Les noms de slots restent traduisibles dans les fichiers de langue.
+    const labels = PCT.state.data.ui.appearanceSlots || {};
+    return labels[slot] || slot;
   };
 })();

@@ -253,6 +253,110 @@
 }
 
 /*
+  Panneau de mutations : il rend les paliers atteints lisibles sans masquer la créature.
+*/
+.evolution-panel {
+  position: absolute;
+  top: 138px;
+  right: 112px;
+  z-index: 5;
+  width: 302px;
+  height: 412px;
+  overflow: hidden;
+  border: 4px solid #08080a;
+  background: rgba(229, 230, 247, 0.96);
+  padding: 16px;
+}
+
+/*
+  Titre compact du journal de mutations.
+*/
+.evolution-panel h3 {
+  margin: 0 0 12px;
+  color: #08080a;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 30px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/*
+  Liste verticale des trois parties visibles de la créature.
+*/
+.evolution-list {
+  display: grid;
+  gap: 12px;
+}
+
+/*
+  Message de stabilisation quand aucun nouveau palier n'est atteint.
+*/
+.evolution-empty {
+  margin: 0;
+  color: #232323;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  text-align: center;
+}
+
+/*
+  Une mutation affichée comme un relevé de laboratoire court.
+*/
+.evolution-item {
+  border: 3px solid #08080a;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 9px 10px;
+}
+
+/*
+  En-tête de mutation : type à gauche, palier à droite.
+*/
+.evolution-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: #08080a;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+/*
+  Bande colorée par la stat qui a déclenché le palier.
+*/
+.evolution-item-header strong {
+  border: 2px solid #08080a;
+  padding: 1px 6px;
+  background: var(--stat-color);
+}
+
+/*
+  Nom lisible de la partie débloquée.
+*/
+.evolution-item p {
+  margin: 7px 0 4px;
+  color: #000000;
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 23px;
+}
+
+/*
+  Condition du palier, utile pour comprendre pourquoi la mutation apparaît.
+*/
+.evolution-item small {
+  display: block;
+  color: #232323;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+/*
   Boutons centrés en bas de la scène.
 */
 .final-actions {

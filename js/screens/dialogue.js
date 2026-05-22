@@ -26,6 +26,9 @@
     PCT.state.testIndex = testIndex;
     PCT.state.currentNodeId = null;
     PCT.state.messageIndex = 0;
+    PCT.state.lastEffects = [];
+    PCT.state.lastMutationEvents = [];
+    PCT.state.testMutationEvents = [];
     PCT.state.finalCreatureKey = null;
     PCT.renderDialogue(nextTest.startNode);
   };
@@ -37,9 +40,9 @@
       return;
     }
 
-    // Quand il n'y a plus de batterie écrite, je boucle sur le protocole pour garder le prototype jouable.
+    // Quand il n'y a plus de batterie écrite, le protocole court est terminé.
     PCT.resetRun();
-    PCT.startDialogueTest(0);
+    PCT.renderMenu();
   };
 
   PCT.renderDialogue = function renderDialogue(nodeId) {
@@ -58,7 +61,7 @@
 
     // Je prépare tout ce qui dépend du message actuel avant de fabriquer le HTML.
     const currentTest = PCT.getCurrentDialogueTest() || {};
-    const testLabel = currentTest.label || PCT.state.data.ui.dialogue.testLabel;
+    const testLabel = PCT.getDialogueProgressLabel(currentTest);
     const message = node.messages[PCT.state.messageIndex];
     const hasMoreMessages = PCT.state.messageIndex < node.messages.length - 1;
     const shouldShowChoices = !hasMoreMessages;
@@ -148,8 +151,9 @@
     const choice = node.choices[choiceIndex];
 
     // Les effets de la réponse modifient les stats autorisées.
-    PCT.applyEffects(choice.effects || {});
-    PCT.updateCreatureAppearance();
+    PCT.state.lastEffects = PCT.applyEffects(choice.effects || {});
+    PCT.state.lastMutationEvents = PCT.updateCreatureAppearance();
+    PCT.state.testMutationEvents.push(...PCT.state.lastMutationEvents);
 
     // Certains choix terminent le protocole et envoient directement à l'écran créature.
     if (choice.next === "final") {
@@ -167,12 +171,24 @@
       Je boucle uniquement sur les stats autorisées.
       Si le JSON contient une vieille stat supprimée, elle sera ignorée proprement.
     */
+    const appliedEffects = [];
+
     PCT.STAT_KEYS.forEach((key) => {
       // Une stat ne change que si le choix lui donne explicitement une valeur numérique.
       if (typeof effects[key] === "number") {
         PCT.state.stats[key] += effects[key];
+
+        if (effects[key] !== 0) {
+          appliedEffects.push({
+            key,
+            value: effects[key],
+            total: PCT.state.stats[key]
+          });
+        }
       }
     });
+
+    return appliedEffects;
   };
 
   PCT.renderChoices = function renderChoices(choices) {
@@ -190,7 +206,8 @@
     // Chaque choix devient un bouton qui renvoie son index au routeur global.
     const choiceButtons = choices.map((choice, index) => `
       <button class="btn choice-btn" type="button" data-action="select-choice" data-choice-index="${index}">
-        ${PCT.escapeHtml(choice.label)}
+        <span class="choice-label">${PCT.escapeHtml(choice.label)}</span>
+        ${PCT.renderChoiceEffects(choice.effects || {})}
       </button>
     `).join("");
 
@@ -199,6 +216,46 @@
         ${choiceButtons}
       </div>
     `;
+  };
+
+  PCT.renderChoiceEffects = function renderChoiceEffects(effects) {
+    // Les effets visibles rendent le lien choix -> statistiques immédiatement lisible.
+    const effectItems = PCT.STAT_KEYS
+      .filter((key) => typeof effects[key] === "number" && effects[key] !== 0)
+      .map((key) => `
+        <span class="choice-effect stat-${PCT.escapeHtml(key)}">
+          ${PCT.escapeHtml(PCT.formatEffectValue(effects[key]))}
+          ${PCT.escapeHtml(PCT.getStatLabel(key))}
+        </span>
+      `)
+      .join("");
+
+    if (!effectItems) {
+      return "";
+    }
+
+    return `
+      <span class="choice-effects">
+        ${effectItems}
+      </span>
+    `;
+  };
+
+  PCT.formatEffectValue = function formatEffectValue(value) {
+    // Les valeurs positives gardent un signe explicite pour être lues d'un coup d'œil.
+    return value > 0 ? `+${value}` : String(value);
+  };
+
+  PCT.getDialogueProgressLabel = function getDialogueProgressLabel(currentTest) {
+    // Le protocole est court et borné : j'affiche donc toujours la position dans la série.
+    const tests = PCT.getDialogueTests();
+    const label = currentTest.label || PCT.state.data.ui.dialogue.testLabel;
+
+    if (!tests.length) {
+      return label;
+    }
+
+    return `${label} · ${PCT.state.testIndex + 1}/${tests.length}`;
   };
 
   PCT.renderStatsStrip = function renderStatsStrip() {
@@ -220,7 +277,7 @@
   PCT.getAvatarImage = function getAvatarImage(emotion) {
     // Je cherche l'avatar correspondant à l'émotion, puis je retombe sur neutral si besoin.
     const avatarMap = PCT.state.data.dialogue.avatar || {};
-    return avatarMap[emotion] || avatarMap.neutral || "assets/avatar/scientist-neutral.png";
+    return avatarMap[emotion] || avatarMap.neutral || "assets/avatar/chen_smile.png";
   };
 
   PCT.renderAvatarFrame = function renderAvatarFrame(image, speaker) {

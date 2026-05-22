@@ -155,18 +155,47 @@
 .choice-btn {
   width: 798px;
   min-height: 62px;
-  justify-content: flex-start;
-  padding: 0 18px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 8px 18px;
   text-align: left;
   line-height: 24px;
 }
 
 /*
-  Petit texte interne éventuel dans un choix, laissé prêt si je veux détailler une réponse plus tard.
+  Texte principal de la réponse.
 */
-.choice-btn span {
-  opacity: 1;
+.choice-label {
+  display: block;
+  font-size: 22px;
+  line-height: 25px;
+}
+
+/*
+  Résumé des stats gagnées ou perdues par la réponse.
+*/
+.choice-effects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 5px;
+}
+
+/*
+  Capsule d'effet courte, colorée par la stat concernée.
+*/
+.choice-effect {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  border: 2px solid var(--line-color);
+  padding: 1px 7px;
+  background: var(--stat-color);
+  color: #000000;
   font-size: 14px;
+  font-weight: 900;
+  line-height: 18px;
 }
 
 /*

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Prototype Creature Test"
+    "title": "Alienation"
   },
   "ui": {
     "common": {
@@ -11,8 +11,8 @@
       "en": "English"
     },
     "menu": {
-      "kicker": "Prototype narratif expérimental",
-      "subtitle": "Un œuf alien a été découvert pendant une opération militaire. Depuis que tu l’as touché, il réagit à ton humeur. Le Professeur Chen lance une batterie de tests.",
+      "kicker": "Jeu narratif évolutif",
+      "subtitle": "Un œuf alien a été découvert pendant une opération militaire. Depuis que tu l’as touché, la créature réagit à tes décisions. Le Professeur Chen lance un protocole court avant qu’elle ne choisisse sa forme.",
       "languageTitle": "Langues",
       "selectedLanguage": "Langue sélectionnée",
       "playButton": "Jouer"
@@ -34,7 +34,13 @@
       "statsTitle": "Statistiques",
       "creatureLabel": "NIVEAU 1",
       "nextTestButton": "Continuer le test",
-      "menuButton": "Arrêter"
+      "completeButton": "Terminer",
+      "menuButton": "Arrêter",
+      "mutationTitle": "Mutations",
+      "mutationUnlockLabel": "Nouveau",
+      "mutationUpgradeLabel": "Évolution",
+      "tierLabel": "Palier",
+      "noMutationText": "Aucun nouveau palier. La forme actuelle se stabilise."
     },
     "confirmQuit": {
       "title": "Quitter le protocole ?",
@@ -58,6 +64,12 @@
       "exploration": "Exploration",
       "conciliation": "Conciliation",
       "intelligence": "Intelligence"
+    },
+    "appearanceSlots": {
+      "tails": "Queue",
+      "ears": "Oreilles",
+      "eyes": "Yeux",
+      "mouths": "Bouche"
     }
   },
   "lore": [
@@ -88,10 +100,10 @@
   ],
   "dialogue": {
     "avatar": {
-      "neutral": "assets/avatar/scientist-neutral.png",
-      "happy": "assets/avatar/scientist-happy.png",
-      "serious": "assets/avatar/scientist-serious.png",
-      "worried": "assets/avatar/scientist-worried.png"
+      "neutral": "assets/avatar/chen_smile.png",
+      "happy": "assets/avatar/chen_smile.png",
+      "serious": "assets/avatar/chen_angry.png",
+      "worried": "assets/avatar/chen_chock.png"
     },
     "tests": [
       {

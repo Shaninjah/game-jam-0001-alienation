@@ -77,6 +77,13 @@
       return;
     }
 
+    // Fin naturelle du protocole court : on revient au menu sans relancer une boucle infinie.
+    if (action === "finish-run") {
+      PCT.resetRun();
+      PCT.renderMenu();
+      return;
+    }
+
     // Retour menu : je nettoie la partie en cours et je ferme une éventuelle confirmation.
     if (action === "back-to-menu") {
       if (!PCT.canStopCurrentTest()) {

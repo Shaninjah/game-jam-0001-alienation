@@ -184,7 +184,7 @@
       <main class="screen menu-screen">
         <section class="error-card panel">
           <p class="kicker">Erreur</p>
-          <h1>Prototype Creature Test</h1>
+          <h1>Alienation</h1>
           <p>${PCT.escapeHtml(error.message)}</p>
           <p>Vérifie que les fichiers JSON sont présents dans le dossier data et que le prototype est lancé via un serveur statique.</p>
         </section>

@@ -27,6 +27,34 @@
     "mouths"
   ],
 
+  /* ------------------------------------------------------------
+     DIFFICULTE INTERNE DES DEBLOCAGES
+     ------------------------------------------------------------
+     Ce bloc n'est jamais affiche au joueur.
+
+     Principe :
+     - un seuil de tier garde d'abord sa base : tier 1 = 3, tier 2 = 6, tier 3 = 9
+     - chaque partie deja active sur le meme tier ajoute +1 au seuil suivant
+     - la queue est ignoree car elle sert de base visible
+
+     Exemple tier 1 :
+     - premiere vraie partie : 3+
+     - deuxieme vraie partie : 4+
+     - troisieme vraie partie : 5+
+     ------------------------------------------------------------ */
+  "unlockDifficulty": {
+    "enabled": true,
+    "incrementPerActivePart": 1,
+    "ignoredSlots": [
+      "tails"
+    ],
+    "minimumBaseByTier": {
+      "1": 3,
+      "2": 6,
+      "3": 9
+    }
+  },
+
   /* ============================================================
      REGLES DE DEBLOCAGE
      ------------------------------------------------------------
@@ -45,6 +73,10 @@
     "tails": [
       {
         "id": "tail_normal_t1",
+        "label": {
+          "fr": "Queue de stabilisation",
+          "en": "Stabilizing tail"
+        },
         "tier": 1,
         "stat": "exploration",
         "min": 0,
@@ -64,6 +96,10 @@
     "ears": [
       {
         "id": "ears_force_t1",
+        "label": {
+          "fr": "Oreilles de défense",
+          "en": "Defensive ears"
+        },
         "tier": 1,
         "stat": "force",
         "min": 3,
@@ -71,6 +107,10 @@
       },
       {
         "id": "ears_conciliation_t1",
+        "label": {
+          "fr": "Oreilles empathiques",
+          "en": "Empathic ears"
+        },
         "tier": 1,
         "stat": "conciliation",
         "min": 3,
@@ -78,6 +118,10 @@
       },
       {
         "id": "ears_exploration_t1",
+        "label": {
+          "fr": "Oreilles éclaireuses",
+          "en": "Scout ears"
+        },
         "tier": 1,
         "stat": "exploration",
         "min": 3,
@@ -85,6 +129,10 @@
       },
       {
         "id": "ears_intelligence_t1",
+        "label": {
+          "fr": "Oreilles synaptiques",
+          "en": "Synaptic ears"
+        },
         "tier": 1,
         "stat": "intelligence",
         "min": 3,
@@ -101,6 +149,10 @@
     "eyes": [
       {
         "id": "eyes_conciliation_t1",
+        "label": {
+          "fr": "Regard d'attachement",
+          "en": "Bonded gaze"
+        },
         "tier": 1,
         "stat": "conciliation",
         "min": 2,
@@ -108,6 +160,10 @@
       },
       {
         "id": "eyes_force_t1",
+        "label": {
+          "fr": "Regard frontal",
+          "en": "Frontal gaze"
+        },
         "tier": 1,
         "stat": "force",
         "min": 3,
@@ -115,6 +171,10 @@
       },
       {
         "id": "eyes_exploration_t1",
+        "label": {
+          "fr": "Regard d'éveil",
+          "en": "Awakened gaze"
+        },
         "tier": 1,
         "stat": "exploration",
         "min": 3,
@@ -122,6 +182,10 @@
       },
       {
         "id": "eyes_intelligence_t2",
+        "label": {
+          "fr": "Regard analytique",
+          "en": "Analytical gaze"
+        },
         "tier": 2,
         "stat": "intelligence",
         "min": 6,
@@ -139,6 +203,10 @@
     "mouths": [
       {
         "id": "mouth_force_t1",
+        "label": {
+          "fr": "Bouche de défi",
+          "en": "Defiant mouth"
+        },
         "tier": 1,
         "stat": "force",
         "min": 3,
@@ -146,6 +214,10 @@
       },
       {
         "id": "mouth_conciliation_t1",
+        "label": {
+          "fr": "Bouche d'apaisement",
+          "en": "Soothing mouth"
+        },
         "tier": 1,
         "stat": "conciliation",
         "min": 3,
@@ -153,6 +225,10 @@
       },
       {
         "id": "mouth_exploration_t1",
+        "label": {
+          "fr": "Bouche d'étonnement",
+          "en": "Startled mouth"
+        },
         "tier": 1,
         "stat": "exploration",
         "min": 3,
@@ -160,6 +236,10 @@
       },
       {
         "id": "mouth_intelligence_t2",
+        "label": {
+          "fr": "Bouche d'hypothèse",
+          "en": "Hypothesis mouth"
+        },
         "tier": 2,
         "stat": "intelligence",
         "min": 6,
@@ -167,6 +247,10 @@
       },
       {
         "id": "mouth_conciliation_t3",
+        "label": {
+          "fr": "Bouche de confiance",
+          "en": "Trusting mouth"
+        },
         "tier": 3,
         "stat": "conciliation",
         "min": 9,

@@ -43,6 +43,9 @@
     messageIndex: 0,
     stats: PCT.createEmptyStats(),
     unlockedParts: {},
+    lastEffects: [],
+    lastMutationEvents: [],
+    testMutationEvents: [],
     finalCreatureKey: null
   };
 
@@ -105,9 +108,10 @@
   PCT.updateCreatureAppearance = function updateCreatureAppearance() {
     // Je parcours les règles d'apparence dans leur ordre : cet ordre sert de départage.
     const appearance = PCT.state.appearance;
+    const mutationEvents = [];
 
     if (!appearance || !appearance.rules) {
-      return;
+      return mutationEvents;
     }
 
     PCT.getAppearanceRules().forEach((rule) => {
@@ -119,15 +123,23 @@
 
       // Si le slot est vide, la première règle débloquée prend la place.
       if (!currentPart) {
-        PCT.state.unlockedParts[rule.slot] = PCT.createUnlockedPart(rule);
+        const unlockedPart = PCT.createUnlockedPart(rule);
+
+        PCT.state.unlockedParts[rule.slot] = unlockedPart;
+        mutationEvents.push(PCT.createMutationEvent(unlockedPart, null));
         return;
       }
 
       // Un tier plus haut remplace le lock actuel, même s'il arrive plus tard.
       if (rule.tier > currentPart.tier) {
-        PCT.state.unlockedParts[rule.slot] = PCT.createUnlockedPart(rule);
+        const unlockedPart = PCT.createUnlockedPart(rule);
+
+        PCT.state.unlockedParts[rule.slot] = unlockedPart;
+        mutationEvents.push(PCT.createMutationEvent(unlockedPart, currentPart));
       }
     });
+
+    return mutationEvents;
   };
 
   PCT.getAppearanceRules = function getAppearanceRules() {
@@ -156,8 +168,68 @@
       rule &&
       PCT.STAT_KEYS.includes(rule.stat) &&
       typeof rule.min === "number" &&
-      PCT.state.stats[rule.stat] >= rule.min
+      PCT.state.stats[rule.stat] >= PCT.getEffectiveAppearanceMin(rule)
     );
+  };
+
+  PCT.getEffectiveAppearanceMin = function getEffectiveAppearanceMin(rule) {
+    // Seuil interne : plus un tier a déjà de parties actives, plus la prochaine coûte cher.
+    const difficulty = PCT.getAppearanceUnlockDifficulty();
+
+    if (!difficulty.enabled || PCT.isAppearanceDifficultyIgnored(rule.slot)) {
+      return rule.min;
+    }
+
+    const minimumBase = PCT.getMinimumBaseForTier(rule.tier);
+    const baseMin = Math.max(rule.min, minimumBase);
+
+    return baseMin + PCT.getSameTierDifficultyOffset(rule);
+  };
+
+  PCT.getAppearanceUnlockDifficulty = function getAppearanceUnlockDifficulty() {
+    // Configuration de balancing côté développeur, jamais exposée directement au joueur.
+    const appearance = PCT.state.appearance || {};
+    const difficulty = appearance.unlockDifficulty || {};
+
+    return {
+      enabled: difficulty.enabled !== false,
+      incrementPerActivePart: typeof difficulty.incrementPerActivePart === "number"
+        ? difficulty.incrementPerActivePart
+        : 1,
+      ignoredSlots: Array.isArray(difficulty.ignoredSlots)
+        ? difficulty.ignoredSlots
+        : [],
+      minimumBaseByTier: difficulty.minimumBaseByTier || {}
+    };
+  };
+
+  PCT.getMinimumBaseForTier = function getMinimumBaseForTier(tier) {
+    // Les seuils de base par tier permettent de garder une progression régulière.
+    const difficulty = PCT.getAppearanceUnlockDifficulty();
+    const tierKey = String(tier);
+    const minimumBase = difficulty.minimumBaseByTier[tierKey];
+
+    return typeof minimumBase === "number" ? minimumBase : 0;
+  };
+
+  PCT.getSameTierDifficultyOffset = function getSameTierDifficultyOffset(rule) {
+    // Je compte seulement les parties actives du même tier, hors slots ignorés.
+    const difficulty = PCT.getAppearanceUnlockDifficulty();
+    const activePartCount = Object.values(PCT.state.unlockedParts)
+      .filter((part) => (
+        part &&
+        part.tier === rule.tier &&
+        part.slot !== rule.slot &&
+        !PCT.isAppearanceDifficultyIgnored(part.slot)
+      ))
+      .length;
+
+    return activePartCount * difficulty.incrementPerActivePart;
+  };
+
+  PCT.isAppearanceDifficultyIgnored = function isAppearanceDifficultyIgnored(slot) {
+    // Certaines parties, comme la queue de base, ne doivent pas durcir les prochains seuils.
+    return PCT.getAppearanceUnlockDifficulty().ignoredSlots.includes(slot);
   };
 
   PCT.createUnlockedPart = function createUnlockedPart(rule) {
@@ -166,8 +238,39 @@
       id: rule.id,
       slot: rule.slot,
       tier: rule.tier,
+      stat: rule.stat,
+      min: rule.min,
+      effectiveMin: PCT.getEffectiveAppearanceMin(rule),
+      label: PCT.getLocalizedValue(rule.label, rule.id),
       asset: rule.asset
     };
+  };
+
+  PCT.createMutationEvent = function createMutationEvent(part, previousPart) {
+    // L'écran créature affiche ces événements pour rendre les paliers visibles au joueur.
+    return {
+      type: previousPart ? "upgrade" : "unlock",
+      slot: part.slot,
+      tier: part.tier,
+      stat: part.stat,
+      min: part.min,
+      effectiveMin: part.effectiveMin,
+      label: part.label,
+      previousLabel: previousPart ? previousPart.label : ""
+    };
+  };
+
+  PCT.getLocalizedValue = function getLocalizedValue(value, fallback) {
+    // Les configs communes peuvent porter des libellés FR/EN sans dépendre d'un seul fichier de langue.
+    if (typeof value === "string") {
+      return value;
+    }
+
+    if (value && typeof value === "object") {
+      return value[PCT.state.language] || value.fr || value.en || fallback;
+    }
+
+    return fallback;
   };
 
   PCT.getCreatureAppearance = function getCreatureAppearance() {
@@ -194,6 +297,9 @@
     PCT.state.messageIndex = 0;
     PCT.state.stats = PCT.createEmptyStats();
     PCT.state.unlockedParts = {};
+    PCT.state.lastEffects = [];
+    PCT.state.lastMutationEvents = [];
+    PCT.state.testMutationEvents = [];
     PCT.state.finalCreatureKey = null;
   };
 })();
