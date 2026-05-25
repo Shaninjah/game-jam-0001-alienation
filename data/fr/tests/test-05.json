@@ -1,6 +1,6 @@
 {
   "id": "test_05",
-  "label": "Test comportemental 05",
+  "label": "Mémoire de l'opération 05",
   "creatureLabel": "NIVEAU 5",
   "startNode": "intro",
   "nodes": {
@@ -8,33 +8,41 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "happy",
-          "text": "Cinquième protocole. La créature imite votre posture, votre rythme et certains réflexes militaires. Elle apprend vite, peut-être trop vite."
+          "emotion": "serious",
+          "text": "Cinquième protocole. La créature projette maintenant des fragments de Mirador : une radio coupée, une porte ouverte, puis l'œuf sous la lumière blanche."
+        },
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "Ce ne sont pas vos souvenirs exacts. Elle reconstruit une histoire avec votre peur et ses propres sensations."
         }
       ],
       "choices": [
         {
-          "label": "Je lui donne un ordre simple pour tester son obéissance.",
+          "label": "Je coupe la projection avant qu'elle déforme mes souvenirs.",
           "effects": {
             "force": 2,
-            "pressure": 0.25
+            "pressure": 0.55,
+            "overdrive": true
           },
           "next": "dilemme_01"
         },
         {
-          "label": "Je lui propose une énigme pour mesurer sa compréhension.",
+          "label": "Je décris chaque détail pour séparer image et souvenir.",
           "effects": {
             "intelligence": 2,
-            "pressure": 0.25
+            "pressure": 0.25,
+            "stability": 0.25
           },
           "next": "dilemme_01"
         },
         {
-          "label": "Je transforme l'imitation en jeu pour voir ce qu'elle invente.",
+          "label": "Je la laisse sentir la peur sans lui faire porter ma faute.",
           "effects": {
-            "conciliation": 1,
-            "exploration": 2,
-            "stability": 0.25
+            "conciliation": 2,
+            "exploration": 1,
+            "pressure": 0.35,
+            "stability": 0.35
           },
           "next": "dilemme_01"
         }
@@ -44,36 +52,37 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "serious",
-          "text": "L'imitation dévie. Elle reproduit vos gestes, mais elle ajoute des micro-mouvements qui ne viennent pas de vous."
+          "emotion": "neutral",
+          "text": "Il manque huit secondes dans l'enregistrement de votre casque. Si la créature les complète avec votre culpabilité, elle risque d'en faire une loi biologique."
         }
       ],
       "choices": [
         {
-          "label": "J'interromps la séquence avant qu'elle prenne de mauvaises habitudes.",
+          "label": "Je maintiens le rapport officiel jusqu'à preuve contraire.",
           "effects": {
             "force": 2,
             "intelligence": 1,
-            "stability": 0.25
+            "pressure": 0.45
           },
           "next": "decision_finale"
         },
         {
-          "label": "Je compare chaque déviation pour comprendre sa pensée.",
-          "effects": {
-            "intelligence": 2,
-            "exploration": 1,
-            "stability": 0.25
-          },
-          "next": "decision_finale"
-        },
-        {
-          "label": "J'accepte cette version imparfaite de mon geste.",
+          "label": "J'admets que mon souvenir peut être faux, même si ça m'accuse.",
           "effects": {
             "conciliation": 2,
+            "intelligence": 1,
             "pressure": 0.25,
-            "stability": 1.05,
+            "stability": 0.55,
             "mercy": true
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je cherche l'origine du blanc radio au lieu de combler le vide.",
+          "effects": {
+            "exploration": 2,
+            "intelligence": 1,
+            "pressure": 0.45
           },
           "next": "decision_finale"
         }
@@ -83,37 +92,37 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "neutral",
-          "text": "Si elle copie votre violence, elle peut devenir une arme. Si elle copie votre doute, elle peut devenir autre chose."
+          "emotion": "worried",
+          "text": "La créature vous regarde comme si elle attendait une version du passé. Quelle vérité peut-elle recevoir sans s'y enfermer ?"
         }
       ],
       "choices": [
         {
-          "label": "Je privilégie la discipline : elle doit répondre vite.",
+          "label": "Une vérité protégée : je choisis ce qu'elle peut supporter.",
           "effects": {
-            "force": 2,
-            "intelligence": 1,
+            "force": 1,
+            "conciliation": 2,
+            "pressure": 0.4,
             "stability": 0.25
           },
           "next": "final"
         },
         {
-          "label": "Je privilégie la curiosité : elle doit chercher avant d'agir.",
+          "label": "Une vérité complète : elle a le droit de savoir d'où elle vient.",
           "effects": {
             "exploration": 2,
-            "intelligence": 1,
-            "pressure": 0.2,
-            "stability": 0.25
+            "conciliation": 1,
+            "pressure": 0.75,
+            "overdrive": true
           },
           "next": "final"
         },
         {
-          "label": "Je privilégie l'empathie : elle doit sentir avant de copier.",
+          "label": "Une vérité vérifiée : pas un mot sans preuve recoupée.",
           "effects": {
-            "conciliation": 3,
-            "pressure": 0.7,
-            "stability": 0.35,
-            "overdrive": true
+            "intelligence": 3,
+            "pressure": 0.35,
+            "stability": 0.35
           },
           "next": "final"
         }

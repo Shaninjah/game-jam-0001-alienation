@@ -56,3 +56,5 @@ Lancement local :
    py -m http.server 8000 --bind 127.0.0.1
 3. Ouvrir :
    http://127.0.0.1:8000/index.html
+
+  cd /d "D:\Téléchargement\PROJET_CREATURE\alienation"

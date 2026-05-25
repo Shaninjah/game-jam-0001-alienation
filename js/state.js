@@ -138,7 +138,13 @@
     const statRanking = PCT.getStatRanking();
     const topScore = statRanking[0] ? statRanking[0].value : 0;
     const secondScore = statRanking[1] ? statRanking[1].value : 0;
+    const lowestScore = statRanking[statRanking.length - 1] ? statRanking[statRanking.length - 1].value : 0;
     const dominanceGap = topScore - secondScore;
+    const overBalancedGap = topScore - lowestScore;
+    const isOverBalanced = (
+      lowestScore >= config.balancedHighThreshold &&
+      overBalancedGap <= config.balancedHighGap
+    );
     const positiveEffectTotal = PCT.getPositiveEffectTotal(effects);
     let pressureDelta = config.choicePressure + (positiveEffectTotal * config.positiveEffectPressure);
 
@@ -158,7 +164,9 @@
       pressureDelta += config.dominantShiftPressure;
     }
 
-    if (dominanceGap <= config.balancedGap) {
+    if (isOverBalanced) {
+      pressureDelta += config.balancedHighPressure;
+    } else if (dominanceGap <= config.balancedGap) {
       pressureDelta -= config.balancedRelief;
     }
 
@@ -188,7 +196,8 @@
 
     PCT.state.evolutionPressure = Number(nextPressure.toFixed(2));
     PCT.state.instability = PCT.state.evolutionPressure;
-    PCT.state.anomalyStage = PCT.getAnomalyStage(PCT.state.instability);
+    // Une anomalie revelee reste un fait biologique, meme si le protocole redevient plus calme ensuite.
+    PCT.state.anomalyStage = Math.max(previousStage, PCT.getAnomalyStage(PCT.state.instability));
     PCT.state.dominantHistory.push(dominantKey);
 
     if (PCT.state.dominantHistory.length > 24) {
@@ -233,6 +242,9 @@
       dominantShiftPressure: typeof config.dominantShiftPressure === "number" ? config.dominantShiftPressure : 0.45,
       balancedGap: typeof config.balancedGap === "number" ? config.balancedGap : 2,
       balancedRelief: typeof config.balancedRelief === "number" ? config.balancedRelief : 0.25,
+      balancedHighThreshold: typeof config.balancedHighThreshold === "number" ? config.balancedHighThreshold : 8,
+      balancedHighGap: typeof config.balancedHighGap === "number" ? config.balancedHighGap : 3,
+      balancedHighPressure: typeof config.balancedHighPressure === "number" ? config.balancedHighPressure : 0.6,
       stageThresholds: {
         1: typeof stageThresholds["1"] === "number" ? stageThresholds["1"] : 4,
         2: typeof stageThresholds["2"] === "number" ? stageThresholds["2"] : 7,

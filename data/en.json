@@ -12,7 +12,7 @@
     },
     "menu": {
       "kicker": "Evolving narrative game",
-      "subtitle": "An alien egg was discovered during a military operation. Since you touched it, the creature reacts to your decisions. Professor Chen begins a short protocol before it chooses its form.",
+      "subtitle": "Since the operation that revealed the alien egg, your judgment has been monitored. Professor Chen believes he can shape the creature through your answers. The question is when to stop.",
       "languageTitle": "Languages",
       "selectedLanguage": "Selected language",
       "playButton": "Play"
@@ -22,10 +22,10 @@
       "continueButton": "Continue"
     },
     "dialogue": {
-      "testLabel": "Behavioral test",
+      "testLabel": "Judgment evaluation",
       "continueButton": "Continue",
-      "clickHint": "Read the next message to continue the protocol.",
-      "choiceHint": "Choose an answer to influence the result.",
+      "clickHint": "",
+      "choiceHint": "",
       "avatarEmotion": "Emotion",
       "defaultFinalChoice": "Finish the test"
     },
@@ -44,27 +44,27 @@
       "stabilityTitle": "Stability",
       "anomalyTierLabel": "Anomaly",
       "continueButtons": {
-        "stable": "Continue test",
-        "strained": "Continue despite the signs",
-        "anomaly": "Force the protocol",
-        "critical": "Force evolution"
+        "stable": "Continue the experiment",
+        "strained": "Search for a better form",
+        "anomaly": "Correct the anomaly",
+        "critical": "Force perfection"
       },
       "stabilityStates": {
         "stable": {
           "label": "Stable",
-          "summary": "The form remains coherent. The creature still responds to the bond."
+          "summary": "The mutation is normal. The creature can still live with what it is."
         },
         "strained": {
           "label": "Strained",
-          "summary": "Specialization is rising. Continuing may lock the form too hard."
+          "summary": "The answers are already trying to optimize it. Continuing increases the pressure."
         },
         "anomaly": {
           "label": "Anomalies detected",
-          "summary": "The biological layers contradict each other. The creature evolves against itself."
+          "summary": "The search for improvement has gone beyond healthy mutation."
         },
         "critical": {
           "label": "Critical degeneration",
-          "summary": "The protocol has crossed its bounds. The form no longer stabilizes."
+          "summary": "It is no longer being shaped: it is coming apart under our demands."
         }
       }
     },
@@ -75,10 +75,10 @@
       "confirmButton": "Quit"
     },
     "confirmStop": {
-      "title": "Stop testing this creature?",
-      "text": "This action will stop the current tests on the creature and return you to the main menu.",
-      "cancelButton": "Continue testing",
-      "confirmButton": "Stop the test"
+      "title": "Leave it as it is?",
+      "text": "Chen insists: with a few more protocols, he could correct its limits and create an almost perfect being. Stopping now means accepting this imperfect creature.",
+      "cancelButton": "Continue the experiment",
+      "confirmButton": "It is enough"
     },
     "fallbacks": {
       "illustration": "Illustration",
@@ -102,26 +102,26 @@
     {
       "id": "lore_01",
       "image": "assets/lore/lore-01.png",
-      "title": "Discovery of the Egg",
-      "text": "During a security operation in a restricted zone, your unit discovered an egg of unknown origin. Its surface looked mineral, but a slow pulse vibrated beneath the shell."
+      "title": "Operation Mirador",
+      "text": "Your unit entered a restricted zone to secure an object that fell from the sky. The reports mention a mineral egg, a saturated radio, and a light that froze the whole squad."
     },
     {
       "id": "lore_02",
       "image": "assets/lore/lore-02.png",
-      "title": "Accidental Contact",
-      "text": "You were assigned to protect the perimeter. When the egg began to crack, you touched it by reflex. At that moment, your heartbeat and its internal energy synchronized."
+      "title": "Contact and Trauma",
+      "text": "When the egg opened, you touched it to pull it away from a wounded soldier. Your heartbeat synchronized with its pulse, then your memories of the operation fractured."
     },
     {
       "id": "lore_03",
       "image": "assets/lore/lore-03.png",
-      "title": "Emotional Reaction",
-      "text": "Since the contact, the egg reacts to your mood shifts. Anger, fear, curiosity, calm: each emotion changes its temperature, color, and biological rhythm."
+      "title": "Clinical Doubt",
+      "text": "Since your evacuation, you answer simple exams correctly, but your moral choices shift under stress. Chen needs to know whether trauma has biased your judgment before letting you near the creature."
     },
     {
       "id": "lore_04",
       "image": "assets/lore/lore-04.png",
       "title": "Chen Protocol",
-      "text": "Before the full hatching, Professor Chen wants to understand the bond between you and the creature. You will go through behavioral tests to measure this synchronization."
+      "text": "The professor connects the egg to the bioelectric spectrogram. With each answer, some signals stabilize while others shift. Chen believes he can guide that orientation, without yet knowing what it will ask in return."
     }
   ],
   "dialogue": {
@@ -179,38 +179,44 @@
     "creatures": {
       "force": {
         "name": "Gatebreaker",
-        "description": "The creature’s appearance evolved according to your emotional synchronization with the alien egg."
+        "description": "The creature mostly inherits protection, lockdown, and retaliation reflexes."
       },
       "exploration": {
         "name": "Mistwalker",
-        "description": "The creature’s appearance evolved according to your emotional synchronization with the alien egg."
+        "description": "The creature mostly inherits curiosity, the outside call, and the need to see beyond the lab."
       },
       "conciliation": {
         "name": "Bond Echo",
-        "description": "The creature’s appearance evolved according to your emotional synchronization with the alien egg."
+        "description": "The creature mostly inherits attachment, appeasement, and the refusal to be alone."
       },
       "intelligence": {
         "name": "Clearcore",
-        "description": "The creature’s appearance evolved according to your emotional synchronization with the alien egg."
+        "description": "The creature mostly inherits analysis, restraint, and the need to understand."
       }
     },
     "endings": {
       "stable": {
         "title": "Viable bond",
-        "text": "The creature keeps a readable form and still responds to your presence. It is not perfect, but it can live with this bond."
+        "text": "The creature keeps a readable form. It senses your hypotheses, but does not yet suffer them as orders."
       },
       "specialized": {
-        "title": "Specialized form",
-        "text": "The creature takes a clear direction. It becomes more capable, but each new test narrows its room to adapt."
+        "title": "Genome under strain",
+        "text": "The creature takes a clear direction. Every answer from the soldier stabilizes one faculty and weakens the others."
       },
       "unstable": {
-        "title": "Unstable form",
-        "text": "Anomalies appear in its morphology. It gains intensity, but loses part of its internal coherence."
+        "title": "Hypothesis made flesh",
+        "text": "Anomalies appear. By trying to improve it again and again, the protocol taught it that it was never enough."
       },
       "degenerate": {
-        "title": "Total degeneration",
-        "text": "Evolution has been pushed too far. The creature is no longer merely transformed: it is deforming under the protocol pressure."
+        "title": "Total confusion",
+        "text": "The protocol was pushed too far. The lesson is brutal: searching for the perfect being ends up destroying the living one."
       }
+    },
+    "stopEnding": {
+      "kicker": "Viable ending",
+      "title": "You refuse perfection",
+      "text": "Chen promised a better creature after the next test, then an even better one after that. You chose to stop before turning a life into an optimization project. The creature remains imperfect, therefore alive.",
+      "button": "Return to menu"
     }
   }
 }

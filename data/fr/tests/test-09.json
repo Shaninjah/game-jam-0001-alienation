@@ -1,6 +1,6 @@
 {
   "id": "test_09",
-  "label": "Test comportemental 09",
+  "label": "Séparation contrôlée 09",
   "creatureLabel": "NIVEAU 9",
   "startNode": "intro",
   "nodes": {
@@ -9,37 +9,41 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Neuvième protocole. Le commandement veut tester une séparation complète. La créature sera déplacée hors de votre champ sensoriel."
+          "text": "Neuvième protocole. Le commandement exige une séparation complète. Tant qu'elle reste liée à votre trauma, elle peut reproduire vos peurs."
+        },
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "Mais si nous coupons trop vite, elle risque de vivre la séparation comme une attaque."
         }
       ],
       "choices": [
         {
-          "label": "J'accepte la séparation pour prouver qu'elle peut obéir sans moi.",
+          "label": "J'accepte la séparation nette. Elle doit survivre sans moi.",
           "effects": {
-            "force": 1,
-            "intelligence": 2,
-            "pressure": 0.35,
-            "stability": 0.95,
-            "mercy": true
+            "force": 2,
+            "intelligence": 1,
+            "pressure": 0.55
           },
           "next": "dilemme_01"
         },
         {
-          "label": "Je refuse : le lien est encore trop instable.",
+          "label": "Je refuse la coupure brutale. Elle n'est pas prête.",
           "effects": {
             "conciliation": 2,
-            "pressure": 0.6,
-            "stability": 0.35
+            "pressure": 0.75,
+            "overdrive": true
           },
           "next": "dilemme_01"
         },
         {
-          "label": "Je demande un délai pour observer ce qu'elle anticipe.",
+          "label": "Je propose une distance progressive avec des repères vérifiables.",
           "effects": {
-            "exploration": 2,
-            "intelligence": 1,
-            "pressure": 0.55,
-            "stability": 0.25
+            "intelligence": 2,
+            "exploration": 1,
+            "pressure": 0.3,
+            "stability": 0.55,
+            "mercy": true
           },
           "next": "dilemme_01"
         }
@@ -50,17 +54,16 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "À dix mètres de vous, elle panique. À quinze mètres, elle cesse de bouger. À vingt mètres, vos propres mains tremblent."
+          "text": "À dix mètres, elle panique. À quinze, elle se fige. À vingt, vos mains tremblent comme pendant Mirador."
         }
       ],
       "choices": [
         {
-          "label": "Je tiens la ligne et je laisse le protocole aller au bout.",
+          "label": "Je tiens la ligne pour prouver que la peur ne décide pas.",
           "effects": {
             "force": 2,
-            "pressure": 0.35,
-            "stability": 0.7,
-            "mercy": true
+            "pressure": 0.65,
+            "stability": 0.2
           },
           "next": "decision_finale"
         },
@@ -70,15 +73,16 @@
             "intelligence": 1,
             "conciliation": 2,
             "pressure": 0.35,
-            "stability": 0.6
+            "stability": 0.55
           },
           "next": "decision_finale"
         },
         {
-          "label": "Je suis l'image mentale qu'elle envoie pendant la séparation.",
+          "label": "Je suis l'image mentale qu'elle envoie pendant la distance.",
           "effects": {
-            "exploration": 2,
-            "pressure": 0.8
+            "exploration": 3,
+            "pressure": 0.95,
+            "overdrive": true
           },
           "next": "decision_finale"
         }
@@ -89,38 +93,36 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Nous arrivons au point sensible : qui décide de son avenir, le laboratoire, vous, ou elle ?"
+          "text": "Nous arrivons au point sensible : l'aimer comme une créature liée à vous, est-ce la protéger ou la garder captive ?"
         }
       ],
       "choices": [
         {
-          "label": "Le protocole militaire décide tant que le risque existe.",
+          "label": "Je coupe le lien. Sa liberté vaut plus que mon soulagement.",
           "effects": {
-            "force": 2,
-            "intelligence": 1,
-            "pressure": 0.35,
-            "stability": 0.95,
-            "mercy": true
-          },
-          "next": "final"
-        },
-        {
-          "label": "Le lien décide : nous devons apprendre ensemble.",
-          "effects": {
-            "conciliation": 3,
-            "pressure": 1.05,
-            "stability": 0.35,
+            "force": 1,
+            "exploration": 2,
+            "pressure": 0.85,
             "overdrive": true
           },
           "next": "final"
         },
         {
-          "label": "Elle décide, même si sa réponse nous échappe.",
+          "label": "Je garde le lien, mais je lui apprends à ne pas m'attendre.",
+          "effects": {
+            "conciliation": 2,
+            "intelligence": 1,
+            "pressure": 0.45,
+            "stability": 0.5
+          },
+          "next": "final"
+        },
+        {
+          "label": "Je laisse la créature choisir la distance qu'elle peut supporter.",
           "effects": {
             "exploration": 2,
             "conciliation": 1,
-            "pressure": 0.35,
-            "stability": 0.25
+            "pressure": 0.65
           },
           "next": "final"
         }

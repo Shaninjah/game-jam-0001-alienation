@@ -84,6 +84,20 @@
       return;
     }
 
+    // Le vrai arrêt du protocole devient une fin : le joueur accepte la créature imparfaite.
+    if (action === "accept-creature") {
+      PCT.removeModal();
+      PCT.renderStopEnding();
+      return;
+    }
+
+    // Retour au menu depuis une fin.
+    if (action === "return-menu") {
+      PCT.resetRun();
+      PCT.renderMenu();
+      return;
+    }
+
     // Retour menu : je nettoie la partie en cours et je ferme une éventuelle confirmation.
     if (action === "back-to-menu") {
       if (!PCT.canStopCurrentTest()) {

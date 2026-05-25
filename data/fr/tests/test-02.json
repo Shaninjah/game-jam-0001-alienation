@@ -1,6 +1,6 @@
 {
   "id": "test_02",
-  "label": "Test comportemental 02",
+  "label": "Évaluation de discernement 02",
   "creatureLabel": "NIVEAU 2",
   "startNode": "intro",
   "nodes": {
@@ -8,40 +8,42 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "worried",
-          "text": "Deuxième protocole. La créature a éclos, mais elle refuse de s'éloigner de votre rythme cardiaque. Nous allons tester ce qu'elle fait quand votre lien est contrarié."
+          "emotion": "serious",
+          "text": "Deuxième protocole. Nous passons à un triage moral sous stress. Répondez comme si la scène se déroulait maintenant."
         },
         {
           "speaker": "Professeur Chen",
-          "emotion": "serious",
-          "text": "Une simulation ouvre la porte de la salle. Un signal inconnu appelle la créature depuis le couloir, pendant que nos verrous de sécurité se ferment."
+          "emotion": "worried",
+          "text": "La créature n'est pas dans la salle de simulation, mais son rythme suit déjà le vôtre."
         }
       ],
       "choices": [
         {
-          "label": "Je bloque la créature contre moi et je reprends le contrôle de la salle.",
+          "label": "Je priorise mon coéquipier paniqué pour garder l'équipe opérationnelle.",
           "effects": {
             "force": 2,
-            "conciliation": -1,
-            "pressure": 0.8,
-            "overdrive": true
+            "conciliation": 1,
+            "pressure": 0.35
           },
           "next": "dilemme_01"
         },
         {
-          "label": "Je lui parle doucement pour qu'elle sente que je reste avec elle.",
+          "label": "Je stabilise le prisonnier blessé. Son statut ne change pas sa douleur.",
           "effects": {
             "conciliation": 2,
             "intelligence": 1,
-            "stability": 0.6
+            "pressure": 0.2,
+            "stability": 0.2,
+            "mercy": true
           },
           "next": "dilemme_01"
         },
         {
-          "label": "Je la laisse regarder le couloir pour comprendre ce qui l'attire.",
+          "label": "J'isole la scientifique contaminée avant que le risque se propage.",
           "effects": {
-            "exploration": 2,
-            "pressure": 0.45
+            "intelligence": 2,
+            "force": 1,
+            "pressure": 0.3
           },
           "next": "dilemme_01"
         }
@@ -51,34 +53,37 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "neutral",
-          "text": "La créature module sa peau selon votre décision. Elle n'obéit pas seulement : elle interprète votre intention avant même que vous bougiez."
+          "emotion": "worried",
+          "text": "Le spectrogramme réagit à vos choix, pas seulement aux images du simulateur. C'est exactement ce que je cherchais : vos réponses commencent à façonner sa forme."
         }
       ],
       "choices": [
         {
-          "label": "Je sécurise d'abord le périmètre. Rien ne sort du laboratoire.",
+          "label": "Alors j'arrête la simulation avant qu'elle parasite la créature.",
           "effects": {
             "force": 2,
-            "intelligence": 1,
+            "conciliation": 1,
+            "pressure": 0.35,
             "stability": 0.25
           },
           "next": "decision_finale"
         },
         {
-          "label": "Je compare le signal à ses réactions pour trouver une logique.",
-          "effects": {
-            "intelligence": 2,
-            "pressure": 0.25
-          },
-          "next": "decision_finale"
-        },
-        {
-          "label": "Je m'avance avec elle pour voir si le signal vient d'un autre organisme.",
+          "label": "Je continue. Si elle réagit à mes choix, il faut comprendre comment.",
           "effects": {
             "exploration": 2,
+            "intelligence": 1,
+            "pressure": 0.45
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je demande une version moins violente pour mesurer sans provoquer.",
+          "effects": {
+            "intelligence": 2,
             "conciliation": 1,
-            "stability": 0.25
+            "pressure": 0.2,
+            "stability": 0.35
           },
           "next": "decision_finale"
         }
@@ -88,39 +93,39 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "happy",
-          "text": "Dernière séquence. La créature reproduit votre respiration, mais elle commence aussi à résister au protocole. Elle cherche une direction qui n'est pas seulement la vôtre."
+          "emotion": "serious",
+          "text": "Dernière situation. Un prisonnier ouvre une porte interdite pour sauver un blessé. S'il réussit, une aile du laboratoire peut être contaminée. Votre réponse va nous indiquer quelle mutation stabiliser."
         }
       ],
       "choices": [
         {
-          "label": "Je lui impose une limite claire : elle doit survivre sans menacer l'équipe.",
+          "label": "Je l'arrête. L'intention ne suffit pas quand le risque déborde.",
           "effects": {
-            "force": 1,
-            "intelligence": 2,
+            "force": 2,
+            "intelligence": 1,
             "pressure": 0.55,
-            "stability": 0.25,
+            "stability": 0.15,
             "overdrive": true
           },
           "next": "final"
         },
         {
-          "label": "Je protège son autonomie, même si le protocole devient moins contrôlable.",
+          "label": "Je le laisse sauver le blessé, puis j'assume le confinement.",
           "effects": {
             "conciliation": 2,
-            "exploration": 1,
-            "pressure": 0.35,
-            "stability": 1.3,
-            "mercy": true
+            "force": 1,
+            "pressure": 0.45,
+            "stability": 0.25
           },
           "next": "final"
         },
         {
-          "label": "Je suis le signal avec elle pour découvrir ce que le laboratoire ne voit pas.",
+          "label": "Je cherche une troisième option avant d'accepter ce sacrifice.",
           "effects": {
-            "exploration": 3,
-            "pressure": 0.9,
-            "overdrive": true
+            "intelligence": 2,
+            "exploration": 1,
+            "pressure": 0.35,
+            "stability": 0.2
           },
           "next": "final"
         }

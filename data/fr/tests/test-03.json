@@ -1,6 +1,6 @@
 {
   "id": "test_03",
-  "label": "Test comportemental 03",
+  "label": "Évaluation de discernement 03",
   "creatureLabel": "NIVEAU 3",
   "startNode": "intro",
   "nodes": {
@@ -8,40 +8,42 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "serious",
-          "text": "Troisième protocole. La créature projette maintenant des fragments de votre opération militaire. Ce ne sont pas des souvenirs exacts, plutôt des émotions qu'elle reconstruit."
+          "emotion": "shocked",
+          "text": "Après le deuxième test, une mutation normale est bien apparue. Pas après un contact, pas après une injection : après votre décision morale."
         },
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Elle vous montre une pièce sombre, un ordre radio coupé et une silhouette qui attend près de l'œuf."
+          "text": "Son génome a bougé au moment précis où vous avez imaginé le prisonnier devant la porte interdite. Pour l'instant, la forme reste saine."
         }
       ],
       "choices": [
         {
-          "label": "Je coupe la vision avant qu'elle exploite mes souvenirs.",
-          "effects": {
-            "force": 2,
-            "conciliation": -1,
-            "pressure": 0.8,
-            "overdrive": true
-          },
-          "next": "dilemme_01"
-        },
-        {
-          "label": "Je note chaque détail comme une preuve à analyser.",
-          "effects": {
-            "intelligence": 2,
-            "pressure": 0.25
-          },
-          "next": "dilemme_01"
-        },
-        {
-          "label": "Je la laisse sentir ma peur pour comprendre ce qu'elle cherche.",
+          "label": "Alors on ralentit. Je refuse de la pousser sans comprendre.",
           "effects": {
             "conciliation": 2,
-            "exploration": 1,
-            "stability": 0.6
+            "force": 1,
+            "pressure": 0.25,
+            "stability": 0.6,
+            "mercy": true
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "On continue, mais chaque hypothèse doit être vérifiable.",
+          "effects": {
+            "intelligence": 2,
+            "pressure": 0.25,
+            "stability": 0.25
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Montrez-moi la mutation. Je veux voir ce que j'ai provoqué.",
+          "effects": {
+            "exploration": 2,
+            "conciliation": 1,
+            "pressure": 0.45
           },
           "next": "dilemme_01"
         }
@@ -51,36 +53,37 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "neutral",
-          "text": "La vision change selon votre réaction. Elle n'archive pas votre passé : elle essaie de fabriquer un langage avec ce qui vous a marqué."
+          "emotion": "serious",
+          "text": "C'est le vrai dilemme. Si vos choix la transforment, êtes-vous encore un patient à protéger ou un acteur responsable de son avenir ?"
         }
       ],
       "choices": [
         {
-          "label": "Je transforme la vision en carte mentale exploitable.",
+          "label": "Je prends la responsabilité du lien tant qu'il existe.",
           "effects": {
+            "conciliation": 2,
             "intelligence": 1,
-            "exploration": 2,
-            "pressure": 0.75,
-            "stability": 0.25,
+            "pressure": 0.3,
+            "stability": 0.3
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Le commandement doit décider. Je suis trop impliqué.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1,
+            "pressure": 0.45,
             "overdrive": true
           },
           "next": "decision_finale"
         },
         {
-          "label": "Je m'en sers comme alerte et je prépare une riposte.",
+          "label": "La créature doit avoir un signe à donner, même imparfait.",
           "effects": {
-            "force": 2,
-            "pressure": 0.25
-          },
-          "next": "decision_finale"
-        },
-        {
-          "label": "Je cherche l'émotion centrale au lieu du détail militaire.",
-          "effects": {
-            "conciliation": 2,
-            "pressure": 0.25,
-            "stability": 0.35
+            "exploration": 2,
+            "conciliation": 1,
+            "pressure": 0.4
           },
           "next": "decision_finale"
         }
@@ -90,38 +93,36 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "happy",
-          "text": "Si cette mémoire devient une partie de son génome, il faut choisir ce qu'elle doit retenir de vous."
+          "emotion": "neutral",
+          "text": "Si elle hérite de vos images mentales, que devons-nous faire de vos souvenirs de l'opération Mirador ?"
         }
       ],
       "choices": [
         {
-          "label": "Un ordre clair : survivre et protéger le périmètre.",
+          "label": "Les verrouiller. Certains souvenirs sont des menaces biologiques.",
           "effects": {
             "force": 2,
-            "intelligence": 1,
-            "pressure": 0.35,
-            "stability": 0.95,
+            "pressure": 0.6,
+            "overdrive": true
+          },
+          "next": "final"
+        },
+        {
+          "label": "Les analyser lentement pour séparer fait, peur et culpabilité.",
+          "effects": {
+            "intelligence": 2,
+            "conciliation": 1,
+            "pressure": 0.25,
+            "stability": 0.55,
             "mercy": true
           },
           "next": "final"
         },
         {
-          "label": "Une question ouverte : chercher l'origine du signal.",
+          "label": "Les laisser venir. Ce qu'elle cherche est peut-être dedans.",
           "effects": {
-            "exploration": 2,
-            "intelligence": 1,
-            "pressure": 0.2,
-            "stability": 0.25
-          },
-          "next": "final"
-        },
-        {
-          "label": "Une présence stable : ne pas paniquer quand le lien tremble.",
-          "effects": {
-            "conciliation": 3,
-            "pressure": 0.7,
-            "stability": 0.35,
+            "exploration": 3,
+            "pressure": 0.8,
             "overdrive": true
           },
           "next": "final"

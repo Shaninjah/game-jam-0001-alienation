@@ -12,7 +12,7 @@
     },
     "menu": {
       "kicker": "Jeu narratif évolutif",
-      "subtitle": "Un œuf alien a été découvert pendant une opération militaire. Depuis que tu l’as touché, la créature réagit à tes décisions. Le Professeur Chen lance un protocole court avant qu’elle ne choisisse sa forme.",
+      "subtitle": "Depuis l'opération qui a révélé l'œuf alien, ton jugement est surveillé. Le Professeur Chen pense pouvoir façonner la créature avec tes réponses. Reste à savoir quand il faut arrêter.",
       "languageTitle": "Langues",
       "selectedLanguage": "Langue sélectionnée",
       "playButton": "Jouer"
@@ -22,10 +22,10 @@
       "continueButton": "Continuer"
     },
     "dialogue": {
-      "testLabel": "Test comportemental",
+      "testLabel": "Évaluation de discernement",
       "continueButton": "Continuer",
-      "clickHint": "Lis le message suivant pour poursuivre le protocole.",
-      "choiceHint": "Choisis une réponse pour influencer le résultat.",
+      "clickHint": "",
+      "choiceHint": "",
       "avatarEmotion": "Émotion",
       "defaultFinalChoice": "Terminer le test"
     },
@@ -41,30 +41,30 @@
       "mutationUpgradeLabel": "Évolution",
       "tierLabel": "Palier",
       "noMutationText": "Aucun nouveau palier. La forme actuelle se stabilise.",
-      "stabilityTitle": "Stabilite",
+      "stabilityTitle": "Stabilité",
       "anomalyTierLabel": "Anomalie",
       "continueButtons": {
-        "stable": "Continuer le test",
-        "strained": "Continuer malgre les signes",
-        "anomaly": "Forcer le protocole",
-        "critical": "Forcer l'evolution"
+        "stable": "Continuer l'expérience",
+        "strained": "Chercher une forme meilleure",
+        "anomaly": "Corriger l'anomalie",
+        "critical": "Forcer la perfection"
       },
       "stabilityStates": {
         "stable": {
           "label": "Stable",
-          "summary": "La forme reste coherente. La creature repond encore au lien."
+          "summary": "La mutation est normale. La créature peut encore vivre avec ce qu'elle est."
         },
         "strained": {
           "label": "Sous tension",
-          "summary": "La specialisation monte. Continuer risque de fixer une forme trop dure."
+          "summary": "Les réponses cherchent déjà à l'optimiser. Continuer augmente la pression."
         },
         "anomaly": {
           "label": "Anomalies detectees",
-          "summary": "Les calques biologiques se contredisent. La creature evolue contre elle-meme."
+          "summary": "La quête d'amélioration a dépassé la mutation saine."
         },
         "critical": {
           "label": "Degenerescence critique",
-          "summary": "Le protocole depasse ses bornes. La forme ne se stabilise plus."
+          "summary": "Elle n'est plus façonnée : elle se défait sous notre exigence."
         }
       }
     },
@@ -75,10 +75,10 @@
       "confirmButton": "Quitter"
     },
     "confirmStop": {
-      "title": "Arrêter les tests sur cette créature ?",
-      "text": "Cette action stoppera les tests en cours sur la créature et te ramènera au menu principal.",
-      "cancelButton": "Continuer les tests",
-      "confirmButton": "Arrêter le test"
+      "title": "La laisser comme elle est ?",
+      "text": "Chen insiste : avec quelques protocoles de plus, il pourrait corriger ses limites et créer un être presque parfait. Arrêter maintenant revient à accepter cette créature imparfaite.",
+      "cancelButton": "Continuer l'expérience",
+      "confirmButton": "Elle est bien comme ça"
     },
     "fallbacks": {
       "illustration": "Illustration",
@@ -102,26 +102,26 @@
     {
       "id": "lore_01",
       "image": "assets/lore/lore-01.png",
-      "title": "Découverte de l’œuf",
-      "text": "Lors d’une mission de sécurisation en zone interdite, ton unité a découvert un œuf d’origine inconnue. Sa surface semblait minérale, mais une pulsation lente vibrait sous sa coquille."
+      "title": "Opération Mirador",
+      "text": "Ton unité a pénétré une zone interdite pour sécuriser un objet tombé du ciel. Les rapports parlent d'un œuf minéral, d'une radio saturée et d'une lumière qui a figé toute l'escouade."
     },
     {
       "id": "lore_02",
       "image": "assets/lore/lore-02.png",
-      "title": "Contact accidentel",
-      "text": "Tu étais chargé de protéger le périmètre. Quand l’œuf a commencé à se fissurer, tu l’as touché par réflexe. À cet instant, ton rythme cardiaque et son énergie interne se sont synchronisés."
+      "title": "Contact et trauma",
+      "text": "Quand l'œuf s'est ouvert, tu l'as touché pour l'écarter d'un blessé. Ton rythme cardiaque s'est synchronisé avec sa pulsation, puis tes souvenirs de l'opération se sont fragmentés."
     },
     {
       "id": "lore_03",
       "image": "assets/lore/lore-03.png",
-      "title": "Réaction émotionnelle",
-      "text": "Depuis le contact, l’œuf réagit à tes variations d’humeur. Colère, peur, curiosité, calme : chaque émotion modifie sa température, sa couleur et son rythme biologique."
+      "title": "Doute clinique",
+      "text": "Depuis ton évacuation, tu réponds juste aux examens simples, mais tes choix moraux varient sous stress. Chen veut savoir si le trauma a biaisé ton jugement avant de te laisser approcher la créature."
     },
     {
       "id": "lore_04",
       "image": "assets/lore/lore-04.png",
       "title": "Protocole Chen",
-      "text": "Avant l’éclosion complète, le Professeur Chen veut comprendre le lien entre toi et la créature. Tu vas passer une batterie de tests comportementaux pour mesurer cette synchronisation."
+      "text": "Le professeur branche l'œuf au spectrogramme bioélectrique. À chaque réponse, certains signaux se stabilisent et d'autres se déplacent. Chen pense pouvoir accompagner cette orientation, sans savoir encore ce qu'elle demandera en retour."
     }
   ],
   "dialogue": {
@@ -179,38 +179,44 @@
     "creatures": {
       "force": {
         "name": "Brise-Sas",
-        "description": "L’apparence de la créature a évolué selon votre synchronisation émotionnelle avec l’œuf alien."
+        "description": "La créature hérite surtout des réflexes de protection, de verrouillage et de riposte."
       },
       "exploration": {
         "name": "Marche-Brume",
-        "description": "L’apparence de la créature a évolué selon votre synchronisation émotionnelle avec l’œuf alien."
+        "description": "La créature hérite surtout de la curiosité, de l'appel extérieur et du besoin d'aller voir."
       },
       "conciliation": {
         "name": "Écho-Lien",
-        "description": "L’apparence de la créature a évolué selon votre synchronisation émotionnelle avec l’œuf alien."
+        "description": "La créature hérite surtout de l'attachement, de l'apaisement et du refus d'être seule."
       },
       "intelligence": {
         "name": "Noyau-Clair",
-        "description": "L’apparence de la créature a évolué selon votre synchronisation émotionnelle avec l’œuf alien."
+        "description": "La créature hérite surtout de l'analyse, de la retenue et du besoin de comprendre."
       }
     },
     "endings": {
       "stable": {
         "title": "Lien viable",
-        "text": "La creature garde une forme lisible et repond encore a ta presence. Elle n'est pas parfaite, mais elle peut vivre avec ce lien."
+        "text": "La créature garde une forme lisible. Elle ressent tes hypothèses, mais ne les subit pas encore comme des ordres."
       },
       "specialized": {
-        "title": "Forme specialisee",
-        "text": "La creature prend une direction nette. Elle devient plus capable, mais chaque nouveau test reduit sa marge d'adaptation."
+        "title": "Génome sous tension",
+        "text": "La créature prend une direction nette. Chaque réponse du soldat stabilise une faculté et fragilise les autres."
       },
       "unstable": {
-        "title": "Forme instable",
-        "text": "Les anomalies apparaissent dans sa morphologie. Elle gagne en intensite, mais perd une partie de sa coherence interne."
+        "title": "Hypothèse devenue chair",
+        "text": "Les anomalies apparaissent. À force de vouloir l'améliorer, le protocole lui a appris qu'elle n'était jamais suffisante."
       },
       "degenerate": {
-        "title": "Degenerescence totale",
-        "text": "L'evolution a ete poussee trop loin. La creature n'est plus seulement transformee : elle se deforme sous la pression du protocole."
+        "title": "Confusion totale",
+        "text": "Le protocole a été poussé trop loin. La leçon est brutale : chercher l'être parfait finit par détruire l'être vivant."
       }
+    },
+    "stopEnding": {
+      "kicker": "Fin viable",
+      "title": "Tu refuses la perfection",
+      "text": "Chen promettait une créature meilleure au prochain test, puis encore meilleure au suivant. Tu as choisi d'arrêter avant de transformer une vie en projet d'optimisation. La créature reste imparfaite, donc vivante.",
+      "button": "Revenir au menu"
     }
   }
 }

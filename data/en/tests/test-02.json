@@ -1,6 +1,6 @@
 {
   "id": "test_02",
-  "label": "Behavioral test 02",
+  "label": "Judgment evaluation 02",
   "creatureLabel": "LEVEL 2",
   "startNode": "intro",
   "nodes": {
@@ -8,40 +8,42 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "worried",
-          "text": "Second protocol. The creature has hatched, but it refuses to drift away from your heartbeat. We are testing what it does when your bond is challenged."
+          "emotion": "serious",
+          "text": "Second protocol. We move to moral triage under stress. Answer as if the scene were happening now."
         },
         {
           "speaker": "Professor Chen",
-          "emotion": "serious",
-          "text": "A simulation opens the room door. An unknown signal calls the creature from the corridor while our security locks begin to close."
+          "emotion": "worried",
+          "text": "The creature is not in the simulation room, but its rhythm is already following yours."
         }
       ],
       "choices": [
         {
-          "label": "I pin the creature close to me and regain control of the room.",
+          "label": "I prioritize my panicking teammate to keep the unit operational.",
           "effects": {
             "force": 2,
-            "conciliation": -1,
-            "pressure": 0.8,
-            "overdrive": true
+            "conciliation": 1,
+            "pressure": 0.35
           },
           "next": "dilemme_01"
         },
         {
-          "label": "I speak softly so it can feel that I am staying with it.",
+          "label": "I stabilize the wounded prisoner. His status does not change his pain.",
           "effects": {
             "conciliation": 2,
             "intelligence": 1,
-            "stability": 0.6
+            "pressure": 0.2,
+            "stability": 0.2,
+            "mercy": true
           },
           "next": "dilemme_01"
         },
         {
-          "label": "I let it watch the corridor so I can understand what attracts it.",
+          "label": "I isolate the contaminated scientist before the risk spreads.",
           "effects": {
-            "exploration": 2,
-            "pressure": 0.45
+            "intelligence": 2,
+            "force": 1,
+            "pressure": 0.3
           },
           "next": "dilemme_01"
         }
@@ -51,36 +53,37 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "neutral",
-          "text": "The creature modulates its skin according to your decision. It is not only obeying: it interprets your intention before you even move."
+          "emotion": "worried",
+          "text": "The spectrogram reacts to your choices, not only to the simulator images. This is exactly what I was looking for: your answers are beginning to shape its form."
         }
       ],
       "choices": [
         {
-          "label": "I secure the perimeter first. Nothing leaves the laboratory.",
+          "label": "Then I stop the simulation before it contaminates the creature.",
           "effects": {
             "force": 2,
-            "intelligence": 1,
-            "pressure": 0.55,
-            "stability": 0.25,
-            "overdrive": true
+            "conciliation": 1,
+            "pressure": 0.35,
+            "stability": 0.25
           },
           "next": "decision_finale"
         },
         {
-          "label": "I compare the signal to its reactions and look for a pattern.",
-          "effects": {
-            "intelligence": 2,
-            "pressure": 0.25
-          },
-          "next": "decision_finale"
-        },
-        {
-          "label": "I move forward with it to see if the signal comes from another organism.",
+          "label": "I continue. If it reacts to my choices, we need to understand how.",
           "effects": {
             "exploration": 2,
+            "intelligence": 1,
+            "pressure": 0.45
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I ask for a less violent version to measure without provoking.",
+          "effects": {
+            "intelligence": 2,
             "conciliation": 1,
-            "stability": 0.25
+            "pressure": 0.2,
+            "stability": 0.35
           },
           "next": "decision_finale"
         }
@@ -90,39 +93,39 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "happy",
-          "text": "Final sequence. The creature mirrors your breathing, but it also begins to resist the protocol. It is looking for a direction that is not only yours."
+          "emotion": "serious",
+          "text": "Final situation. A prisoner opens a forbidden door to save a wounded person. If he succeeds, a lab wing may be contaminated. Your answer will tell us which mutation to stabilize."
         }
       ],
       "choices": [
         {
-          "label": "I set a clear limit: it must survive without threatening the team.",
+          "label": "I stop him. Intention is not enough when the risk spreads.",
           "effects": {
-            "force": 1,
-            "intelligence": 2,
+            "force": 2,
+            "intelligence": 1,
             "pressure": 0.55,
-            "stability": 0.25,
+            "stability": 0.15,
             "overdrive": true
           },
           "next": "final"
         },
         {
-          "label": "I protect its autonomy, even if the protocol becomes harder to control.",
+          "label": "I let him save the wounded person, then I accept containment.",
           "effects": {
             "conciliation": 2,
-            "exploration": 1,
-            "pressure": 0.35,
-            "stability": 1.3,
-            "mercy": true
+            "force": 1,
+            "pressure": 0.45,
+            "stability": 0.25
           },
           "next": "final"
         },
         {
-          "label": "I follow the signal with it to discover what the lab cannot see.",
+          "label": "I search for a third option before accepting that sacrifice.",
           "effects": {
-            "exploration": 3,
-            "pressure": 0.9,
-            "overdrive": true
+            "intelligence": 2,
+            "exploration": 1,
+            "pressure": 0.35,
+            "stability": 0.2
           },
           "next": "final"
         }

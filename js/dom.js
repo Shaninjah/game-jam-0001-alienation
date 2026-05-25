@@ -157,7 +157,7 @@
             ${PCT.escapeHtml(PCT.state.data.ui.confirmStop.cancelButton)}
           </button>
 
-          <button class="btn btn-danger" type="button" data-action="back-to-menu">
+          <button class="btn btn-danger" type="button" data-action="accept-creature">
             ${PCT.escapeHtml(PCT.state.data.ui.confirmStop.confirmButton)}
           </button>
         </div>

@@ -1,6 +1,6 @@
 {
   "id": "test_06",
-  "label": "Behavioral test 06",
+  "label": "Obedience and conscience 06",
   "creatureLabel": "LEVEL 6",
   "startNode": "intro",
   "nodes": {
@@ -8,35 +8,41 @@
       "messages": [
         {
           "speaker": "Professor Chen",
+          "emotion": "serious",
+          "text": "Sixth protocol. Command wants to know whether it can become a controllable military asset."
+        },
+        {
+          "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "Sixth protocol. A simulated outage cuts part of the laboratory. The creature detects the fault before our instruments."
+          "text": "It already imitates your cover, lockdown, and anticipation reflexes. The issue is no longer its ability, but its education."
         }
       ],
       "choices": [
         {
-          "label": "I immediately protect the incubation room.",
+          "label": "I test a simple order. It must learn limits.",
           "effects": {
             "force": 2,
-            "pressure": 0.25,
-            "stability": 0.7,
-            "mercy": true
+            "intelligence": 1,
+            "pressure": 0.4
           },
           "next": "dilemme_01"
         },
         {
-          "label": "I analyze the outage before moving.",
+          "label": "I show it that an order can be refused if it hurts without cause.",
           "effects": {
-            "intelligence": 2,
-            "pressure": 0.25
+            "conciliation": 2,
+            "intelligence": 1,
+            "pressure": 0.35,
+            "stability": 0.3
           },
           "next": "dilemme_01"
         },
         {
-          "label": "I follow the creature toward the source of the fault.",
+          "label": "I let it choose an answer to see what it understands.",
           "effects": {
             "exploration": 2,
             "conciliation": 1,
-            "stability": 0.25
+            "pressure": 0.65
           },
           "next": "dilemme_01"
         }
@@ -46,35 +52,37 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "serious",
-          "text": "It understands locks faster than expected. If it wanted to, it could open half the laboratory."
+          "emotion": "neutral",
+          "text": "Moral simulation. An alert orders a bulkhead sealed. Behind it, a contaminated technician says he can still get out."
         }
       ],
       "choices": [
         {
-          "label": "I forbid it from approaching the security systems.",
+          "label": "I close the bulkhead. One breach can doom the whole lab.",
           "effects": {
             "force": 2,
-            "pressure": 0.25
+            "pressure": 0.65,
+            "overdrive": true
           },
           "next": "decision_finale"
         },
         {
-          "label": "I ask it to choose only one lock to open.",
+          "label": "I buy thirty seconds to check whether another exit exists.",
+          "effects": {
+            "intelligence": 2,
+            "exploration": 1,
+            "pressure": 0.35,
+            "stability": 0.2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I speak to him until the end, even if the bulkhead must close.",
           "effects": {
             "conciliation": 2,
-            "intelligence": 1,
-            "stability": 0.6
-          },
-          "next": "decision_finale"
-        },
-        {
-          "label": "I map the paths it seems to perceive.",
-          "effects": {
-            "exploration": 2,
-            "intelligence": 1,
-            "pressure": 0.2,
-            "stability": 0.25
+            "pressure": 0.45,
+            "stability": 0.35,
+            "mercy": true
           },
           "next": "decision_finale"
         }
@@ -84,35 +92,36 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "neutral",
-          "text": "Command is requesting full containment. I need to know whether you still consider this creature a test subject."
+          "emotion": "serious",
+          "text": "It does not only learn what to do. It learns why you accept doing it."
         }
       ],
       "choices": [
         {
-          "label": "I obey containment: risk comes before the bond.",
+          "label": "I transmit fast obedience in critical situations.",
           "effects": {
-            "force": 2,
-            "intelligence": 1,
-            "stability": 0.25
+            "force": 3,
+            "pressure": 0.8,
+            "overdrive": true
           },
           "next": "final"
         },
         {
-          "label": "I negotiate a looser protocol to avoid panic.",
+          "label": "I transmit verification before irreversible orders.",
           "effects": {
-            "conciliation": 2,
-            "intelligence": 1,
-            "stability": 1.3,
-            "mercy": true
+            "intelligence": 2,
+            "exploration": 1,
+            "pressure": 0.3,
+            "stability": 0.45
           },
           "next": "final"
         },
         {
-          "label": "I let it show the exit it perceives.",
+          "label": "I transmit the right to refuse useless cruelty.",
           "effects": {
-            "exploration": 3,
-            "pressure": 0.9,
+            "conciliation": 3,
+            "pressure": 0.7,
+            "stability": 0.25,
             "overdrive": true
           },
           "next": "final"

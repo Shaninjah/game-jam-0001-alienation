@@ -1,6 +1,6 @@
 {
   "id": "test_03",
-  "label": "Behavioral test 03",
+  "label": "Judgment evaluation 03",
   "creatureLabel": "LEVEL 3",
   "startNode": "intro",
   "nodes": {
@@ -8,40 +8,42 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "serious",
-          "text": "Third protocol. The creature now projects fragments of your military operation. They are not exact memories, more like emotions it is rebuilding."
+          "emotion": "shocked",
+          "text": "After the second test, a normal mutation definitely appeared. Not after contact, not after an injection: after your moral decision."
         },
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "It shows you a dark room, a broken radio order, and a silhouette waiting near the egg."
+          "text": "Its genome shifted at the exact moment you imagined the prisoner in front of the forbidden door. For now, the form remains healthy."
         }
       ],
       "choices": [
         {
-          "label": "I cut the vision off before it exploits my memories.",
-          "effects": {
-            "force": 2,
-            "conciliation": -1,
-            "pressure": 0.8,
-            "overdrive": true
-          },
-          "next": "dilemme_01"
-        },
-        {
-          "label": "I record every detail as evidence to analyze.",
-          "effects": {
-            "intelligence": 2,
-            "pressure": 0.25
-          },
-          "next": "dilemme_01"
-        },
-        {
-          "label": "I let it feel my fear so I can understand what it wants.",
+          "label": "Then we slow down. I refuse to push it without understanding.",
           "effects": {
             "conciliation": 2,
-            "exploration": 1,
-            "stability": 0.6
+            "force": 1,
+            "pressure": 0.25,
+            "stability": 0.6,
+            "mercy": true
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "We continue, but every hypothesis must be verifiable.",
+          "effects": {
+            "intelligence": 2,
+            "pressure": 0.25,
+            "stability": 0.25
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Show me the mutation. I want to see what I caused.",
+          "effects": {
+            "exploration": 2,
+            "conciliation": 1,
+            "pressure": 0.45
           },
           "next": "dilemme_01"
         }
@@ -51,35 +53,37 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "neutral",
-          "text": "The vision changes with your reaction. It is not archiving your past: it is trying to build a language from what marked you."
+          "emotion": "serious",
+          "text": "This is the real dilemma. If your choices transform it, are you still a patient to protect or an actor responsible for its future?"
         }
       ],
       "choices": [
         {
-          "label": "I turn the vision into a usable mental map.",
-          "effects": {
-            "intelligence": 1,
-            "exploration": 2,
-            "pressure": 0.2,
-            "stability": 0.25
-          },
-          "next": "decision_finale"
-        },
-        {
-          "label": "I use it as a warning and prepare a response.",
-          "effects": {
-            "force": 2,
-            "pressure": 0.25
-          },
-          "next": "decision_finale"
-        },
-        {
-          "label": "I look for the central emotion instead of the military detail.",
+          "label": "I take responsibility for the bond as long as it exists.",
           "effects": {
             "conciliation": 2,
-            "pressure": 0.25,
-            "stability": 0.35
+            "intelligence": 1,
+            "pressure": 0.3,
+            "stability": 0.3
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Command must decide. I am too involved.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1,
+            "pressure": 0.45,
+            "overdrive": true
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "The creature must have a sign to give, even an imperfect one.",
+          "effects": {
+            "exploration": 2,
+            "conciliation": 1,
+            "pressure": 0.4
           },
           "next": "decision_finale"
         }
@@ -89,38 +93,36 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "happy",
-          "text": "If this memory becomes part of its genome, you need to choose what it should inherit from you."
+          "emotion": "neutral",
+          "text": "If it inherits your mental images, what should we do with your memories of Operation Mirador?"
         }
       ],
       "choices": [
         {
-          "label": "A clear order: survive and protect the perimeter.",
+          "label": "Lock them away. Some memories are biological threats.",
           "effects": {
             "force": 2,
-            "intelligence": 1,
-            "pressure": 0.35,
-            "stability": 0.95,
+            "pressure": 0.6,
+            "overdrive": true
+          },
+          "next": "final"
+        },
+        {
+          "label": "Analyze them slowly to separate fact, fear, and guilt.",
+          "effects": {
+            "intelligence": 2,
+            "conciliation": 1,
+            "pressure": 0.25,
+            "stability": 0.55,
             "mercy": true
           },
           "next": "final"
         },
         {
-          "label": "An open question: search for the signal's origin.",
+          "label": "Let them surface. What it is looking for may be inside.",
           "effects": {
-            "exploration": 2,
-            "intelligence": 1,
-            "pressure": 0.2,
-            "stability": 0.25
-          },
-          "next": "final"
-        },
-        {
-          "label": "A stable presence: do not panic when the bond shakes.",
-          "effects": {
-            "conciliation": 3,
-            "pressure": 0.7,
-            "stability": 0.35,
+            "exploration": 3,
+            "pressure": 0.8,
             "overdrive": true
           },
           "next": "final"

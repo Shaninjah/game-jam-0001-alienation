@@ -1,6 +1,6 @@
 {
   "id": "test_10",
-  "label": "Test comportemental 10",
+  "label": "Décision finale 10",
   "creatureLabel": "NIVEAU 10",
   "startNode": "intro",
   "nodes": {
@@ -9,44 +9,42 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Dixième protocole. Toutes les données se contredisent. Plus nous optimisons la créature, plus elle perd la capacité de nous surprendre."
+          "text": "Dixième protocole. Toutes les données se contredisent parce que nous avons posé les mauvaises questions."
         },
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Je vous demande de choisir sans chercher la réponse parfaite."
+          "text": "Nous cherchions ce que la créature allait devenir. La vraie question est ce que nous acceptons de ne pas contrôler."
         }
       ],
       "choices": [
         {
-          "label": "J'accepte qu'elle reste imparfaite et vivante.",
-          "effects": {
-            "conciliation": 2,
-            "intelligence": 1,
-            "pressure": 0.35,
-            "stability": 1.3,
-            "mercy": true
-          },
-          "next": "dilemme_01"
-        },
-        {
-          "label": "Je cherche encore une formule stable, même incomplète.",
+          "label": "Je cherche encore une formule stable, même imparfaite.",
           "effects": {
             "intelligence": 2,
             "force": 1,
-            "pressure": 0.9,
-            "stability": 0.25,
+            "pressure": 0.75,
             "overdrive": true
           },
           "next": "dilemme_01"
         },
         {
-          "label": "Je lui laisse choisir sa prochaine mutation.",
+          "label": "J'accepte qu'elle reste changeante et vivante.",
+          "effects": {
+            "conciliation": 2,
+            "intelligence": 1,
+            "pressure": 0.3,
+            "stability": 0.75,
+            "mercy": true
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "Je lui laisse choisir la prochaine direction du lien.",
           "effects": {
             "exploration": 2,
-            "pressure": 0.35,
-            "stability": 0.7,
-            "mercy": true
+            "conciliation": 1,
+            "pressure": 0.65
           },
           "next": "dilemme_01"
         }
@@ -57,38 +55,35 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Elle cesse de répondre aux jauges. Force, exploration, conciliation, intelligence : elle les comprend, puis les ignore."
+          "text": "Le commandement ordonne son transfert. Officiellement, elle est une entité instable. Officieusement, ils veulent savoir si elle peut être reproduite."
         }
       ],
       "choices": [
         {
-          "label": "Je détruis la grille de test avant qu'elle l'enferme.",
+          "label": "J'obéis au transfert, mais j'impose un protocole de protection.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1,
+            "pressure": 0.65
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je refuse le transfert. Le laboratoire a perdu le droit de décider seul.",
           "effects": {
             "force": 1,
-            "exploration": 2,
-            "pressure": 1.1,
-            "stability": 0.25,
-            "overdrive": true
-          },
-          "next": "decision_finale"
-        },
-        {
-          "label": "Je transforme le test en dialogue ouvert.",
-          "effects": {
             "conciliation": 2,
-            "intelligence": 1,
-            "pressure": 0.35,
-            "stability": 1.3,
-            "mercy": true
+            "pressure": 0.9,
+            "overdrive": true
           },
           "next": "decision_finale"
         },
         {
-          "label": "Je mesure précisément ce refus pour en garder une trace.",
+          "label": "Je propose un contact avec le signal extérieur sous observation.",
           "effects": {
-            "intelligence": 3,
-            "pressure": 1.6,
-            "overdrive": true
+            "exploration": 2,
+            "intelligence": 1,
+            "pressure": 0.75
           },
           "next": "decision_finale"
         }
@@ -98,37 +93,37 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "happy",
-          "text": "Fin de la boucle actuelle. La créature n'est pas parfaite. Elle est liée, changeante, et peut-être déjà en train de choisir ce qu'elle veut devenir."
+          "emotion": "serious",
+          "text": "Dernière réponse, soldat. Ne cherchez pas la solution parfaite. Choisissez la responsabilité que vous pouvez porter."
         }
       ],
       "choices": [
         {
-          "label": "Je la protège, même contre nos propres conclusions.",
+          "label": "Je la confie au protocole humain, avec moi comme témoin permanent.",
           "effects": {
-            "conciliation": 3,
-            "pressure": 0.35,
-            "stability": 1.05,
-            "mercy": true
+            "force": 1,
+            "intelligence": 2,
+            "pressure": 0.55,
+            "stability": 0.25
           },
           "next": "final"
         },
         {
-          "label": "Je la laisse partir vers ce qui l'appelle.",
+          "label": "Je la laisse partir vers ce qui l'appelle, même si je perds le lien.",
           "effects": {
             "exploration": 3,
-            "pressure": 1.25,
+            "pressure": 1.15,
             "overdrive": true
           },
           "next": "final"
         },
         {
-          "label": "Je reste avec elle pour apprendre sans prétendre la finir.",
+          "label": "Je reste avec elle pour apprendre, sans prétendre la finir.",
           "effects": {
-            "intelligence": 2,
-            "conciliation": 1,
+            "conciliation": 2,
+            "intelligence": 1,
             "pressure": 0.35,
-            "stability": 0.95,
+            "stability": 0.85,
             "mercy": true
           },
           "next": "final"

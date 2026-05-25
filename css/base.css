@@ -286,6 +286,16 @@ button {
 }
 
 /*
+  Les assets raster du jeu sont dessines en petite resolution puis agrandis.
+  Ce rendu evite le lissage du navigateur pour conserver un aspect pixel net.
+*/
+.media-img,
+.avatar-img,
+.creature-img {
+  image-rendering: pixelated;
+}
+
+/*
   Si une image est cassée, je la cache pour laisser le placeholder prendre sa place.
 */
 .media-img.is-broken,

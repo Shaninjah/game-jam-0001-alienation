@@ -1,6 +1,6 @@
 {
   "id": "test_10",
-  "label": "Behavioral test 10",
+  "label": "Final decision 10",
   "creatureLabel": "LEVEL 10",
   "startNode": "intro",
   "nodes": {
@@ -9,44 +9,42 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "Tenth protocol. All the data contradicts itself. The more we optimize the creature, the more it loses the ability to surprise us."
+          "text": "Tenth protocol. All the data contradicts itself because we asked the wrong questions."
         },
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "I am asking you to choose without searching for the perfect answer."
+          "text": "We were looking for what the creature would become. The real question is what we accept not controlling."
         }
       ],
       "choices": [
         {
-          "label": "I accept that it remains imperfect and alive.",
-          "effects": {
-            "conciliation": 2,
-            "intelligence": 1,
-            "pressure": 0.35,
-            "stability": 1.3,
-            "mercy": true
-          },
-          "next": "dilemme_01"
-        },
-        {
-          "label": "I keep looking for a stable formula, even incomplete.",
+          "label": "I keep looking for a stable formula, even an imperfect one.",
           "effects": {
             "intelligence": 2,
             "force": 1,
-            "pressure": 0.9,
-            "stability": 0.25,
+            "pressure": 0.75,
             "overdrive": true
           },
           "next": "dilemme_01"
         },
         {
-          "label": "I let it choose its next mutation.",
+          "label": "I accept that it remains changing and alive.",
+          "effects": {
+            "conciliation": 2,
+            "intelligence": 1,
+            "pressure": 0.3,
+            "stability": 0.75,
+            "mercy": true
+          },
+          "next": "dilemme_01"
+        },
+        {
+          "label": "I let it choose the bond's next direction.",
           "effects": {
             "exploration": 2,
-            "pressure": 0.35,
-            "stability": 0.7,
-            "mercy": true
+            "conciliation": 1,
+            "pressure": 0.65
           },
           "next": "dilemme_01"
         }
@@ -57,38 +55,35 @@
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "It stops responding to the gauges. Force, exploration, conciliation, intelligence: it understands them, then ignores them."
+          "text": "Command orders its transfer. Officially, it is an unstable entity. Unofficially, they want to know whether it can be reproduced."
         }
       ],
       "choices": [
         {
-          "label": "I destroy the test grid before it traps the creature.",
+          "label": "I obey the transfer, but impose a protection protocol.",
+          "effects": {
+            "force": 2,
+            "intelligence": 1,
+            "pressure": 0.65
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I refuse the transfer. The lab lost the right to decide alone.",
           "effects": {
             "force": 1,
-            "exploration": 2,
-            "pressure": 1.1,
-            "stability": 0.25,
-            "overdrive": true
-          },
-          "next": "decision_finale"
-        },
-        {
-          "label": "I turn the test into an open dialogue.",
-          "effects": {
             "conciliation": 2,
-            "intelligence": 1,
-            "pressure": 0.35,
-            "stability": 1.3,
-            "mercy": true
+            "pressure": 0.9,
+            "overdrive": true
           },
           "next": "decision_finale"
         },
         {
-          "label": "I measure this refusal precisely so we keep a trace.",
+          "label": "I propose contact with the outside signal under observation.",
           "effects": {
-            "intelligence": 3,
-            "pressure": 1.05,
-            "overdrive": true
+            "exploration": 2,
+            "intelligence": 1,
+            "pressure": 0.75
           },
           "next": "decision_finale"
         }
@@ -98,37 +93,37 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "happy",
-          "text": "End of the current loop. The creature is not perfect. It is bonded, changing, and maybe already choosing what it wants to become."
+          "emotion": "serious",
+          "text": "Final answer, soldier. Do not look for the perfect solution. Choose the responsibility you can carry."
         }
       ],
       "choices": [
         {
-          "label": "I protect it, even against our own conclusions.",
+          "label": "I entrust it to human protocol, with me as permanent witness.",
           "effects": {
-            "conciliation": 3,
-            "pressure": 0.35,
-            "stability": 1.05,
-            "mercy": true
+            "force": 1,
+            "intelligence": 2,
+            "pressure": 0.55,
+            "stability": 0.25
           },
           "next": "final"
         },
         {
-          "label": "I let it leave toward whatever is calling it.",
+          "label": "I let it leave toward what calls it, even if I lose the bond.",
           "effects": {
             "exploration": 3,
-            "pressure": 1.25,
+            "pressure": 1.15,
             "overdrive": true
           },
           "next": "final"
         },
         {
-          "label": "I stay with it to learn without pretending to finish it.",
+          "label": "I stay with it to learn, without pretending to finish it.",
           "effects": {
-            "intelligence": 2,
-            "conciliation": 1,
+            "conciliation": 2,
+            "intelligence": 1,
             "pressure": 0.35,
-            "stability": 0.95,
+            "stability": 0.85,
             "mercy": true
           },
           "next": "final"

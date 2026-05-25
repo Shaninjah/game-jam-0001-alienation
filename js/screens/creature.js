@@ -92,6 +92,7 @@
   PCT.renderStabilityStatus = function renderStabilityStatus(stability, ending) {
     const ui = PCT.state.data.ui.final;
     const statusTitle = ui.stabilityTitle || "Stability";
+    const statusText = ending.text || stability.summary;
 
     return `
       <section class="evolution-status status-${PCT.escapeHtml(stability.key)}">
@@ -100,8 +101,35 @@
           <strong>${PCT.escapeHtml(stability.label)}</strong>
         </div>
         <p>${PCT.escapeHtml(ending.title)}</p>
-        <small>${PCT.escapeHtml(stability.summary)}</small>
+        <small>${PCT.escapeHtml(statusText)}</small>
       </section>
+    `;
+  };
+
+  PCT.renderStopEnding = function renderStopEnding() {
+    const finalData = PCT.state.data.final || {};
+    const stopEnding = finalData.stopEnding || {};
+    const creatureKey = PCT.getDominantStatKey();
+    const creature = finalData.creatures[creatureKey] || finalData.creatures.force || {};
+    const stability = PCT.getCreatureStability();
+
+    PCT.app.innerHTML = `
+      <main class="screen stop-ending-screen">
+        <section class="screen-inner stop-ending-card panel">
+          <p class="kicker">${PCT.escapeHtml(stopEnding.kicker || "Fin viable")}</p>
+          <h1>${PCT.escapeHtml(stopEnding.title || "Tu refuses la perfection")}</h1>
+          <p class="stop-ending-text">${PCT.escapeHtml(stopEnding.text || "")}</p>
+
+          <div class="stop-ending-summary stat-${PCT.escapeHtml(creatureKey)}">
+            <span>${PCT.escapeHtml(creature.name || "")}</span>
+            <strong>${PCT.escapeHtml(stability.label)}</strong>
+          </div>
+
+          <button class="btn btn-primary" type="button" data-action="return-menu">
+            ${PCT.escapeHtml(stopEnding.button || PCT.state.data.ui.final.menuButton)}
+          </button>
+        </section>
+      </main>
     `;
   };
 

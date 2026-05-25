@@ -1,6 +1,6 @@
 {
   "id": "test_06",
-  "label": "Test comportemental 06",
+  "label": "Obéissance et conscience 06",
   "creatureLabel": "NIVEAU 6",
   "startNode": "intro",
   "nodes": {
@@ -8,35 +8,41 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Sixième protocole. Le commandement veut savoir si elle peut devenir un atout militaire contrôlable."
+        },
+        {
+          "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Sixième protocole. Une panne simulée coupe une partie du laboratoire. La créature détecte la faille avant nos instruments."
+          "text": "Elle imite déjà vos réflexes de couverture, de verrouillage et d'anticipation. Le problème n'est plus sa capacité, mais son éducation."
         }
       ],
       "choices": [
         {
-          "label": "Je protège immédiatement la salle d'incubation.",
+          "label": "Je teste un ordre simple. Elle doit apprendre les limites.",
           "effects": {
             "force": 2,
-            "pressure": 0.25,
-            "stability": 0.7,
-            "mercy": true
+            "intelligence": 1,
+            "pressure": 0.4
           },
           "next": "dilemme_01"
         },
         {
-          "label": "J'analyse la panne avant de bouger.",
+          "label": "Je lui montre qu'un ordre peut être refusé s'il blesse sans raison.",
           "effects": {
-            "intelligence": 2,
-            "pressure": 0.25
+            "conciliation": 2,
+            "intelligence": 1,
+            "pressure": 0.35,
+            "stability": 0.3
           },
           "next": "dilemme_01"
         },
         {
-          "label": "Je suis la créature vers la source de la faille.",
+          "label": "Je la laisse choisir une réponse pour voir ce qu'elle comprend.",
           "effects": {
             "exploration": 2,
             "conciliation": 1,
-            "stability": 0.25
+            "pressure": 0.65
           },
           "next": "dilemme_01"
         }
@@ -46,35 +52,37 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "serious",
-          "text": "Elle comprend les verrous plus vite que prévu. Si elle le voulait, elle pourrait ouvrir la moitié du laboratoire."
+          "emotion": "neutral",
+          "text": "Simulation morale. Une alerte demande de sceller un sas. Derrière, un technicien contaminé affirme qu'il peut encore se sauver."
         }
       ],
       "choices": [
         {
-          "label": "Je lui interdis d'approcher les systèmes de sécurité.",
+          "label": "Je ferme le sas. Une brèche peut condamner tout le laboratoire.",
           "effects": {
             "force": 2,
-            "pressure": 0.25
+            "pressure": 0.65,
+            "overdrive": true
           },
           "next": "decision_finale"
         },
         {
-          "label": "Je lui demande de choisir un seul verrou à ouvrir.",
+          "label": "Je gagne trente secondes pour vérifier s'il existe une sortie.",
+          "effects": {
+            "intelligence": 2,
+            "exploration": 1,
+            "pressure": 0.35,
+            "stability": 0.2
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "Je lui parle jusqu'au bout, même si le sas doit se fermer.",
           "effects": {
             "conciliation": 2,
-            "intelligence": 1,
-            "stability": 0.6
-          },
-          "next": "decision_finale"
-        },
-        {
-          "label": "Je cartographie les chemins qu'elle semble percevoir.",
-          "effects": {
-            "exploration": 2,
-            "intelligence": 1,
-            "pressure": 0.2,
-            "stability": 0.25
+            "pressure": 0.45,
+            "stability": 0.35,
+            "mercy": true
           },
           "next": "decision_finale"
         }
@@ -84,35 +92,36 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "neutral",
-          "text": "Le commandement demande un confinement total. Je dois savoir si vous considérez encore cette créature comme un sujet de test."
+          "emotion": "serious",
+          "text": "Elle n'apprend pas seulement quoi faire. Elle apprend pourquoi vous acceptez de le faire."
         }
       ],
       "choices": [
         {
-          "label": "J'obéis au confinement : le risque passe avant le lien.",
+          "label": "Je lui transmets l'obéissance rapide en situation critique.",
           "effects": {
-            "force": 2,
-            "intelligence": 1,
-            "stability": 0.25
+            "force": 3,
+            "pressure": 0.8,
+            "overdrive": true
           },
           "next": "final"
         },
         {
-          "label": "Je négocie un protocole plus souple pour éviter la panique.",
+          "label": "Je lui transmets la vérification avant l'ordre irréversible.",
           "effects": {
-            "conciliation": 2,
-            "intelligence": 1,
-            "stability": 1.3,
-            "mercy": true
+            "intelligence": 2,
+            "exploration": 1,
+            "pressure": 0.3,
+            "stability": 0.45
           },
           "next": "final"
         },
         {
-          "label": "Je la laisse montrer la sortie qu'elle perçoit.",
+          "label": "Je lui transmets le droit de refuser une cruauté inutile.",
           "effects": {
-            "exploration": 3,
-            "pressure": 0.9,
+            "conciliation": 3,
+            "pressure": 0.7,
+            "stability": 0.25,
             "overdrive": true
           },
           "next": "final"

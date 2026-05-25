@@ -1,6 +1,6 @@
 {
   "id": "test_08",
-  "label": "Behavioral test 08",
+  "label": "Moving genome 08",
   "creatureLabel": "LEVEL 8",
   "startNode": "intro",
   "nodes": {
@@ -9,33 +9,40 @@
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "Eighth protocol. Its genome reconfigures in waves. Every choice stabilizes one area and makes another more unstable."
+          "text": "Eighth protocol. Its genome reconfigures in waves. Visible mutations are only the easiest part to read."
+        },
+        {
+          "speaker": "Professor Chen",
+          "emotion": "serious",
+          "text": "Some alterations remain internal: reflex, fear tolerance, attachment, capacity to learn."
         }
       ],
       "choices": [
         {
-          "label": "I lock its current form before a dangerous mutation.",
+          "label": "I freeze its current form before it loses coherence.",
           "effects": {
             "force": 2,
-            "pressure": 0.4
+            "intelligence": 1,
+            "pressure": 0.45
           },
           "next": "dilemme_01"
         },
         {
-          "label": "I simulate possible mutations before intervening.",
+          "label": "I model the mutations before choosing what to correct.",
           "effects": {
             "intelligence": 2,
-            "pressure": 0.4
+            "pressure": 0.25,
+            "stability": 0.3
           },
           "next": "dilemme_01"
         },
         {
-          "label": "I let it adapt to the test environment.",
+          "label": "I preserve anomalies as long as they give it options.",
           "effects": {
             "exploration": 2,
             "conciliation": 1,
-            "pressure": 0.15,
-            "stability": 0.25
+            "pressure": 0.75,
+            "overdrive": true
           },
           "next": "dilemme_01"
         }
@@ -45,36 +52,37 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "serious",
-          "text": "Every correction also removes a possibility. The more we seek a perfect form, the more it loses something unpredictable."
+          "emotion": "worried",
+          "text": "We can correct an anomaly, but the correction will also remove a possibility. The perfect creature may be an amputated creature."
         }
       ],
       "choices": [
         {
-          "label": "I prioritize a robust defensive anatomy.",
+          "label": "I correct what could make it dangerous to others.",
           "effects": {
             "force": 2,
-            "intelligence": 1,
-            "pressure": 0.15,
-            "stability": 0.25
+            "pressure": 0.65,
+            "overdrive": true
           },
           "next": "decision_finale"
         },
         {
-          "label": "I balance the parameters instead of maximizing one quality.",
+          "label": "I correct only what makes it suffer.",
           "effects": {
-            "intelligence": 2,
-            "conciliation": 1,
-            "pressure": 0.15,
-            "stability": 0.25
+            "conciliation": 2,
+            "intelligence": 1,
+            "pressure": 0.25,
+            "stability": 0.65,
+            "mercy": true
           },
           "next": "decision_finale"
         },
         {
-          "label": "I preserve the anomalies that give it new options.",
+          "label": "I keep a record and let it adapt one more phase.",
           "effects": {
             "exploration": 2,
-            "pressure": 0.6
+            "intelligence": 1,
+            "pressure": 0.65
           },
           "next": "decision_finale"
         }
@@ -84,37 +92,35 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "worried",
-          "text": "The perfect creature may be the wrong phrase. Tell me which flaw you accept leaving in it."
+          "emotion": "serious",
+          "text": "Choose the flaw you accept leaving in it. No living organism exits a perfect protocol intact."
         }
       ],
       "choices": [
         {
-          "label": "It will be too protective, but able to endure.",
+          "label": "It will be too protective, but it will hold against danger.",
           "effects": {
             "force": 3,
-            "pressure": 0.35,
-            "stability": 0.7,
-            "mercy": true
+            "pressure": 0.55,
+            "stability": 0.2
           },
           "next": "final"
         },
         {
-          "label": "It will be too curious, but able to learn.",
+          "label": "It will be too curious, but it can learn beyond us.",
           "effects": {
-            "exploration": 2,
-            "intelligence": 1,
-            "pressure": 0.35,
-            "stability": 0.25
+            "exploration": 3,
+            "pressure": 0.8,
+            "overdrive": true
           },
           "next": "final"
         },
         {
-          "label": "It will be too bonded to me, but able to feel.",
+          "label": "It will be too bonded, but it will not grow up abandoned.",
           "effects": {
             "conciliation": 3,
-            "pressure": 0.85,
-            "stability": 0.35,
+            "pressure": 0.75,
+            "stability": 0.2,
             "overdrive": true
           },
           "next": "final"

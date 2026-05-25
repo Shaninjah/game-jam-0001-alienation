@@ -1,6 +1,6 @@
 {
   "id": "test_07",
-  "label": "Test comportemental 07",
+  "label": "Signal extérieur 07",
   "creatureLabel": "NIVEAU 7",
   "startNode": "intro",
   "nodes": {
@@ -9,35 +9,40 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Septième protocole. Un signal extérieur répond à ses vocalisations. Pour la première fois, elle n'est peut-être plus seule."
+          "text": "Septième protocole. Un signal extérieur répond à ses vocalisations. Il n'utilise pas sa fréquence seule : il s'appuie sur votre rythme cardiaque."
+        },
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "Quelque chose parle au lien entre vous deux."
         }
       ],
       "choices": [
         {
-          "label": "Je brouille le signal avant qu'il influence son comportement.",
+          "label": "Je brouille le signal avant qu'il prenne le contrôle du lien.",
           "effects": {
             "force": 2,
             "intelligence": 1,
-            "pressure": 0.15,
-            "stability": 0.25
+            "pressure": 0.55,
+            "overdrive": true
           },
           "next": "dilemme_01"
         },
         {
-          "label": "Je tente de décoder la réponse.",
+          "label": "Je demande une traduction spectrale avant toute réponse.",
           "effects": {
             "intelligence": 2,
-            "pressure": 0.4
+            "pressure": 0.25,
+            "stability": 0.25
           },
           "next": "dilemme_01"
         },
         {
-          "label": "Je la laisse écouter pour mesurer son besoin de contact.",
+          "label": "Je la laisse écouter pour savoir si elle reconnaît l'appel.",
           "effects": {
-            "conciliation": 1,
             "exploration": 2,
-            "pressure": 0.15,
-            "stability": 0.25
+            "conciliation": 1,
+            "pressure": 0.6
           },
           "next": "dilemme_01"
         }
@@ -47,34 +52,42 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Le signal envoie une image : un couloir ouvert, l'air libre, puis une silhouette qui attend hors du complexe."
+        },
+        {
+          "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Le signal utilise votre rythme cardiaque comme référence. Il ne parle pas à la créature seule, il parle au lien entre vous deux."
+          "text": "Pour nous, c'est peut-être une invitation ou un piège. Pour elle, c'est déjà presque un lieu."
         }
       ],
       "choices": [
         {
-          "label": "Je rejette le contact et je referme le canal.",
+          "label": "Je referme le canal. Elle n'est pas prête à croire cette image.",
           "effects": {
             "force": 2,
-            "pressure": 0.4
+            "conciliation": 1,
+            "pressure": 0.45,
+            "stability": 0.2
           },
           "next": "decision_finale"
         },
         {
-          "label": "Je traduis les motifs avant de répondre.",
+          "label": "Je réponds par un signal neutre, sans coordonnée du laboratoire.",
           "effects": {
             "intelligence": 2,
             "conciliation": 1,
-            "pressure": 0.15,
-            "stability": 0.25
+            "pressure": 0.35,
+            "stability": 0.35
           },
           "next": "decision_finale"
         },
         {
-          "label": "Je demande ce que le signal veut de nous.",
+          "label": "Je suis l'image avec elle pour découvrir ce qu'elle appelle.",
           "effects": {
-            "exploration": 2,
-            "pressure": 0.6
+            "exploration": 3,
+            "pressure": 0.95,
+            "overdrive": true
           },
           "next": "decision_finale"
         }
@@ -84,33 +97,33 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "happy",
-          "text": "Nous ne savons pas si c'est une invitation ou un piège. La créature attend votre décision comme si elle engageait son avenir."
+          "emotion": "serious",
+          "text": "Si ce signal réclame la créature, qui a le droit de répondre : le laboratoire, vous, ou elle ?"
         }
       ],
       "choices": [
         {
-          "label": "Je prépare une riposte avant toute réponse.",
+          "label": "Le laboratoire répond. Personne ne sort tant que le risque existe.",
           "effects": {
-            "force": 3,
-            "pressure": 0.85,
-            "overdrive": true
+            "force": 2,
+            "intelligence": 1,
+            "pressure": 0.55
           },
           "next": "final"
         },
         {
-          "label": "J'établis un protocole de contact contrôlé.",
+          "label": "Je réponds avec elle, mais sans promettre de la livrer.",
           "effects": {
-            "intelligence": 2,
-            "conciliation": 1,
+            "conciliation": 2,
+            "intelligence": 1,
             "pressure": 0.35,
-            "stability": 0.95,
+            "stability": 0.45,
             "mercy": true
           },
           "next": "final"
         },
         {
-          "label": "Je suis la source du signal avec elle.",
+          "label": "Elle répond. Si elle vient de quelque part, elle doit le savoir.",
           "effects": {
             "exploration": 3,
             "pressure": 1.05,

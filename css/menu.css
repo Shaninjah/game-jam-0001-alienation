@@ -79,7 +79,7 @@
 */
 .language-panel {
   position: absolute;
-  top: 426px;
+  top: 470px;
   left: 50%;
   width: 540px;
   height: 162px;
@@ -139,7 +139,7 @@
 */
 .menu-actions {
   position: absolute;
-  bottom: 42px;
+  bottom: 34px;
   left: 50%;
   width: 300px;
   justify-content: center;

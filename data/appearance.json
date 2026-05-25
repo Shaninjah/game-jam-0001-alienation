@@ -45,7 +45,8 @@
      INSTABILITE
      ------------------------------------------------------------
      La pression monte quand le joueur specialise trop la creature,
-     pousse les stats hautes ou continue tard dans le protocole.
+     pousse les stats hautes, continue tard dans le protocole ou
+     tente de tout optimiser en meme temps.
      Les valeurs restent cote code/design, jamais affichees telles
      quelles au joueur.
      ------------------------------------------------------------ */
@@ -66,10 +67,13 @@
     "dominantShiftPressure": 0.12,
     "balancedGap": 3,
     "balancedRelief": 0.45,
+    "balancedHighThreshold": 8,
+    "balancedHighGap": 3,
+    "balancedHighPressure": 0.75,
     "stageThresholds": {
-      "1": 6.5,
-      "2": 11,
-      "3": 15
+      "1": 10,
+      "2": 14,
+      "3": 17
     }
   },
 
@@ -96,7 +100,7 @@
       {
         "id": "tail_force_t2",
         "label": {
-          "fr": "Queue de defense",
+          "fr": "Queue de défense",
           "en": "Defensive tail"
         },
         "tier": 2,
@@ -121,7 +125,7 @@
       {
         "id": "ears_force_t1",
         "label": {
-          "fr": "Oreilles de defense",
+          "fr": "Oreilles de défense",
           "en": "Defensive ears"
         },
         "tier": 1,
@@ -143,7 +147,7 @@
       {
         "id": "ears_exploration_t1",
         "label": {
-          "fr": "Oreilles eclaireuses",
+          "fr": "Oreilles éclaireuses",
           "en": "Scout ears"
         },
         "tier": 1,
@@ -212,7 +216,7 @@
       {
         "id": "eyes_exploration_t1",
         "label": {
-          "fr": "Regard d'eveil",
+          "fr": "Regard d'éveil",
           "en": "Awakened gaze"
         },
         "tier": 1,
@@ -259,7 +263,7 @@
       {
         "id": "mouth_force_t1",
         "label": {
-          "fr": "Bouche de defi",
+          "fr": "Bouche de défi",
           "en": "Defiant mouth"
         },
         "tier": 1,
@@ -281,7 +285,7 @@
       {
         "id": "mouth_exploration_t1",
         "label": {
-          "fr": "Bouche d'etonnement",
+          "fr": "Bouche d'étonnement",
           "en": "Startled mouth"
         },
         "tier": 1,
@@ -292,7 +296,7 @@
       {
         "id": "mouth_intelligence_t1",
         "label": {
-          "fr": "Bouche d'hypothese",
+          "fr": "Bouche d'hypothèse",
           "en": "Hypothesis mouth"
         },
         "tier": 1,
@@ -314,7 +318,7 @@
       {
         "id": "mouth_force_t3",
         "label": {
-          "fr": "Bouche de predation",
+          "fr": "Bouche de prédation",
           "en": "Predatory mouth"
         },
         "tier": 3,
@@ -348,14 +352,14 @@
       {
         "id": "anomaly_ears_force_s1",
         "label": {
-          "fr": "Oreilles asymetriques",
+          "fr": "Oreilles asymétriques",
           "en": "Asymmetric ears"
         },
         "tier": 4,
         "stage": 1,
         "stat": "force",
-        "minInstability": 4,
-        "minDominantStat": 8,
+        "minInstability": 10,
+        "minDominantStat": 9,
         "asset": "assets/creatures/parts/ears/anomalie1.png"
       },
       {
@@ -367,8 +371,8 @@
         "tier": 5,
         "stage": 2,
         "stat": "force",
-        "minInstability": 7,
-        "minDominantStat": 12,
+        "minInstability": 14,
+        "minDominantStat": 13,
         "asset": "assets/creatures/parts/ears/anomalie1b.png"
       },
       {
@@ -380,8 +384,8 @@
         "tier": 4,
         "stage": 1,
         "stat": "exploration",
-        "minInstability": 4,
-        "minDominantStat": 8,
+        "minInstability": 10,
+        "minDominantStat": 9,
         "asset": "assets/creatures/parts/ears/anomalie2.png"
       },
       {
@@ -393,8 +397,8 @@
         "tier": 5,
         "stage": 2,
         "stat": "exploration",
-        "minInstability": 7,
-        "minDominantStat": 12,
+        "minInstability": 14,
+        "minDominantStat": 13,
         "asset": "assets/creatures/parts/ears/anomalie2b.png"
       },
       {
@@ -406,7 +410,7 @@
         "tier": 6,
         "stage": 3,
         "stat": "any",
-        "minInstability": 10,
+        "minInstability": 17,
         "minDominantStat": 16,
         "asset": "assets/creatures/parts/ears/anomalie1c.png"
       }
@@ -422,21 +426,21 @@
         "tier": 4,
         "stage": 1,
         "stat": "force",
-        "minInstability": 4,
-        "minDominantStat": 8,
+        "minInstability": 10,
+        "minDominantStat": 9,
         "asset": "assets/creatures/parts/eyes/anomalie1.png"
       },
       {
         "id": "anomaly_eyes_exploration_s1",
         "label": {
-          "fr": "Regard decale",
+          "fr": "Regard décalé",
           "en": "Offset gaze"
         },
         "tier": 4,
         "stage": 1,
         "stat": "exploration",
-        "minInstability": 4,
-        "minDominantStat": 8,
+        "minInstability": 10,
+        "minDominantStat": 9,
         "asset": "assets/creatures/parts/eyes/anomalie2.png"
       },
       {
@@ -448,34 +452,34 @@
         "tier": 4,
         "stage": 1,
         "stat": "conciliation",
-        "minInstability": 4,
-        "minDominantStat": 8,
+        "minInstability": 10,
+        "minDominantStat": 9,
         "asset": "assets/creatures/parts/eyes/anomalie3.png"
       },
       {
         "id": "anomaly_eyes_conciliation_s2",
         "label": {
-          "fr": "Regard de dependance",
+          "fr": "Regard de dépendance",
           "en": "Dependent gaze"
         },
         "tier": 5,
         "stage": 2,
         "stat": "conciliation",
-        "minInstability": 7,
-        "minDominantStat": 12,
+        "minInstability": 14,
+        "minDominantStat": 13,
         "asset": "assets/creatures/parts/eyes/anomalie3b.png"
       },
       {
         "id": "anomaly_eyes_intelligence_s1",
         "label": {
-          "fr": "Regard dissocie",
+          "fr": "Regard dissocié",
           "en": "Dissociated gaze"
         },
         "tier": 4,
         "stage": 1,
         "stat": "intelligence",
-        "minInstability": 4,
-        "minDominantStat": 8,
+        "minInstability": 10,
+        "minDominantStat": 9,
         "asset": "assets/creatures/parts/eyes/anomalie4.png"
       },
       {
@@ -487,8 +491,8 @@
         "tier": 5,
         "stage": 2,
         "stat": "intelligence",
-        "minInstability": 7,
-        "minDominantStat": 12,
+        "minInstability": 14,
+        "minDominantStat": 13,
         "asset": "assets/creatures/parts/eyes/anomalie4b.png"
       }
     ],
@@ -503,8 +507,8 @@
         "tier": 4,
         "stage": 1,
         "stat": "force",
-        "minInstability": 4,
-        "minDominantStat": 8,
+        "minInstability": 10,
+        "minDominantStat": 9,
         "asset": "assets/creatures/parts/mouths/anomalie2.png"
       },
       {
@@ -516,8 +520,8 @@
         "tier": 5,
         "stage": 2,
         "stat": "force",
-        "minInstability": 7,
-        "minDominantStat": 12,
+        "minInstability": 14,
+        "minDominantStat": 13,
         "asset": "assets/creatures/parts/mouths/anomalie2b.png"
       },
       {
@@ -529,8 +533,8 @@
         "tier": 4,
         "stage": 1,
         "stat": "exploration",
-        "minInstability": 4,
-        "minDominantStat": 8,
+        "minInstability": 10,
+        "minDominantStat": 9,
         "asset": "assets/creatures/parts/mouths/anomalie3.png"
       },
       {
@@ -542,21 +546,21 @@
         "tier": 4,
         "stage": 1,
         "stat": "conciliation",
-        "minInstability": 4,
-        "minDominantStat": 8,
+        "minInstability": 10,
+        "minDominantStat": 9,
         "asset": "assets/creatures/parts/mouths/anomalie1.png"
       },
       {
         "id": "anomaly_mouth_conciliation_s2",
         "label": {
-          "fr": "Sourire contrarie",
+          "fr": "Sourire contrarié",
           "en": "Contradicted smile"
         },
         "tier": 5,
         "stage": 2,
         "stat": "conciliation",
-        "minInstability": 7,
-        "minDominantStat": 12,
+        "minInstability": 14,
+        "minDominantStat": 13,
         "asset": "assets/creatures/parts/mouths/anomalie1b.png"
       },
       {
@@ -568,8 +572,8 @@
         "tier": 4,
         "stage": 1,
         "stat": "intelligence",
-        "minInstability": 4,
-        "minDominantStat": 8,
+        "minInstability": 10,
+        "minDominantStat": 9,
         "asset": "assets/creatures/parts/mouths/anomalie3.png"
       }
     ],
@@ -584,20 +588,20 @@
         "tier": 5,
         "stage": 2,
         "stat": "force",
-        "minInstability": 7,
-        "minDominantStat": 12,
+        "minInstability": 14,
+        "minDominantStat": 13,
         "asset": "assets/creatures/parts/tails/agressif1.png"
       },
       {
         "id": "anomaly_tail_any_s3",
         "label": {
-          "fr": "Queue de degenerescence",
+          "fr": "Queue de dégénérescence",
           "en": "Degenerative tail"
         },
         "tier": 6,
         "stage": 3,
         "stat": "any",
-        "minInstability": 10,
+        "minInstability": 17,
         "minDominantStat": 16,
         "asset": "assets/creatures/parts/tails/agressif2.png"
       }

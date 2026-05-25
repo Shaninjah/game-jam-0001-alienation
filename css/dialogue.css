@@ -43,6 +43,7 @@
   height: 362px;
   overflow: hidden;
   background: url("../assets/avatar/prof background.png") center bottom / contain no-repeat;
+  image-rendering: pixelated;
 }
 
 .avatar-img {

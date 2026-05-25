@@ -1,6 +1,6 @@
 {
   "id": "test_08",
-  "label": "Test comportemental 08",
+  "label": "Génome mouvant 08",
   "creatureLabel": "NIVEAU 8",
   "startNode": "intro",
   "nodes": {
@@ -9,33 +9,40 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Huitième protocole. Son génome se reconfigure par vagues. Chaque choix stabilise une zone et en rend une autre plus instable."
+          "text": "Huitième protocole. Son génome se reconfigure par vagues. Les mutations visibles ne sont que la partie la plus simple à lire."
+        },
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Certaines altérations restent internes : réflexe, tolérance à la peur, attachement, capacité d'apprendre."
         }
       ],
       "choices": [
         {
-          "label": "Je bloque sa forme actuelle avant une mutation dangereuse.",
+          "label": "Je bloque sa forme actuelle avant qu'elle perde sa cohérence.",
           "effects": {
             "force": 2,
-            "pressure": 0.4
+            "intelligence": 1,
+            "pressure": 0.45
           },
           "next": "dilemme_01"
         },
         {
-          "label": "Je simule les mutations possibles avant d'intervenir.",
+          "label": "Je modélise les mutations avant de choisir quoi corriger.",
           "effects": {
             "intelligence": 2,
-            "pressure": 0.4
+            "pressure": 0.25,
+            "stability": 0.3
           },
           "next": "dilemme_01"
         },
         {
-          "label": "Je la laisse s'adapter à l'environnement de test.",
+          "label": "Je préserve les anomalies tant qu'elles lui donnent des options.",
           "effects": {
             "exploration": 2,
             "conciliation": 1,
-            "pressure": 0.15,
-            "stability": 0.25
+            "pressure": 0.75,
+            "overdrive": true
           },
           "next": "dilemme_01"
         }
@@ -45,36 +52,37 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "serious",
-          "text": "Chaque correction retire aussi une possibilité. Plus on cherche une forme parfaite, plus elle perd quelque chose d'imprévisible."
+          "emotion": "worried",
+          "text": "Nous pouvons corriger une anomalie, mais la correction retirera aussi une possibilité. La créature parfaite est peut-être une créature amputée."
         }
       ],
       "choices": [
         {
-          "label": "Je priorise une anatomie robuste et défensive.",
+          "label": "Je corrige ce qui peut la rendre dangereuse pour les autres.",
           "effects": {
             "force": 2,
-            "intelligence": 1,
-            "pressure": 0.15,
-            "stability": 0.25
+            "pressure": 0.65,
+            "overdrive": true
           },
           "next": "decision_finale"
         },
         {
-          "label": "J'équilibre les paramètres au lieu de maximiser une qualité.",
+          "label": "Je corrige seulement ce qui la fait souffrir.",
           "effects": {
-            "intelligence": 2,
-            "conciliation": 1,
-            "pressure": 0.15,
-            "stability": 0.25
+            "conciliation": 2,
+            "intelligence": 1,
+            "pressure": 0.25,
+            "stability": 0.65,
+            "mercy": true
           },
           "next": "decision_finale"
         },
         {
-          "label": "Je préserve les anomalies qui lui donnent de nouvelles options.",
+          "label": "Je garde une trace et je la laisse s'adapter une phase de plus.",
           "effects": {
             "exploration": 2,
-            "pressure": 0.6
+            "intelligence": 1,
+            "pressure": 0.65
           },
           "next": "decision_finale"
         }
@@ -84,37 +92,35 @@
       "messages": [
         {
           "speaker": "Professeur Chen",
-          "emotion": "worried",
-          "text": "La créature parfaite est peut-être une erreur de vocabulaire. Dites-moi quel défaut vous acceptez de lui laisser."
+          "emotion": "serious",
+          "text": "Choisissez le défaut que vous acceptez de lui laisser. Aucun organisme vivant ne sort intact d'un protocole parfait."
         }
       ],
       "choices": [
         {
-          "label": "Elle sera trop protectrice, mais capable de tenir.",
+          "label": "Elle sera trop protectrice, mais elle tiendra face au danger.",
           "effects": {
             "force": 3,
-            "pressure": 0.35,
-            "stability": 0.7,
-            "mercy": true
+            "pressure": 0.55,
+            "stability": 0.2
           },
           "next": "final"
         },
         {
-          "label": "Elle sera trop curieuse, mais capable d'apprendre.",
+          "label": "Elle sera trop curieuse, mais elle pourra apprendre au-delà de nous.",
           "effects": {
-            "exploration": 2,
-            "intelligence": 1,
-            "pressure": 0.35,
-            "stability": 0.25
+            "exploration": 3,
+            "pressure": 0.8,
+            "overdrive": true
           },
           "next": "final"
         },
         {
-          "label": "Elle sera trop liée à moi, mais capable de ressentir.",
+          "label": "Elle sera trop liée, mais elle ne grandira pas dans l'abandon.",
           "effects": {
             "conciliation": 3,
-            "pressure": 0.85,
-            "stability": 0.35,
+            "pressure": 0.75,
+            "stability": 0.2,
             "overdrive": true
           },
           "next": "final"

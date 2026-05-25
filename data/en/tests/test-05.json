@@ -1,6 +1,6 @@
 {
   "id": "test_05",
-  "label": "Behavioral test 05",
+  "label": "Operation memory 05",
   "creatureLabel": "LEVEL 5",
   "startNode": "intro",
   "nodes": {
@@ -8,33 +8,41 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "happy",
-          "text": "Fifth protocol. The creature imitates your posture, your rhythm, and some military reflexes. It learns fast, maybe too fast."
+          "emotion": "serious",
+          "text": "Fifth protocol. The creature now projects fragments of Mirador: a cut radio, an open door, then the egg under white light."
+        },
+        {
+          "speaker": "Professor Chen",
+          "emotion": "worried",
+          "text": "These are not your exact memories. It is rebuilding a story with your fear and its own sensations."
         }
       ],
       "choices": [
         {
-          "label": "I give it a simple order to test obedience.",
+          "label": "I cut the projection before it distorts my memories.",
           "effects": {
             "force": 2,
-            "pressure": 0.25
+            "pressure": 0.55,
+            "overdrive": true
           },
           "next": "dilemme_01"
         },
         {
-          "label": "I give it a puzzle to measure its understanding.",
+          "label": "I describe every detail to separate image from memory.",
           "effects": {
             "intelligence": 2,
-            "pressure": 0.25
+            "pressure": 0.25,
+            "stability": 0.25
           },
           "next": "dilemme_01"
         },
         {
-          "label": "I turn the imitation into play to see what it invents.",
+          "label": "I let it feel the fear without making it carry my guilt.",
           "effects": {
-            "conciliation": 1,
-            "exploration": 2,
-            "stability": 0.25
+            "conciliation": 2,
+            "exploration": 1,
+            "pressure": 0.35,
+            "stability": 0.35
           },
           "next": "dilemme_01"
         }
@@ -44,36 +52,37 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "serious",
-          "text": "The imitation drifts. It repeats your gestures, but adds micro-movements that do not come from you."
+          "emotion": "neutral",
+          "text": "Eight seconds are missing from your helmet recording. If the creature fills them with your guilt, it may turn that guilt into biological law."
         }
       ],
       "choices": [
         {
-          "label": "I interrupt the sequence before it learns bad habits.",
+          "label": "I keep the official report until evidence says otherwise.",
           "effects": {
             "force": 2,
             "intelligence": 1,
-            "stability": 0.25
+            "pressure": 0.45
           },
           "next": "decision_finale"
         },
         {
-          "label": "I compare every deviation to understand its thinking.",
-          "effects": {
-            "intelligence": 2,
-            "exploration": 1,
-            "stability": 0.25
-          },
-          "next": "decision_finale"
-        },
-        {
-          "label": "I accept this imperfect version of my gesture.",
+          "label": "I admit my memory may be false, even if that accuses me.",
           "effects": {
             "conciliation": 2,
+            "intelligence": 1,
             "pressure": 0.25,
-            "stability": 1.05,
+            "stability": 0.55,
             "mercy": true
+          },
+          "next": "decision_finale"
+        },
+        {
+          "label": "I search for the source of the radio blank instead of filling the gap.",
+          "effects": {
+            "exploration": 2,
+            "intelligence": 1,
+            "pressure": 0.45
           },
           "next": "decision_finale"
         }
@@ -83,37 +92,37 @@
       "messages": [
         {
           "speaker": "Professor Chen",
-          "emotion": "neutral",
-          "text": "If it copies your violence, it can become a weapon. If it copies your doubt, it can become something else."
+          "emotion": "worried",
+          "text": "The creature watches you as if it is waiting for a version of the past. What truth can it receive without being trapped inside it?"
         }
       ],
       "choices": [
         {
-          "label": "I prioritize discipline: it must respond quickly.",
+          "label": "A protected truth: I choose what it can bear.",
           "effects": {
-            "force": 2,
-            "intelligence": 1,
+            "force": 1,
+            "conciliation": 2,
+            "pressure": 0.4,
             "stability": 0.25
           },
           "next": "final"
         },
         {
-          "label": "I prioritize curiosity: it must search before acting.",
+          "label": "A complete truth: it has the right to know where it came from.",
           "effects": {
             "exploration": 2,
-            "intelligence": 1,
-            "pressure": 0.2,
-            "stability": 0.25
+            "conciliation": 1,
+            "pressure": 0.75,
+            "overdrive": true
           },
           "next": "final"
         },
         {
-          "label": "I prioritize empathy: it must feel before copying.",
+          "label": "A verified truth: not one word without corroborated proof.",
           "effects": {
-            "conciliation": 3,
-            "pressure": 0.7,
-            "stability": 0.35,
-            "overdrive": true
+            "intelligence": 3,
+            "pressure": 0.35,
+            "stability": 0.35
           },
           "next": "final"
         }
