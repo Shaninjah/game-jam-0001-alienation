@@ -19,10 +19,10 @@
      Le premier calque est pose en dessous, le dernier au-dessus.
      ------------------------------------------------------------ */
   "slots": [
-    "tails",
+    "mouths",
     "ears",
     "eyes",
-    "mouths"
+    "tails"
   ],
 
   /* ------------------------------------------------------------

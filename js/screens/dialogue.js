@@ -153,11 +153,11 @@
     // Les effets de la réponse modifient les stats autorisées.
     PCT.state.lastEffects = PCT.applyEffects(choice.effects || {});
     PCT.updateCreatureInstability(choice.effects || {});
-    PCT.state.lastMutationEvents = PCT.updateCreatureAppearance();
-    PCT.state.testMutationEvents.push(...PCT.state.lastMutationEvents);
-
     // Certains choix terminent le protocole et envoient directement à l'écran créature.
     if (choice.next === "final") {
+      // Les mutations ne sont verrouillées qu'à la fin du test, avec une seule nouveauté maximum.
+      PCT.state.lastMutationEvents = PCT.updateCreatureAppearance();
+      PCT.state.testMutationEvents.push(...PCT.state.lastMutationEvents);
       PCT.renderFinal();
       return;
     }

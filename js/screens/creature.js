@@ -71,7 +71,7 @@
   };
 
   PCT.renderEvolutionPanel = function renderEvolutionPanel(stability, ending) {
-    // Ce panneau affiche l'état actif de la créature, pas l'historique des paliers remplacés.
+    // Ce panneau affiche l'état actif de la créature, pas seulement le dernier déblocage.
     const ui = PCT.state.data.ui.final;
     const activeParts = PCT.getVisibleMutationParts();
     const eventsHtml = activeParts.length
@@ -134,7 +134,7 @@
   };
 
   PCT.getVisibleMutationParts = function getVisibleMutationParts() {
-    // Le jeu expose les parties les plus lisibles dans la fenetre Mutations.
+    // Le jeu expose les parties les plus lisibles dans la fenêtre Mutations.
     const visibleSlots = ["ears", "tails", "eyes", "mouths"];
 
     return visibleSlots

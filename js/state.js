@@ -288,55 +288,103 @@
   };
 
   PCT.updateCreatureAppearance = function updateCreatureAppearance() {
-    // Je parcours les règles d'apparence dans leur ordre : cet ordre sert de départage.
+    // Je verrouille une seule mutation par test, en priorisant le slot le moins avancé.
     const appearance = PCT.state.appearance;
     const mutationEvents = [];
+    const maxEvents = PCT.getRemainingMutationEventsForCurrentTest();
 
     if (!appearance || !appearance.rules) {
       return mutationEvents;
     }
 
-    PCT.getAppearanceRules().forEach((rule) => {
-      if (!PCT.isAppearanceRuleUnlocked(rule)) {
-        return;
-      }
+    if (maxEvents <= 0) {
+      return mutationEvents;
+    }
 
-      const currentPart = PCT.state.unlockedParts[rule.slot];
+    const candidate = PCT.getNextAppearanceMutationCandidate();
 
-      // Si le slot est vide, la première règle débloquée prend la place.
-      if (!currentPart) {
-        const unlockedPart = PCT.createUnlockedPart(rule);
+    if (candidate) {
+      const unlockedPart = PCT.createUnlockedPart(candidate.rule);
 
-        PCT.state.unlockedParts[rule.slot] = unlockedPart;
-        mutationEvents.push(PCT.createMutationEvent(unlockedPart, null));
-        return;
-      }
-
-      // Un tier plus haut remplace le lock actuel, même s'il arrive plus tard.
-      if (!currentPart.isAnomaly && rule.tier > currentPart.tier) {
-        const unlockedPart = PCT.createUnlockedPart(rule);
-
-        PCT.state.unlockedParts[rule.slot] = unlockedPart;
-        mutationEvents.push(PCT.createMutationEvent(unlockedPart, currentPart));
-      }
-    });
-
-    PCT.getAnomalyRules().forEach((rule) => {
-      if (!PCT.isAppearanceRuleUnlocked(rule)) {
-        return;
-      }
-
-      const currentPart = PCT.state.unlockedParts[rule.slot];
-
-      if (!currentPart || PCT.shouldApplyAnomalyRule(rule, currentPart)) {
-        const unlockedPart = PCT.createUnlockedPart(rule);
-
-        PCT.state.unlockedParts[rule.slot] = unlockedPart;
-        mutationEvents.push(PCT.createMutationEvent(unlockedPart, currentPart || null));
-      }
-    });
+      PCT.state.unlockedParts[candidate.rule.slot] = unlockedPart;
+      mutationEvents.push(PCT.createMutationEvent(unlockedPart, candidate.currentPart || null));
+    }
 
     return mutationEvents;
+  };
+
+  PCT.getNextAppearanceMutationCandidate = function getNextAppearanceMutationCandidate() {
+    const normalCandidates = PCT.getAppearanceRules()
+      .map(PCT.createAppearanceMutationCandidate)
+      .filter(Boolean);
+
+    const anomalyCandidates = PCT.getAnomalyRules()
+      .map(PCT.createAppearanceMutationCandidate)
+      .filter(Boolean);
+
+    return normalCandidates
+      .concat(anomalyCandidates)
+      .sort(PCT.compareAppearanceMutationCandidates)[0] || null;
+  };
+
+  PCT.createAppearanceMutationCandidate = function createAppearanceMutationCandidate(rule) {
+    if (!PCT.isAppearanceRuleUnlocked(rule)) {
+      return null;
+    }
+
+    const currentPart = PCT.state.unlockedParts[rule.slot];
+
+    if (rule.isAnomaly) {
+      if (currentPart && !PCT.shouldApplyAnomalyRule(rule, currentPart)) {
+        return null;
+      }
+    } else if (currentPart && (currentPart.isAnomaly || rule.tier <= currentPart.tier)) {
+      return null;
+    }
+
+    return {
+      rule,
+      currentPart: currentPart || null,
+      currentTier: currentPart ? currentPart.tier : 0,
+      slotPriority: PCT.getAppearanceSlotPriority(rule.slot),
+      targetTier: rule.tier || 0,
+      isAnomaly: rule.isAnomaly === true
+    };
+  };
+
+  PCT.compareAppearanceMutationCandidates = function compareAppearanceMutationCandidates(left, right) {
+    if (left.currentTier !== right.currentTier) {
+      return left.currentTier - right.currentTier;
+    }
+
+    if (left.slotPriority !== right.slotPriority) {
+      return left.slotPriority - right.slotPriority;
+    }
+
+    if (left.targetTier !== right.targetTier) {
+      return left.targetTier - right.targetTier;
+    }
+
+    return Number(left.isAnomaly) - Number(right.isAnomaly);
+  };
+
+  PCT.getAppearanceSlotPriority = function getAppearanceSlotPriority(slot) {
+    const slots = Array.isArray((PCT.state.appearance || {}).slots)
+      ? PCT.state.appearance.slots
+      : [];
+    const index = slots.indexOf(slot);
+
+    return index >= 0 ? index : slots.length;
+  };
+
+  PCT.getRemainingMutationEventsForCurrentTest = function getRemainingMutationEventsForCurrentTest() {
+    // Un test ne peut ajouter qu'une seule nouvelle partie ou evolution visible.
+    const maxEventsPerTest = 1;
+    const currentEvents = Array.isArray(PCT.state.testMutationEvents)
+      ? PCT.state.testMutationEvents.length
+      : 0;
+
+    return Math.max(maxEventsPerTest - currentEvents, 0);
   };
 
   PCT.shouldApplyAnomalyRule = function shouldApplyAnomalyRule(rule, currentPart) {
@@ -553,11 +601,9 @@
   };
 
   PCT.getCreatureAppearance = function getCreatureAppearance() {
-    // Avant de rendre la créature, je m'assure que les dernières stats ont bien débloqué leurs calques.
+    // Le rendu lit seulement les parties déjà verrouillées à la fin du test.
     const appearance = PCT.state.appearance || {};
     const slots = Array.isArray(appearance.slots) ? appearance.slots : [];
-
-    PCT.updateCreatureAppearance();
 
     return {
       base: appearance.base || "",
