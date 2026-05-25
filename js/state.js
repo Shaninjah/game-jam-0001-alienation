@@ -288,12 +288,19 @@
   };
 
   PCT.updateCreatureAppearance = function updateCreatureAppearance() {
-    // Je verrouille une seule mutation par test, en priorisant le slot le moins avancé.
+    // Je verrouille une seule evolution par test ; les anomalies passent devant les mutations saines.
     const appearance = PCT.state.appearance;
     const mutationEvents = [];
     const maxEvents = PCT.getRemainingMutationEventsForCurrentTest();
+    const firstVisibleMutationTestIndex = typeof PCT.FIRST_VISIBLE_MUTATION_TEST_INDEX === "number"
+      ? PCT.FIRST_VISIBLE_MUTATION_TEST_INDEX
+      : 1;
 
     if (!appearance || !appearance.rules) {
+      return mutationEvents;
+    }
+
+    if (PCT.state.testIndex < firstVisibleMutationTestIndex) {
       return mutationEvents;
     }
 
@@ -314,17 +321,19 @@
   };
 
   PCT.getNextAppearanceMutationCandidate = function getNextAppearanceMutationCandidate() {
-    const normalCandidates = PCT.getAppearanceRules()
-      .map(PCT.createAppearanceMutationCandidate)
-      .filter(Boolean);
-
     const anomalyCandidates = PCT.getAnomalyRules()
       .map(PCT.createAppearanceMutationCandidate)
       .filter(Boolean);
 
-    return normalCandidates
-      .concat(anomalyCandidates)
-      .sort(PCT.compareAppearanceMutationCandidates)[0] || null;
+    if (anomalyCandidates.length) {
+      return anomalyCandidates.sort(PCT.compareAnomalyMutationCandidates)[0];
+    }
+
+    const normalCandidates = PCT.getAppearanceRules()
+      .map(PCT.createAppearanceMutationCandidate)
+      .filter(Boolean);
+
+    return normalCandidates.sort(PCT.compareAppearanceMutationCandidates)[0] || null;
   };
 
   PCT.createAppearanceMutationCandidate = function createAppearanceMutationCandidate(rule) {
@@ -366,6 +375,29 @@
     }
 
     return Number(left.isAnomaly) - Number(right.isAnomaly);
+  };
+
+  PCT.compareAnomalyMutationCandidates = function compareAnomalyMutationCandidates(left, right) {
+    const leftStage = left.rule.stage || 0;
+    const rightStage = right.rule.stage || 0;
+
+    if (leftStage !== rightStage) {
+      return rightStage - leftStage;
+    }
+
+    if (left.currentTier !== right.currentTier) {
+      return left.currentTier - right.currentTier;
+    }
+
+    if (left.slotPriority !== right.slotPriority) {
+      return left.slotPriority - right.slotPriority;
+    }
+
+    if (left.targetTier !== right.targetTier) {
+      return right.targetTier - left.targetTier;
+    }
+
+    return 0;
   };
 
   PCT.getAppearanceSlotPriority = function getAppearanceSlotPriority(slot) {

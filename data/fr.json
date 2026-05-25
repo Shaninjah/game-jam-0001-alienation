@@ -34,7 +34,7 @@
       "statsTitle": "Statistiques",
       "creatureLabel": "NIVEAU 1",
       "nextTestButton": "Continuer le test",
-      "completeButton": "Terminer",
+      "completeButton": "Voir la fin",
       "menuButton": "Arrêter",
       "mutationTitle": "Mutations",
       "mutationUnlockLabel": "Nouveau",
@@ -217,6 +217,54 @@
       "title": "Tu refuses la perfection",
       "text": "Chen promettait une créature meilleure au prochain test, puis encore meilleure au suivant. Tu as choisi d'arrêter avant de transformer une vie en projet d'optimisation. La créature reste imparfaite, donc vivante.",
       "button": "Revenir au menu"
+    },
+    "stopEndings": {
+      "stable": {
+        "kicker": "Fin viable",
+        "title": "Tu refuses la perfection",
+        "text": "Chen promettait une créature meilleure au prochain test, puis encore meilleure au suivant. Tu as choisi d'arrêter avant de transformer une vie en projet d'optimisation. La créature reste imparfaite, donc vivante."
+      },
+      "strained": {
+        "kicker": "Fin viable",
+        "title": "Tu arrêtes avant la fracture",
+        "text": "La pression était déjà là : chaque test promettait une version plus juste, plus forte, plus aboutie. Tu interromps le protocole avant que cette exigence devienne une blessure. Elle restera inachevée, et c'est précisément ce qui la sauve."
+      },
+      "anomaly": {
+        "kicker": "Fin marquée",
+        "title": "Tu arrêtes les dégâts",
+        "text": "Les anomalies ne disparaissent pas parce que tu refermes le dossier. Tu as poussé trop loin, puis tu as choisi de ne plus corriger une faute par une autre. La créature vivra avec ces traces, hors du projet qui les a provoquées."
+      },
+      "critical": {
+        "kicker": "Fin tardive",
+        "title": "Tu regardes ce qui reste",
+        "text": "Le protocole a déjà dépassé la limite. Arrêter maintenant n'efface rien, mais refuse au moins la dernière violence : continuer sous prétexte de réparer. Ce n'est plus une victoire pure, seulement une responsabilité enfin acceptée."
+      }
+    },
+    "protocolEndings": {
+      "stable": {
+        "kicker": "Fin du protocole",
+        "title": "Elle survit à nos questions",
+        "text": "Tu es allé jusqu'au bout sans lui imposer une forme unique. Chen cherchait une conclusion parfaite ; il obtient un être vivant, lisible mais jamais terminé. Ce n'est pas une victoire de laboratoire. C'est un sursis que personne ne doit confondre avec un modèle.",
+        "button": "Revenir au menu"
+      },
+      "strained": {
+        "kicker": "Fin du protocole",
+        "title": "Le protocole garde la main",
+        "text": "La créature tient encore, mais sa forme finale porte ton obstination. Chaque amélioration a laissé une dette dans son corps. Elle n'est pas détruite, pas parfaite non plus : seulement contrainte par la somme de nos corrections.",
+        "button": "Revenir au menu"
+      },
+      "anomaly": {
+        "kicker": "Fin du protocole",
+        "title": "L'amélioration l'a marquée",
+        "text": "Les anomalies font maintenant partie de son histoire biologique. Le protocole voulait prouver qu'une vie pouvait être optimisée jusqu'à devenir acceptable. Il prouve surtout qu'à force de corriger, on apprend à un être qu'il ne suffit jamais.",
+        "button": "Revenir au menu"
+      },
+      "critical": {
+        "kicker": "Fin du protocole",
+        "title": "La perfection a gagné",
+        "text": "À force de chercher la forme idéale, le protocole a défait celle qui existait. Il reste une conclusion brutale : la perfection ne sauve pas le vivant quand elle exige qu'il cesse d'être imparfait.",
+        "button": "Revenir au menu"
+      }
     }
   }
 }

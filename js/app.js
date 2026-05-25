@@ -77,10 +77,9 @@
       return;
     }
 
-    // Fin naturelle du protocole court : on revient au menu sans relancer une boucle infinie.
+    // Fin naturelle du protocole court : on affiche une vraie conclusion avant le retour menu.
     if (action === "finish-run") {
-      PCT.resetRun();
-      PCT.renderMenu();
+      PCT.renderProtocolEnding();
       return;
     }
 

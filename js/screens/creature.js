@@ -108,14 +108,14 @@
 
   PCT.renderStopEnding = function renderStopEnding() {
     const finalData = PCT.state.data.final || {};
-    const stopEnding = finalData.stopEnding || {};
     const creatureKey = PCT.getDominantStatKey();
     const creature = finalData.creatures[creatureKey] || finalData.creatures.force || {};
     const stability = PCT.getCreatureStability();
+    const stopEnding = PCT.getStopEnding(stability);
 
     PCT.app.innerHTML = `
       <main class="screen stop-ending-screen">
-        <section class="screen-inner stop-ending-card panel">
+        <section class="screen-inner stop-ending-card panel status-${PCT.escapeHtml(stability.key)}">
           <p class="kicker">${PCT.escapeHtml(stopEnding.kicker || "Fin viable")}</p>
           <h1>${PCT.escapeHtml(stopEnding.title || "Tu refuses la perfection")}</h1>
           <p class="stop-ending-text">${PCT.escapeHtml(stopEnding.text || "")}</p>
@@ -127,6 +127,33 @@
 
           <button class="btn btn-primary" type="button" data-action="return-menu">
             ${PCT.escapeHtml(stopEnding.button || PCT.state.data.ui.final.menuButton)}
+          </button>
+        </section>
+      </main>
+    `;
+  };
+
+  PCT.renderProtocolEnding = function renderProtocolEnding() {
+    const finalData = PCT.state.data.final || {};
+    const creatureKey = PCT.getDominantStatKey();
+    const creature = finalData.creatures[creatureKey] || finalData.creatures.force || {};
+    const stability = PCT.getCreatureStability();
+    const protocolEnding = PCT.getProtocolEnding(stability);
+
+    PCT.app.innerHTML = `
+      <main class="screen protocol-ending-screen">
+        <section class="screen-inner stop-ending-card protocol-ending-card panel status-${PCT.escapeHtml(stability.key)}">
+          <p class="kicker">${PCT.escapeHtml(protocolEnding.kicker || "Fin du protocole")}</p>
+          <h1>${PCT.escapeHtml(protocolEnding.title || "")}</h1>
+          <p class="stop-ending-text">${PCT.escapeHtml(protocolEnding.text || "")}</p>
+
+          <div class="stop-ending-summary stat-${PCT.escapeHtml(creatureKey)}">
+            <span>${PCT.escapeHtml(creature.name || "")}</span>
+            <strong>${PCT.escapeHtml(stability.label)}</strong>
+          </div>
+
+          <button class="btn btn-primary" type="button" data-action="return-menu">
+            ${PCT.escapeHtml(protocolEnding.button || PCT.state.data.ui.final.completeButton)}
           </button>
         </section>
       </main>
@@ -195,14 +222,15 @@
   };
 
   PCT.renderFinalStats = function renderFinalStats() {
-    // Fourchette temporaire utilisée pour transformer les scores en largeur de barre.
-    const min = -3;
-    const max = 6;
+    // La jauge suit le score le plus haut du run pour eviter une saturation trop precoce.
+    const statValues = PCT.STAT_KEYS.map((key) => PCT.state.stats[key]);
+    const maxStatValue = Math.max(...statValues);
+    const max = Math.max(12, Math.ceil(maxStatValue / 5) * 5);
 
     // Chaque stat devient une ligne avec son score et sa barre colorée.
     const statLines = PCT.STAT_KEYS.map((key) => {
       const value = PCT.state.stats[key];
-      const percentage = PCT.clamp(((value - min) / (max - min)) * 100, 4, 100);
+      const percentage = PCT.clamp((value / max) * 100, 4, 100);
 
       return `
         <div class="stat-line stat-${PCT.escapeHtml(key)}">
@@ -278,6 +306,29 @@
     return {
       title: ending.title || "",
       text: ending.text || ""
+    };
+  };
+
+  PCT.getStopEnding = function getStopEnding(stability) {
+    const finalData = PCT.state.data.final || {};
+    const fallback = finalData.stopEnding || {};
+    const stopEndings = finalData.stopEndings || {};
+
+    return {
+      ...fallback,
+      ...(stopEndings[stability.key] || {})
+    };
+  };
+
+  PCT.getProtocolEnding = function getProtocolEnding(stability) {
+    const finalData = PCT.state.data.final || {};
+    const protocolEndings = finalData.protocolEndings || {};
+    const fallback = PCT.getFinalEnding(stability);
+
+    return {
+      title: fallback.title || "",
+      text: fallback.text || "",
+      ...(protocolEndings[stability.key] || {})
     };
   };
 

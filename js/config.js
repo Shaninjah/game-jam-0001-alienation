@@ -26,6 +26,9 @@
   // Comme le code compte à partir de zéro, le test 4 correspond à l'index 3.
   PCT.MIN_STOP_TEST_INDEX = 3;
 
+  // La premiere batterie reste diagnostique : la premiere mutation visible arrive au test 2.
+  PCT.FIRST_VISIBLE_MUTATION_TEST_INDEX = 1;
+
   // Les statistiques finales du prototype.
   // Il n'y a plus de mystère : uniquement les 4 stats demandées.
   PCT.STAT_KEYS = [

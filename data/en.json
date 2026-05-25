@@ -34,7 +34,7 @@
       "statsTitle": "Statistics",
       "creatureLabel": "LEVEL 1",
       "nextTestButton": "Continue test",
-      "completeButton": "Finish",
+      "completeButton": "See ending",
       "menuButton": "Stop",
       "mutationTitle": "Mutations",
       "mutationUnlockLabel": "New",
@@ -217,6 +217,54 @@
       "title": "You refuse perfection",
       "text": "Chen promised a better creature after the next test, then an even better one after that. You chose to stop before turning a life into an optimization project. The creature remains imperfect, therefore alive.",
       "button": "Return to menu"
+    },
+    "stopEndings": {
+      "stable": {
+        "kicker": "Viable ending",
+        "title": "You refuse perfection",
+        "text": "Chen promised a better creature after the next test, then an even better one after that. You chose to stop before turning a life into an optimization project. The creature remains imperfect, therefore alive."
+      },
+      "strained": {
+        "kicker": "Viable ending",
+        "title": "You stop before the fracture",
+        "text": "The pressure was already there: each test promised a fairer, stronger, more complete version. You interrupt the protocol before that demand becomes a wound. It will remain unfinished, and that is exactly what saves it."
+      },
+      "anomaly": {
+        "kicker": "Marked ending",
+        "title": "You stop the damage",
+        "text": "The anomalies do not vanish because you close the file. You pushed too far, then chose not to correct one harm with another. The creature will live with those traces, away from the project that caused them."
+      },
+      "critical": {
+        "kicker": "Late ending",
+        "title": "You look at what remains",
+        "text": "The protocol has already crossed the line. Stopping now erases nothing, but at least refuses the final violence: continuing in the name of repair. This is no clean victory, only responsibility accepted at last."
+      }
+    },
+    "protocolEndings": {
+      "stable": {
+        "kicker": "Protocol ending",
+        "title": "It survives our questions",
+        "text": "You reached the end without forcing it into one final form. Chen wanted a perfect conclusion; he gets a living being, readable but never finished. This is not a laboratory victory. It is a reprieve no one should mistake for a model.",
+        "button": "Return to menu"
+      },
+      "strained": {
+        "kicker": "Protocol ending",
+        "title": "The protocol keeps its grip",
+        "text": "The creature still holds together, but its final form carries your insistence. Every improvement left a debt in its body. It is not destroyed, not perfect either: only constrained by the sum of our corrections.",
+        "button": "Return to menu"
+      },
+      "anomaly": {
+        "kicker": "Protocol ending",
+        "title": "Improvement has marked it",
+        "text": "The anomalies are now part of its biological history. The protocol wanted to prove that a life could be optimized until it became acceptable. It mostly proves that by correcting endlessly, we teach a being it is never enough.",
+        "button": "Return to menu"
+      },
+      "critical": {
+        "kicker": "Protocol ending",
+        "title": "Perfection won",
+        "text": "By searching for the ideal form, the protocol undid the one that existed. What remains is brutal: perfection does not save the living when it demands that life stop being imperfect.",
+        "button": "Return to menu"
+      }
     }
   }
 }
