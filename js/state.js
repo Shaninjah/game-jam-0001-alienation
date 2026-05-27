@@ -357,6 +357,7 @@
       currentTier: currentPart ? currentPart.tier : 0,
       slotPriority: PCT.getAppearanceSlotPriority(rule.slot),
       targetTier: rule.tier || 0,
+      statScore: PCT.state.stats[rule.stat] || 0,
       isAnomaly: rule.isAnomaly === true
     };
   };
@@ -366,12 +367,16 @@
       return left.currentTier - right.currentTier;
     }
 
+    if (left.targetTier !== right.targetTier) {
+      return left.targetTier - right.targetTier;
+    }
+
     if (left.slotPriority !== right.slotPriority) {
       return left.slotPriority - right.slotPriority;
     }
 
-    if (left.targetTier !== right.targetTier) {
-      return left.targetTier - right.targetTier;
+    if (left.statScore !== right.statScore) {
+      return right.statScore - left.statScore;
     }
 
     return Number(left.isAnomaly) - Number(right.isAnomaly);

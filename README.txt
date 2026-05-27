@@ -76,7 +76,7 @@ Structure de l'apparence :
   - tails.
 - Le bloc unlockDifficulty ajoute une difficulté interne non affichée au joueur :
   - chaque partie active d'un même tier augmente le seuil de la prochaine partie de ce tier ;
-  - la queue est ignorée par défaut, car elle sert de base visible ;
+  - la queue est ignorée par défaut pour ne pas durcir les autres paliers visuels ;
   - les seuils de base actuels sont tier 1 = 3, tier 2 = 6, tier 3 = 9.
 - Si plusieurs parties d'un même slot sont débloquées au même tier, je garde la première déjà verrouillée.
 - Si une partie d'un tier plus haut est débloquée, elle remplace la partie verrouillée sur ce slot.
@@ -93,10 +93,12 @@ Règles de mutation actuelles :
   - une partie en tier 2 compte comme T2 ;
   - etc.
 - Exemple : si la bouche est déjà T2, mais que les yeux sont absents, les yeux passent avant une bouche T3.
-- En cas d'égalité de tier actuel, l'ordre des slots départage :
+- En cas d'égalité de tier actuel, le palier cible le plus bas passe avant les paliers supérieurs.
+- Si le palier cible est aussi identique, l'ordre des slots départage :
   - bouche avant oreilles ;
   - oreilles avant yeux ;
   - yeux avant queue.
+- Si deux mutations du même slot et du même tier sont disponibles, la stat la plus haute départage.
 - Si une anomalie est éligible, elle passe avant les mutations normales.
 - Si plusieurs anomalies sont éligibles, le stage le plus grave passe en premier, afin que la grosse anomalie soit visible dès que le système l'a réellement atteinte.
 - Le panneau Mutations affiche toutes les parties actuellement actives de la créature, pas seulement la dernière mutation obtenue.

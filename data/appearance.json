@@ -87,15 +87,37 @@
   "rules": {
     "tails": [
       {
-        "id": "tail_normal_t1",
+        "id": "tail_exploration_t1",
         "label": {
-          "fr": "Queue de stabilisation",
-          "en": "Stabilizing tail"
+          "fr": "Queue exploratoire",
+          "en": "Exploratory tail"
         },
         "tier": 1,
         "stat": "exploration",
-        "min": 0,
-        "asset": "assets/creatures/parts/tails/normal.png"
+        "min": 3,
+        "asset": "assets/creatures/parts/tails/longue.png"
+      },
+      {
+        "id": "tail_conciliation_t1",
+        "label": {
+          "fr": "Queue d'approche",
+          "en": "Approach tail"
+        },
+        "tier": 1,
+        "stat": "conciliation",
+        "min": 3,
+        "asset": "assets/creatures/parts/tails/longue 2.png"
+      },
+      {
+        "id": "tail_intelligence_t1",
+        "label": {
+          "fr": "Queue synaptique",
+          "en": "Synaptic tail"
+        },
+        "tier": 1,
+        "stat": "intelligence",
+        "min": 3,
+        "asset": "assets/creatures/parts/tails/longue 3.png"
       },
       {
         "id": "tail_force_t2",
@@ -107,6 +129,28 @@
         "stat": "force",
         "min": 7,
         "asset": "assets/creatures/parts/tails/agressif1.png"
+      },
+      {
+        "id": "tail_conciliation_t2",
+        "label": {
+          "fr": "Queue touffue",
+          "en": "Tufted tail"
+        },
+        "tier": 2,
+        "stat": "conciliation",
+        "min": 7,
+        "asset": "assets/creatures/parts/tails/touffue.png"
+      },
+      {
+        "id": "tail_intelligence_t2",
+        "label": {
+          "fr": "Queue double",
+          "en": "Double tail"
+        },
+        "tier": 2,
+        "stat": "intelligence",
+        "min": 7,
+        "asset": "assets/creatures/parts/tails/longue double.png"
       },
       {
         "id": "tail_force_t3",
@@ -187,6 +231,17 @@
         "stat": "conciliation",
         "min": 7,
         "asset": "assets/creatures/parts/ears/basses.png"
+      },
+      {
+        "id": "ears_exploration_t2",
+        "label": {
+          "fr": "Oreilles de veille",
+          "en": "Watchful ears"
+        },
+        "tier": 2,
+        "stat": "exploration",
+        "min": 7,
+        "asset": "assets/creatures/parts/ears/longues.png"
       }
     ],
 
