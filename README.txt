@@ -115,7 +115,7 @@ Règles d'anomalie :
 - Les seuils de stage actuels sont :
   - stage 1 = 10 ;
   - stage 2 = 14 ;
-  - stage 3 = 17.
+  - stage 3 = 16.
 - Le stage 3 correspond à la grosse anomalie / dégénérescence critique.
 
 Fins et progression :

@@ -61,19 +61,19 @@
     "dominanceGap": 8,
     "dominancePressure": 0.25,
     "highStatThreshold": 14,
-    "highStatPressure": 0.3,
+    "highStatPressure": 0.34,
     "lateTestIndex": 5,
-    "lateTestPressure": 0.15,
+    "lateTestPressure": 0.18,
     "dominantShiftPressure": 0.12,
     "balancedGap": 3,
     "balancedRelief": 0.45,
     "balancedHighThreshold": 8,
     "balancedHighGap": 3,
-    "balancedHighPressure": 0.75,
+    "balancedHighPressure": 0.82,
     "stageThresholds": {
       "1": 10,
       "2": 14,
-      "3": 17
+      "3": 16
     }
   },
 
@@ -465,8 +465,8 @@
         "tier": 6,
         "stage": 3,
         "stat": "any",
-        "minInstability": 17,
-        "minDominantStat": 16,
+        "minInstability": 16,
+        "minDominantStat": 15,
         "asset": "assets/creatures/parts/ears/anomalie1c.png"
       }
     ],
@@ -656,8 +656,8 @@
         "tier": 6,
         "stage": 3,
         "stat": "any",
-        "minInstability": 17,
-        "minDominantStat": 16,
+        "minInstability": 16,
+        "minDominantStat": 15,
         "asset": "assets/creatures/parts/tails/agressif2.png"
       }
     ]
