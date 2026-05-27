@@ -42,7 +42,7 @@
   width: 254px;
   height: 362px;
   overflow: hidden;
-  background: url("../assets/avatar/prof background.png") center bottom / contain no-repeat;
+  background: #e5e6f7 url("../assets/avatar/prof background.png") center center / cover no-repeat;
   image-rendering: pixelated;
 }
 
