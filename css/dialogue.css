@@ -214,6 +214,18 @@
   line-height: 18px;
 }
 
+.choice-effects-hidden {
+  min-height: 27px;
+}
+
+.choice-effect-hidden {
+  min-width: 98px;
+  justify-content: center;
+  background: #d2d2d2;
+  color: #4a4a4a;
+  letter-spacing: 0;
+}
+
 /*
   Bandeau des stats pendant le test, calé en bas du panneau de dialogue.
 */

@@ -59,6 +59,7 @@
     dominantHistory: [],
     warnings: [],
     unlockedParts: {},
+    hiddenChoiceEffects: {},
     lastEffects: [],
     lastMutationEvents: [],
     testMutationEvents: [],
@@ -138,9 +139,15 @@
     const statRanking = PCT.getStatRanking();
     const topScore = statRanking[0] ? statRanking[0].value : 0;
     const secondScore = statRanking[1] ? statRanking[1].value : 0;
+    const balancedReliefScore = statRanking[config.balancedReliefStatCount - 1]
+      ? statRanking[config.balancedReliefStatCount - 1].value
+      : 0;
     const lowestScore = statRanking[statRanking.length - 1] ? statRanking[statRanking.length - 1].value : 0;
     const dominanceGap = topScore - secondScore;
+    const balancedReliefGap = topScore - balancedReliefScore;
     const overBalancedGap = topScore - lowestScore;
+    const multiHighStatCount = statRanking.filter((stat) => stat.value >= config.multiHighStatThreshold).length;
+    const isMultiHigh = multiHighStatCount >= config.multiHighStatCount;
     const isOverBalanced = (
       lowestScore >= config.balancedHighThreshold &&
       overBalancedGap <= config.balancedHighGap
@@ -166,7 +173,9 @@
 
     if (isOverBalanced) {
       pressureDelta += config.balancedHighPressure;
-    } else if (dominanceGap <= config.balancedGap) {
+    } else if (isMultiHigh) {
+      pressureDelta += config.multiHighStatPressure;
+    } else if (balancedReliefGap <= config.balancedGap) {
       pressureDelta -= config.balancedRelief;
     }
 
@@ -241,7 +250,11 @@
       lateTestPressure: typeof config.lateTestPressure === "number" ? config.lateTestPressure : 0.35,
       dominantShiftPressure: typeof config.dominantShiftPressure === "number" ? config.dominantShiftPressure : 0.45,
       balancedGap: typeof config.balancedGap === "number" ? config.balancedGap : 2,
+      balancedReliefStatCount: typeof config.balancedReliefStatCount === "number" ? config.balancedReliefStatCount : 3,
       balancedRelief: typeof config.balancedRelief === "number" ? config.balancedRelief : 0.25,
+      multiHighStatThreshold: typeof config.multiHighStatThreshold === "number" ? config.multiHighStatThreshold : 14,
+      multiHighStatCount: typeof config.multiHighStatCount === "number" ? config.multiHighStatCount : 3,
+      multiHighStatPressure: typeof config.multiHighStatPressure === "number" ? config.multiHighStatPressure : 0.25,
       balancedHighThreshold: typeof config.balancedHighThreshold === "number" ? config.balancedHighThreshold : 8,
       balancedHighGap: typeof config.balancedHighGap === "number" ? config.balancedHighGap : 3,
       balancedHighPressure: typeof config.balancedHighPressure === "number" ? config.balancedHighPressure : 0.6,
@@ -647,7 +660,10 @@
       parts: slots
         .map((slot) => PCT.state.unlockedParts[slot])
         .filter(Boolean)
-        .map((part) => part.asset)
+        .map((part) => ({
+          slot: part.slot,
+          asset: part.asset
+        }))
     };
   };
 
@@ -664,6 +680,7 @@
     PCT.state.dominantHistory = [];
     PCT.state.warnings = [];
     PCT.state.unlockedParts = {};
+    PCT.state.hiddenChoiceEffects = {};
     PCT.state.lastEffects = [];
     PCT.state.lastMutationEvents = [];
     PCT.state.testMutationEvents = [];

@@ -238,6 +238,10 @@
   pointer-events: none;
 }
 
+.creature-part-tails {
+  z-index: 0;
+}
+
 .creature-part-img.is-broken,
 .creature-base-img.is-broken ~ .creature-part-img {
   display: none;

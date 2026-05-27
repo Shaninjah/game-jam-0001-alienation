@@ -195,15 +195,14 @@
   PCT.renderCreatureFrame = function renderCreatureFrame(creature, appearance, fallbackLabel) {
     // Je superpose la base de la créature et ses parties, qui ont toutes le même canvas.
     const parts = Array.isArray(appearance.parts) ? appearance.parts : [];
-    const partImages = parts.map((part) => `
-        <img
-          class="creature-img creature-part-img"
-          src="${PCT.escapeAttribute(part)}"
-          alt=""
-          aria-hidden="true"
-          data-optional-image="true"
-        >
-    `).join("");
+    const tailImages = parts
+      .filter((part) => PCT.getCreaturePartSlot(part) === "tails")
+      .map(PCT.renderCreaturePartImage)
+      .join("");
+    const partImages = parts
+      .filter((part) => PCT.getCreaturePartSlot(part) !== "tails")
+      .map(PCT.renderCreaturePartImage)
+      .join("");
 
     return `
       <div class="creature-frame">
@@ -216,9 +215,33 @@
         <div class="creature-placeholder">
           ${PCT.escapeHtml(fallbackLabel)}
         </div>
+        ${tailImages}
         ${partImages}
       </div>
     `;
+  };
+
+  PCT.renderCreaturePartImage = function renderCreaturePartImage(part) {
+    const slot = PCT.getCreaturePartSlot(part);
+    const asset = PCT.getCreaturePartAsset(part);
+
+    return `
+        <img
+          class="creature-img creature-part-img creature-part-${PCT.escapeAttribute(slot)}"
+          src="${PCT.escapeAttribute(asset)}"
+          alt=""
+          aria-hidden="true"
+          data-optional-image="true"
+        >
+    `;
+  };
+
+  PCT.getCreaturePartSlot = function getCreaturePartSlot(part) {
+    return part && typeof part === "object" ? part.slot || "" : "";
+  };
+
+  PCT.getCreaturePartAsset = function getCreaturePartAsset(part) {
+    return part && typeof part === "object" ? part.asset || "" : part;
   };
 
   PCT.renderFinalStats = function renderFinalStats() {

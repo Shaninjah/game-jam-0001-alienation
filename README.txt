@@ -65,6 +65,22 @@ Structure des dialogues :
 - Les choix gardent leurs effets dans effects avec uniquement :
   force, exploration, conciliation, intelligence.
 
+Affichage brouillé des choix :
+- À partir du test 3, certaines réponses peuvent masquer les stats gagnées avec "?????????" en gris.
+- Ce masquage est uniquement visuel : les effets déclarés dans effects sont toujours appliqués normalement.
+- Le tirage est aléatoire par réponse et reste stable tant que le choix est affiché.
+- Le tirage ne peut se produire que si la créature est déjà au moins sous tension : instabilité >= 2.5 ou anomalie révélée.
+- La probabilité augmente à chaque test :
+  - tests 1 à 2 = 0% ;
+  - test 3 = 15% ;
+  - test 4 = 18% ;
+  - test 5 = 23% ;
+  - test 6 = 25% ;
+  - test 7 = 30% ;
+  - test 8 = 35% ;
+  - test 9 = 50% ;
+  - test 10 = 70%.
+
 Structure de l'apparence :
 - data/appearance.json est commun à toutes les langues.
 - Il contient la base de la créature, les slots du corps et les règles de déblocage.
@@ -74,6 +90,7 @@ Structure de l'apparence :
   - ears ;
   - eyes ;
   - tails.
+- Visuellement, la queue est une exception : son calque est rendu derrière le corps de base.
 - Le bloc unlockDifficulty ajoute une difficulté interne non affichée au joueur :
   - chaque partie active d'un même tier augmente le seuil de la prochaine partie de ce tier ;
   - la queue est ignorée par défaut pour ne pas durcir les autres paliers visuels ;
@@ -111,6 +128,8 @@ Règles d'anomalie :
   - le joueur spécialise trop une statistique ;
   - le joueur pousse très haut plusieurs statistiques en même temps pour chercher une créature "parfaite" ;
   - le protocole est poursuivi trop longtemps malgré les signes.
+- L'équilibre calme ne se déclenche plus avec seulement deux stats proches : il faut maintenant trois stats dans un écart de 3 points.
+- Si trois stats ou plus atteignent au moins 14 points, la créature gagne une pression d'instabilité modérée.
 - Une fois une anomalie révélée, elle reste un fait biologique : elle ne disparaît pas simplement parce que les choix suivants sont plus calmes.
 - Les seuils de stage actuels sont :
   - stage 1 = 10 ;

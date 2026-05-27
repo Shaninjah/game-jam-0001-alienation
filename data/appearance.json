@@ -16,7 +16,9 @@
   /* ------------------------------------------------------------
      ORDRE DES CALQUES
      ------------------------------------------------------------
-     Le premier calque est pose en dessous, le dernier au-dessus.
+     Le premier calque de mutation normale est pose en dessous,
+     le dernier au-dessus. La queue est une exception de rendu :
+     elle passe derriere le corps de base.
      ------------------------------------------------------------ */
   "slots": [
     "mouths",
@@ -66,7 +68,11 @@
     "lateTestPressure": 0.18,
     "dominantShiftPressure": 0.12,
     "balancedGap": 3,
-    "balancedRelief": 0.45,
+    "balancedReliefStatCount": 3,
+    "balancedRelief": 0.35,
+    "multiHighStatThreshold": 14,
+    "multiHighStatCount": 3,
+    "multiHighStatPressure": 0.28,
     "balancedHighThreshold": 8,
     "balancedHighGap": 3,
     "balancedHighPressure": 0.82,

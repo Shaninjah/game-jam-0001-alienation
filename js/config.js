@@ -29,6 +29,23 @@
   // La premiere batterie reste diagnostique : la premiere mutation visible arrive au test 2.
   PCT.FIRST_VISIBLE_MUTATION_TEST_INDEX = 1;
 
+  // Certaines réponses cachent leurs gains derrière un signal brouillé.
+  // Le tableau suit les tests dans l'ordre : index 0 = test 1, index 9 = test 10.
+  PCT.HIDDEN_CHOICE_EFFECTS_CHANCES = [
+    0,
+    0,
+    0.15,
+    0.18,
+    0.23,
+    0.25,
+    0.3,
+    0.35,
+    0.5,
+    0.7
+  ];
+  PCT.HIDDEN_CHOICE_EFFECTS_MIN_INSTABILITY = 2.5;
+  PCT.HIDDEN_CHOICE_EFFECTS_LABEL = "?????????";
+
   // Les statistiques finales du prototype.
   // Il n'y a plus de mystère : uniquement les 4 stats demandées.
   PCT.STAT_KEYS = [

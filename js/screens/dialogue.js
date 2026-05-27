@@ -208,7 +208,7 @@
     const choiceButtons = choices.map((choice, index) => `
       <button class="btn choice-btn" type="button" data-action="select-choice" data-choice-index="${index}">
         <span class="choice-label">${PCT.escapeHtml(choice.label)}</span>
-        ${PCT.renderChoiceEffects(choice.effects || {})}
+        ${PCT.renderChoiceEffects(choice.effects || {}, index)}
       </button>
     `).join("");
 
@@ -219,7 +219,15 @@
     `;
   };
 
-  PCT.renderChoiceEffects = function renderChoiceEffects(effects) {
+  PCT.renderChoiceEffects = function renderChoiceEffects(effects, choiceIndex) {
+    if (!PCT.hasChoiceStatEffects(effects)) {
+      return "";
+    }
+
+    if (PCT.shouldHideChoiceEffects(choiceIndex)) {
+      return PCT.renderHiddenChoiceEffects();
+    }
+
     // Les effets visibles rendent le lien choix -> statistiques immédiatement lisible.
     const effectItems = PCT.STAT_KEYS
       .filter((key) => typeof effects[key] === "number" && effects[key] !== 0)
@@ -231,15 +239,69 @@
       `)
       .join("");
 
-    if (!effectItems) {
-      return "";
-    }
-
     return `
       <span class="choice-effects">
         ${effectItems}
       </span>
     `;
+  };
+
+  PCT.hasChoiceStatEffects = function hasChoiceStatEffects(effects) {
+    return PCT.STAT_KEYS.some((key) => (
+      typeof effects[key] === "number" && effects[key] !== 0
+    ));
+  };
+
+  PCT.renderHiddenChoiceEffects = function renderHiddenChoiceEffects() {
+    const label = PCT.HIDDEN_CHOICE_EFFECTS_LABEL || "?????????";
+
+    return `
+      <span class="choice-effects choice-effects-hidden">
+        <span class="choice-effect choice-effect-hidden">
+          ${PCT.escapeHtml(label)}
+        </span>
+      </span>
+    `;
+  };
+
+  PCT.shouldHideChoiceEffects = function shouldHideChoiceEffects(choiceIndex) {
+    const chance = PCT.getHiddenChoiceEffectsChance();
+
+    if (chance <= 0 || typeof choiceIndex !== "number" || !PCT.canHideChoiceEffects()) {
+      return false;
+    }
+
+    const key = [
+      PCT.state.testIndex,
+      PCT.state.currentNodeId,
+      choiceIndex
+    ].join(":");
+
+    if (Object.prototype.hasOwnProperty.call(PCT.state.hiddenChoiceEffects, key)) {
+      return PCT.state.hiddenChoiceEffects[key];
+    }
+
+    PCT.state.hiddenChoiceEffects[key] = Math.random() < chance;
+    return PCT.state.hiddenChoiceEffects[key];
+  };
+
+  PCT.canHideChoiceEffects = function canHideChoiceEffects() {
+    const minInstability = typeof PCT.HIDDEN_CHOICE_EFFECTS_MIN_INSTABILITY === "number"
+      ? PCT.HIDDEN_CHOICE_EFFECTS_MIN_INSTABILITY
+      : 2.5;
+
+    return PCT.state.anomalyStage >= 1 || PCT.state.instability >= minInstability;
+  };
+
+  PCT.getHiddenChoiceEffectsChance = function getHiddenChoiceEffectsChance() {
+    const chances = Array.isArray(PCT.HIDDEN_CHOICE_EFFECTS_CHANCES)
+      ? PCT.HIDDEN_CHOICE_EFFECTS_CHANCES
+      : [];
+    const chance = typeof chances[PCT.state.testIndex] === "number"
+      ? chances[PCT.state.testIndex]
+      : chances[chances.length - 1] || 0;
+
+    return PCT.clamp(chance, 0, 1);
   };
 
   PCT.formatEffectValue = function formatEffectValue(value) {
