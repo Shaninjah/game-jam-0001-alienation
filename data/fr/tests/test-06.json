@@ -35,7 +35,7 @@
             "pressure": 0.35,
             "stability": 0.3
           },
-          "next": "dilemme_01"
+          "next": "reaction_conscience_avant_doctrine"
         },
         {
           "label": "Je la laisse choisir une réponse pour voir ce qu'elle comprend.",
@@ -64,7 +64,7 @@
             "pressure": 0.65,
             "overdrive": true
           },
-          "next": "decision_finale"
+          "next": "reaction_fermer_sas"
         },
         {
           "label": "Je gagne trente secondes pour vérifier s'il existe une sortie.",
@@ -124,9 +124,39 @@
             "stability": 0.25,
             "overdrive": true
           },
-          "next": "final"
+          "next": "reaction_refuser_cruaute"
         }
       ]
+    },
+    "reaction_conscience_avant_doctrine": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Vous lui donnez une conscience avant une doctrine. L'état-major n'aimera pas cette priorité, mais je ne suis pas sûr qu'il ait tort de la craindre."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_fermer_sas": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Décision militaire nette. Elle sauve le laboratoire, mais elle apprend aussi que fermer une porte peut compter comme protéger."
+        }
+      ],
+      "next": "decision_finale"
+    },
+    "reaction_refuser_cruaute": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "C'est peut-être le seul ordre que je voudrais voir survivre à ce protocole."
+        }
+      ],
+      "next": "final"
     }
   }
 }

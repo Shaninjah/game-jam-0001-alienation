@@ -26,7 +26,7 @@
             "pressure": 0.75,
             "overdrive": true
           },
-          "next": "dilemme_01"
+          "next": "reaction_formule_stable"
         },
         {
           "label": "J'accepte qu'elle reste changeante et vivante.",
@@ -76,7 +76,7 @@
             "pressure": 0.9,
             "overdrive": true
           },
-          "next": "decision_finale"
+          "next": "reaction_refus_transfert"
         },
         {
           "label": "Je propose un contact avec le signal extérieur sous observation.",
@@ -126,9 +126,39 @@
             "stability": 0.85,
             "mercy": true
           },
-          "next": "final"
+          "next": "reaction_rester_apprendre"
         }
       ]
+    },
+    "reaction_formule_stable": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "Même maintenant, vous cherchez une formule. Je comprends cette tentation : c'est la mienne aussi."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_refus_transfert": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "shocked",
+          "text": "C'est une rupture nette. Le soldat répond encore, mais il ne demande plus la permission."
+        }
+      ],
+      "next": "decision_finale"
+    },
+    "reaction_rester_apprendre": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "happy",
+          "text": "Alors le protocole ne se termine pas par une possession, mais par une présence. Je peux vivre avec cette conclusion."
+        }
+      ],
+      "next": "final"
     }
   }
 }

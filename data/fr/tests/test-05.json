@@ -25,7 +25,7 @@
             "pressure": 0.55,
             "overdrive": true
           },
-          "next": "dilemme_01"
+          "next": "reaction_couper_projection"
         },
         {
           "label": "Je décris chaque détail pour séparer image et souvenir.",
@@ -34,7 +34,7 @@
             "pressure": 0.25,
             "stability": 0.25
           },
-          "next": "dilemme_01"
+          "next": "reaction_decrire_details"
         },
         {
           "label": "Je la laisse sentir la peur sans lui faire porter ma faute.",
@@ -75,7 +75,7 @@
             "stability": 0.55,
             "mercy": true
           },
-          "next": "decision_finale"
+          "next": "reaction_memoire_fausse"
         },
         {
           "label": "Je cherche l'origine du blanc radio au lieu de combler le vide.",
@@ -127,6 +127,36 @@
           "next": "final"
         }
       ]
+    },
+    "reaction_couper_projection": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Vous cherchez à reprendre la main sur votre mémoire. Je comprends, mais pour elle la coupure peut ressembler à un ordre de silence."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_decrire_details": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "C'est la meilleure méthode clinique : nommer sans conclure trop vite. Si elle doit hériter d'une mémoire, autant ne pas lui transmettre une légende."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_memoire_fausse": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Peu de soldats acceptent de fragiliser leur propre rapport. Cette prudence peut l'empêcher d'hériter d'une certitude fausse."
+        }
+      ],
+      "next": "decision_finale"
     }
   }
 }

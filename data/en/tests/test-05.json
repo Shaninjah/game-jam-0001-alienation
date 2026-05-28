@@ -25,7 +25,7 @@
             "pressure": 0.55,
             "overdrive": true
           },
-          "next": "dilemme_01"
+          "next": "reaction_cut_projection"
         },
         {
           "label": "I describe every detail to separate image from memory.",
@@ -34,7 +34,7 @@
             "pressure": 0.25,
             "stability": 0.25
           },
-          "next": "dilemme_01"
+          "next": "reaction_describe_details"
         },
         {
           "label": "I let it feel the fear without making it carry my guilt.",
@@ -75,7 +75,7 @@
             "stability": 0.55,
             "mercy": true
           },
-          "next": "decision_finale"
+          "next": "reaction_false_memory"
         },
         {
           "label": "I search for the source of the radio blank instead of filling the gap.",
@@ -127,6 +127,36 @@
           "next": "final"
         }
       ]
+    },
+    "reaction_cut_projection": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "serious",
+          "text": "You are trying to regain control of your memory. I understand, but to it the cut may feel like an order to stay silent."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_describe_details": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "neutral",
+          "text": "That is the best clinical method: name things without concluding too quickly. If it must inherit a memory, let us not hand it a legend."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_false_memory": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "neutral",
+          "text": "Few soldiers accept weakening their own report. That caution may keep it from inheriting a false certainty."
+        }
+      ],
+      "next": "decision_finale"
     }
   }
 }

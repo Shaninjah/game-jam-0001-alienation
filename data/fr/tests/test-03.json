@@ -27,7 +27,7 @@
             "stability": 0.6,
             "mercy": true
           },
-          "next": "dilemme_01"
+          "next": "reaction_ralentir"
         },
         {
           "label": "On continue, mais chaque hypothèse doit être vérifiable.",
@@ -76,7 +76,7 @@
             "pressure": 0.45,
             "overdrive": true
           },
-          "next": "decision_finale"
+          "next": "reaction_commandement"
         },
         {
           "label": "La créature doit avoir un signe à donner, même imparfait.",
@@ -105,7 +105,7 @@
             "pressure": 0.6,
             "overdrive": true
           },
-          "next": "final"
+          "next": "reaction_verrouiller_souvenirs"
         },
         {
           "label": "Les analyser lentement pour séparer fait, peur et culpabilité.",
@@ -128,6 +128,36 @@
           "next": "final"
         }
       ]
+    },
+    "reaction_ralentir": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Je suis tenté de vous contredire, mais ralentir est peut-être le premier choix vraiment scientifique que nous ayons fait depuis le début."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_commandement": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Vous vous retirez derrière la chaîne de commandement. C'est humain, et très militaire. Mais la créature ne connaît ni les grades ni les signatures au bas d'un ordre."
+        }
+      ],
+      "next": "decision_finale"
+    },
+    "reaction_verrouiller_souvenirs": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "Réponse extrême, mais compréhensible : traiter le souvenir comme une zone contaminée. Le danger, c'est qu'une mémoire enfermée continue quand même de respirer."
+        }
+      ],
+      "next": "final"
     }
   }
 }

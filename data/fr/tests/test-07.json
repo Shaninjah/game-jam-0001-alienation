@@ -26,7 +26,7 @@
             "pressure": 0.55,
             "overdrive": true
           },
-          "next": "dilemme_01"
+          "next": "reaction_brouiller_signal"
         },
         {
           "label": "Je demande une traduction spectrale avant toute réponse.",
@@ -35,7 +35,7 @@
             "pressure": 0.25,
             "stability": 0.25
           },
-          "next": "dilemme_01"
+          "next": "reaction_traduction_spectrale"
         },
         {
           "label": "Je la laisse écouter pour savoir si elle reconnaît l'appel.",
@@ -129,9 +129,39 @@
             "pressure": 1.05,
             "overdrive": true
           },
-          "next": "final"
+          "next": "reaction_reponse_creature"
         }
       ]
+    },
+    "reaction_brouiller_signal": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Vous traitez l'inconnu comme une intrusion. C'est prudent, mais elle peut entendre votre prudence comme une peur."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_traduction_spectrale": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "J'aurais demandé la même chose. Avant de répondre à une voix, on vérifie si c'est bien une voix."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_reponse_creature": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "shocked",
+          "text": "Là, vous cessez de parler à sa place. Le laboratoire va détester cette réponse."
+        }
+      ],
+      "next": "final"
     }
   }
 }

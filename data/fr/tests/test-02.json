@@ -36,7 +36,7 @@
             "stability": 0.2,
             "mercy": true
           },
-          "next": "dilemme_01"
+          "next": "reaction_prisonnier_blesse"
         },
         {
           "label": "J'isole la scientifique contaminée avant que le risque se propage.",
@@ -66,7 +66,7 @@
             "pressure": 0.35,
             "stability": 0.25
           },
-          "next": "decision_finale"
+          "next": "reaction_arret_simulation"
         },
         {
           "label": "Je continue. Si elle réagit à mes choix, il faut comprendre comment.",
@@ -127,9 +127,39 @@
             "pressure": 0.35,
             "stability": 0.2
           },
-          "next": "final"
+          "next": "reaction_troisieme_option"
         }
       ]
+    },
+    "reaction_prisonnier_blesse": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Vous refusez que le statut efface la douleur. C'est une réponse moins militaire qu'elle n'en a l'air : elle maintient une règle commune quand la scène cherche à la casser."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_arret_simulation": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "Vous voulez protéger la créature du protocole lui-même. C'est précisément le type de refus que l'état-major classe comme une variable dangereuse."
+        }
+      ],
+      "next": "decision_finale"
+    },
+    "reaction_troisieme_option": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Cette réponse coûte du temps. Mais elle garde vivant un détail que les modèles écrasent souvent : la possibilité que le choix binaire soit mal posé."
+        }
+      ],
+      "next": "final"
     }
   }
 }

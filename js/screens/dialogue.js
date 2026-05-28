@@ -64,14 +64,15 @@
     const testLabel = PCT.getDialogueProgressLabel(currentTest);
     const message = node.messages[PCT.state.messageIndex];
     const hasMoreMessages = PCT.state.messageIndex < node.messages.length - 1;
-    const shouldShowChoices = !hasMoreMessages;
+    const hasAutoNext = !hasMoreMessages && !PCT.hasDialogueChoices(node) && typeof node.next === "string";
+    const shouldShowChoices = !hasMoreMessages && PCT.hasDialogueChoices(node);
     const avatarImage = PCT.getAvatarImage(message.emotion);
 
     // Les choix n'apparaissent qu'après le dernier message du noeud.
-    const choicesHtml = shouldShowChoices ? PCT.renderChoices(node.choices || []) : "";
+    const choicesHtml = shouldShowChoices ? PCT.renderChoices(node.choices) : "";
 
-    // Tant qu'il reste du dialogue, je montre seulement le bouton continuer.
-    const continueButtonHtml = hasMoreMessages ? `
+    // Tant qu'il reste du dialogue, ou qu'un noeud de transition suit, je montre le bouton continuer.
+    const continueButtonHtml = hasMoreMessages || hasAutoNext ? `
       <div class="dialogue-continue-zone">
         <button class="btn btn-primary" type="button" data-action="continue-dialogue">
           ${PCT.escapeHtml(PCT.state.data.ui.dialogue.continueButton)}
@@ -128,6 +129,18 @@
     if (PCT.state.messageIndex < node.messages.length - 1) {
       PCT.state.messageIndex += 1;
       PCT.renderDialogue(PCT.state.currentNodeId);
+      return;
+    }
+
+    // Certains noeuds servent uniquement de réaction courte de Chen avant la suite du protocole.
+    if (!PCT.hasDialogueChoices(node) && typeof node.next === "string") {
+      if (node.next === "final") {
+        PCT.completeDialogueTest();
+        return;
+      }
+
+      PCT.state.messageIndex = 0;
+      PCT.renderDialogue(node.next);
     }
   };
 
@@ -139,7 +152,7 @@
     const node = PCT.getDialogueNode(PCT.state.currentNodeId);
 
     // Si le choix n'existe pas, je ne fais rien : ça protège l'état du jeu.
-    if (!node || !node.choices || !node.choices[choiceIndex]) {
+    if (!node || !PCT.hasDialogueChoices(node) || !node.choices[choiceIndex]) {
       return;
     }
 
@@ -151,16 +164,20 @@
     PCT.updateCreatureInstability(choice.effects || {});
     // Certains choix terminent le protocole et envoient directement à l'écran créature.
     if (choice.next === "final") {
-      // Les mutations ne sont verrouillées qu'à la fin du test, avec une seule nouveauté maximum.
-      PCT.state.lastMutationEvents = PCT.updateCreatureAppearance();
-      PCT.state.testMutationEvents.push(...PCT.state.lastMutationEvents);
-      PCT.renderFinal();
+      PCT.completeDialogueTest();
       return;
     }
 
     // Sinon je repars au premier message du noeud suivant.
     PCT.state.messageIndex = 0;
     PCT.renderDialogue(choice.next);
+  };
+
+  PCT.completeDialogueTest = function completeDialogueTest() {
+    // Les mutations ne sont verrouillées qu'à la fin du test, avec une seule nouveauté maximum.
+    PCT.state.lastMutationEvents = PCT.updateCreatureAppearance();
+    PCT.state.testMutationEvents.push(...PCT.state.lastMutationEvents);
+    PCT.renderFinal();
   };
 
   PCT.applyEffects = function applyEffects(effects) {
@@ -188,18 +205,11 @@
     return appliedEffects;
   };
 
-  PCT.renderChoices = function renderChoices(choices) {
-    // Si un noeud n'a pas de choix, je fournis un bouton de fin par défaut.
-    if (!choices.length) {
-      return `
-        <div class="choice-list">
-          <button class="btn btn-primary choice-btn" type="button" data-action="select-choice" data-choice-index="0">
-            ${PCT.escapeHtml(PCT.state.data.ui.dialogue.defaultFinalChoice)}
-          </button>
-        </div>
-      `;
-    }
+  PCT.hasDialogueChoices = function hasDialogueChoices(node) {
+    return Boolean(node && Array.isArray(node.choices) && node.choices.length);
+  };
 
+  PCT.renderChoices = function renderChoices(choices) {
     // Chaque choix devient un bouton qui renvoie son index au routeur global.
     const choiceButtons = choices.map((choice, index) => `
       <button class="btn choice-btn" type="button" data-action="select-choice" data-choice-index="${index}">

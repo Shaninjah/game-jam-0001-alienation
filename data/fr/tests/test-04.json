@@ -25,7 +25,7 @@
             "pressure": 0.65,
             "overdrive": true
           },
-          "next": "dilemme_01"
+          "next": "reaction_menace_vitre"
         },
         {
           "label": "J'imagine les capteurs et je garde la scène abstraite.",
@@ -34,7 +34,7 @@
             "pressure": 0.2,
             "stability": 0.4
           },
-          "next": "dilemme_01"
+          "next": "reaction_capteurs_abstrait"
         },
         {
           "label": "J'imagine une sortie sûre pour qu'elle ne se sente pas piégée.",
@@ -70,7 +70,7 @@
             "pressure": 0.55,
             "overdrive": true
           },
-          "next": "decision_finale"
+          "next": "reaction_mensonge_attelle"
         },
         {
           "label": "Non. La calmer avec du faux revient à lui fabriquer un monde instable.",
@@ -139,6 +139,36 @@
           "next": "final"
         }
       ]
+    },
+    "reaction_menace_vitre": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "Votre corps prépare déjà la riposte. Elle risque d'apprendre la menace avant d'apprendre la vitre qui la sépare de vous."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_capteurs_abstrait": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "J'aurais fait pareil : retirer le théâtre, garder la mesure. C'est moins spectaculaire, mais beaucoup plus propre."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_mensonge_attelle": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Vous acceptez le mensonge comme une attelle. Utile à court terme, dangereux si elle découvre que le monde se dérobe quand elle a peur."
+        }
+      ],
+      "next": "decision_finale"
     }
   }
 }

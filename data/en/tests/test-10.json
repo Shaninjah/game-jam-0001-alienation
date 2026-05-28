@@ -26,7 +26,7 @@
             "pressure": 0.75,
             "overdrive": true
           },
-          "next": "dilemme_01"
+          "next": "reaction_stable_formula"
         },
         {
           "label": "I accept that it remains changing and alive.",
@@ -76,7 +76,7 @@
             "pressure": 0.9,
             "overdrive": true
           },
-          "next": "decision_finale"
+          "next": "reaction_refuse_transfer"
         },
         {
           "label": "I propose contact with the outside signal under observation.",
@@ -126,9 +126,39 @@
             "stability": 0.85,
             "mercy": true
           },
-          "next": "final"
+          "next": "reaction_stay_learn"
         }
       ]
+    },
+    "reaction_stable_formula": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "worried",
+          "text": "Even now, you are looking for a formula. I understand that temptation: it is mine too."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_refuse_transfer": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "shocked",
+          "text": "That is a clean break. The soldier is still answering, but he is no longer asking permission."
+        }
+      ],
+      "next": "decision_finale"
+    },
+    "reaction_stay_learn": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "happy",
+          "text": "Then the protocol does not end in possession, but in presence. I can live with that conclusion."
+        }
+      ],
+      "next": "final"
     }
   }
 }

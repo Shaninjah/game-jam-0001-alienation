@@ -25,7 +25,7 @@
             "intelligence": 1,
             "pressure": 0.55
           },
-          "next": "dilemme_01"
+          "next": "reaction_clean_separation"
         },
         {
           "label": "I refuse the brutal cut. It is not ready.",
@@ -45,7 +45,7 @@
             "stability": 0.55,
             "mercy": true
           },
-          "next": "dilemme_01"
+          "next": "reaction_gradual_distance"
         }
       ]
     },
@@ -124,9 +124,39 @@
             "conciliation": 1,
             "pressure": 0.65
           },
-          "next": "final"
+          "next": "reaction_chosen_distance"
         }
       ]
+    },
+    "reaction_clean_separation": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "serious",
+          "text": "You choose the cut as training. It is hard, but I recognize the logic: surviving without you."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_gradual_distance": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "neutral",
+          "text": "Gradual, measurable, reversible. That is exactly what the protocol should have been from the start."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_chosen_distance": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "neutral",
+          "text": "You turn an experiment into consent. It is probably the first real free data point we have obtained."
+        }
+      ],
+      "next": "final"
     }
   }
 }

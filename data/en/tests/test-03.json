@@ -27,7 +27,7 @@
             "stability": 0.6,
             "mercy": true
           },
-          "next": "dilemme_01"
+          "next": "reaction_slow_down"
         },
         {
           "label": "We continue, but every hypothesis must be verifiable.",
@@ -76,7 +76,7 @@
             "pressure": 0.45,
             "overdrive": true
           },
-          "next": "decision_finale"
+          "next": "reaction_command"
         },
         {
           "label": "The creature must have a sign to give, even an imperfect one.",
@@ -105,7 +105,7 @@
             "pressure": 0.6,
             "overdrive": true
           },
-          "next": "final"
+          "next": "reaction_lock_memories"
         },
         {
           "label": "Analyze them slowly to separate fact, fear, and guilt.",
@@ -128,6 +128,36 @@
           "next": "final"
         }
       ]
+    },
+    "reaction_slow_down": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "neutral",
+          "text": "I am tempted to argue, but slowing down may be the first truly scientific choice we have made since the beginning."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_command": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "serious",
+          "text": "You step back behind the chain of command. It is human, and very military. But the creature does not know ranks or signatures at the bottom of an order."
+        }
+      ],
+      "next": "decision_finale"
+    },
+    "reaction_lock_memories": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "worried",
+          "text": "An extreme answer, but understandable: treating memory as a contaminated zone. The danger is that a locked memory keeps breathing anyway."
+        }
+      ],
+      "next": "final"
     }
   }
 }

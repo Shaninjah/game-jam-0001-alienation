@@ -34,7 +34,7 @@
             "exploration": 1,
             "pressure": 0.25
           },
-          "next": "dilemme_01"
+          "next": "reaction_nouvelles_unite"
         },
         {
           "label": "Si c'est un interrogatoire, je garde le contrôle de mes réponses.",
@@ -62,7 +62,7 @@
             "intelligence": 1,
             "pressure": 0.4
           },
-          "next": "decision_finale"
+          "next": "reaction_reflexe_militaire"
         },
         {
           "label": "Je sors le blessé. Aucun protocole ne vaut une vie abandonnée.",
@@ -111,7 +111,7 @@
             "pressure": 0.25,
             "stability": 0.2
           },
-          "next": "final"
+          "next": "reaction_lucidite"
         },
         {
           "label": "La compassion : préserver une vie tant qu'elle peut encore l'être.",
@@ -124,6 +124,36 @@
           "next": "final"
         }
       ]
+    },
+    "reaction_nouvelles_unite": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "worried",
+          "text": "Je n'ai pas toute la liste. Deux survivants sont sous sédation, trois noms restent dans la zone blanche. Ce n'est pas une réponse suffisante, je le sais, mais votre insistance compte aussi dans ce test."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_reflexe_militaire": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Réflexe militaire net : sauver le système avant l'individu. Efficace, parfois nécessaire, mais la créature risque surtout d'entendre la fermeture."
+        }
+      ],
+      "next": "decision_finale"
+    },
+    "reaction_lucidite": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "J'aurais probablement choisi cela aussi. La force sans lecture du contexte fabrique seulement une réaction plus rapide, pas une décision plus juste."
+        }
+      ],
+      "next": "final"
     }
   }
 }

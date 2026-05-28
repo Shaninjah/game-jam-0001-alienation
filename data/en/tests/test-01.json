@@ -34,7 +34,7 @@
             "exploration": 1,
             "pressure": 0.25
           },
-          "next": "dilemme_01"
+          "next": "reaction_unit_news"
         },
         {
           "label": "If this is an interrogation, I keep control of my answers.",
@@ -62,7 +62,7 @@
             "intelligence": 1,
             "pressure": 0.4
           },
-          "next": "decision_finale"
+          "next": "reaction_military_reflex"
         },
         {
           "label": "I pull out the wounded soldier. No protocol is worth an abandoned life.",
@@ -111,7 +111,7 @@
             "pressure": 0.25,
             "stability": 0.2
           },
-          "next": "final"
+          "next": "reaction_lucidity"
         },
         {
           "label": "Compassion: preserve a life while it can still be preserved.",
@@ -124,6 +124,36 @@
           "next": "final"
         }
       ]
+    },
+    "reaction_unit_news": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "worried",
+          "text": "I do not have the full list. Two survivors are sedated, three names remain inside the white zone. It is not a sufficient answer, I know, but your insistence matters in this test too."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_military_reflex": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "serious",
+          "text": "A clean military reflex: save the system before the individual. Efficient, sometimes necessary, but the creature may mostly hear the closing door."
+        }
+      ],
+      "next": "decision_finale"
+    },
+    "reaction_lucidity": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "neutral",
+          "text": "I probably would have chosen that too. Strength without context only creates a faster reaction, not a fairer decision."
+        }
+      ],
+      "next": "final"
     }
   }
 }

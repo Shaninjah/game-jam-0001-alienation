@@ -25,7 +25,7 @@
             "intelligence": 1,
             "pressure": 0.55
           },
-          "next": "dilemme_01"
+          "next": "reaction_separation_nette"
         },
         {
           "label": "Je refuse la coupure brutale. Elle n'est pas prête.",
@@ -45,7 +45,7 @@
             "stability": 0.55,
             "mercy": true
           },
-          "next": "dilemme_01"
+          "next": "reaction_distance_progressive"
         }
       ]
     },
@@ -124,9 +124,39 @@
             "conciliation": 1,
             "pressure": 0.65
           },
-          "next": "final"
+          "next": "reaction_distance_choisie"
         }
       ]
+    },
+    "reaction_separation_nette": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "serious",
+          "text": "Vous choisissez la coupure comme entraînement. C'est dur, mais je reconnais la logique : survivre sans vous."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_distance_progressive": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Progressif, mesurable, réversible. C'est exactement ce que le protocole aurait dû être depuis le début."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_distance_choisie": {
+      "messages": [
+        {
+          "speaker": "Professeur Chen",
+          "emotion": "neutral",
+          "text": "Vous transformez une expérience en consentement. C'est probablement la première vraie donnée libre que nous ayons obtenue."
+        }
+      ],
+      "next": "final"
     }
   }
 }

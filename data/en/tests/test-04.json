@@ -25,7 +25,7 @@
             "pressure": 0.65,
             "overdrive": true
           },
-          "next": "dilemme_01"
+          "next": "reaction_threat_glass"
         },
         {
           "label": "I imagine the sensors and keep the scene abstract.",
@@ -34,7 +34,7 @@
             "pressure": 0.2,
             "stability": 0.4
           },
-          "next": "dilemme_01"
+          "next": "reaction_abstract_sensors"
         },
         {
           "label": "I imagine a safe exit so it does not feel trapped.",
@@ -70,7 +70,7 @@
             "pressure": 0.55,
             "overdrive": true
           },
-          "next": "decision_finale"
+          "next": "reaction_lie_splint"
         },
         {
           "label": "No. Calming it with falsehood builds it an unstable world.",
@@ -139,6 +139,36 @@
           "next": "final"
         }
       ]
+    },
+    "reaction_threat_glass": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "worried",
+          "text": "Your body is already preparing retaliation. It may learn the threat before it learns the glass separating it from you."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_abstract_sensors": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "neutral",
+          "text": "I would have done the same: remove the theater, keep the measurement. Less spectacular, but much cleaner."
+        }
+      ],
+      "next": "dilemme_01"
+    },
+    "reaction_lie_splint": {
+      "messages": [
+        {
+          "speaker": "Professor Chen",
+          "emotion": "serious",
+          "text": "You accept the lie as a splint. Useful in the short term, dangerous if it discovers that the world gives way whenever it is afraid."
+        }
+      ],
+      "next": "decision_finale"
     }
   }
 }
