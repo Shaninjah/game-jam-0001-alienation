@@ -9,17 +9,17 @@
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "Eighth protocol. Its genome reconfigures in waves. Visible mutations are only the easiest part to read."
+          "text": "Eighth protocol. Its genome changes in waves. Visible mutations are only the easiest part to understand."
         },
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "Some alterations remain internal: reflex, fear tolerance, attachment, capacity to learn."
+          "text": "Other changes remain internal: reflexes, fear, attachment, capacity to learn. Faced with these mutations, what priority do you choose?"
         }
       ],
       "choices": [
         {
-          "label": "I freeze its current form before it loses coherence.",
+          "label": "I stabilize its current form before it loses coherence.",
           "effects": {
             "force": 2,
             "intelligence": 1,
@@ -37,7 +37,7 @@
           "next": "reaction_model_mutations"
         },
         {
-          "label": "I preserve anomalies as long as they give it options.",
+          "label": "I do not correct anomalies as long as they still give it options.",
           "effects": {
             "exploration": 2,
             "conciliation": 1,
@@ -53,7 +53,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "We can correct an anomaly, but the correction will also remove a possibility. The perfect creature may be an amputated creature."
+          "text": "We can correct an anomaly, but the correction may also remove a possibility. What do you correct, and what do you leave alive?"
         }
       ],
       "choices": [
@@ -78,7 +78,7 @@
           "next": "decision_finale"
         },
         {
-          "label": "I keep a record and let it adapt one more phase.",
+          "label": "I keep a record and let it adapt a little longer.",
           "effects": {
             "exploration": 2,
             "intelligence": 1,
@@ -93,7 +93,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "Choose the flaw you accept leaving in it. No living organism exits a perfect protocol intact."
+          "text": "Chen insists: the remaining anomalies are defects to correct if we want to approach perfection. Still, choose what the protocol will not strip away yet."
         }
       ],
       "choices": [
@@ -132,7 +132,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "You are looking for a photograph of the living. Useful for us, perhaps violent for it."
+          "text": "You are trying to freeze something alive. Useful for us, perhaps violent for it."
         }
       ],
       "next": "dilemme_01"
@@ -152,7 +152,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "You prioritize collective risk. It is defensible, but every correction leaves a mark on what it might have become."
+          "text": "You prioritize collective safety. It is defensible, but every correction leaves a mark on what it might have become."
         }
       ],
       "next": "decision_finale"

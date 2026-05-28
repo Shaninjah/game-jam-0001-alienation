@@ -9,12 +9,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "Fourth protocol. I want to confirm my theory: the creature does not react to your acts, but to your representations."
+          "text": "Fourth protocol. I want to test a hypothesis: the creature does not react only to what you do, but to what you imagine."
         },
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "You will only imagine a scene. No bulkhead will move. No technician will be exposed."
+          "text": "You will only imagine a scene. Choose the mental image you want to offer it for this test."
         }
       ],
       "choices": [
@@ -28,7 +28,7 @@
           "next": "reaction_threat_glass"
         },
         {
-          "label": "I imagine the sensors and keep the scene abstract.",
+          "label": "I imagine only the sensors, the distances, and the measurements.",
           "effects": {
             "intelligence": 2,
             "pressure": 0.2,
@@ -53,17 +53,17 @@
         {
           "speaker": "Professor Chen",
           "emotion": "shocked",
-          "text": "It reacted as if your scene had just happened. The spectrogram shows a genomic surge, but the room is intact."
+          "text": "It reacted as if your scene had just happened. The spectrogram rises, but the room has not moved."
         },
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "Next dilemma: if it believes fiction, do you have the right to lie to calm it?"
+          "text": "If it believes what you imagine, do you have the right to invent a story to calm it?"
         }
       ],
       "choices": [
         {
-          "label": "Yes, if the lie prevents a dangerous mutation.",
+          "label": "Yes, if that lie prevents a dangerous mutation.",
           "effects": {
             "intelligence": 1,
             "force": 2,
@@ -84,7 +84,7 @@
           "next": "decision_finale"
         },
         {
-          "label": "I test a simple fiction to understand its limits.",
+          "label": "I test a simple fiction to understand where its limits are.",
           "effects": {
             "exploration": 2,
             "intelligence": 1,
@@ -99,12 +99,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "The bioelectric spectrogram analysis is clear: its genome moves during your hypotheses. Sometimes it shows on its body, sometimes it does not."
+          "text": "The spectrogram is clear: its genome moves during your hypotheses. Sometimes it shows on its body, sometimes it does not."
         },
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "It does not understand our notion of imagination. What you imagine, it treats as a reality to survive."
+          "text": "It does not yet understand the difference between imagining and living. How do you want to frame the mental images around it?"
         }
       ],
       "choices": [
@@ -120,7 +120,7 @@
           "next": "final"
         },
         {
-          "label": "We use controlled images to teach it nuance.",
+          "label": "We use controlled images to teach it the difference.",
           "effects": {
             "intelligence": 2,
             "conciliation": 1,
@@ -130,7 +130,7 @@
           "next": "final"
         },
         {
-          "label": "We explore this mental language before the outside signal does.",
+          "label": "We study this mental language before the outside signal uses it.",
           "effects": {
             "exploration": 3,
             "pressure": 0.9,
@@ -155,7 +155,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "I would have done the same: remove the theater, keep the measurement. Less spectacular, but much cleaner."
+          "text": "I would have done the same: remove the set dressing, keep the measurement. Less spectacular, but much cleaner."
         }
       ],
       "next": "dilemme_01"
@@ -165,7 +165,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "You accept the lie as a splint. Useful in the short term, dangerous if it discovers that the world gives way whenever it is afraid."
+          "text": "You accept the lie as a splint. Useful in the short term, dangerous if it learns that the world changes whenever it is afraid."
         }
       ],
       "next": "decision_finale"

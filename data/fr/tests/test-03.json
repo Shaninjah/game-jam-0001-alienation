@@ -9,12 +9,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "shocked",
-          "text": "Après le deuxième test, une mutation normale est bien apparue. Pas après un contact, pas après une injection : après votre décision morale."
+          "text": "Après le deuxième test, une mutation normale est apparue. Pas après une injection. Pas après un contact. Après votre choix."
         },
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Son génome a bougé au moment précis où vous avez imaginé le prisonnier devant la porte interdite. Pour l'instant, la forme reste saine."
+          "text": "Son génome a changé au moment où vous imaginiez le prisonnier devant la porte interdite. Maintenant que vous savez que vos choix la transforment, que faites-vous ?"
         }
       ],
       "choices": [
@@ -30,7 +30,7 @@
           "next": "reaction_ralentir"
         },
         {
-          "label": "On continue, mais chaque hypothèse doit être vérifiable.",
+          "label": "On continue, mais chaque hypothèse doit pouvoir être vérifiée.",
           "effects": {
             "intelligence": 2,
             "pressure": 0.25,
@@ -39,7 +39,7 @@
           "next": "dilemme_01"
         },
         {
-          "label": "Montrez-moi la mutation. Je veux voir ce que j'ai provoqué.",
+          "label": "Montrez-moi la mutation. Je veux voir ce que mon choix a provoqué.",
           "effects": {
             "exploration": 2,
             "conciliation": 1,
@@ -54,7 +54,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "C'est le vrai dilemme. Si vos choix la transforment, êtes-vous encore un patient à protéger ou un acteur responsable de son avenir ?"
+          "text": "Voilà le vrai problème : si vos choix la transforment, êtes-vous encore un patient à protéger ou quelqu'un de responsable dans son avenir ?"
         }
       ],
       "choices": [
@@ -79,7 +79,7 @@
           "next": "reaction_commandement"
         },
         {
-          "label": "La créature doit avoir un signe à donner, même imparfait.",
+          "label": "La créature doit pouvoir répondre elle aussi, même de façon imparfaite.",
           "effects": {
             "exploration": 2,
             "conciliation": 1,
@@ -94,12 +94,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Si elle hérite de vos images mentales, que devons-nous faire de vos souvenirs de l'opération Mirador ?"
+          "text": "Si elle absorbe vos images mentales, que devons-nous faire de vos souvenirs de l'opération Mirador ?"
         }
       ],
       "choices": [
         {
-          "label": "Les verrouiller. Certains souvenirs sont des menaces biologiques.",
+          "label": "Les verrouiller. Certains souvenirs peuvent devenir dangereux pour elle.",
           "effects": {
             "force": 2,
             "pressure": 0.6,
@@ -108,7 +108,7 @@
           "next": "reaction_verrouiller_souvenirs"
         },
         {
-          "label": "Les analyser lentement pour séparer fait, peur et culpabilité.",
+          "label": "Les analyser lentement pour séparer les faits, la peur et la culpabilité.",
           "effects": {
             "intelligence": 2,
             "conciliation": 1,
@@ -119,7 +119,7 @@
           "next": "final"
         },
         {
-          "label": "Les laisser venir. Ce qu'elle cherche est peut-être dedans.",
+          "label": "Les laisser revenir. Ce qu'elle cherche est peut-être dedans.",
           "effects": {
             "exploration": 3,
             "pressure": 0.8,
@@ -144,7 +144,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Vous vous retirez derrière la chaîne de commandement. C'est humain, et très militaire. Mais la créature ne connaît ni les grades ni les signatures au bas d'un ordre."
+          "text": "Vous vous abritez derrière la chaîne de commandement. C'est humain, et très militaire. Mais la créature ne connaît ni les grades ni les signatures au bas d'un ordre."
         }
       ],
       "next": "decision_finale"

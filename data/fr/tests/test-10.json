@@ -9,12 +9,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Dixième protocole. Toutes les données se contredisent parce que nous avons posé les mauvaises questions."
+          "text": "Dixième protocole. Les données se contredisent parce que nous avons peut-être posé les mauvaises questions."
         },
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Nous cherchions ce que la créature allait devenir. La vraie question est ce que nous acceptons de ne pas contrôler."
+          "text": "Nous cherchions ce que la créature devait devenir. Maintenant, choisissez ce que vous acceptez de laisser hors de votre contrôle."
         }
       ],
       "choices": [
@@ -55,7 +55,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Le commandement ordonne son transfert. Officiellement, elle est une entité instable. Officieusement, ils veulent savoir si elle peut être reproduite."
+          "text": "Le commandement ordonne son transfert. Officiellement, elle est instable ; officieusement, ils veulent la reproduire. Comment répondez-vous à cet ordre ?"
         }
       ],
       "choices": [
@@ -79,7 +79,7 @@
           "next": "reaction_refus_transfert"
         },
         {
-          "label": "Je propose un contact avec le signal extérieur sous observation.",
+          "label": "Je propose un contact surveillé avec le signal extérieur.",
           "effects": {
             "exploration": 2,
             "intelligence": 1,
@@ -94,12 +94,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Dernière réponse, soldat. Ne cherchez pas la solution parfaite. Choisissez la responsabilité que vous pouvez porter."
+          "text": "Dernière réponse, soldat. Ne cherchez pas la solution parfaite. Choisissez la responsabilité que vous êtes prêt à porter."
         }
       ],
       "choices": [
         {
-          "label": "Je la confie au protocole humain, avec moi comme témoin permanent.",
+          "label": "Je la confie à une surveillance humaine, avec moi comme témoin permanent.",
           "effects": {
             "force": 1,
             "intelligence": 2,
@@ -118,7 +118,7 @@
           "next": "final"
         },
         {
-          "label": "Je reste avec elle pour apprendre, sans prétendre la finir.",
+          "label": "Je reste avec elle pour apprendre, sans prétendre la terminer.",
           "effects": {
             "conciliation": 2,
             "intelligence": 1,
@@ -155,7 +155,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "happy",
-          "text": "Alors le protocole ne se termine pas par une possession, mais par une présence. Je peux vivre avec cette conclusion."
+          "text": "Alors le protocole ne se termine pas par une capture, mais par un accompagnement. Je peux vivre avec cette conclusion."
         }
       ],
       "next": "final"

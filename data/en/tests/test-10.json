@@ -9,12 +9,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "Tenth protocol. All the data contradicts itself because we asked the wrong questions."
+          "text": "Tenth protocol. The data contradicts itself because we may have asked the wrong questions."
         },
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "We were looking for what the creature would become. The real question is what we accept not controlling."
+          "text": "We were looking for what the creature should become. Now choose what you are willing to leave outside your control."
         }
       ],
       "choices": [
@@ -55,7 +55,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "Command orders its transfer. Officially, it is an unstable entity. Unofficially, they want to know whether it can be reproduced."
+          "text": "Command orders its transfer. Officially, it is unstable; unofficially, they want to reproduce it. How do you answer that order?"
         }
       ],
       "choices": [
@@ -79,7 +79,7 @@
           "next": "reaction_refuse_transfer"
         },
         {
-          "label": "I propose contact with the outside signal under observation.",
+          "label": "I propose supervised contact with the outside signal.",
           "effects": {
             "exploration": 2,
             "intelligence": 1,
@@ -94,12 +94,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "Final answer, soldier. Do not look for the perfect solution. Choose the responsibility you can carry."
+          "text": "Final answer, soldier. Do not look for the perfect solution. Choose the responsibility you are ready to carry."
         }
       ],
       "choices": [
         {
-          "label": "I entrust it to human protocol, with me as permanent witness.",
+          "label": "I entrust it to human supervision, with me as permanent witness.",
           "effects": {
             "force": 1,
             "intelligence": 2,
@@ -155,7 +155,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "happy",
-          "text": "Then the protocol does not end in possession, but in presence. I can live with that conclusion."
+          "text": "Then the protocol does not end in capture, but in guidance. I can live with that conclusion."
         }
       ],
       "next": "final"

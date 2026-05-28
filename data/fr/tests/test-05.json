@@ -9,17 +9,17 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Cinquième protocole. La créature projette maintenant des fragments de Mirador : une radio coupée, une porte ouverte, puis l'œuf sous la lumière blanche."
+          "text": "Cinquième protocole. La créature projette des fragments de Mirador : une radio coupée, une porte ouverte, puis l'œuf sous la lumière blanche."
         },
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Ce ne sont pas vos souvenirs exacts. Elle reconstruit une histoire avec votre peur et ses propres sensations."
+          "text": "Ce ne sont pas exactement vos souvenirs. Face à cette projection, comment réagissez-vous ?"
         }
       ],
       "choices": [
         {
-          "label": "Je coupe la projection avant qu'elle déforme mes souvenirs.",
+          "label": "Je coupe la projection avant qu'elle modifie mes souvenirs.",
           "effects": {
             "force": 2,
             "pressure": 0.55,
@@ -28,7 +28,7 @@
           "next": "reaction_couper_projection"
         },
         {
-          "label": "Je décris chaque détail pour séparer image et souvenir.",
+          "label": "Je décris chaque détail pour séparer les faits des images.",
           "effects": {
             "intelligence": 2,
             "pressure": 0.25,
@@ -37,7 +37,7 @@
           "next": "reaction_decrire_details"
         },
         {
-          "label": "Je la laisse sentir la peur sans lui faire porter ma faute.",
+          "label": "Je la laisse sentir la peur, sans lui faire porter ma culpabilité.",
           "effects": {
             "conciliation": 2,
             "exploration": 1,
@@ -53,12 +53,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Il manque huit secondes dans l'enregistrement de votre casque. Si la créature les complète avec votre culpabilité, elle risque d'en faire une loi biologique."
+          "text": "Il manque huit secondes dans l'enregistrement de votre casque. Si la créature les remplit avec votre culpabilité, elle risque d'en faire une règle de survie. Que faites-vous de ce vide ?"
         }
       ],
       "choices": [
         {
-          "label": "Je maintiens le rapport officiel jusqu'à preuve contraire.",
+          "label": "Je m'en tiens au rapport officiel tant qu'on n'a pas de preuve.",
           "effects": {
             "force": 2,
             "intelligence": 1,
@@ -67,7 +67,7 @@
           "next": "decision_finale"
         },
         {
-          "label": "J'admets que mon souvenir peut être faux, même si ça m'accuse.",
+          "label": "J'admets que mon souvenir peut être faux, même si cela m'accuse.",
           "effects": {
             "conciliation": 2,
             "intelligence": 1,
@@ -78,7 +78,7 @@
           "next": "reaction_memoire_fausse"
         },
         {
-          "label": "Je cherche l'origine du blanc radio au lieu de combler le vide.",
+          "label": "Je cherche l'origine de la coupure radio au lieu d'inventer ce qui manque.",
           "effects": {
             "exploration": 2,
             "intelligence": 1,
@@ -93,7 +93,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "La créature vous regarde comme si elle attendait une version du passé. Quelle vérité peut-elle recevoir sans s'y enfermer ?"
+          "text": "La créature vous regarde comme si elle attendait votre version du passé. Quelle vérité peut-elle recevoir sans rester prisonnière de cette histoire ?"
         }
       ],
       "choices": [

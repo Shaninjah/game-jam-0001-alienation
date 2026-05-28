@@ -14,12 +14,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "It already imitates your cover, lockdown, and anticipation reflexes. The issue is no longer its ability, but its education."
+          "text": "It already imitates your protection, lockdown, and anticipation reflexes. What principle do you want to teach it first?"
         }
       ],
       "choices": [
         {
-          "label": "I test a simple order. It must learn limits.",
+          "label": "I test a simple order. It must learn that limits exist.",
           "effects": {
             "force": 2,
             "intelligence": 1,
@@ -28,7 +28,7 @@
           "next": "dilemme_01"
         },
         {
-          "label": "I show it that an order can be refused if it hurts without cause.",
+          "label": "I show it that an order can be refused if it causes needless suffering.",
           "effects": {
             "conciliation": 2,
             "intelligence": 1,
@@ -53,7 +53,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "Moral simulation. An alert orders a bulkhead sealed. Behind it, a contaminated technician says he can still get out."
+          "text": "Moral simulation. An alert orders a bulkhead closed. On the other side, a contaminated technician says he can still get out. What do you do?"
         }
       ],
       "choices": [
@@ -93,12 +93,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "It does not only learn what to do. It learns why you accept doing it."
+          "text": "It does not only learn the gestures. It learns the reasons that make you accept them. What rule do you pass on?"
         }
       ],
       "choices": [
         {
-          "label": "I transmit fast obedience in critical situations.",
+          "label": "I teach it to obey fast when the situation is critical.",
           "effects": {
             "force": 3,
             "pressure": 0.8,
@@ -107,7 +107,7 @@
           "next": "final"
         },
         {
-          "label": "I transmit verification before irreversible orders.",
+          "label": "I teach it to verify before accepting an irreversible order.",
           "effects": {
             "intelligence": 2,
             "exploration": 1,
@@ -117,7 +117,7 @@
           "next": "final"
         },
         {
-          "label": "I transmit the right to refuse useless cruelty.",
+          "label": "I teach it that it can refuse useless cruelty.",
           "effects": {
             "conciliation": 3,
             "pressure": 0.7,

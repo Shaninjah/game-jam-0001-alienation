@@ -208,61 +208,61 @@
         "text": "Les anomalies apparaissent. À force de vouloir l'améliorer, le protocole lui a appris qu'elle n'était jamais suffisante."
       },
       "degenerate": {
-        "title": "Confusion totale",
-        "text": "Le protocole a été poussé trop loin. La leçon est brutale : chercher l'être parfait finit par détruire l'être vivant."
+        "title": "Instabilité totale",
+        "text": "Le protocole a été poussé trop loin. Il faut rééquilibrer la créature. On s'éloigne de la perfection."
       }
     },
     "stopEnding": {
       "kicker": "Fin viable",
       "title": "Tu refuses la perfection",
-      "text": "Chen promettait une créature meilleure au prochain test, puis encore meilleure au suivant. Tu as choisi d'arrêter avant de transformer une vie en projet d'optimisation. La créature reste imparfaite, donc vivante.",
+      "text": "Chen promettait une créature meilleure au prochain test, puis encore meilleure au suivant. Tu as choisi d'arrêter avant de transformer une vie en projet d'optimisation. La créature reste imparfaite, donc vivante. Tu as gagné. Tu n'as pas succombé à cette quête impossible : la recherche de la perfection.",
       "button": "Revenir au menu"
     },
     "stopEndings": {
       "stable": {
         "kicker": "Fin viable",
         "title": "Tu refuses la perfection",
-        "text": "Chen promettait une créature meilleure au prochain test, puis encore meilleure au suivant. Tu as choisi d'arrêter avant de transformer une vie en projet d'optimisation. La créature reste imparfaite, donc vivante."
+        "text": "Chen promettait une créature meilleure au prochain test, puis encore meilleure au suivant. Tu as choisi d'arrêter avant de transformer une vie en projet d'optimisation. La créature reste imparfaite, donc vivante. Tu as gagné. Tu n'as pas succombé à cette quête impossible : la recherche de la perfection."
       },
       "strained": {
         "kicker": "Fin viable",
         "title": "Tu arrêtes avant la fracture",
-        "text": "La pression était déjà là : chaque test promettait une version plus juste, plus forte, plus aboutie. Tu interromps le protocole avant que cette exigence devienne une blessure. Elle restera inachevée, et c'est précisément ce qui la sauve."
+        "text": "La pression était déjà là : chaque test promettait une version plus juste, plus forte, plus aboutie. Tu interromps le protocole avant que cette exigence devienne une blessure. Elle restera inachevée, et c'est précisément ce qui la sauve. Tu as gagné. Tu as su t'arrêter à temps dans cette quête impossible : la recherche de la perfection."
       },
       "anomaly": {
         "kicker": "Fin marquée",
         "title": "Tu arrêtes les dégâts",
-        "text": "Les anomalies ne disparaissent pas parce que tu refermes le dossier. Tu as poussé trop loin, puis tu as choisi de ne plus corriger une faute par une autre. La créature vivra avec ces traces, hors du projet qui les a provoquées."
+        "text": "Les anomalies ne disparaissent pas parce que tu refermes le dossier. Tu as poussé trop loin, puis tu as choisi de ne plus corriger une faute par une autre. La créature vivra avec ces traces. Tu as gagné. Mais à quel prix : la recherche de la perfection est une quête impossible, et elle t'a déjà appris qu'en voulant tout réparer, on commence par abîmer le vivant."
       },
       "critical": {
         "kicker": "Fin tardive",
         "title": "Tu regardes ce qui reste",
-        "text": "Le protocole a déjà dépassé la limite. Arrêter maintenant n'efface rien, mais refuse au moins la dernière violence : continuer sous prétexte de réparer. Ce n'est plus une victoire pure, seulement une responsabilité enfin acceptée."
+        "text": "Le protocole a déjà dépassé la limite. Arrêter maintenant n'efface rien, mais refuse au moins la dernière violence : continuer sous prétexte de réparer. Tu as gagné. Mais c'est une victoire tardive : la recherche de la perfection est une quête impossible, et elle a presque tout pris avant que tu acceptes enfin de t'arrêter."
       }
     },
     "protocolEndings": {
       "stable": {
         "kicker": "Fin du protocole",
-        "title": "Elle survit à nos questions",
-        "text": "Tu es allé jusqu'au bout sans lui imposer une forme unique. Chen cherchait une conclusion parfaite ; il obtient un être vivant, lisible mais jamais terminé. Ce n'est pas une victoire de laboratoire. C'est un sursis que personne ne doit confondre avec un modèle.",
+        "title": "Tu as perdu sans bruit",
+        "text": "La créature survit aux questions, mais tu as laissé Chen aller jusqu'au bout. Tu as perdu : tu as suivi cette quête impossible qu'est la recherche de la perfection, et même saine, elle a dû prouver qu'elle méritait de rester vivante.",
         "button": "Revenir au menu"
       },
       "strained": {
         "kicker": "Fin du protocole",
-        "title": "Le protocole garde la main",
-        "text": "La créature tient encore, mais sa forme finale porte ton obstination. Chaque amélioration a laissé une dette dans son corps. Elle n'est pas détruite, pas parfaite non plus : seulement contrainte par la somme de nos corrections.",
+        "title": "Tu as perdu le contrôle",
+        "text": "La créature tient encore, mais sa forme finale porte ton obstination. Tu as perdu : tu as confondu amélioration et salut, comme si la recherche de la perfection n'était pas une quête impossible, et le protocole garde maintenant la main.",
         "button": "Revenir au menu"
       },
       "anomaly": {
         "kicker": "Fin du protocole",
-        "title": "L'amélioration l'a marquée",
-        "text": "Les anomalies font maintenant partie de son histoire biologique. Le protocole voulait prouver qu'une vie pouvait être optimisée jusqu'à devenir acceptable. Il prouve surtout qu'à force de corriger, on apprend à un être qu'il ne suffit jamais.",
+        "title": "Tu as perdu son intégrité",
+        "text": "Les anomalies font maintenant partie de son histoire biologique. Tu as perdu : la recherche de la perfection est une quête impossible, et à force de vouloir la rendre acceptable, tu l'as marquée avec l'idée qu'elle ne suffisait jamais.",
         "button": "Revenir au menu"
       },
       "critical": {
         "kicker": "Fin du protocole",
-        "title": "La perfection a gagné",
-        "text": "À force de chercher la forme idéale, le protocole a défait celle qui existait. Il reste une conclusion brutale : la perfection ne sauve pas le vivant quand elle exige qu'il cesse d'être imparfait.",
+        "title": "Tu as tout perdu",
+        "text": "À force de chercher la forme idéale, le protocole a défait celle qui existait. Tu as perdu : la recherche de la perfection est une quête impossible, et ici, elle n'a rien créé ; elle a seulement détruit ce qui vivait encore.",
         "button": "Revenir au menu"
       }
     }

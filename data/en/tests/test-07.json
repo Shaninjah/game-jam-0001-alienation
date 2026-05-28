@@ -9,12 +9,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "Seventh protocol. An outside signal answers its vocalizations. It does not use the creature's frequency alone: it relies on your heartbeat."
+          "text": "Seventh protocol. An outside signal answers the sounds it makes. It does not follow only the creature's frequency: it also syncs with your heartbeat."
         },
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "Something is speaking to the bond between you."
+          "text": "Something is speaking to the bond between you. What do you do with this signal?"
         }
       ],
       "choices": [
@@ -29,7 +29,7 @@
           "next": "reaction_jam_signal"
         },
         {
-          "label": "I request a spectral translation before any answer.",
+          "label": "I request a signal analysis before any answer.",
           "effects": {
             "intelligence": 2,
             "pressure": 0.25,
@@ -58,7 +58,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "For us, it may be an invitation or a trap. For the creature, it is already almost a place."
+          "text": "For us, it may be an invitation or a trap. For the creature, it already feels like a real place: do you cut contact, answer, or follow the image?"
         }
       ],
       "choices": [
@@ -73,7 +73,7 @@
           "next": "decision_finale"
         },
         {
-          "label": "I answer with a neutral signal, without lab coordinates.",
+          "label": "I answer with a neutral signal, without giving the lab coordinates.",
           "effects": {
             "intelligence": 2,
             "conciliation": 1,
@@ -83,7 +83,7 @@
           "next": "decision_finale"
         },
         {
-          "label": "I follow the image with it to discover what is calling.",
+          "label": "I follow the image with it to understand what is calling.",
           "effects": {
             "exploration": 3,
             "pressure": 0.95,
@@ -98,7 +98,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "If this signal is asking for the creature, who has the right to answer: the laboratory, you, or the creature?"
+          "text": "If this signal is calling the creature, who has the right to answer: the laboratory, you, or the creature?"
         }
       ],
       "choices": [
@@ -112,7 +112,7 @@
           "next": "final"
         },
         {
-          "label": "I answer with it, but without promising to hand it over.",
+          "label": "I answer with it, without promising to hand it over.",
           "effects": {
             "conciliation": 2,
             "intelligence": 1,
@@ -148,7 +148,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "I would have asked the same thing. Before answering a voice, we verify that it is actually a voice."
+          "text": "I would have asked the same thing. Before answering a signal, we verify what it really contains."
         }
       ],
       "next": "dilemme_01"

@@ -9,17 +9,17 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Huitième protocole. Son génome se reconfigure par vagues. Les mutations visibles ne sont que la partie la plus simple à lire."
+          "text": "Huitième protocole. Son génome change par vagues. Les mutations visibles ne sont que la partie la plus facile à comprendre."
         },
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Certaines altérations restent internes : réflexe, tolérance à la peur, attachement, capacité d'apprendre."
+          "text": "D'autres changements restent internes : réflexes, peur, attachement, capacité d'apprendre. Face à ces mutations, quelle priorité choisissez-vous ?"
         }
       ],
       "choices": [
         {
-          "label": "Je bloque sa forme actuelle avant qu'elle perde sa cohérence.",
+          "label": "Je stabilise sa forme actuelle avant qu'elle perde sa cohérence.",
           "effects": {
             "force": 2,
             "intelligence": 1,
@@ -37,7 +37,7 @@
           "next": "reaction_modeliser_mutations"
         },
         {
-          "label": "Je préserve les anomalies tant qu'elles lui donnent des options.",
+          "label": "Je ne corrige pas les anomalies tant qu'elles lui donnent encore des options.",
           "effects": {
             "exploration": 2,
             "conciliation": 1,
@@ -53,12 +53,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Nous pouvons corriger une anomalie, mais la correction retirera aussi une possibilité. La créature parfaite est peut-être une créature amputée."
+          "text": "Nous pouvons corriger une anomalie, mais la correction peut aussi lui retirer une possibilité. Que corrigez-vous, et que laissez-vous vivre ?"
         }
       ],
       "choices": [
         {
-          "label": "Je corrige ce qui peut la rendre dangereuse pour les autres.",
+          "label": "Je corrige ce qui pourrait la rendre dangereuse pour les autres.",
           "effects": {
             "force": 2,
             "pressure": 0.65,
@@ -78,7 +78,7 @@
           "next": "decision_finale"
         },
         {
-          "label": "Je garde une trace et je la laisse s'adapter une phase de plus.",
+          "label": "Je garde une trace et je la laisse s'adapter encore un peu.",
           "effects": {
             "exploration": 2,
             "intelligence": 1,
@@ -93,7 +93,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Choisissez le défaut que vous acceptez de lui laisser. Aucun organisme vivant ne sort intact d'un protocole parfait."
+          "text": "Chen insiste : les anomalies restantes sont des défauts à corriger pour approcher la perfection. Pourtant, il faut choisir ce que le protocole ne lui arrachera pas encore."
         }
       ],
       "choices": [
@@ -132,7 +132,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Vous cherchez une photographie du vivant. Utile pour nous, peut-être violent pour elle."
+          "text": "Vous cherchez à figer ce qui est vivant. C'est utile pour nous, peut-être violent pour elle."
         }
       ],
       "next": "dilemme_01"
@@ -152,7 +152,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Vous privilégiez le risque collectif. C'est défendable, mais chaque correction laisse une trace dans ce qu'elle aurait pu devenir."
+          "text": "Vous privilégiez la sécurité collective. C'est défendable, mais chaque correction laisse une trace dans ce qu'elle aurait pu devenir."
         }
       ],
       "next": "decision_finale"

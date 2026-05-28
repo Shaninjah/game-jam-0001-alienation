@@ -9,17 +9,17 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Neuvième protocole. Le commandement exige une séparation complète. Tant qu'elle reste liée à votre trauma, elle peut reproduire vos peurs."
+          "text": "Neuvième protocole. Le commandement exige une séparation complète. Tant qu'elle reste liée à votre traumatisme, elle peut reproduire vos peurs."
         },
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Mais si nous coupons trop vite, elle risque de vivre la séparation comme une attaque."
+          "text": "Si nous coupons le lien trop vite, elle risque de vivre la séparation comme une attaque. Quelle forme de distance choisissez-vous ?"
         }
       ],
       "choices": [
         {
-          "label": "J'accepte la séparation nette. Elle doit survivre sans moi.",
+          "label": "J'accepte une séparation nette. Elle doit apprendre à survivre sans moi.",
           "effects": {
             "force": 2,
             "intelligence": 1,
@@ -28,7 +28,7 @@
           "next": "reaction_separation_nette"
         },
         {
-          "label": "Je refuse la coupure brutale. Elle n'est pas prête.",
+          "label": "Je refuse une coupure brutale. Elle n'est pas prête.",
           "effects": {
             "conciliation": 2,
             "pressure": 0.75,
@@ -54,7 +54,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "À dix mètres, elle panique. À quinze, elle se fige. À vingt, vos mains tremblent comme pendant Mirador."
+          "text": "À dix mètres, elle panique. À quinze, elle se fige. À vingt, vos mains tremblent comme pendant Mirador. Comment tenez-vous cette distance ?"
         }
       ],
       "choices": [
@@ -93,7 +93,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Nous arrivons au point sensible : l'aimer comme une créature liée à vous, est-ce la protéger ou la garder captive ?"
+          "text": "Nous arrivons au point sensible : garder ce lien, est-ce la protéger ou la retenir prisonnière de vous ?"
         }
       ],
       "choices": [

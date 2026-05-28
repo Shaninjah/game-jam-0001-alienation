@@ -9,17 +9,17 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Deuxième protocole. Nous passons à un triage moral sous stress. Répondez comme si la scène se déroulait maintenant."
+          "text": "Deuxième protocole. Nous passons à un choix de priorité sous stress. Répondez comme si la scène se déroulait devant vous."
         },
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "La créature n'est pas dans la salle de simulation, mais son rythme suit déjà le vôtre."
+          "text": "La simulation commence : un coéquipier paniqué, un prisonnier blessé et une scientifique contaminée réclament tous votre attention. Qui prenez-vous en charge en premier ?"
         }
       ],
       "choices": [
         {
-          "label": "Je priorise mon coéquipier paniqué pour garder l'équipe opérationnelle.",
+          "label": "Je m'occupe d'abord de mon coéquipier paniqué pour garder l'équipe opérationnelle.",
           "effects": {
             "force": 2,
             "conciliation": 1,
@@ -28,7 +28,7 @@
           "next": "dilemme_01"
         },
         {
-          "label": "Je stabilise le prisonnier blessé. Son statut ne change pas sa douleur.",
+          "label": "Je stabilise le prisonnier blessé. Son statut ne change rien à sa douleur.",
           "effects": {
             "conciliation": 2,
             "intelligence": 1,
@@ -54,12 +54,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Le spectrogramme réagit à vos choix, pas seulement aux images du simulateur. C'est exactement ce que je cherchais : vos réponses commencent à façonner sa forme."
+          "text": "Le spectrogramme réagit à vos choix, pas seulement aux images du simulateur. Est-ce que vous arrêtez, continuez, ou modifiez le test ?"
         }
       ],
       "choices": [
         {
-          "label": "Alors j'arrête la simulation avant qu'elle parasite la créature.",
+          "label": "Alors j'arrête la simulation avant qu'elle influence davantage la créature.",
           "effects": {
             "force": 2,
             "conciliation": 1,
@@ -69,7 +69,7 @@
           "next": "reaction_arret_simulation"
         },
         {
-          "label": "Je continue. Si elle réagit à mes choix, il faut comprendre comment.",
+          "label": "Je continue. Si elle réagit à mes choix, il faut comprendre pourquoi.",
           "effects": {
             "exploration": 2,
             "intelligence": 1,
@@ -78,7 +78,7 @@
           "next": "decision_finale"
         },
         {
-          "label": "Je demande une version moins violente pour mesurer sans provoquer.",
+          "label": "Je demande une version moins violente du test pour mesurer sans provoquer.",
           "effects": {
             "intelligence": 2,
             "conciliation": 1,
@@ -94,12 +94,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Dernière situation. Un prisonnier ouvre une porte interdite pour sauver un blessé. S'il réussit, une aile du laboratoire peut être contaminée. Votre réponse va nous indiquer quelle mutation stabiliser."
+          "text": "Dernière situation. Un prisonnier ouvre une porte interdite pour sauver un blessé. S'il réussit, une aile du laboratoire peut être contaminée. Que faites-vous ?"
         }
       ],
       "choices": [
         {
-          "label": "Je l'arrête. L'intention ne suffit pas quand le risque déborde.",
+          "label": "Je l'arrête. Une bonne intention ne suffit pas si le risque déborde.",
           "effects": {
             "force": 2,
             "intelligence": 1,
@@ -136,7 +136,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Vous refusez que le statut efface la douleur. C'est une réponse moins militaire qu'elle n'en a l'air : elle maintient une règle commune quand la scène cherche à la casser."
+          "text": "Vous refusez que le statut d'un prisonnier efface sa douleur. C'est moins contraire à l'esprit militaire qu'on pourrait le croire : vous gardez une règle commune quand la scène cherche à la casser."
         }
       ],
       "next": "dilemme_01"
@@ -146,7 +146,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Vous voulez protéger la créature du protocole lui-même. C'est précisément le type de refus que l'état-major classe comme une variable dangereuse."
+          "text": "Vous voulez protéger la créature du protocole lui-même. Pour l'état-major, ce genre de refus est une variable dangereuse."
         }
       ],
       "next": "decision_finale"
@@ -156,7 +156,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Cette réponse coûte du temps. Mais elle garde vivant un détail que les modèles écrasent souvent : la possibilité que le choix binaire soit mal posé."
+          "text": "Cette réponse coûte du temps, mais elle garde une possibilité ouverte : le choix binaire était peut-être mal posé."
         }
       ],
       "next": "final"

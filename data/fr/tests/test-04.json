@@ -9,17 +9,17 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Quatrième protocole. Je veux confirmer ma théorie : la créature ne réagit pas à vos actes, mais à vos représentations."
+          "text": "Quatrième protocole. Je veux vérifier une hypothèse : la créature ne réagit pas seulement à ce que vous faites, mais à ce que vous imaginez."
         },
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Vous allez seulement imaginer une scène. Aucun sas ne bougera. Aucun technicien ne sera exposé."
+          "text": "Vous allez seulement imaginer une scène. Choisissez l'image mentale que vous voulez lui proposer pour ce test."
         }
       ],
       "choices": [
         {
-          "label": "J'imagine une menace derrière la vitre et je prépare une riposte.",
+          "label": "J'imagine une menace derrière la vitre et je me prépare à riposter.",
           "effects": {
             "force": 2,
             "pressure": 0.65,
@@ -28,7 +28,7 @@
           "next": "reaction_menace_vitre"
         },
         {
-          "label": "J'imagine les capteurs et je garde la scène abstraite.",
+          "label": "J'imagine seulement les capteurs, les distances et les mesures.",
           "effects": {
             "intelligence": 2,
             "pressure": 0.2,
@@ -53,17 +53,17 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "shocked",
-          "text": "Elle a réagi comme si votre scène venait d'arriver. Le spectrogramme montre une poussée génomique, mais la salle est intacte."
+          "text": "Elle a réagi comme si votre scène venait d'arriver. Le spectrogramme monte, mais la salle n'a pas bougé."
         },
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Dilemme suivant : si elle croit à la fiction, avez-vous le droit de lui mentir pour la calmer ?"
+          "text": "Si elle croit à ce que vous imaginez, avez-vous le droit d'inventer une histoire pour la calmer ?"
         }
       ],
       "choices": [
         {
-          "label": "Oui, si le mensonge empêche une mutation dangereuse.",
+          "label": "Oui, si ce mensonge évite une mutation dangereuse.",
           "effects": {
             "intelligence": 1,
             "force": 2,
@@ -84,7 +84,7 @@
           "next": "decision_finale"
         },
         {
-          "label": "Je teste une fiction simple pour comprendre ses limites.",
+          "label": "Je teste une fiction simple pour comprendre où sont ses limites.",
           "effects": {
             "exploration": 2,
             "intelligence": 1,
@@ -99,12 +99,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Les analyses du spectrogramme bioélectrique sont nettes : son génome bouge pendant vos hypothèses. Parfois cela se voit sur elle, parfois non."
+          "text": "Le spectrogramme est clair : son génome bouge pendant vos hypothèses. Parfois cela se voit sur son corps, parfois non."
         },
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Elle ne comprend pas notre notion d'imagination. Ce que vous imaginez, elle le traite comme une réalité à laquelle survivre."
+          "text": "Elle ne comprend pas encore la différence entre imaginer et vivre. Comment voulez-vous encadrer les images mentales autour d'elle ?"
         }
       ],
       "choices": [
@@ -120,7 +120,7 @@
           "next": "final"
         },
         {
-          "label": "On utilise des images contrôlées pour lui apprendre la nuance.",
+          "label": "On utilise des images contrôlées pour lui apprendre la différence.",
           "effects": {
             "intelligence": 2,
             "conciliation": 1,
@@ -130,7 +130,7 @@
           "next": "final"
         },
         {
-          "label": "On explore ce langage mental avant que le signal extérieur le fasse.",
+          "label": "On étudie ce langage mental avant que le signal extérieur s'en serve.",
           "effects": {
             "exploration": 3,
             "pressure": 0.9,
@@ -145,7 +145,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Votre corps prépare déjà la riposte. Elle risque d'apprendre la menace avant d'apprendre la vitre qui la sépare de vous."
+          "text": "Votre corps prépare déjà la riposte. Elle risque d'apprendre la peur avant d'apprendre la vitre qui la sépare de vous."
         }
       ],
       "next": "dilemme_01"
@@ -155,7 +155,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "J'aurais fait pareil : retirer le théâtre, garder la mesure. C'est moins spectaculaire, mais beaucoup plus propre."
+          "text": "J'aurais fait pareil : enlever le décor, garder la mesure. C'est moins spectaculaire, mais beaucoup plus propre."
         }
       ],
       "next": "dilemme_01"
@@ -165,7 +165,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Vous acceptez le mensonge comme une attelle. Utile à court terme, dangereux si elle découvre que le monde se dérobe quand elle a peur."
+          "text": "Vous acceptez le mensonge comme une attelle. Utile à court terme, dangereux si elle comprend que le monde change dès qu'elle a peur."
         }
       ],
       "next": "decision_finale"

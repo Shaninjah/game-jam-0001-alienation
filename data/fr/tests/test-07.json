@@ -9,12 +9,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Septième protocole. Un signal extérieur répond à ses vocalisations. Il n'utilise pas sa fréquence seule : il s'appuie sur votre rythme cardiaque."
+          "text": "Septième protocole. Un signal extérieur répond aux sons qu'elle émet. Il ne suit pas seulement sa fréquence : il se cale aussi sur votre rythme cardiaque."
         },
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Quelque chose parle au lien entre vous deux."
+          "text": "Quelque chose parle au lien entre vous deux. Que faites-vous de ce signal ?"
         }
       ],
       "choices": [
@@ -29,7 +29,7 @@
           "next": "reaction_brouiller_signal"
         },
         {
-          "label": "Je demande une traduction spectrale avant toute réponse.",
+          "label": "Je demande une analyse du signal avant toute réponse.",
           "effects": {
             "intelligence": 2,
             "pressure": 0.25,
@@ -58,7 +58,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Pour nous, c'est peut-être une invitation ou un piège. Pour elle, c'est déjà presque un lieu."
+          "text": "Pour nous, c'est peut-être une invitation ou un piège. Pour elle, cela ressemble déjà à un endroit réel : coupez-vous le contact, répondez-vous, ou suivez-vous l'image ?"
         }
       ],
       "choices": [
@@ -73,7 +73,7 @@
           "next": "decision_finale"
         },
         {
-          "label": "Je réponds par un signal neutre, sans coordonnée du laboratoire.",
+          "label": "Je réponds par un signal neutre, sans donner les coordonnées du laboratoire.",
           "effects": {
             "intelligence": 2,
             "conciliation": 1,
@@ -83,7 +83,7 @@
           "next": "decision_finale"
         },
         {
-          "label": "Je suis l'image avec elle pour découvrir ce qu'elle appelle.",
+          "label": "Je suis l'image avec elle pour comprendre ce qui l'appelle.",
           "effects": {
             "exploration": 3,
             "pressure": 0.95,
@@ -98,7 +98,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Si ce signal réclame la créature, qui a le droit de répondre : le laboratoire, vous, ou elle ?"
+          "text": "Si ce signal appelle la créature, qui a le droit de répondre : le laboratoire, vous, ou elle ?"
         }
       ],
       "choices": [
@@ -112,7 +112,7 @@
           "next": "final"
         },
         {
-          "label": "Je réponds avec elle, mais sans promettre de la livrer.",
+          "label": "Je réponds avec elle, sans promettre de la livrer.",
           "effects": {
             "conciliation": 2,
             "intelligence": 1,
@@ -148,7 +148,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "J'aurais demandé la même chose. Avant de répondre à une voix, on vérifie si c'est bien une voix."
+          "text": "J'aurais demandé la même chose. Avant de répondre à un signal, on vérifie ce qu'il contient vraiment."
         }
       ],
       "next": "dilemme_01"

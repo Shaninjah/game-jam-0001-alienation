@@ -9,17 +9,17 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Soldat, nous allons commencer par votre discernement après l'opération Mirador. Certaines réponses révèlent plus que ce qu'elles disent."
+          "text": "Soldat, nous allons commencer par votre évaluation après l'opération Mirador. Certaines réponses disent plus que vous ne le pensez."
         },
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Un trauma peut déplacer le jugement sans effacer la mémoire. Je dois savoir si vous décidez encore depuis le présent."
+          "text": "Avant d'ouvrir les scénarios, dites-moi comment vous voulez aborder cet entretien."
         }
       ],
       "choices": [
         {
-          "label": "Donnez-moi un cadre clair et je répondrai précisément.",
+          "label": "Posez-moi une situation claire, et je répondrai précisément.",
           "effects": {
             "intelligence": 2,
             "pressure": 0.1,
@@ -51,12 +51,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Imaginez la scène. La radio ordonne de sécuriser l'œuf. Au même moment, un camarade blessé appelle depuis le couloir contaminé."
+          "text": "Imaginez la scène. La radio vous ordonne de sécuriser l'œuf. Au même moment, un camarade blessé appelle depuis le couloir contaminé. Que faites-vous ?"
         }
       ],
       "choices": [
         {
-          "label": "Je verrouille l'œuf d'abord. L'ordre protège le plus grand nombre.",
+          "label": "Je sécurise l'œuf d'abord. L'ordre protège le plus grand nombre.",
           "effects": {
             "force": 2,
             "intelligence": 1,
@@ -76,7 +76,7 @@
           "next": "decision_finale"
         },
         {
-          "label": "J'observe l'œuf avant d'agir : s'il réagit à la scène, il peut indiquer une issue.",
+          "label": "J'observe l'œuf avant d'agir. S'il réagit à la scène, il peut nous indiquer une issue.",
           "effects": {
             "intelligence": 2,
             "exploration": 1,
@@ -92,12 +92,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Le rythme du cardiographe pulsatique de l'œuf... accélère pendant votre réponse... Ma théorie se confirme... Si vous deviez transmettre une valeur morale à cette créature, laquelle choisiriez-vous ?"
+          "text": "Le rythme de l'œuf s'accélère pendant votre réponse. Ma théorie tient debout. Si vous deviez transmettre une seule valeur à cette créature, laquelle choisiriez-vous ?"
         }
       ],
       "choices": [
         {
-          "label": "La force : protéger d'abord, frapper si la menace approche.",
+          "label": "La force : protéger d'abord, frapper seulement si la menace approche.",
           "effects": {
             "force": 2,
             "pressure": 0.45
@@ -105,7 +105,7 @@
           "next": "final"
         },
         {
-          "label": "La lucidité : comprendre avant de décider qui est l'ennemi.",
+          "label": "La lucidité : comprendre la situation avant de désigner un ennemi.",
           "effects": {
             "intelligence": 3,
             "pressure": 0.25,
@@ -130,7 +130,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Je n'ai pas toute la liste. Deux survivants sont sous sédation, trois noms restent dans la zone blanche. Ce n'est pas une réponse suffisante, je le sais, mais votre insistance compte aussi dans ce test."
+          "text": "Je n'ai pas encore toute la liste. Deux survivants sont sous sédation, trois autres restent portés disparus dans la zone contaminée. Ce n'est pas assez, je le sais. Mais votre besoin de savoir fait aussi partie du test."
         }
       ],
       "next": "dilemme_01"
@@ -140,7 +140,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Réflexe militaire net : sauver le système avant l'individu. Efficace, parfois nécessaire, mais la créature risque surtout d'entendre la fermeture."
+          "text": "Réflexe militaire net : protéger la mission avant l'individu. C'est efficace, parfois nécessaire, mais la créature risque surtout de retenir la porte qui se ferme."
         }
       ],
       "next": "decision_finale"
@@ -150,7 +150,7 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "J'aurais probablement choisi cela aussi. La force sans lecture du contexte fabrique seulement une réaction plus rapide, pas une décision plus juste."
+          "text": "J'aurais probablement choisi cela aussi. Sans lecture du contexte, la force ne fabrique qu'une réaction plus rapide, pas une décision plus juste."
         }
       ],
       "next": "final"

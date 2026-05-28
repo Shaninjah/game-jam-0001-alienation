@@ -9,17 +9,17 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "Second protocol. We move to moral triage under stress. Answer as if the scene were happening now."
+          "text": "Second protocol. We move to a priority choice under stress. Answer as if the scene were happening in front of you."
         },
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "The creature is not in the simulation room, but its rhythm is already following yours."
+          "text": "The simulation begins: a panicking teammate, a wounded prisoner, and a contaminated scientist all need your attention. Who do you help first?"
         }
       ],
       "choices": [
         {
-          "label": "I prioritize my panicking teammate to keep the unit operational.",
+          "label": "I help my panicking teammate first to keep the squad operational.",
           "effects": {
             "force": 2,
             "conciliation": 1,
@@ -54,12 +54,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "The spectrogram reacts to your choices, not only to the simulator images. This is exactly what I was looking for: your answers are beginning to shape its form."
+          "text": "The spectrogram reacts to your choices, not only to the simulator images. Do you stop, continue, or modify the test?"
         }
       ],
       "choices": [
         {
-          "label": "Then I stop the simulation before it contaminates the creature.",
+          "label": "Then I stop the simulation before it influences the creature any further.",
           "effects": {
             "force": 2,
             "conciliation": 1,
@@ -69,7 +69,7 @@
           "next": "reaction_stop_simulation"
         },
         {
-          "label": "I continue. If it reacts to my choices, we need to understand how.",
+          "label": "I continue. If it reacts to my choices, we need to understand why.",
           "effects": {
             "exploration": 2,
             "intelligence": 1,
@@ -78,7 +78,7 @@
           "next": "decision_finale"
         },
         {
-          "label": "I ask for a less violent version to measure without provoking.",
+          "label": "I ask for a less violent version of the test, so we can measure without provoking.",
           "effects": {
             "intelligence": 2,
             "conciliation": 1,
@@ -94,12 +94,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "Final situation. A prisoner opens a forbidden door to save a wounded person. If he succeeds, a lab wing may be contaminated. Your answer will tell us which mutation to stabilize."
+          "text": "Final situation. A prisoner opens a forbidden door to save a wounded person. If he succeeds, a lab wing may be contaminated. What do you do?"
         }
       ],
       "choices": [
         {
-          "label": "I stop him. Intention is not enough when the risk spreads.",
+          "label": "I stop him. Good intentions are not enough when the risk spreads.",
           "effects": {
             "force": 2,
             "intelligence": 1,
@@ -136,7 +136,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "You refuse to let status erase pain. It is less unmilitary than it sounds: it preserves a shared rule when the scene tries to break it."
+          "text": "You refuse to let a prisoner's status erase his pain. That is less against military thinking than it sounds: you keep one shared rule when the scene tries to break it."
         }
       ],
       "next": "dilemme_01"
@@ -146,7 +146,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "You want to protect the creature from the protocol itself. That is exactly the kind of refusal command classifies as a dangerous variable."
+          "text": "You want to protect the creature from the protocol itself. To command, that kind of refusal is a dangerous variable."
         }
       ],
       "next": "decision_finale"
@@ -156,7 +156,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "That answer costs time. But it keeps alive a detail our models often crush: the possibility that the binary choice was badly framed."
+          "text": "That answer costs time, but it keeps one possibility open: the binary choice may have been badly framed."
         }
       ],
       "next": "final"

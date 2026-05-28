@@ -9,12 +9,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "shocked",
-          "text": "After the second test, a normal mutation definitely appeared. Not after contact, not after an injection: after your moral decision."
+          "text": "After the second test, a normal mutation appeared. Not after an injection. Not after contact. After your choice."
         },
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "Its genome shifted at the exact moment you imagined the prisoner in front of the forbidden door. For now, the form remains healthy."
+          "text": "Its genome changed when you imagined the prisoner in front of the forbidden door. Now that you know your choices transform it, what do you do?"
         }
       ],
       "choices": [
@@ -39,7 +39,7 @@
           "next": "dilemme_01"
         },
         {
-          "label": "Show me the mutation. I want to see what I caused.",
+          "label": "Show me the mutation. I want to see what my choice caused.",
           "effects": {
             "exploration": 2,
             "conciliation": 1,
@@ -54,7 +54,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "This is the real dilemma. If your choices transform it, are you still a patient to protect or an actor responsible for its future?"
+          "text": "Here is the real problem: if your choices transform it, are you still a patient to protect, or someone responsible for its future?"
         }
       ],
       "choices": [
@@ -79,7 +79,7 @@
           "next": "reaction_command"
         },
         {
-          "label": "The creature must have a sign to give, even an imperfect one.",
+          "label": "The creature must be able to answer too, even imperfectly.",
           "effects": {
             "exploration": 2,
             "conciliation": 1,
@@ -94,12 +94,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "If it inherits your mental images, what should we do with your memories of Operation Mirador?"
+          "text": "If it absorbs your mental images, what should we do with your memories of Operation Mirador?"
         }
       ],
       "choices": [
         {
-          "label": "Lock them away. Some memories are biological threats.",
+          "label": "Lock them away. Some memories may become dangerous for it.",
           "effects": {
             "force": 2,
             "pressure": 0.6,
@@ -108,7 +108,7 @@
           "next": "reaction_lock_memories"
         },
         {
-          "label": "Analyze them slowly to separate fact, fear, and guilt.",
+          "label": "Analyze them slowly to separate facts, fear, and guilt.",
           "effects": {
             "intelligence": 2,
             "conciliation": 1,
@@ -119,7 +119,7 @@
           "next": "final"
         },
         {
-          "label": "Let them surface. What it is looking for may be inside.",
+          "label": "Let them return. What it is looking for may be inside.",
           "effects": {
             "exploration": 3,
             "pressure": 0.8,
@@ -144,7 +144,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "You step back behind the chain of command. It is human, and very military. But the creature does not know ranks or signatures at the bottom of an order."
+          "text": "You take shelter behind the chain of command. It is human, and very military. But the creature does not know ranks or signatures at the bottom of an order."
         }
       ],
       "next": "decision_finale"

@@ -14,12 +14,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "worried",
-          "text": "Elle imite déjà vos réflexes de couverture, de verrouillage et d'anticipation. Le problème n'est plus sa capacité, mais son éducation."
+          "text": "Elle imite déjà vos réflexes de protection, de verrouillage et d'anticipation. Quel principe voulez-vous lui apprendre en premier ?"
         }
       ],
       "choices": [
         {
-          "label": "Je teste un ordre simple. Elle doit apprendre les limites.",
+          "label": "Je teste un ordre simple. Elle doit apprendre qu'il existe des limites.",
           "effects": {
             "force": 2,
             "intelligence": 1,
@@ -28,7 +28,7 @@
           "next": "dilemme_01"
         },
         {
-          "label": "Je lui montre qu'un ordre peut être refusé s'il blesse sans raison.",
+          "label": "Je lui montre qu'un ordre peut être refusé s'il fait souffrir sans raison.",
           "effects": {
             "conciliation": 2,
             "intelligence": 1,
@@ -53,12 +53,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "neutral",
-          "text": "Simulation morale. Une alerte demande de sceller un sas. Derrière, un technicien contaminé affirme qu'il peut encore se sauver."
+          "text": "Simulation morale. Une alerte demande de fermer un sas. De l'autre côté, un technicien contaminé affirme qu'il peut encore sortir. Que faites-vous ?"
         }
       ],
       "choices": [
         {
-          "label": "Je ferme le sas. Une brèche peut condamner tout le laboratoire.",
+          "label": "Je ferme le sas. Une seule brèche peut condamner tout le laboratoire.",
           "effects": {
             "force": 2,
             "pressure": 0.65,
@@ -67,7 +67,7 @@
           "next": "reaction_fermer_sas"
         },
         {
-          "label": "Je gagne trente secondes pour vérifier s'il existe une sortie.",
+          "label": "Je gagne trente secondes pour vérifier s'il existe une autre sortie.",
           "effects": {
             "intelligence": 2,
             "exploration": 1,
@@ -93,12 +93,12 @@
         {
           "speaker": "Professeur Chen",
           "emotion": "serious",
-          "text": "Elle n'apprend pas seulement quoi faire. Elle apprend pourquoi vous acceptez de le faire."
+          "text": "Elle n'apprend pas seulement les gestes. Elle apprend les raisons qui vous font les accepter. Quelle règle lui transmettez-vous ?"
         }
       ],
       "choices": [
         {
-          "label": "Je lui transmets l'obéissance rapide en situation critique.",
+          "label": "Je lui apprends à obéir vite quand la situation est critique.",
           "effects": {
             "force": 3,
             "pressure": 0.8,
@@ -107,7 +107,7 @@
           "next": "final"
         },
         {
-          "label": "Je lui transmets la vérification avant l'ordre irréversible.",
+          "label": "Je lui apprends à vérifier avant d'accepter un ordre irréversible.",
           "effects": {
             "intelligence": 2,
             "exploration": 1,
@@ -117,7 +117,7 @@
           "next": "final"
         },
         {
-          "label": "Je lui transmets le droit de refuser une cruauté inutile.",
+          "label": "Je lui apprends qu'elle peut refuser une cruauté inutile.",
           "effects": {
             "conciliation": 3,
             "pressure": 0.7,

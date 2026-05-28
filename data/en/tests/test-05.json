@@ -9,17 +9,17 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "Fifth protocol. The creature now projects fragments of Mirador: a cut radio, an open door, then the egg under white light."
+          "text": "Fifth protocol. The creature projects fragments of Mirador: a cut radio, an open door, then the egg under white light."
         },
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "These are not your exact memories. It is rebuilding a story with your fear and its own sensations."
+          "text": "These are not exactly your memories. Faced with this projection, how do you react?"
         }
       ],
       "choices": [
         {
-          "label": "I cut the projection before it distorts my memories.",
+          "label": "I cut the projection before it changes my memories.",
           "effects": {
             "force": 2,
             "pressure": 0.55,
@@ -28,7 +28,7 @@
           "next": "reaction_cut_projection"
         },
         {
-          "label": "I describe every detail to separate image from memory.",
+          "label": "I describe every detail to separate facts from images.",
           "effects": {
             "intelligence": 2,
             "pressure": 0.25,
@@ -53,12 +53,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "Eight seconds are missing from your helmet recording. If the creature fills them with your guilt, it may turn that guilt into biological law."
+          "text": "Eight seconds are missing from your helmet recording. If the creature fills them with your guilt, it may turn that guilt into a survival rule. What do you do with that gap?"
         }
       ],
       "choices": [
         {
-          "label": "I keep the official report until evidence says otherwise.",
+          "label": "I stick to the official report until we have proof.",
           "effects": {
             "force": 2,
             "intelligence": 1,
@@ -78,7 +78,7 @@
           "next": "reaction_false_memory"
         },
         {
-          "label": "I search for the source of the radio blank instead of filling the gap.",
+          "label": "I search for the source of the radio cut instead of inventing what is missing.",
           "effects": {
             "exploration": 2,
             "intelligence": 1,
@@ -93,7 +93,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "The creature watches you as if it is waiting for a version of the past. What truth can it receive without being trapped inside it?"
+          "text": "The creature watches you as if it is waiting for your version of the past. What truth can it receive without becoming trapped in that story?"
         }
       ],
       "choices": [

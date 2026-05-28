@@ -153,12 +153,12 @@
         <p>${PCT.escapeHtml(PCT.state.data.ui.confirmStop.text)}</p>
 
         <div class="button-row modal-actions">
-          <button class="btn" type="button" data-action="close-modal">
-            ${PCT.escapeHtml(PCT.state.data.ui.confirmStop.cancelButton)}
-          </button>
-
           <button class="btn btn-danger" type="button" data-action="accept-creature">
             ${PCT.escapeHtml(PCT.state.data.ui.confirmStop.confirmButton)}
+          </button>
+
+          <button class="btn" type="button" data-action="close-modal">
+            ${PCT.escapeHtml(PCT.state.data.ui.confirmStop.cancelButton)}
           </button>
         </div>
       </section>

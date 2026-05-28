@@ -9,17 +9,17 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "Soldier, we will begin with your judgment after Operation Mirador. Some answers reveal more than they say."
+          "text": "Soldier, we will begin with your evaluation after Operation Mirador. Some answers say more than you think."
         },
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "Trauma can shift judgment without erasing memory. I need to know whether you still decide from the present."
+          "text": "Before we open the scenarios, tell me how you want to approach this evaluation."
         }
       ],
       "choices": [
         {
-          "label": "Give me a clear frame and I will answer precisely.",
+          "label": "Give me a clear situation, and I will answer precisely.",
           "effects": {
             "intelligence": 2,
             "pressure": 0.1,
@@ -51,12 +51,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "Imagine the scene. The radio orders you to secure the egg. At the same time, a wounded teammate calls from the contaminated corridor."
+          "text": "Imagine the scene. The radio orders you to secure the egg. At the same time, a wounded teammate calls from the contaminated corridor. What do you do?"
         }
       ],
       "choices": [
         {
-          "label": "I lock down the egg first. The order protects the greatest number.",
+          "label": "I secure the egg first. The order protects the greatest number.",
           "effects": {
             "force": 2,
             "intelligence": 1,
@@ -76,7 +76,7 @@
           "next": "decision_finale"
         },
         {
-          "label": "I observe the egg before acting: if it reacts to the scene, it may reveal a way out.",
+          "label": "I observe the egg before acting. If it reacts to the scene, it may show us a way out.",
           "effects": {
             "intelligence": 2,
             "exploration": 1,
@@ -92,12 +92,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "The egg's pulsatic cardiograph... accelerates during your answer... My theory is being confirmed... If you had to transmit one moral value to this creature, which would you choose?"
+          "text": "The egg's rhythm accelerates during your answer. My theory holds. If you had to transmit one value to this creature, which would you choose?"
         }
       ],
       "choices": [
         {
-          "label": "Strength: protect first, strike if the threat comes closer.",
+          "label": "Strength: protect first, strike only if the threat comes closer.",
           "effects": {
             "force": 2,
             "pressure": 0.45
@@ -105,7 +105,7 @@
           "next": "final"
         },
         {
-          "label": "Lucidity: understand before deciding who the enemy is.",
+          "label": "Lucidity: understand the situation before naming an enemy.",
           "effects": {
             "intelligence": 3,
             "pressure": 0.25,
@@ -130,7 +130,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "I do not have the full list. Two survivors are sedated, three names remain inside the white zone. It is not a sufficient answer, I know, but your insistence matters in this test too."
+          "text": "I do not have the full list yet. Two survivors are sedated, three others are still missing in the contaminated zone. It is not enough, I know. But your need to know is part of the test too."
         }
       ],
       "next": "dilemme_01"
@@ -140,7 +140,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "serious",
-          "text": "A clean military reflex: save the system before the individual. Efficient, sometimes necessary, but the creature may mostly hear the closing door."
+          "text": "A clean military reflex: protect the mission before the individual. It is efficient, sometimes necessary, but the creature may mostly remember the closing door."
         }
       ],
       "next": "decision_finale"
@@ -150,7 +150,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "I probably would have chosen that too. Strength without context only creates a faster reaction, not a fairer decision."
+          "text": "I probably would have chosen that too. Without context, strength only creates a faster reaction, not a fairer decision."
         }
       ],
       "next": "final"

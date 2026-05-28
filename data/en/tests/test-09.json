@@ -14,12 +14,12 @@
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "But if we cut too fast, it may experience separation as an attack."
+          "text": "If we cut the bond too fast, it may experience separation as an attack. What kind of distance do you choose?"
         }
       ],
       "choices": [
         {
-          "label": "I accept a clean separation. It must survive without me.",
+          "label": "I accept a clean separation. It must learn to survive without me.",
           "effects": {
             "force": 2,
             "intelligence": 1,
@@ -28,7 +28,7 @@
           "next": "reaction_clean_separation"
         },
         {
-          "label": "I refuse the brutal cut. It is not ready.",
+          "label": "I refuse a brutal cut. It is not ready.",
           "effects": {
             "conciliation": 2,
             "pressure": 0.75,
@@ -54,7 +54,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "worried",
-          "text": "At ten meters, it panics. At fifteen, it freezes. At twenty, your hands shake like they did during Mirador."
+          "text": "At ten meters, it panics. At fifteen, it freezes. At twenty, your hands shake like they did during Mirador. How do you hold that distance?"
         }
       ],
       "choices": [
@@ -93,7 +93,7 @@
         {
           "speaker": "Professor Chen",
           "emotion": "neutral",
-          "text": "We have reached the sensitive point: loving it as a creature bonded to you, is that protection or captivity?"
+          "text": "We have reached the sensitive point: keeping this bond, is it protecting the creature or keeping it prisoner of you?"
         }
       ],
       "choices": [
