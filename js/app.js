@@ -90,6 +90,12 @@
       return;
     }
 
+    // Après une fin, le bouton Suite affiche les crédits avant le retour menu.
+    if (action === "show-credits") {
+      PCT.renderCredits();
+      return;
+    }
+
     // Retour au menu depuis une fin.
     if (action === "return-menu") {
       PCT.resetRun();

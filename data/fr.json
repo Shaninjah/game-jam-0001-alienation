@@ -80,6 +80,34 @@
       "cancelButton": "Continuer l'expérience",
       "confirmButton": "Elle est bien comme ça"
     },
+    "credits": {
+      "kicker": "Crédits",
+      "title": "Merci d'avoir joué",
+      "subtitle": "Alienation est né d'une game jam : Indie Park - Cinquième édition.",
+      "creatureNamingText": "Dans ses premiers mots, la créature s'est nommée elle-même {name}.",
+      "artNote": "Toute la direction artistique a été réalisée à la main. L'IA n'a pas été utilisée.",
+      "nextButton": "Suite",
+      "returnButton": "Revenir au menu",
+      "projectLabel": "GitHub du projet",
+      "projectUrl": "https://github.com/Shaninjah/game-jam-0001-alienation",
+      "contributors": [
+        {
+          "name": "Shaninjah",
+          "role": "Narration et développement",
+          "affiliation": "Cybersouls Foundation",
+          "affiliationUrl": "https://cybersouls.io/fr",
+          "logo": "assets/logo_mini.png"
+        },
+        {
+          "name": "Antoad",
+          "role": "Direction artistique et 2D Artiste",
+          "logo": "assets/toadgames.png",
+          "logoUrl": "https://github.com/arirangz",
+          "url": "https://github.com/arirangz",
+          "urlLabel": "github.com/arirangz"
+        }
+      ]
+    },
     "fallbacks": {
       "illustration": "Illustration",
       "avatar": "Avatar scientifique",
@@ -216,7 +244,7 @@
       "kicker": "Fin viable",
       "title": "Tu refuses la perfection",
       "text": "Chen promettait une créature meilleure au prochain test, puis encore meilleure au suivant. Tu as choisi d'arrêter avant de transformer une vie en projet d'optimisation. La créature reste imparfaite, donc vivante. Tu as gagné. Tu n'as pas succombé à cette quête impossible : la recherche de la perfection.",
-      "button": "Revenir au menu"
+      "button": "Suite"
     },
     "stopEndings": {
       "stable": {
@@ -245,25 +273,25 @@
         "kicker": "Fin du protocole",
         "title": "Tu as perdu sans bruit",
         "text": "La créature survit aux questions, mais tu as laissé Chen aller jusqu'au bout. Tu as perdu : tu as suivi cette quête impossible qu'est la recherche de la perfection, et même saine, elle a dû prouver qu'elle méritait de rester vivante.",
-        "button": "Revenir au menu"
+        "button": "Suite"
       },
       "strained": {
         "kicker": "Fin du protocole",
         "title": "Tu as perdu le contrôle",
         "text": "La créature tient encore, mais sa forme finale porte ton obstination. Tu as perdu : tu as confondu amélioration et salut, comme si la recherche de la perfection n'était pas une quête impossible, et le protocole garde maintenant la main.",
-        "button": "Revenir au menu"
+        "button": "Suite"
       },
       "anomaly": {
         "kicker": "Fin du protocole",
         "title": "Tu as perdu son intégrité",
         "text": "Les anomalies font maintenant partie de son histoire biologique. Tu as perdu : la recherche de la perfection est une quête impossible, et à force de vouloir la rendre acceptable, tu l'as marquée avec l'idée qu'elle ne suffisait jamais.",
-        "button": "Revenir au menu"
+        "button": "Suite"
       },
       "critical": {
         "kicker": "Fin du protocole",
         "title": "Tu as tout perdu",
         "text": "À force de chercher la forme idéale, le protocole a défait celle qui existait. Tu as perdu : la recherche de la perfection est une quête impossible, et ici, elle n'a rien créé ; elle a seulement détruit ce qui vivait encore.",
-        "button": "Revenir au menu"
+        "button": "Suite"
       }
     }
   }

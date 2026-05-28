@@ -80,6 +80,34 @@
       "cancelButton": "Continue the experiment",
       "confirmButton": "It is enough"
     },
+    "credits": {
+      "kicker": "Credits",
+      "title": "Thank you for playing",
+      "subtitle": "Alienation was born during a game jam: Indie Park - Fifth edition.",
+      "creatureNamingText": "In its first words, the creature named itself {name}.",
+      "artNote": "All art direction was made by hand. AI was not used.",
+      "nextButton": "Next",
+      "returnButton": "Return to menu",
+      "projectLabel": "Project GitHub",
+      "projectUrl": "https://github.com/Shaninjah/game-jam-0001-alienation",
+      "contributors": [
+        {
+          "name": "Shaninjah",
+          "role": "Narrative and development",
+          "affiliation": "Cybersouls Foundation",
+          "affiliationUrl": "https://cybersouls.io/fr",
+          "logo": "assets/logo_mini.png"
+        },
+        {
+          "name": "Antoad",
+          "role": "Art direction and 2D artist",
+          "logo": "assets/toadgames.png",
+          "logoUrl": "https://github.com/arirangz",
+          "url": "https://github.com/arirangz",
+          "urlLabel": "github.com/arirangz"
+        }
+      ]
+    },
     "fallbacks": {
       "illustration": "Illustration",
       "avatar": "Scientist avatar",
@@ -216,7 +244,7 @@
       "kicker": "Viable ending",
       "title": "You refuse perfection",
       "text": "Chen promised a better creature after the next test, then an even better one after that. You chose to stop before turning a life into an optimization project. The creature remains imperfect, therefore alive. You won. You did not give in to that impossible quest: the search for perfection.",
-      "button": "Return to menu"
+      "button": "Next"
     },
     "stopEndings": {
       "stable": {
@@ -245,25 +273,25 @@
         "kicker": "Protocol ending",
         "title": "You lost quietly",
         "text": "The creature survives the questions, but you let Chen go all the way. You lost: you followed the impossible quest for perfection, and even healthy, it had to prove it deserved to remain alive.",
-        "button": "Return to menu"
+        "button": "Next"
       },
       "strained": {
         "kicker": "Protocol ending",
         "title": "You lost control",
         "text": "The creature still holds together, but its final form carries your insistence. You lost: you confused improvement with salvation, as if the search for perfection were not an impossible quest, and the protocol now keeps its grip.",
-        "button": "Return to menu"
+        "button": "Next"
       },
       "anomaly": {
         "kicker": "Protocol ending",
         "title": "You lost its integrity",
         "text": "The anomalies are now part of its biological history. You lost: the search for perfection is an impossible quest, and by trying to make it acceptable, you marked it with the idea that it was never enough.",
-        "button": "Return to menu"
+        "button": "Next"
       },
       "critical": {
         "kicker": "Protocol ending",
         "title": "You lost everything",
         "text": "By searching for the ideal form, the protocol undid the one that existed. You lost: the search for perfection is an impossible quest, and here, it created nothing; it only destroyed what was still alive.",
-        "button": "Return to menu"
+        "button": "Next"
       }
     }
   }

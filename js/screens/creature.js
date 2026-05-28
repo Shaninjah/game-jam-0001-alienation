@@ -111,6 +111,7 @@
 
   PCT.renderStopEnding = function renderStopEnding() {
     const finalData = PCT.state.data.final || {};
+    const creditsUi = PCT.state.data.ui.credits || {};
     const creatureKey = PCT.getDominantStatKey();
     const creature = finalData.creatures[creatureKey] || finalData.creatures.force || {};
     const stability = PCT.getCreatureStability();
@@ -123,13 +124,10 @@
           <h1>${PCT.escapeHtml(stopEnding.title || "Tu refuses la perfection")}</h1>
           <p class="stop-ending-text">${PCT.escapeHtml(stopEnding.text || "")}</p>
 
-          <div class="stop-ending-summary stat-${PCT.escapeHtml(creatureKey)}">
-            <span>${PCT.escapeHtml(creature.name || "")}</span>
-            <strong>${PCT.escapeHtml(stability.label)}</strong>
-          </div>
+          ${PCT.renderCreatureNamingSummary(creature, creatureKey, stability)}
 
-          <button class="btn btn-primary" type="button" data-action="return-menu">
-            ${PCT.escapeHtml(stopEnding.button || PCT.state.data.ui.final.menuButton)}
+          <button class="btn btn-primary" type="button" data-action="show-credits">
+            ${PCT.escapeHtml(stopEnding.button || creditsUi.nextButton || PCT.state.data.ui.final.menuButton)}
           </button>
         </section>
       </main>
@@ -138,6 +136,7 @@
 
   PCT.renderProtocolEnding = function renderProtocolEnding() {
     const finalData = PCT.state.data.final || {};
+    const creditsUi = PCT.state.data.ui.credits || {};
     const creatureKey = PCT.getDominantStatKey();
     const creature = finalData.creatures[creatureKey] || finalData.creatures.force || {};
     const stability = PCT.getCreatureStability();
@@ -150,17 +149,126 @@
           <h1>${PCT.escapeHtml(protocolEnding.title || "")}</h1>
           <p class="stop-ending-text">${PCT.escapeHtml(protocolEnding.text || "")}</p>
 
-          <div class="stop-ending-summary stat-${PCT.escapeHtml(creatureKey)}">
-            <span>${PCT.escapeHtml(creature.name || "")}</span>
-            <strong>${PCT.escapeHtml(stability.label)}</strong>
-          </div>
+          ${PCT.renderCreatureNamingSummary(creature, creatureKey, stability)}
 
-          <button class="btn btn-primary" type="button" data-action="return-menu">
-            ${PCT.escapeHtml(protocolEnding.button || PCT.state.data.ui.final.completeButton)}
+          <button class="btn btn-primary" type="button" data-action="show-credits">
+            ${PCT.escapeHtml(protocolEnding.button || creditsUi.nextButton || PCT.state.data.ui.final.completeButton)}
           </button>
         </section>
       </main>
     `;
+  };
+
+  PCT.renderCredits = function renderCredits() {
+    const credits = PCT.state.data.ui.credits || {};
+    const contributors = Array.isArray(credits.contributors) ? credits.contributors : [];
+
+    PCT.app.innerHTML = `
+      <main class="screen credits-screen">
+        <section class="screen-inner credits-card panel">
+          <p class="kicker">${PCT.escapeHtml(credits.kicker || "Crédits")}</p>
+          <h1>${PCT.escapeHtml(credits.title || "Merci d'avoir joué")}</h1>
+          <p class="credits-subtitle">${PCT.escapeHtml(credits.subtitle || "")}</p>
+
+          <div class="credits-list">
+            ${contributors.map(PCT.renderCreditContributor).join("")}
+          </div>
+
+          <a class="credits-project-link" href="${PCT.escapeAttribute(credits.projectUrl || "#")}" target="_blank" rel="noreferrer">
+            <span>${PCT.escapeHtml(credits.projectLabel || "GitHub")}</span>
+            <strong>${PCT.escapeHtml(credits.projectUrl || "")}</strong>
+          </a>
+
+          <p class="credits-note">${PCT.escapeHtml(credits.artNote || "")}</p>
+
+          <button class="btn btn-primary" type="button" data-action="return-menu">
+            ${PCT.escapeHtml(credits.returnButton || PCT.state.data.ui.final.menuButton)}
+          </button>
+        </section>
+      </main>
+    `;
+
+    PCT.bindImageFallbacks();
+  };
+
+  PCT.renderCreditContributor = function renderCreditContributor(contributor) {
+    const logoUrl = contributor.logoUrl || contributor.affiliationUrl || "";
+    const logoTag = logoUrl ? "a" : "span";
+    const logoHref = logoUrl ? ` href="${PCT.escapeAttribute(logoUrl)}" target="_blank" rel="noreferrer"` : "";
+    const logoHtml = contributor.logo ? `
+      <${logoTag} class="credit-logo-frame"${logoHref}>
+        <img
+          class="credit-logo-img"
+          src="${PCT.escapeAttribute(contributor.logo)}"
+          alt="${PCT.escapeAttribute(contributor.name || "")}"
+          data-fallback-label="${PCT.escapeAttribute(contributor.name || "")}"
+        >
+        <span class="credit-logo-placeholder">${PCT.escapeHtml(contributor.name || "")}</span>
+      </${logoTag}>
+    ` : "";
+    const creditLinks = [];
+
+    if (contributor.affiliation && contributor.affiliationUrl) {
+      creditLinks.push(`
+        <a class="credit-link-btn" href="${PCT.escapeAttribute(contributor.affiliationUrl)}" target="_blank" rel="noreferrer">
+          ${PCT.escapeHtml(contributor.affiliation)}
+        </a>
+      `);
+    } else if (contributor.affiliation) {
+      creditLinks.push(`<span class="credit-link-btn">${PCT.escapeHtml(contributor.affiliation)}</span>`);
+    }
+
+    if (contributor.url) {
+      creditLinks.push(`
+        <a class="credit-link-btn" href="${PCT.escapeAttribute(contributor.url)}" target="_blank" rel="noreferrer">
+          ${PCT.escapeHtml(contributor.urlLabel || contributor.url)}
+        </a>
+      `);
+    }
+
+    const linksHtml = creditLinks.length ? `
+      <div class="credit-links">
+        ${creditLinks.join("")}
+      </div>
+    ` : "";
+
+    return `
+      <article class="credit-person">
+        ${logoHtml}
+        <div class="credit-person-text">
+          <h2>${PCT.escapeHtml(contributor.name || "")}</h2>
+          <p>${PCT.escapeHtml(contributor.role || "")}</p>
+          ${linksHtml}
+        </div>
+      </article>
+    `;
+  };
+
+  PCT.renderCreatureNamingSummary = function renderCreatureNamingSummary(creature, creatureKey, stability) {
+    return `
+      <div class="stop-ending-summary stat-${PCT.escapeHtml(creatureKey)}">
+        <p>${PCT.renderCreatureNamingText(creature)}</p>
+        <strong class="creature-stability-badge">${PCT.escapeHtml(stability.label)}</strong>
+      </div>
+    `;
+  };
+
+  PCT.renderCreatureNamingText = function renderCreatureNamingText(creature) {
+    const credits = PCT.state.data.ui.credits || {};
+    const template = credits.creatureNamingText || "{name}";
+    const name = creature.name || PCT.state.data.ui.fallbacks.creature || "";
+    const nameToken = "{name}";
+    const nameIndex = template.indexOf(nameToken);
+
+    if (nameIndex < 0) {
+      return PCT.escapeHtml(template);
+    }
+
+    return [
+      PCT.escapeHtml(template.slice(0, nameIndex)),
+      `<b>${PCT.escapeHtml(name)}</b>`,
+      PCT.escapeHtml(template.slice(nameIndex + nameToken.length))
+    ].join("");
   };
 
   PCT.getVisibleMutationParts = function getVisibleMutationParts() {
