@@ -12,7 +12,7 @@
     },
     "menu": {
       "kicker": "Evolving narrative game",
-      "subtitle": "Since the operation that revealed the alien egg, your judgment has been monitored. Professor Chen believes he can shape the creature through your answers. The question is when to stop.",
+      "subtitle": "After a military operation gone wrong, you are recalled for psychological tests in Professor Chen's laboratory. To high command, the mission is still a success: an unknown egg was recovered. But the protocol feels strange, almost too targeted. And the further the questions go, the more you doubt that you are the true subject of the experiment.",
       "languageTitle": "Languages",
       "selectedLanguage": "Selected language",
       "playButton": "Play"
@@ -196,8 +196,8 @@
     },
     "endings": {
       "stable": {
-        "title": "Viable bond",
-        "text": "The creature keeps a readable form. It senses your hypotheses, but does not yet suffer them as orders."
+        "title": "Stable bond",
+        "text": "The creature keeps a healthy bioelectric spectrogram."
       },
       "specialized": {
         "title": "Genome under strain",

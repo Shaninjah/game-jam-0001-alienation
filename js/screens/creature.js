@@ -74,9 +74,12 @@
     // Ce panneau affiche l'état actif de la créature, pas seulement le dernier déblocage.
     const ui = PCT.state.data.ui.final;
     const activeParts = PCT.getVisibleMutationParts();
+    const shouldShowEmptyMutationText = PCT.state.testIndex >= 1;
     const eventsHtml = activeParts.length
       ? activeParts.map(PCT.renderMutationPart).join("")
-      : `<p class="evolution-empty">${PCT.escapeHtml(ui.noMutationText)}</p>`;
+      : shouldShowEmptyMutationText
+        ? `<p class="evolution-empty">${PCT.escapeHtml(ui.noMutationText)}</p>`
+        : "";
 
     return `
       <aside class="evolution-panel" aria-label="${PCT.escapeAttribute(ui.mutationTitle)}">

@@ -12,7 +12,7 @@
     },
     "menu": {
       "kicker": "Jeu narratif évolutif",
-      "subtitle": "Depuis l'opération qui a révélé l'œuf alien, ton jugement est surveillé. Le Professeur Chen pense pouvoir façonner la créature avec tes réponses. Reste à savoir quand il faut arrêter.",
+      "subtitle": "Après une opération militaire qui a mal tourné, tu es rappelé pour passer des tests psychologiques dans le laboratoire du Professeur Chen. Pour l’état-major, la mission reste un succès : un œuf inconnu a été récupéré. Mais le protocole semble étrange, presque trop ciblé. Et plus les questions avancent, plus tu doutes d’être le véritable sujet de l’expérience.",
       "languageTitle": "Langues",
       "selectedLanguage": "Langue sélectionnée",
       "playButton": "Jouer"
@@ -196,8 +196,8 @@
     },
     "endings": {
       "stable": {
-        "title": "Lien viable",
-        "text": "La créature garde une forme lisible. Elle ressent tes hypothèses, mais ne les subit pas encore comme des ordres."
+        "title": "Lien stable",
+        "text": "La créature garde un spectrogramme bioélectrique sain."
       },
       "specialized": {
         "title": "Génome sous tension",

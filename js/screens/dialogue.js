@@ -90,10 +90,6 @@
 
           <aside class="avatar-panel panel">
             ${PCT.renderAvatarFrame(avatarImage, message.speaker)}
-            <div class="avatar-meta">
-              ${PCT.escapeHtml(PCT.state.data.ui.dialogue.avatarEmotion)}:
-              <strong>${PCT.escapeHtml(message.emotion || "neutral")}</strong>
-            </div>
           </aside>
 
           <section class="dialogue-panel panel">
@@ -313,12 +309,13 @@
     // Le protocole est court et borné : j'affiche donc toujours la position dans la série.
     const tests = PCT.getDialogueTests();
     const label = currentTest.label || PCT.state.data.ui.dialogue.testLabel;
+    const cleanLabel = label.replace(/\s+\d+$/, "");
 
     if (!tests.length) {
-      return label;
+      return cleanLabel;
     }
 
-    return `${label} · ${PCT.state.testIndex + 1}/${tests.length}`;
+    return `${cleanLabel} ${PCT.state.testIndex + 1}/${tests.length}`;
   };
 
   PCT.renderStatsStrip = function renderStatsStrip() {
