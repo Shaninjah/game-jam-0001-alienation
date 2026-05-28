@@ -101,25 +101,25 @@
   "lore": [
     {
       "id": "lore_01",
-      "image": "assets/lore/lore-01.png",
+      "image": "assets/lore/illustration.png",
       "title": "Opération Mirador",
       "text": "Ton unité a pénétré une zone interdite pour sécuriser un objet tombé du ciel. Les rapports parlent d'un œuf minéral, d'une radio saturée et d'une lumière qui a figé toute l'escouade."
     },
     {
       "id": "lore_02",
-      "image": "assets/lore/lore-02.png",
+      "image": "assets/lore/illustration.png",
       "title": "Contact et trauma",
       "text": "Quand l'œuf s'est ouvert, tu l'as touché pour l'écarter d'un blessé. Ton rythme cardiaque s'est synchronisé avec sa pulsation, puis tes souvenirs de l'opération se sont fragmentés."
     },
     {
       "id": "lore_03",
-      "image": "assets/lore/lore-03.png",
+      "image": "assets/lore/illustration.png",
       "title": "Doute clinique",
       "text": "Depuis ton évacuation, tu réponds juste aux examens simples, mais tes choix moraux varient sous stress. Chen veut savoir si le trauma a biaisé ton jugement avant de te laisser approcher la créature."
     },
     {
       "id": "lore_04",
-      "image": "assets/lore/lore-04.png",
+      "image": "assets/lore/illustration.png",
       "title": "Protocole Chen",
       "text": "Le professeur branche l'œuf au spectrogramme bioélectrique. À chaque réponse, certains signaux se stabilisent et d'autres se déplacent. Chen pense pouvoir accompagner cette orientation, sans savoir encore ce qu'elle demandera en retour."
     }

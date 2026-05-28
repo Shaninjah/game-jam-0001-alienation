@@ -101,25 +101,25 @@
   "lore": [
     {
       "id": "lore_01",
-      "image": "assets/lore/lore-01.png",
+      "image": "assets/lore/illustration.png",
       "title": "Operation Mirador",
       "text": "Your unit entered a restricted zone to secure an object that fell from the sky. The reports mention a mineral egg, a saturated radio, and a light that froze the whole squad."
     },
     {
       "id": "lore_02",
-      "image": "assets/lore/lore-02.png",
+      "image": "assets/lore/illustration.png",
       "title": "Contact and Trauma",
       "text": "When the egg opened, you touched it to pull it away from a wounded soldier. Your heartbeat synchronized with its pulse, then your memories of the operation fractured."
     },
     {
       "id": "lore_03",
-      "image": "assets/lore/lore-03.png",
+      "image": "assets/lore/illustration.png",
       "title": "Clinical Doubt",
       "text": "Since your evacuation, you answer simple exams correctly, but your moral choices shift under stress. Chen needs to know whether trauma has biased your judgment before letting you near the creature."
     },
     {
       "id": "lore_04",
-      "image": "assets/lore/lore-04.png",
+      "image": "assets/lore/illustration.png",
       "title": "Chen Protocol",
       "text": "The professor connects the egg to the bioelectric spectrogram. With each answer, some signals stabilize while others shift. Chen believes he can guide that orientation, without yet knowing what it will ask in return."
     }

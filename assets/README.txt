@@ -1,10 +1,7 @@
 Dépose tes futurs PNG ici.
 
 Chemins attendus :
-- assets/lore/lore-01.png
-- assets/lore/lore-02.png
-- assets/lore/lore-03.png
-- assets/lore/lore-04.png
+- assets/lore/illustration.png
 - assets/avatar/prof-neutral.png
 - assets/avatar/prof-smile.png
 - assets/avatar/prof-worried.png
