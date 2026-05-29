@@ -99,10 +99,12 @@ Structure de l'apparence :
 - Si une partie d'un tier plus haut est débloquée, elle remplace la partie verrouillée sur ce slot.
 
 Règles de mutation actuelles :
-- Une seule nouvelle partie du corps peut être débloquée ou améliorée à la fin d'un test.
+- Une seule nouvelle partie du corps peut être débloquée ou améliorée à la fin d'un test jusqu'au niveau 4 inclus.
+- A partir du niveau 5 inclus, deux mutations normales peuvent être verrouillées à la fin d'un même test.
+- Les anomalies restent limitées à un seul changement par test pour garder leur impact.
 - Le test 1 reste diagnostique : aucune mutation visible n'est verrouillée à la fin de cette première batterie.
 - La première mutation visible arrive à partir du test 2, et doit rester une mutation normale.
-- Les points peuvent permettre plusieurs déblocages en même temps, mais le système n'en applique qu'un seul.
+- Les points peuvent permettre plusieurs déblocages en même temps, mais le système respecte la limite du niveau courant.
 - Les autres déblocages restent possibles pour les tests suivants.
 - Tant qu'aucune anomalie n'est éligible, la priorité va à la partie du corps la moins avancée :
   - une partie absente compte comme T0 ;

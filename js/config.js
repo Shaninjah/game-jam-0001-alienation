@@ -29,6 +29,10 @@
   // La premiere batterie reste diagnostique : la premiere mutation visible arrive au test 2.
   PCT.FIRST_VISIBLE_MUTATION_TEST_INDEX = 1;
 
+  // A partir du niveau 5, deux mutations normales peuvent se verrouiller a la fin d'un test.
+  // Les anomalies restent limitees a un seul changement pour garder leur impact.
+  PCT.DOUBLE_NORMAL_MUTATION_TEST_INDEX = 4;
+
   // Certaines réponses cachent leurs gains derrière un signal brouillé.
   // Le tableau suit les tests dans l'ordre : index 0 = test 1, index 9 = test 10.
   PCT.HIDDEN_CHOICE_EFFECTS_CHANCES = [

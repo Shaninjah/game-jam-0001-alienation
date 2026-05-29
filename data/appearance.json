@@ -77,7 +77,7 @@
     "balancedHighGap": 3,
     "balancedHighPressure": 0.82,
     "stageThresholds": {
-      "1": 10,
+      "1": 11,
       "2": 14,
       "3": 16
     }
@@ -144,7 +144,7 @@
         },
         "tier": 2,
         "stat": "conciliation",
-        "min": 7,
+        "min": 6,
         "asset": "assets/creatures/parts/tails/touffue.png"
       },
       {
@@ -246,7 +246,7 @@
         },
         "tier": 2,
         "stat": "exploration",
-        "min": 7,
+        "min": 6,
         "asset": "assets/creatures/parts/ears/longues.png"
       }
     ],

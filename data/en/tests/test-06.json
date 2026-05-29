@@ -71,7 +71,7 @@
           "effects": {
             "intelligence": 2,
             "exploration": 1,
-            "pressure": 0.35,
+            "pressure": 0.25,
             "stability": 0.2
           },
           "next": "decision_finale"

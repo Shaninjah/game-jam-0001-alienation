@@ -301,7 +301,7 @@
   };
 
   PCT.updateCreatureAppearance = function updateCreatureAppearance() {
-    // Je verrouille une seule evolution par test ; les anomalies passent devant les mutations saines.
+    // Les anomalies passent devant les mutations saines et restent limitees a un seul evenement.
     const appearance = PCT.state.appearance;
     const mutationEvents = [];
     const maxEvents = PCT.getRemainingMutationEventsForCurrentTest();
@@ -321,13 +321,21 @@
       return mutationEvents;
     }
 
-    const candidate = PCT.getNextAppearanceMutationCandidate();
+    while (mutationEvents.length < maxEvents) {
+      const candidate = PCT.getNextAppearanceMutationCandidate();
 
-    if (candidate) {
+      if (!candidate) {
+        break;
+      }
+
       const unlockedPart = PCT.createUnlockedPart(candidate.rule);
 
       PCT.state.unlockedParts[candidate.rule.slot] = unlockedPart;
       mutationEvents.push(PCT.createMutationEvent(unlockedPart, candidate.currentPart || null));
+
+      if (candidate.isAnomaly) {
+        break;
+      }
     }
 
     return mutationEvents;
@@ -428,13 +436,29 @@
   };
 
   PCT.getRemainingMutationEventsForCurrentTest = function getRemainingMutationEventsForCurrentTest() {
-    // Un test ne peut ajouter qu'une seule nouvelle partie ou evolution visible.
-    const maxEventsPerTest = 1;
+    if (PCT.hasCurrentTestAnomalyMutationEvent()) {
+      return 0;
+    }
+
+    const maxEventsPerTest = PCT.getMaxMutationEventsForCurrentTest();
     const currentEvents = Array.isArray(PCT.state.testMutationEvents)
       ? PCT.state.testMutationEvents.length
       : 0;
 
     return Math.max(maxEventsPerTest - currentEvents, 0);
+  };
+
+  PCT.getMaxMutationEventsForCurrentTest = function getMaxMutationEventsForCurrentTest() {
+    const doubleNormalMutationTestIndex = typeof PCT.DOUBLE_NORMAL_MUTATION_TEST_INDEX === "number"
+      ? PCT.DOUBLE_NORMAL_MUTATION_TEST_INDEX
+      : 4;
+
+    return PCT.state.testIndex >= doubleNormalMutationTestIndex ? 2 : 1;
+  };
+
+  PCT.hasCurrentTestAnomalyMutationEvent = function hasCurrentTestAnomalyMutationEvent() {
+    return Array.isArray(PCT.state.testMutationEvents)
+      && PCT.state.testMutationEvents.some((event) => event && event.isAnomaly);
   };
 
   PCT.shouldApplyAnomalyRule = function shouldApplyAnomalyRule(rule, currentPart) {
