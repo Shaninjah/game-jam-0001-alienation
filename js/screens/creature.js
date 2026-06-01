@@ -181,14 +181,118 @@
 
           <p class="credits-note">${PCT.escapeHtml(credits.artNote || "")}</p>
 
-          <button class="btn btn-primary" type="button" data-action="return-menu">
-            ${PCT.escapeHtml(credits.returnButton || PCT.state.data.ui.final.menuButton)}
-          </button>
+          <div class="credits-actions">
+            <button class="btn btn-primary" type="button" data-action="download-creature">
+              ${PCT.escapeHtml(credits.saveCreatureButton || "Save creature")}
+            </button>
+
+            <button class="btn btn-primary" type="button" data-action="return-menu">
+              ${PCT.escapeHtml(credits.returnButton || PCT.state.data.ui.final.menuButton)}
+            </button>
+          </div>
         </section>
       </main>
     `;
 
     PCT.bindImageFallbacks();
+  };
+
+  PCT.downloadCreatureShareImage = async function downloadCreatureShareImage(button) {
+    const credits = PCT.state.data.ui.credits || {};
+    const originalLabel = button ? button.textContent.trim() : "";
+
+    if (button) {
+      button.disabled = true;
+      button.textContent = credits.saveCreatureLoading || originalLabel;
+    }
+
+    try {
+      const blob = await PCT.createCreatureShareBlob();
+      PCT.downloadBlob(blob, PCT.getCreatureShareFileName());
+    } catch (error) {
+      console.error(error);
+      window.alert(credits.saveCreatureError || "Unable to save the creature.");
+    } finally {
+      if (button) {
+        button.disabled = false;
+        button.textContent = originalLabel;
+      }
+    }
+  };
+
+  PCT.createCreatureShareBlob = async function createCreatureShareBlob() {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    const appearance = PCT.getCreatureAppearance();
+    const parts = Array.isArray(appearance.parts) ? appearance.parts : [];
+    const tailParts = parts.filter((part) => PCT.getCreaturePartSlot(part) === "tails");
+    const bodyParts = parts.filter((part) => PCT.getCreaturePartSlot(part) !== "tails");
+    const exportWidth = 300;
+    const exportHeight = 440;
+
+    canvas.width = exportWidth;
+    canvas.height = exportHeight;
+    context.imageSmoothingEnabled = false;
+
+    for (const part of tailParts) {
+      await PCT.drawCreatureShareImage(context, PCT.getCreaturePartAsset(part), 0, 0, exportWidth, exportHeight);
+    }
+
+    await PCT.drawCreatureShareImage(context, appearance.base, 0, 0, exportWidth, exportHeight);
+
+    for (const part of bodyParts) {
+      await PCT.drawCreatureShareImage(context, PCT.getCreaturePartAsset(part), 0, 0, exportWidth, exportHeight);
+    }
+
+    return new Promise((resolve, reject) => {
+      canvas.toBlob((blob) => {
+        if (blob) {
+          resolve(blob);
+        } else {
+          reject(new Error("Canvas export failed."));
+        }
+      }, "image/png");
+    });
+  };
+
+  PCT.drawCreatureShareImage = async function drawCreatureShareImage(context, src, x, y, width, height) {
+    if (!src) {
+      return;
+    }
+
+    const image = await PCT.loadExportImage(src);
+
+    if (!image) {
+      return;
+    }
+
+    context.drawImage(image, x, y, width, height);
+  };
+
+  PCT.loadExportImage = function loadExportImage(src) {
+    return new Promise((resolve) => {
+      const image = new Image();
+
+      image.onload = () => resolve(image);
+      image.onerror = () => resolve(null);
+      image.src = src;
+    });
+  };
+
+  PCT.downloadBlob = function downloadBlob(blob, fileName) {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 0);
+  };
+
+  PCT.getCreatureShareFileName = function getCreatureShareFileName() {
+    return "ma-creature.png";
   };
 
   PCT.renderCreditContributor = function renderCreditContributor(contributor) {

@@ -96,6 +96,12 @@
       return;
     }
 
+    // Sur les credits, le joueur peut garder une image de sa creature avant le reset.
+    if (action === "download-creature") {
+      PCT.downloadCreatureShareImage(actionElement);
+      return;
+    }
+
     // Retour au menu depuis une fin.
     if (action === "return-menu") {
       PCT.resetRun();

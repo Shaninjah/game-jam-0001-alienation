@@ -798,8 +798,20 @@
   line-height: 24px;
 }
 
+.credits-actions {
+  display: flex;
+  width: 1040px;
+  justify-content: center;
+  gap: 14px;
+}
+
 .credits-card .btn {
   min-width: 320px;
   min-height: 56px;
   font-size: 22px;
+}
+
+.credits-card .btn:disabled {
+  cursor: wait;
+  opacity: 0.72;
 }
